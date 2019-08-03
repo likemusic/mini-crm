@@ -1,3 +1,5 @@
 FROM php:7.2-cli-alpine
 
-RUN apk add composer
+RUN docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install bcmath \
+    && apk add composer

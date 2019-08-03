@@ -27,7 +27,7 @@ services:
       - php-fpm
 
   php-fpm:
-    image: php:7.2-fpm-alpine
+    build: ./docker/php-fpm
     volumes:
       - ./src:/usr/share/nginx/html
     depends_on:
