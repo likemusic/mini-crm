@@ -6,7 +6,10 @@ use App\Product;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 use App\Orchid\Screens\Link;
 use Orchid\Screen\Screen;
@@ -97,17 +100,12 @@ class ProductEditScreen extends Screen
             Layout::rows([
                 Input::make('product.name')
                     ->title('Название')
-                    ->placeholder('Название продукта'),
+                    ->placeholder('Название товара'),
 
-//                Relation::make('post.author')
-//                    ->title('Author')
-//                    ->fromModel(User::class, 'name'),
-
-//                Quill::make('post.body')
-//                    ->title('Main text'),
-
+                TextArea::make('product.note')
+                    ->title('Примечание')
+                    ->placeholder('Примечание к товару'),
             ])
-            //->with(75)
         ];
     }
 
@@ -127,6 +125,8 @@ class ProductEditScreen extends Screen
             Alert::info("You have successfully {$operation} an product.");
         } catch (Exception $exception) {
             Alert::error($exception->getMessage());
+
+            return Redirect::back()->withInput();
         }
 
         return redirect()->route(ProductRouteNamesInterface::LIST);

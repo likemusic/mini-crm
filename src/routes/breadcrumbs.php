@@ -64,5 +64,3 @@ Breadcrumbs::for(ProductInterface::LIST, function ($trail) {
     $trail->parent(PlatformInterface::INDEX);
     $trail->push('Товары');
 });
-
-

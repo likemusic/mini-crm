@@ -22,6 +22,7 @@ class ProductListLayout extends Table
     {
         return [
             TD::set('name', 'Наименование')->link(ProductRouteNamesInterface::EDIT, 'id', 'name'),
+            TD::set('note', 'Примечание'),
             TD::set('created_at', 'Создан'),
             TD::set('updated_at', 'Изменен'),
         ];

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
+use App\Contract\Entity\ProductInterface;
 
 class Product extends Model
 {
@@ -13,6 +14,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        ProductInterface::FIELD_NAME,
+        ProductInterface::FIELD_NOTE,
     ];
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Contract\Entity\ProductInterface;
 
 class CreateProductsTable extends Migration
 {
@@ -13,9 +14,10 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->char('name')->unique();
+        Schema::create(ProductInterface::TABLE, function (Blueprint $table) {
+            $table->bigIncrements(ProductInterface::FIELD_ID);
+            $table->char(ProductInterface::FIELD_NAME)->unique();
+            $table->text(ProductInterface::FIELD_NOTE)->nullable();
             $table->timestamps();
         });
     }
