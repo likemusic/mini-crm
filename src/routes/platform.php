@@ -2,12 +2,16 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
+use App\Orchid\Screens\ProductEditScreen;
+use App\Orchid\Screens\ProductListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Contract\Route\Name\ProductInterface;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +39,20 @@ $this->router->screen('roles', RoleListScreen::class)->name('platform.systems.ro
 // Example...
 $this->router->screen('example', ExampleScreen::class)->name('platform.example');
 //Route::screen('/dashboard/screen/idea', 'Idea::class','platform.screens.idea');
+
+$this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
+
+
+// Product
+$this->router
+    ->screen('products/new', ProductEditScreen::class)
+    ->name(ProductInterface::NEW);
+
+$this->router
+    ->screen('products/{product}', ProductEditScreen::class)
+    ->name(ProductInterface::EDIT);
+
+$this->router
+    ->screen('products', ProductListScreen::class)
+    ->name(ProductInterface::LIST);
+

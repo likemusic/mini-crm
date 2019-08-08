@@ -7,6 +7,7 @@ namespace App\Orchid\Composers;
 use Orchid\Platform\Menu;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Dashboard;
+use App\Contract\Route\Name\ProductInterface;
 
 class MainMenuComposer
 {
@@ -66,6 +67,22 @@ class MainMenuComposer
                 ItemMenu::label('Empty sub item 2')
                     ->icon('icon-heart')
                     ->title('Separate')
+            )
+            // Email sender
+            ->add(Menu::MAIN,
+                ItemMenu::label('Email sender')
+                    ->icon('icon-envelope-letter')
+                    ->route('platform.email')
+                    ->title('Tools')
+            )
+
+            // Product
+            ->add(Menu::MAIN,
+                ItemMenu::label('Товары')
+                    ->icon('icon-bag')
+                    ->route(ProductInterface::LIST)
+                    ->title('Сущности')
             );
+
     }
 }

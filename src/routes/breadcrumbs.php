@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use App\Contract\Route\Name\ProductInterface;
+use App\Contract\Route\Name\PlatformInterface;
 
 //Screens
 
@@ -38,6 +40,29 @@ Breadcrumbs::for('platform.systems.roles.edit', function ($trail, $role) {
 
 // Platform -> Example
 Breadcrumbs::for('platform.example', function ($trail) {
-    $trail->parent('platform.index');
+    $trail->parent(PlatformInterface::INDEX);
     $trail->push(__('Example'));
 });
+
+Breadcrumbs::for('platform.email', function ($trail) {
+    $trail->parent(PlatformInterface::INDEX);
+    $trail->push('Email sender');
+});
+
+// Platfort > Product
+Breadcrumbs::for(ProductInterface::NEW, function ($trail) {
+    $trail->parent(ProductInterface::LIST);
+    $trail->push('Создание товара');
+});
+
+Breadcrumbs::for(ProductInterface::EDIT, function ($trail) {
+    $trail->parent(ProductInterface::LIST);
+    $trail->push('Обновление товара');
+});
+
+Breadcrumbs::for(ProductInterface::LIST, function ($trail) {
+    $trail->parent(PlatformInterface::INDEX);
+    $trail->push('Товары');
+});
+
+
