@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
+use App\Contract\Entity\Product\TableInterface;
+use App\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
-use App\Contract\Entity\ProductInterface;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProductsTable extends Migration
 {
@@ -14,10 +15,14 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create(ProductInterface::TABLE, function (Blueprint $table) {
-            $table->bigIncrements(ProductInterface::FIELD_ID);
-            $table->char(ProductInterface::FIELD_NAME)->unique();
-            $table->text(ProductInterface::FIELD_NOTE)->nullable();
+        Schema::create(TableInterface::NAME, function (Blueprint $table) {
+            $table->bigIncrements(ProductFieldNameInterface::ID);
+            $table->char(ProductFieldNameInterface::NAME)->unique();
+            $table->text(ProductFieldNameInterface::NOTE)->nullable();
+
+            $this->addPriceColumn($table, ProductFieldNameInterface::APPROXIMATE_PRICE)->nullable();
+            $this->addPriceColumn($table, ProductFieldNameInterface::SELLING_PRICE)->nullable();
+
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists(TableInterface::NAME);
     }
 }

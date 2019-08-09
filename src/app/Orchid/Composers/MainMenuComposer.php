@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Orchid\Composers;
 
-use Orchid\Platform\Menu;
-use Orchid\Platform\ItemMenu;
+use App\Contract\Entity\Product\MenuInterface;
+use App\Contract\Entity\Product\Route\NameInterface;
+use App\Entity\Product\UseVariant as ProductUseVariant;
 use Orchid\Platform\Dashboard;
-use App\Contract\Route\Name\ProductInterface;
+use Orchid\Platform\ItemMenu;
+use Orchid\Platform\Menu;
 
 class MainMenuComposer
 {
@@ -17,13 +19,19 @@ class MainMenuComposer
     private $dashboard;
 
     /**
+     * @var ProductUseVariant
+     */
+    private $productUseVariant;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
      */
-    public function __construct(Dashboard $dashboard)
+    public function __construct(Dashboard $dashboard, ProductUseVariant $productUseVariant)
     {
         $this->dashboard = $dashboard;
+        $this->productUseVariant = $productUseVariant;
     }
 
     /**
@@ -78,11 +86,10 @@ class MainMenuComposer
 
             // Product
             ->add(Menu::MAIN,
-                ItemMenu::label('Товары')
-                    ->icon('icon-bag')
-                    ->route(ProductInterface::LIST)
+                ItemMenu::label($this->productUseVariant->getListName())
+                    ->icon(MenuInterface::ICON)
+                    ->route(NameInterface::LIST)
                     ->title('Сущности')
             );
-
     }
 }

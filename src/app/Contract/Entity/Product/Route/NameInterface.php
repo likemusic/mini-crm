@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contract\Route\Name;
+namespace App\Contract\Entity\Product\Route;
 
-interface ProductInterface
+interface NameInterface
 {
     const LIST = 'platform.product.list';
     const NEW = 'platform.product.new';

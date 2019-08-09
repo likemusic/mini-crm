@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
+use App\Contract\Entity\Product\Route\NameInterface;
+use App\Contract\Entity\Product\Route\PathInterface;
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\ProductEditScreen;
-use App\Orchid\Screens\ProductListScreen;
+use App\Orchid\Screens\Product\ProductEditScreen as ProductEditScreen;
+use App\Orchid\Screens\Product\ProductListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
-use App\Contract\Route\Name\ProductInterface;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,14 +46,14 @@ $this->router->screen('email', EmailSenderScreen::class)->name('platform.email')
 
 // Product
 $this->router
-    ->screen('products/new', ProductEditScreen::class)
-    ->name(ProductInterface::NEW);
+    ->screen(PathInterface::NEW, ProductEditScreen::class)
+    ->name(NameInterface::NEW);
 
 $this->router
-    ->screen('products/{product}', ProductEditScreen::class)
-    ->name(ProductInterface::EDIT);
+    ->screen(PathInterface::EDIT, ProductEditScreen::class)
+    ->name(NameInterface::EDIT);
 
 $this->router
-    ->screen('products', ProductListScreen::class)
-    ->name(ProductInterface::LIST);
+    ->screen(PathInterface::LIST, ProductListScreen::class)
+    ->name(NameInterface::LIST);
 
