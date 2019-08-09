@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Contract\Entity\Product\Route\NameInterface;
-use App\Contract\Entity\Product\Route\PathInterface;
+use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
+use App\Entity\Product\Route\PathProvider as ProductRoutePathProvider;
+use App\Helper\RouteRegisterHelper;
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\Product\ProductEditScreen as ProductEditScreen;
-use App\Orchid\Screens\Product\ProductListScreen;
+use App\Orchid\Screens\Product\EditScreen as ProductEditScreen;
+use App\Orchid\Screens\Product\ListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
@@ -44,16 +45,24 @@ $this->router->screen('example', ExampleScreen::class)->name('platform.example')
 $this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
 
 
+/** @var ProductRouteNameProvider $productRouteNameProvider */
+$productRouteNameProvider = App::make(ProductRouteNameProvider::class);
+/** @var ProductRoutePathProvider $productRoutePathProvider */
+$productRoutePathProvider = App::make(ProductRoutePathProvider::class);
+
 // Product
 $this->router
-    ->screen(PathInterface::NEW, ProductEditScreen::class)
-    ->name(NameInterface::NEW);
+    ->screen($productRoutePathProvider->getNew(), ProductEditScreen::class)
+    ->name($productRouteNameProvider->getNew());
 
 $this->router
-    ->screen(PathInterface::EDIT, ProductEditScreen::class)
-    ->name(NameInterface::EDIT);
+    ->screen($productRoutePathProvider->getEdit(), ProductEditScreen::class)
+    ->name($productRouteNameProvider->getEdit());
 
 $this->router
-    ->screen(PathInterface::LIST, ProductListScreen::class)
-    ->name(NameInterface::LIST);
+    ->screen($productRoutePathProvider->getList(), ListScreen::class)
+    ->name($productRouteNameProvider->getList());
 
+/** @var RouteRegisterHelper $routeRegisterHelper */
+$routeRegisterHelper = App::make(RouteRegisterHelper::class);
+$routeRegisterHelper->addRoutes($productRoutePathProvider, $productRouteNameProvider, ProductEditScreen::class);

@@ -1,60 +1,56 @@
 <?php
 
-namespace App\Orchid\Screens\Product;
+namespace App\Orchid\Screens\Base;
 
-use App\Contract\Entity\Product\Field\LabelInterface as ProductFieldLabelInterface;
-use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
-use App\Contract\Entity\Product\Route\NameInterface as ProductRouteNamesInterface;
+use App\Contract\Entity\Base\InfoMessageProviderInterface;
+use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
+use App\Contract\Entity\Base\UseVariantProviderInterface;
 use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
 use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
-use App\Entity\Product\UseVariant as ProductUseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as ProductInfoMessageProvider;
 use App\Model\Product;
 use App\Orchid\Screens\Link;
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
-use Orchid\Screen\Layout;
-use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 
-class ProductEditScreen extends Screen
+abstract class EditScreen extends Screen
 {
-    const DATA_KEY = 'product';
-
     /** @var BreadcrumbsHelper */
     private $breadcrumbsHelper;
-
     /**
-     * @var ProductInfoMessageProvider
+     * @var InfoMessageProviderInterface
      */
-    private $productInfoMessageProvider;
-
+    private $infoMessageProvider;
     /**
-     * @var ProductUseVariant
+     * @var UseVariantProviderInterface
      */
-    private $productUseVariant;
-
+    private $useVariantProvider;
+    /**
+     * @var RouteNameProviderInterface
+     */
+    private $routeNameProvider;
     /**
      * @var bool
      */
     private $exists = false;
 
     public function __construct(
+        RouteNameProviderInterface $routeRouteNameProviderInterface,
+        UseVariantProviderInterface $useVariant,
+        InfoMessageProviderInterface $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
-        ProductUseVariant $productUseVariant,
-        ProductInfoMessageProvider $productInfoMessageProvider,
         ?Request $request = null
     ) {
         $this->breadcrumbsHelper = $breadcrumbsHelper;
-        $this->productInfoMessageProvider = $productInfoMessageProvider;
-        $this->productUseVariant = $productUseVariant;
+        $this->routeNameProvider = $routeRouteNameProviderInterface;
+        $this->infoMessageProvider = $infoMessageProvider;
+        $this->useVariantProvider = $useVariant;
 
         parent::__construct($request);
     }
@@ -62,22 +58,27 @@ class ProductEditScreen extends Screen
     /**
      * Query data.
      *
-     * @param Product $product
+     * @param Model $model
      * @return array
      */
-    public function query(Product $product): array
+    public function query(Model $model): array
     {
-        $this->exists = $product->exists;
+        $this->exists = $model->exists;
 
-        $productGenitiveName = $this->productUseVariant->getGenitiveName();
+        $productGenitiveName = $this->useVariantProvider->getGenitiveName();
 
         $this->name = $this->exists
             ? $this->breadcrumbsHelper->getUpdateName($productGenitiveName)
             : $this->breadcrumbsHelper->getCreateName($productGenitiveName);
 
         return [
-            self::DATA_KEY => $product
+            $this->getDataKey() => $model
         ];
+    }
+
+    protected function getDataKey(): string
+    {
+        return 'product';
     }
 
     /**
@@ -114,54 +115,21 @@ class ProductEditScreen extends Screen
     }
 
     /**
-     * Views.
-     *
-     * @return Layout[]
-     */
-    public function layout(): array
-    {
-        return [
-            Layout::rows([
-                Input::make($this->getDataPath(ProductFieldNameInterface::NAME))
-                    ->title(ProductFieldLabelInterface::NAME),
-
-                Input::make($this->getDataPath(ProductFieldNameInterface::APPROXIMATE_PRICE))
-                    ->title(ProductFieldLabelInterface::APPROXIMATE_PRICE),
-
-                Input::make($this->getDataPath(ProductFieldNameInterface::SELLING_PRICE))
-                    ->title(ProductFieldLabelInterface::SELLING_PRICE),
-
-                TextArea::make($this->getDataPath(ProductFieldNameInterface::NOTE))
-                    ->title(ProductFieldLabelInterface::NOTE),
-            ])
-        ];
-    }
-
-    /**
-     * @param string $key
-     * @return string
-     */
-    private function getDataPath(string $key)
-    {
-        return self::DATA_KEY . '.'. $key;
-    }
-
-    /**
-     * @param Product $product
+     * @param Model $model
      * @param Request $request
      *
      * @return RedirectResponse
      */
-    public function createOrUpdate(Product $product, Request $request)
+    public function createOrUpdate(Model $model, Request $request)
     {
         try {
-            $requestData = $request->get(self::DATA_KEY);
+            $requestData = $request->get($this->getDataKey());
 
-            $message = $product->exists
-                ? $this->productInfoMessageProvider->getUpdateMessage()
-                : $this->productInfoMessageProvider->getCreateMessage();
+            $message = $model->exists
+                ? $this->infoMessageProvider->getUpdateMessage()
+                : $this->infoMessageProvider->getCreateMessage();
 
-            $product->fill($requestData)->save();
+            $model->fill($requestData)->save();
 
             Alert::info($message);
         } catch (Exception $exception) {
@@ -170,7 +138,12 @@ class ProductEditScreen extends Screen
             return Redirect::back()->withInput();
         }
 
-        return redirect()->route(ProductRouteNamesInterface::LIST);
+        return redirect()->route($this->getRouteNameList());
+    }
+
+    private function getRouteNameList()
+    {
+        return $this->routeNameProvider->getList();
     }
 
     /**
@@ -183,12 +156,12 @@ class ProductEditScreen extends Screen
     {
         try {
             $product->delete();
-            Alert::info($this->productInfoMessageProvider->getDeleteMessage());
+            Alert::info($this->infoMessageProvider->getDeleteMessage());
         }catch (\Exception $exception) {
             Alert::error($exception->getMessage());
         }
 
-        return redirect()->route(ProductRouteNamesInterface::LIST);
+        return redirect()->route($this->getRouteNameList());
     }
 
     /**
@@ -196,6 +169,15 @@ class ProductEditScreen extends Screen
      */
     public function cancel()
     {
-        return redirect()->route(ProductRouteNamesInterface::LIST);
+        return redirect()->route($this->getRouteNameList());
+    }
+
+    /**
+     * @param string $key
+     * @return string
+     */
+    protected function getDataPath(string $key)
+    {
+        return $this->getDataKey(). '.'. $key;
     }
 }

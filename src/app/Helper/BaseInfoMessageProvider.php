@@ -3,7 +3,7 @@
 namespace App\Helper;
 
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
-use App\Contract\Entity\Base\UseVariantInterface;
+use App\Contract\Entity\Base\UseVariantProviderInterface;
 use App\Helper\InfoMessage as InfoMessageHelper;
 
 class BaseInfoMessageProvider implements InfoMessageProviderInterface
@@ -14,11 +14,11 @@ class BaseInfoMessageProvider implements InfoMessageProviderInterface
     private $infoMessageHelper;
 
     /**
-     * @var UseVariantInterface
+     * @var UseVariantProviderInterface
      */
     private $useVariant;
 
-    public function __construct(InfoMessageHelper $infoMessageHelper, UseVariantInterface $useVariant)
+    public function __construct(InfoMessageHelper $infoMessageHelper, UseVariantProviderInterface $useVariant)
     {
         $this->infoMessageHelper = $infoMessageHelper;
         $this->useVariant = $useVariant;
@@ -31,6 +31,11 @@ class BaseInfoMessageProvider implements InfoMessageProviderInterface
         return $this->infoMessageHelper->getCreateMessage($itemName);
     }
 
+    private function getItemName()
+    {
+        return $this->useVariant->getItemName();
+    }
+
     public function getUpdateMessage(): string
     {
         $itemName = $this->getGenitiveName();
@@ -40,11 +45,6 @@ class BaseInfoMessageProvider implements InfoMessageProviderInterface
     private function getGenitiveName()
     {
         return $this->useVariant->getGenitiveName();
-    }
-
-    private function getItemName()
-    {
-        return $this->useVariant->getItemName();
     }
 
     public function getDeleteMessage(): string

@@ -2,9 +2,9 @@
 
 namespace App\Entity\Product;
 
-use App\Contract\Entity\Base\UseVariantInterface;
+use App\Contract\Entity\Base\UseVariantProviderInterface;
 
-class UseVariant implements UseVariantInterface
+class UseVariantProvider implements UseVariantProviderInterface
 {
     public function getItemName(): string
     {

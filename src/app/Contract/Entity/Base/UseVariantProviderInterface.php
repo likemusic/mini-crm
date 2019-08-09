@@ -2,7 +2,7 @@
 
 namespace App\Contract\Entity\Base;
 
-interface UseVariantInterface
+interface UseVariantProviderInterface
 {
     public function getItemName(): string;
     public function getListName(): string;

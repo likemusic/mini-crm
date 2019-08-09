@@ -1,15 +1,22 @@
 <?php
 
-namespace App\Orchid\Layouts;
+namespace App\Orchid\Layouts\Product;
 
 use App\Contract\Entity\Product\Field\LabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
-use App\Contract\Entity\Product\Route\NameInterface as ProductRouteNamesInterface;
+use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
 class ProductListLayout extends Table
 {
+    private $productRouteNameProvider;
+
+    public function __construct(ProductRouteNameProvider $productRouteNameProvider)
+    {
+        $this->productRouteNameProvider = $productRouteNameProvider;
+    }
+
     /**
      * Data source.
      *
@@ -25,7 +32,7 @@ class ProductListLayout extends Table
         return [
             TD::set(ProductFieldNameInterface::NAME, LabelInterface::NAME)
                 ->link(
-                    ProductRouteNamesInterface::EDIT,
+                    $this->productRouteNameProvider->getEdit(),
                     ProductFieldNameInterface::ID,
                     ProductFieldNameInterface::NAME
                 ),

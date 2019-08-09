@@ -2,9 +2,11 @@
 
 namespace App\Contract\Entity\Product\Route;
 
+use App\Contract\Entity\Base\Route\PathProviderInterface;
+
 interface PathInterface
 {
-    const LIST = 'products';
-    const NEW = 'products/new';
-    const EDIT = 'products/{product}';
+    public function getList();
+    public function getNew();
+    public function getEdit();
 }

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
 use App\Contract\Entity\Product\Route\NameInterface as ProductRouteNameInterface;
-use App\Entity\Product\UseVariant as ProductUseVariant;
+use App\Entity\Product\UseVariantProvider as ProductUseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 
 //Screens
 
@@ -58,18 +59,27 @@ $breadcrumbsHelper = App::make(BreadcrumbsHelper::class);
 /** @var ProductUseVariant $productUseVariant */
 $productUseVariant = App::make(ProductUseVariant::class);
 
+/** @var ProductRouteNameProvider $productRouteNameProvider */
+$productRouteNameProvider = App::make(ProductRouteNameProvider::class);
+
 // Platform > Product
-Breadcrumbs::for(ProductRouteNameInterface::NEW, function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant) {
-    $trail->parent(ProductRouteNameInterface::LIST);
-    $trail->push($breadcrumbsHelper->getCreateName($productUseVariant->getGenitiveName()));
-});
+Breadcrumbs::for(
+    $productRouteNameProvider->getNew(),
+    function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant, $productRouteNameProvider) {
+        $trail->parent($productRouteNameProvider->getList());
+        $trail->push($breadcrumbsHelper->getCreateName($productUseVariant->getGenitiveName()));
+    });
 
-Breadcrumbs::for(ProductRouteNameInterface::EDIT, function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant) {
-    $trail->parent(ProductRouteNameInterface::LIST);
-    $trail->push($breadcrumbsHelper->getUpdateName($productUseVariant->getGenitiveName()));
-});
+Breadcrumbs::for(
+    $productRouteNameProvider->getEdit(),
+    function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant, $productRouteNameProvider) {
+        $trail->parent($productRouteNameProvider->getList());
+        $trail->push($breadcrumbsHelper->getUpdateName($productUseVariant->getGenitiveName()));
+    });
 
-Breadcrumbs::for(ProductRouteNameInterface::LIST, function (BreadcrumbsGenerator $trail) use ($productUseVariant) {
-    $trail->parent(PlatformRouteNameInterface::INDEX);
-    $trail->push($productUseVariant->getListName());
-});
+Breadcrumbs::for(
+    $productRouteNameProvider->getList(),
+    function (BreadcrumbsGenerator $trail) use ($productUseVariant) {
+        $trail->parent(PlatformRouteNameInterface::INDEX);
+        $trail->push($productUseVariant->getListName());
+    });
