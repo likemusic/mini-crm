@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace App\Orchid\Composers;
 
-use App\Contract\Entity\Product\MenuInterface;
+use App\Contract\Entity\Product\MenuInterface as ProductMenuInterface;
 use App\Contract\Entity\Product\Route\NameInterface;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\UseVariantProvider as ProductUseVariant;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
+use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
+use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 
 class MainMenuComposer
 {
@@ -30,20 +32,36 @@ class MainMenuComposer
     private $productRouteNameProvider;
 
     /**
+     * @var ProductMenuRegistrar
+     */
+    private $productMenuRegistrar;
+
+    /**
+     * @var WarehouseMenuRegistrar
+     */
+    private $warehouseMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
      * @param ProductUseVariant $productUseVariant
      * @param ProductRouteNameProvider $productRouteNameProvider
+     * @param ProductMenuRegistrar $productMenuRegistrar
+     * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
      */
     public function __construct(
         Dashboard $dashboard,
         ProductUseVariant $productUseVariant,
-        ProductRouteNameProvider $productRouteNameProvider
+        ProductRouteNameProvider $productRouteNameProvider,
+        ProductMenuRegistrar $productMenuRegistrar,
+        WarehouseMenuRegistrar $warehouseMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
         $this->productUseVariant = $productUseVariant;
         $this->productRouteNameProvider = $productRouteNameProvider;
+        $this->productMenuRegistrar = $productMenuRegistrar;
+        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
     }
 
     /**
@@ -66,7 +84,9 @@ class MainMenuComposer
             );
 
         // Main
-        $this->dashboard->menu
+        $dashboardMenu = $this->dashboard->menu;
+
+        $dashboardMenu
             ->add(Menu::MAIN,
                 ItemMenu::label('Example')
                     ->icon('icon-folder')
@@ -94,14 +114,10 @@ class MainMenuComposer
                     ->icon('icon-envelope-letter')
                     ->route('platform.email')
                     ->title('Tools')
-            )
+            );
 
             // Product
-            ->add(Menu::MAIN,
-                ItemMenu::label($this->productUseVariant->getListName())
-                    ->icon(MenuInterface::ICON)
-                    ->route($this->productRouteNameProvider->getList())
-                    ->title('Сущности')
-            );
+            $this->productMenuRegistrar->register($dashboardMenu);
+            $this->warehouseMenuRegistrar->register($dashboardMenu);
     }
 }
