@@ -61,7 +61,7 @@ abstract class EditScreen extends Screen
      * @param Model $model
      * @return array
      */
-    public function query(Model $model): array
+    protected function onQuery($model): array
     {
         $this->exists = $model->exists;
 
@@ -120,7 +120,7 @@ abstract class EditScreen extends Screen
      *
      * @return RedirectResponse
      */
-    public function createOrUpdate(Model $model, Request $request)
+    protected function onCreateOrUpdate($model, Request $request)
     {
         try {
             $requestData = $request->get($this->getDataKey());

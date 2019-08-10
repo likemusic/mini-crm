@@ -8,6 +8,7 @@ use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
 use App\Orchid\Screens\Link;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Layout;
 
 abstract class ListScreen extends Screen
@@ -52,6 +53,9 @@ abstract class ListScreen extends Screen
         ];
     }
 
+    /**
+     * @return LengthAwarePaginator
+     */
     protected function getData()
     {
         return $this->model->paginate();

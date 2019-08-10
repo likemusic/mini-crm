@@ -4,6 +4,6 @@ namespace App\Contract;
 
 interface BreadcrumbsInterface
 {
-    const CREATE = 'Создание %s';
+    const CREATE = 'Добавление %s';
     const UPDATE = 'Редактирование %s';
 }

@@ -8,6 +8,7 @@ use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\UseVariantProvider as ProductUseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as ProductInfoMessageProvider;
+use App\Model\Product;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
@@ -22,7 +23,8 @@ class EditScreen extends BaseEditScreen
         ProductInfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
-    ) {
+    )
+    {
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
     }
 
@@ -48,5 +50,15 @@ class EditScreen extends BaseEditScreen
                     ->title(ProductFieldLabelInterface::NOTE),
             ])
         ];
+    }
+
+    public function createOrUpdate(Product $model, Request $request)
+    {
+        return $this->onCreateOrUpdate($model, $request);
+    }
+
+    public function query(Product $model): array
+    {
+        return $this::onQuery($model);
     }
 }

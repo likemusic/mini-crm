@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts\Product;
+namespace App\Orchid\Layouts\Warehouse;
 
 use App\Contract\Entity\Warehouse\Field\LabelInterface;
 use App\Contract\Entity\Warehouse\Field\NameInterface as WarehouseFieldNameInterface;

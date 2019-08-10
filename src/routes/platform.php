@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\Route\PathProvider as ProductRoutePathProvider;
-use App\Helper\RouteRegisterHelper;
+use App\Entity\Product\Route\Registrar as ProductRouteRegistrar;
+use App\Entity\Warehouse\Route\Registrar as WarehouseRouteRegistrar;
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\Product\EditScreen as ProductEditScreen;
-use App\Orchid\Screens\Product\ListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use Illuminate\Routing\RouteFileRegistrar;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,8 @@ use App\Orchid\Screens\User\UserListScreen;
 | contains the need "dashboard" middleware group. Now create something great!
 |
 */
+
+/** @var RouteFileRegistrar $this */
 
 // Main
 $this->router->screen('/main', PlatformScreen::class)->name('platform.main');
@@ -44,25 +46,15 @@ $this->router->screen('example', ExampleScreen::class)->name('platform.example')
 
 $this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
 
-
 /** @var ProductRouteNameProvider $productRouteNameProvider */
 $productRouteNameProvider = App::make(ProductRouteNameProvider::class);
 /** @var ProductRoutePathProvider $productRoutePathProvider */
 $productRoutePathProvider = App::make(ProductRoutePathProvider::class);
 
-// Product
-$this->router
-    ->screen($productRoutePathProvider->getNew(), ProductEditScreen::class)
-    ->name($productRouteNameProvider->getNew());
+/** @var ProductRouteRegistrar $productRouteRegistrar */
+$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
+$productRouteRegistrar->registerRoutes($this->router);
 
-$this->router
-    ->screen($productRoutePathProvider->getEdit(), ProductEditScreen::class)
-    ->name($productRouteNameProvider->getEdit());
-
-$this->router
-    ->screen($productRoutePathProvider->getList(), ListScreen::class)
-    ->name($productRouteNameProvider->getList());
-
-/** @var RouteRegisterHelper $routeRegisterHelper */
-$routeRegisterHelper = App::make(RouteRegisterHelper::class);
-$routeRegisterHelper->addRoutes($productRoutePathProvider, $productRouteNameProvider, ProductEditScreen::class);
+/** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
+$warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);
+$warehouseRouteRegistrar->registerRoutes($this->router);
