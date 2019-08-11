@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Entity\Product\Route;
+namespace App\Entity\UnaccountedProduct\Route;
 
 use App\Entity\Base\Route\Registrar as BaseRegistrar;
-use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Entity\Product\Route\PathProvider as RoutePathProvider;
+use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
+use App\Entity\UnaccountedProduct\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Product\EditScreen as EditScreen;
-use App\Orchid\Screens\Product\ListScreen as ListScreen;
+use App\Orchid\Screens\UnaccountedProduct\EditScreen as EditScreen;
+use App\Orchid\Screens\UnaccountedProduct\ListScreen as ListScreen;
 
 class Registrar extends BaseRegistrar
 {

@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
-use App\Contract\Entity\Product\Route\NameInterface as ProductRouteNameInterface;
+use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\UseVariantProvider as ProductUseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
-use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 
 //Screens
 

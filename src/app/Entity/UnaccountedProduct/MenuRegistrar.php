@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entity\Product;
+namespace App\Entity\UnaccountedProduct;
 
-use App\Contract\Entity\Product\MenuInterface;
+use App\Contract\Entity\UnaccountedProduct\MenuInterface;
 use App\Entity\Base\MainMenuRegistrar as BaseMenuRegistrar;
-use App\Entity\Product\Route\NameProvider as RouteNameProvider;
+use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 
 class MenuRegistrar extends BaseMenuRegistrar
 {
@@ -12,7 +12,7 @@ class MenuRegistrar extends BaseMenuRegistrar
         UseVariantProvider $useVariantProvider,
         RouteNameProvider $routeNameProvider
     ) {
-        $menuTitle = 'Товары/склады';
+        $menuTitle = null;
         $menuIcon = MenuInterface::ICON;
 
         parent::__construct($useVariantProvider, $routeNameProvider, $menuTitle, $menuIcon);

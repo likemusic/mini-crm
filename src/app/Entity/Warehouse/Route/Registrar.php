@@ -3,21 +3,21 @@
 namespace App\Entity\Warehouse\Route;
 
 use App\Entity\Base\Route\Registrar as BaseRegistrar;
-use App\Entity\Warehouse\Route\NameProvider as WarehouseRouteNameProvider;
-use App\Entity\Warehouse\Route\PathProvider as WarehouseRoutePathProvider;
+use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
+use App\Entity\Warehouse\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Warehouse\EditScreen as WarehouseEditScreen;
-use App\Orchid\Screens\Warehouse\ListScreen as WarehouseListScreen;
+use App\Orchid\Screens\Warehouse\EditScreen as EditScreen;
+use App\Orchid\Screens\Warehouse\ListScreen as ListScreen;
 
 class Registrar extends BaseRegistrar
 {
     public function __construct(
         RouteRegisterHelper $routeRegisterHelper,
-        WarehouseRouteNameProvider $nameProvider,
-        WarehouseRoutePathProvider $pathProvider
+        RouteNameProvider $nameProvider,
+        RoutePathProvider $pathProvider
     ) {
-        $listScreenClassName = WarehouseListScreen::class;
-        $editScreenClassName = WarehouseEditScreen::class;
+        $listScreenClassName = ListScreen::class;
+        $editScreenClassName = EditScreen::class;
 
         parent::__construct(
             $routeRegisterHelper,

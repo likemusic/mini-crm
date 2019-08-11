@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace App\Orchid\Composers;
 
-use App\Contract\Entity\Product\MenuInterface as ProductMenuInterface;
-use App\Contract\Entity\Product\Route\NameInterface;
-use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
-use App\Entity\Product\UseVariantProvider as ProductUseVariant;
+use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
+use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
+use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
-use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
-use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 
 class MainMenuComposer
 {
@@ -20,16 +17,6 @@ class MainMenuComposer
      * @var Dashboard
      */
     private $dashboard;
-
-    /**
-     * @var ProductUseVariant
-     */
-    private $productUseVariant;
-
-    /**
-     * @var ProductRouteNameProvider
-     */
-    private $productRouteNameProvider;
 
     /**
      * @var ProductMenuRegistrar
@@ -42,26 +29,28 @@ class MainMenuComposer
     private $warehouseMenuRegistrar;
 
     /**
+     * @var UnaccountedProductMenuRegistrar
+     */
+    private $unaccountedProductMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
-     * @param ProductUseVariant $productUseVariant
-     * @param ProductRouteNameProvider $productRouteNameProvider
      * @param ProductMenuRegistrar $productMenuRegistrar
      * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
+     * @param UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
      */
     public function __construct(
         Dashboard $dashboard,
-        ProductUseVariant $productUseVariant,
-        ProductRouteNameProvider $productRouteNameProvider,
         ProductMenuRegistrar $productMenuRegistrar,
-        WarehouseMenuRegistrar $warehouseMenuRegistrar
+        WarehouseMenuRegistrar $warehouseMenuRegistrar,
+        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
-        $this->productUseVariant = $productUseVariant;
-        $this->productRouteNameProvider = $productRouteNameProvider;
         $this->productMenuRegistrar = $productMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+        $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
     }
 
     /**
@@ -119,5 +108,6 @@ class MainMenuComposer
             // Product
             $this->productMenuRegistrar->register($dashboardMenu);
             $this->warehouseMenuRegistrar->register($dashboardMenu);
+            $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
     }
 }

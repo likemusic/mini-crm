@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Orchid\Layouts\Warehouse;
+namespace App\Orchid\Layouts\UnaccountedProduct;
 
-use App\Contract\Entity\Warehouse\Field\LabelInterface;
-use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
-use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
+use App\Contract\Entity\UnaccountedProduct\Field\LabelInterface;
+use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
+use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
 
-class WarehouseListLayout extends ListLayout
+class UnaccountedProductListLayout extends ListLayout
 {
     public function __construct(RouteNameProvider $routeNameProvider)
     {
@@ -23,7 +23,6 @@ class WarehouseListLayout extends ListLayout
         return [
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::CODE, LabelInterface::NOTE),
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
             TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
             TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
@@ -32,6 +31,6 @@ class WarehouseListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'warehouses';
+        return 'unaccounted-products';
     }
 }

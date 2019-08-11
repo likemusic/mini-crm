@@ -1,19 +1,29 @@
 <?php
 
-namespace App\Orchid\Layouts\Product;
+namespace App\Orchid\Layouts\Base;
 
+use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Product\Field\LabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class ProductListLayout extends ListLayout
+abstract class ListLayout extends Table
 {
-    public function __construct(RouteNameProvider $routeNameProvider)
+    /**
+     * @var RouteNameProvider
+     */
+    private $routeNameProvider;
+
+    public function __construct(RouteNameProviderInterface $routeNameProvider)
     {
-        parent::__construct($routeNameProvider);
+        $this->routeNameProvider = $routeNameProvider;
+
+        $this->data = $this->getDataKey();
     }
+
+    abstract protected function getDataKey();
 
     /**
      * @return TD[]
@@ -25,16 +35,24 @@ class ProductListLayout extends ListLayout
 
             TD::set(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
             TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
-
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
-
             TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
             TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
         ];
     }
 
-    protected function getDataKey()
+    protected function getNameField($name, $label, $id)
     {
-        return 'products';
+        return TD::set($name, $label)
+            ->link(
+                $this->getRouteNameEdit(),
+                $id,
+                $name
+            );
+    }
+
+    protected function getRouteNameEdit()
+    {
+        return $this->routeNameProvider->getEdit();
     }
 }

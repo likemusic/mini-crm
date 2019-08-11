@@ -6,6 +6,7 @@ use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\Route\PathProvider as ProductRoutePathProvider;
 use App\Entity\Product\Route\Registrar as ProductRouteRegistrar;
 use App\Entity\Warehouse\Route\Registrar as WarehouseRouteRegistrar;
+use App\Entity\UnaccountedProduct\Route\Registrar as UnaccountedProductRouteRegistrar;
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -58,3 +59,7 @@ $productRouteRegistrar->registerRoutes($this->router);
 /** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
 $warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);
 $warehouseRouteRegistrar->registerRoutes($this->router);
+
+/** @var UnaccountedProductRouteRegistrar $unaccountedProductRouteRegistrar */
+$unaccountedProductRouteRegistrar = App::make(UnaccountedProductRouteRegistrar::class);
+$unaccountedProductRouteRegistrar->registerRoutes($this->router);

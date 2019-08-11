@@ -1,12 +1,12 @@
 <?php
 
-use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
-use App\Contract\Entity\Product\TableInterface;
+use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\UnaccountedProduct\TableInterface;
 use App\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateUnaccountedProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,9 +19,6 @@ class CreateProductsTable extends Migration
             $table->bigIncrements(FieldNameInterface::ID);
             $table->char(FieldNameInterface::NAME)->unique();
             $table->text(FieldNameInterface::NOTE)->nullable();
-
-            $this->addPriceColumn($table, FieldNameInterface::APPROXIMATE_PRICE)->nullable();
-            $this->addPriceColumn($table, FieldNameInterface::SELLING_PRICE)->nullable();
 
             $table->timestamps();
         });
