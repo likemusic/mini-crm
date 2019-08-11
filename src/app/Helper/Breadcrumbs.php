@@ -15,4 +15,9 @@ class Breadcrumbs
     {
         return sprintf(BreadcrumbsInterface::UPDATE, $createOrUpdateEntity);
     }
+
+    public function getListName(string $createOrUpdateEntity)
+    {
+        return sprintf(BreadcrumbsInterface::LIST, $createOrUpdateEntity);
+    }
 }

@@ -9,6 +9,10 @@ use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
+use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
+use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
+use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
+
 //Screens
 
 // Platform > System > Users
@@ -62,23 +66,16 @@ $productUseVariant = App::make(ProductUseVariant::class);
 $productRouteNameProvider = App::make(ProductRouteNameProvider::class);
 
 // Platform > Product
-Breadcrumbs::for(
-    $productRouteNameProvider->getNew(),
-    function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant, $productRouteNameProvider) {
-        $trail->parent($productRouteNameProvider->getList());
-        $trail->push($breadcrumbsHelper->getCreateName($productUseVariant->getGenitiveName()));
-    });
+/** @var ProductBreadcrumbsRegistrar $productBreadcrumbsRegistrar */
+$productBreadcrumbsRegistrar = App::make(ProductBreadcrumbsRegistrar::class);
+$productBreadcrumbsRegistrar->register();
 
-Breadcrumbs::for(
-    $productRouteNameProvider->getEdit(),
-    function (BreadcrumbsGenerator $trail) use ($breadcrumbsHelper, $productUseVariant, $productRouteNameProvider) {
-        $trail->parent($productRouteNameProvider->getList());
-        $trail->push($breadcrumbsHelper->getUpdateName($productUseVariant->getGenitiveName()));
-    });
+// Platform > Warehouse
+/** @var WarehouseBreadcrumbsRegistrar $warehouseBreadcrumbsRegistrar */
+$warehouseBreadcrumbsRegistrar = App::make(WarehouseBreadcrumbsRegistrar::class);
+$warehouseBreadcrumbsRegistrar->register();
 
-Breadcrumbs::for(
-    $productRouteNameProvider->getList(),
-    function (BreadcrumbsGenerator $trail) use ($productUseVariant) {
-        $trail->parent(PlatformRouteNameInterface::INDEX);
-        $trail->push($productUseVariant->getListName());
-    });
+// Platform > UnaccountedProduct
+/** @var UnaccountedProductBreadcrumbsRegistrar $unaccountedProductBreadcrumbsRegistrar */
+$unaccountedProductBreadcrumbsRegistrar = App::make(UnaccountedProductBreadcrumbsRegistrar::class);
+$unaccountedProductBreadcrumbsRegistrar->register();
