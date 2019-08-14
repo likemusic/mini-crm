@@ -7,6 +7,7 @@ use App\Entity\DiscountedProduct\BreadcrumbsRegistrar as DiscountedProductBreadc
 use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\UseVariantProvider as ProductUseVariant;
+use App\Entity\ProductQuote\BreadcrumbsRegistrar as ProductQuoteBreadcrumbsRegistrar;
 use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
@@ -84,3 +85,8 @@ $unaccountedProductBreadcrumbsRegistrar->register();
 /** @var DiscountedProductBreadcrumbsRegistrar $discountedProductBreadcrumbsRegistrar */
 $discountedProductBreadcrumbsRegistrar = App::make(DiscountedProductBreadcrumbsRegistrar::class);
 $discountedProductBreadcrumbsRegistrar->register();
+
+// Platform > ProductQuote
+/** @var ProductQuoteBreadcrumbsRegistrar $productQuoteBreadcrumbsRegistrar */
+$productQuoteBreadcrumbsRegistrar = App::make(ProductQuoteBreadcrumbsRegistrar::class);
+$productQuoteBreadcrumbsRegistrar->register();

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Orchid\Screens\Product;
+namespace App\Orchid\Screens\ProductQuote;
 
-use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Entity\Product\UseVariantProvider;
-use App\Model\Product;
-use App\Orchid\Layouts\Product\ProductListLayout;
+use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
+use App\Entity\ProductQuote\UseVariantProvider as UseVariant;
+use App\Model\ProductQuote;
+use App\Orchid\Layouts\ProductQuote\ProductQuoteListLayout;
 use App\Orchid\Screens\Base\ListScreen as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ListScreen extends BaseListScreen
 {
     public function __construct(
-        Product $model,
-        UseVariantProvider $useVariant,
+        ProductQuote $model,
+        UseVariant $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {
@@ -22,11 +22,11 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return 'products';
+        return 'product_quotes';
     }
 
     protected function getLayoutClassName(): string
     {
-        return ProductListLayout::class;
+        return ProductQuoteListLayout::class;
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Helper\InfoMessageProvider;
 
-use App\Entity\Product\UseVariantProvider as UseVariantProvider;
+use App\Entity\DiscountedProduct\UseVariantProvider as UseVariantProvider;
 use App\Helper\BaseInfoMessageProvider;
 use App\Helper\InfoMessage as InfoMessageHelper;
 
-class Product extends BaseInfoMessageProvider
+class DiscountedProduct extends BaseInfoMessageProvider
 {
     public function __construct(InfoMessageHelper $infoMessageHelper, UseVariantProvider $useVariant)
     {

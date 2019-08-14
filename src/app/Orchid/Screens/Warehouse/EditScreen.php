@@ -2,26 +2,26 @@
 
 namespace App\Orchid\Screens\Warehouse;
 
-use App\Contract\Entity\Warehouse\Field\LabelInterface as WarehouseFieldLabelInterface;
-use App\Contract\Entity\Warehouse\Field\NameInterface as WarehouseFieldNameInterface;
-use App\Entity\Warehouse\Route\NameProvider as WarehouseRouteNameProvider;
-use App\Entity\Warehouse\UseVariantProvider as WarehouseUseVariant;
+use App\Contract\Entity\Warehouse\Field\LabelInterface as FieldLabelInterface;
+use App\Contract\Entity\Warehouse\Field\LengthInterface as WarehouseFieldLengthInterface;
+use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
+use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
+use App\Entity\Warehouse\UseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Warehouse as WarehouseInfoMessageProvider;
+use App\Helper\InfoMessageProvider\Warehouse as InfoMessageProvider;
 use App\Model\Warehouse;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
-use App\Contract\Entity\Warehouse\Field\LengthInterface as WarehouseFieldLengthInterface;
 
 class EditScreen extends BaseEditScreen
 {
     public function __construct(
-        WarehouseRouteNameProvider $routeNameProvider,
-        WarehouseUseVariant $useVariant,
-        WarehouseInfoMessageProvider $infoMessageProvider,
+        RouteNameProvider $routeNameProvider,
+        UseVariantProvider $useVariant,
+        InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
     ) {
@@ -37,15 +37,15 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
-                Input::make($this->getDataPath(WarehouseFieldNameInterface::NAME))
-                    ->title(WarehouseFieldLabelInterface::NAME),
+                Input::make($this->getDataPath(FieldNameInterface::NAME))
+                    ->title(FieldLabelInterface::NAME),
 
-                Input::make($this->getDataPath(WarehouseFieldNameInterface::CODE))
-                    ->title(WarehouseFieldLabelInterface::CODE)
+                Input::make($this->getDataPath(FieldNameInterface::CODE))
+                    ->title(FieldLabelInterface::CODE)
                     ->size(WarehouseFieldLengthInterface::CODE),
 
-                TextArea::make($this->getDataPath(WarehouseFieldNameInterface::NOTE))
-                    ->title(WarehouseFieldLabelInterface::NOTE),
+                TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
+                    ->title(FieldLabelInterface::NOTE),
             ])
         ];
     }

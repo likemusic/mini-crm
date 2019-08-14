@@ -8,7 +8,7 @@ use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\DiscountedProduct\UseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as ProductInfoMessageProvider;
+use App\Helper\InfoMessageProvider\DiscountedProduct as InfoMessageProvider;
 use App\Model\DiscountedProduct;
 use App\Model\Product;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
@@ -22,7 +22,7 @@ class EditScreen extends BaseEditScreen
     public function __construct(
         RouteNameProvider $routeNameProvider,
         UseVariant $useVariant,
-        ProductInfoMessageProvider $infoMessageProvider,
+        InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
     ) {

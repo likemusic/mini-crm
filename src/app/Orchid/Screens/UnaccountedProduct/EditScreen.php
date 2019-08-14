@@ -7,7 +7,7 @@ use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInter
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\UnaccountedProduct\UseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as ProductInfoMessageProvider;
+use App\Helper\InfoMessageProvider\UnaccountedProduct as InfoMessageProvider;
 use App\Model\UnaccountedProduct;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class EditScreen extends BaseEditScreen
     public function __construct(
         RouteNameProvider $routeNameProvider,
         UseVariant $useVariant,
-        ProductInfoMessageProvider $infoMessageProvider,
+        InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
     )
