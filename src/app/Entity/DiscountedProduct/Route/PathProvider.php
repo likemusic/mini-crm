@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\UnaccountedProduct\Route;
+namespace App\Entity\DiscountedProduct\Route;
 
 use App\Contract\Entity\Base\Route\PathProviderInterface;
 
@@ -8,16 +8,16 @@ class PathProvider implements PathProviderInterface
 {
     public function getList()
     {
-        return 'unaccounted-products';
+        return 'discounted-products';
     }
 
     public function getNew()
     {
-        return 'unaccounted-products/new';
+        return 'discounted-products/new';
     }
 
     public function getEdit()
     {
-        return 'unaccounted-products/{unaccountedProduct}';
+        return 'discounted-products/{discountedProduct}';
     }
 }

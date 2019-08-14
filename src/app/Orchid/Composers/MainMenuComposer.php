@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Composers;
 
+use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;
 use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
 use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
 use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
@@ -34,23 +35,31 @@ class MainMenuComposer
     private $unaccountedProductMenuRegistrar;
 
     /**
+     * @var DiscountedProductMenuRegistrar
+     */
+    private $discountedProductMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
      * @param ProductMenuRegistrar $productMenuRegistrar
      * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
      * @param UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
+     * @param DiscountedProductMenuRegistrar $discountedProductMenuRegistrar
      */
     public function __construct(
         Dashboard $dashboard,
         ProductMenuRegistrar $productMenuRegistrar,
         WarehouseMenuRegistrar $warehouseMenuRegistrar,
-        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
+        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
+        DiscountedProductMenuRegistrar $discountedProductMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
         $this->productMenuRegistrar = $productMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
         $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
+        $this->discountedProductMenuRegistrar = $discountedProductMenuRegistrar;
     }
 
     /**
@@ -109,5 +118,6 @@ class MainMenuComposer
             $this->productMenuRegistrar->register($dashboardMenu);
             $this->warehouseMenuRegistrar->register($dashboardMenu);
             $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
+            $this->discountedProductMenuRegistrar->register($dashboardMenu);
     }
 }

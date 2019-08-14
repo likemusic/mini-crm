@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
+use App\Entity\DiscountedProduct\BreadcrumbsRegistrar as DiscountedProductBreadcrumbsRegistrar;
+use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Product\UseVariantProvider as ProductUseVariant;
+use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
+use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
-
-use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
-use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
-use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 
 //Screens
 
@@ -79,3 +79,8 @@ $warehouseBreadcrumbsRegistrar->register();
 /** @var UnaccountedProductBreadcrumbsRegistrar $unaccountedProductBreadcrumbsRegistrar */
 $unaccountedProductBreadcrumbsRegistrar = App::make(UnaccountedProductBreadcrumbsRegistrar::class);
 $unaccountedProductBreadcrumbsRegistrar->register();
+
+// Platform > DiscountedProduct
+/** @var DiscountedProductBreadcrumbsRegistrar $discountedProductBreadcrumbsRegistrar */
+$discountedProductBreadcrumbsRegistrar = App::make(DiscountedProductBreadcrumbsRegistrar::class);
+$discountedProductBreadcrumbsRegistrar->register();

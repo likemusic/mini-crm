@@ -14,7 +14,7 @@ abstract class ListLayout extends Table
     /**
      * @var RouteNameProvider
      */
-    private $routeNameProvider;
+    protected $routeNameProvider;
 
     public function __construct(RouteNameProviderInterface $routeNameProvider)
     {
