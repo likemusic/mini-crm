@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Contract\Entity\Warehouse\Field\NameInterface as WarehouseFieldNameInterface;
+use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
@@ -14,8 +14,8 @@ class Warehouse extends Model
      * @var array
      */
     protected $fillable = [
-        WarehouseFieldNameInterface::NAME,
-        WarehouseFieldNameInterface::CODE,
-        WarehouseFieldNameInterface::NOTE,
+        FieldNameInterface::NAME,
+        FieldNameInterface::CODE,
+        FieldNameInterface::NOTE,
     ];
 }

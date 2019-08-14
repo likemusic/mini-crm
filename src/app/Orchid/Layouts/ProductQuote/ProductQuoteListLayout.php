@@ -34,7 +34,12 @@ class ProductQuoteListLayout extends ListLayout
             TD::set(FieldNameInterface::ID, LabelInterface::ID)
                 ->link($this->routeNameProvider->getEdit(), [FieldNameInterface::ID], FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::PRODUCT_ID, LabelInterface::PRODUCT_ID)->link($this->productRouteNameProvider->getEdit(), ProductFieldNameInterface::ID, ProductFieldNameInterface::ID),
+            TD::set(FieldNameInterface::PRODUCT_ID, LabelInterface::PRODUCT_ID)
+                ->link(
+                    $this->productRouteNameProvider->getEdit(),
+                    FieldNameInterface::PRODUCT_ID,
+                    FieldNameInterface::PRODUCT_ID
+                ),
 
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 

@@ -7,6 +7,8 @@ use App\Entity\Product\Route\Registrar as ProductRouteRegistrar;
 use App\Entity\UnaccountedProduct\Route\Registrar as UnaccountedProductRouteRegistrar;
 use App\Entity\Warehouse\Route\Registrar as WarehouseRouteRegistrar;
 use App\Entity\ProductQuote\Route\Registrar as ProductQuoteRouteRegistrar;
+use App\Entity\OrderItem\Route\Registrar as OrderItemRouteRegistrar;
+
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -66,3 +68,7 @@ $discountedProductRouteRegistrar->registerRoutes($this->router);
 /** @var ProductRouteRegistrar $productRouteRegistrar */
 $productQuoteRouteRegistrar = App::make(ProductQuoteRouteRegistrar::class);
 $productQuoteRouteRegistrar->registerRoutes($this->router);
+
+/** @var OrderItemRouteRegistrar $orderItemRouteRegistrar */
+$orderItemRouteRegistrar = App::make(OrderItemRouteRegistrar::class);
+$orderItemRouteRegistrar->registerRoutes($this->router);

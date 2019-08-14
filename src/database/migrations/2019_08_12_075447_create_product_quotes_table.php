@@ -1,5 +1,7 @@
 <?php
 
+use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
+use App\Contract\Entity\Product\TableInterface as ProductTableInterface;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ProductQuote\TableInterface;
 use App\Database\Migrations\Migration;
@@ -23,7 +25,10 @@ class CreateProductQuotesTable extends Migration
             $this->addPriceColumn($table, FieldNameInterface::APPROXIMATE_PRICE)->nullable();
             $this->addPriceColumn($table, FieldNameInterface::SELLING_PRICE)->nullable();
 
-            $table->unsignedBigInteger(FieldNameInterface::PRODUCT_ID)->nullable();
+            $table->unsignedBigInteger(FieldNameInterface::PRODUCT_ID);
+            $table->foreign(FieldNameInterface::PRODUCT_ID)
+                ->references(ProductFieldNameInterface::ID)
+                ->on(ProductTableInterface::NAME);
 
             $table->timestamps();
         });
