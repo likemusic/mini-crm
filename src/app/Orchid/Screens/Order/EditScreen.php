@@ -5,12 +5,14 @@ namespace App\Orchid\Screens\Order;
 use App\Contract\Entity\Order\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\OrderItem\Field\NameInterface as OrderItemFieldNameInterface;
+use App\Contract\Entity\Counteragent\Field\NameInterface as CounteragentItemFieldNameInterface;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
 use App\Entity\Order\UseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Order as InfoMessageProvider;
 use App\Model\Order;
 use App\Model\OrderItem;
+use App\Model\Counteragent;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
@@ -39,15 +41,14 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
-//                Relation::make($this->getDataPath(FieldNameInterface::ITEMS))
-//                    ->title(FieldLabelInterface::ITEMS)
-//                    ->required()
-//                    ->multiple()
-//                    ->fromModel(
-//                        OrderItem::class,
-//                        OrderItemFieldNameInterface::ID,
-//                        OrderItemFieldNameInterface::ID
-//                    ),
+                Relation::make($this->getDataPath(FieldNameInterface::COUNTERAGENT_ID))
+                    ->title(FieldLabelInterface::COUNTERAGENT_ID)
+                    ->required()
+                    ->fromModel(
+                        Counteragent::class,
+                        CounteragentItemFieldNameInterface::NAME,
+                        CounteragentItemFieldNameInterface::ID
+                    ),
 
                 Input::make($this->getDataPath(FieldNameInterface::TOTAL_AMOUNT))
                     ->title(FieldLabelInterface::TOTAL_AMOUNT),

@@ -14,6 +14,8 @@ use Orchid\Screen\TD;
 
 class OrderItemListLayout extends ListLayout
 {
+    const DATA_KEY = 'order-items';
+
     /**
      * @var ProductQuoteRouteNameProvider
      */
@@ -70,6 +72,6 @@ class OrderItemListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'order-items';
+        return self::DATA_KEY;
     }
 }

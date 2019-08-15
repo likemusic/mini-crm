@@ -12,6 +12,7 @@ use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBrea
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
 use App\Entity\OrderItem\BreadcrumbsRegistrar as OrderItemBreadcrumbsRegistrar;
 use App\Entity\Order\BreadcrumbsRegistrar as OrderBreadcrumbsRegistrar;
+use App\Entity\Counteragent\BreadcrumbsRegistrar as CounteragentBreadcrumbsRegistrar;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
@@ -102,3 +103,8 @@ $orderItemBreadcrumbsRegistrar ->register();
 /** @var OrderBreadcrumbsRegistrar $orderBreadcrumbsRegistrar */
 $orderBreadcrumbsRegistrar = App::make(OrderBreadcrumbsRegistrar::class);
 $orderBreadcrumbsRegistrar ->register();
+
+// Platform > Counteragent
+/** @var CounteragentBreadcrumbsRegistrar $counteragentBreadcrumbsRegistrar */
+$counteragentBreadcrumbsRegistrar = App::make(CounteragentBreadcrumbsRegistrar::class);
+$counteragentBreadcrumbsRegistrar->register();

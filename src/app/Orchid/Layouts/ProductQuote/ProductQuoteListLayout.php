@@ -14,6 +14,8 @@ use App\Model\ProductQuote;
 
 class ProductQuoteListLayout extends ListLayout
 {
+    const DATA_KEY = 'product_quotes';
+
     /**
      * @var ProductRouteNameProvider
      */
@@ -54,6 +56,6 @@ class ProductQuoteListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'product_quotes';
+        return self::DATA_KEY;
     }
 }

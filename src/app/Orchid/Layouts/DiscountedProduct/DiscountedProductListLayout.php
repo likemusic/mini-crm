@@ -12,6 +12,8 @@ use Orchid\Screen\TD;
 
 class DiscountedProductListLayout extends ListLayout
 {
+    const DATA_KEY = 'discounted-products';
+
     public function __construct(RouteNameProvider $routeNameProvider)
     {
         parent::__construct($routeNameProvider);
@@ -38,6 +40,6 @@ class DiscountedProductListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'discounted-products';
+        return self::DATA_KEY;
     }
 }

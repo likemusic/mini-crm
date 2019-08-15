@@ -22,7 +22,7 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return 'products';
+        return ProductListLayout::DATA_KEY;
     }
 
     protected function getLayoutClassName(): string

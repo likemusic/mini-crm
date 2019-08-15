@@ -2,8 +2,8 @@
 
 namespace App\Orchid\Screens\Warehouse;
 
-use App\Entity\Warehouse\Route\NameProvider as WarehouseRouteNameProvider;
-use App\Entity\Warehouse\UseVariantProvider as WarehouseUseVariant;
+use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
+use App\Entity\Warehouse\UseVariantProvider as UseVariantProvider;
 use App\Model\Warehouse;
 use App\Orchid\Layouts\Warehouse\WarehouseListLayout;
 use App\Orchid\Screens\Base\ListScreen as BaseListScreen;
@@ -13,8 +13,8 @@ class ListScreen extends BaseListScreen
 {
     public function __construct(
         Warehouse $model,
-        WarehouseUseVariant $useVariant,
-        WarehouseRouteNameProvider $routeNameProvider,
+        UseVariantProvider $useVariant,
+        RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {
         parent::__construct($model, $useVariant, $routeNameProvider, $request);
@@ -22,7 +22,7 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return 'warehouses';
+        return WarehouseListLayout::DATA_KEY;
     }
 
     protected function getLayoutClassName(): string

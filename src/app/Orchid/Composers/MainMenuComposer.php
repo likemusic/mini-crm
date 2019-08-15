@@ -11,6 +11,7 @@ use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
 use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
 use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
+use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
@@ -58,6 +59,11 @@ class MainMenuComposer
     private $orderMenuRegistrar;
 
     /**
+     * @var CounteragentMenuRegistrar
+     */
+    private $counteragentMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
@@ -68,6 +74,7 @@ class MainMenuComposer
      * @param ProductQuoteMenuRegistrar $productQuoteMenuRegistrar
      * @param OrderItemMenuRegistrar $orderItemMenuRegistrar
      * @param OrderMenuRegistrar $orderMenuRegistrar
+     * @param CounteragentMenuRegistrar $counteragentMenuRegistrar
      */
     public function __construct(
         Dashboard $dashboard,
@@ -77,7 +84,8 @@ class MainMenuComposer
         DiscountedProductMenuRegistrar $discountedProductMenuRegistrar,
         ProductQuoteMenuRegistrar $productQuoteMenuRegistrar,
         OrderItemMenuRegistrar $orderItemMenuRegistrar,
-        OrderMenuRegistrar $orderMenuRegistrar
+        OrderMenuRegistrar $orderMenuRegistrar,
+        CounteragentMenuRegistrar $counteragentMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
         $this->productMenuRegistrar = $productMenuRegistrar;
@@ -87,6 +95,7 @@ class MainMenuComposer
         $this->productQuoteMenuRegistrar = $productQuoteMenuRegistrar;
         $this->orderItemMenuRegistrar = $orderItemMenuRegistrar;
         $this->orderMenuRegistrar = $orderMenuRegistrar;
+        $this->counteragentMenuRegistrar = $counteragentMenuRegistrar;
     }
 
     /**
@@ -149,5 +158,6 @@ class MainMenuComposer
             $this->productQuoteMenuRegistrar->register($dashboardMenu);
             $this->orderItemMenuRegistrar->register($dashboardMenu);
             $this->orderMenuRegistrar->register($dashboardMenu);
+            $this->counteragentMenuRegistrar->register($dashboardMenu);
     }
 }

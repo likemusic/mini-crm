@@ -13,6 +13,8 @@ use Orchid\Screen\TD;
 
 class OrderListLayout extends ListLayout
 {
+    const DATA_KEY = 'orders';
+
     /**
      * @var OrderItemRouteNameProvider
      */
@@ -34,6 +36,10 @@ class OrderListLayout extends ListLayout
     {
         return [
             $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+            TD::set(FieldNameInterface::COUNTERAGENT_ID, FieldLabelInterface::COUNTERAGENT)
+                ->render(function (Order $order) {
+                    return $order->counteragent->name;
+                }),
 
             TD::set(FieldNameInterface::ITEMS, FieldLabelInterface::ITEMS)
                 ->render(function (Order $order) {
@@ -80,6 +86,6 @@ class OrderListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'orders';
+        return self::DATA_KEY;
     }
 }

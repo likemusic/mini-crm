@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Orchid\Screens\Warehouse;
+namespace App\Orchid\Screens\Counteragent;
 
-use App\Contract\Entity\Warehouse\Field\LabelInterface as FieldLabelInterface;
-use App\Contract\Entity\Warehouse\Field\LengthInterface as FieldLengthInterface;
-use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
-use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
-use App\Entity\Warehouse\UseVariantProvider as UseVariantProvider;
+use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface;
+use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
+use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
+use App\Entity\Counteragent\UseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Warehouse as InfoMessageProvider;
-use App\Model\Warehouse;
+use App\Helper\InfoMessageProvider\Counteragent as InfoMessageProvider;
+use App\Model\Counteragent;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
@@ -40,22 +39,18 @@ class EditScreen extends BaseEditScreen
                 Input::make($this->getDataPath(FieldNameInterface::NAME))
                     ->title(FieldLabelInterface::NAME),
 
-                Input::make($this->getDataPath(FieldNameInterface::CODE))
-                    ->title(FieldLabelInterface::CODE)
-                    ->size(FieldLengthInterface::CODE),
-
                 TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
                     ->title(FieldLabelInterface::NOTE),
             ])
         ];
     }
 
-    public function createOrUpdate(Warehouse $model, Request $request)
+    public function createOrUpdate(Counteragent $model, Request $request)
     {
         return $this->onCreateOrUpdate($model, $request);
     }
 
-    public function query(Warehouse $model): array
+    public function query(Counteragent $model): array
     {
         return $this::onQuery($model);
     }

@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Contract\Entity\Order\Field;
+namespace App\Contract\Entity\Counteragent\Field;
 
 interface NameInterface
 {
     const ID = 'id';
 
-    const COUNTERAGENT_ID = 'counteragent_id';
-    const ITEMS = 'items';
-    const TOTAL_AMOUNT = 'total_amount';
+    const NAME = 'name';
 
     const NOTE = 'note';
 

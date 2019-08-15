@@ -22,7 +22,7 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return 'orders';
+        return OrderListLayout::DATA_KEY;
     }
 
     protected function getLayoutClassName(): string

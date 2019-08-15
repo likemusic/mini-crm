@@ -1,5 +1,7 @@
 <?php
 
+use App\Contract\Entity\Counteragent\Field\NameInterface as CounteragentFieldNameInterface;
+use App\Contract\Entity\Counteragent\TableInterface as CounteragentTableInterface;
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Order\TableInterface;
 use App\Database\Migrations\Migration;
@@ -17,6 +19,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create(TableInterface::NAME, function (Blueprint $table) {
             $table->bigIncrements(FieldNameInterface::ID);
+
+            $table->unsignedBigInteger(FieldNameInterface::COUNTERAGENT_ID);
+            $table->foreign(FieldNameInterface::COUNTERAGENT_ID)
+                ->references(CounteragentFieldNameInterface::ID)
+                ->on(CounteragentTableInterface::NAME);
 
             $this->addPriceColumn($table, FieldNameInterface::TOTAL_AMOUNT)->nullable();
 

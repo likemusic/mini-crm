@@ -14,10 +14,16 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
+        FieldNameInterface::COUNTERAGENT_ID,
         FieldNameInterface::ITEMS,
         FieldNameInterface::TOTAL_AMOUNT,
         FieldNameInterface::NOTE,
     ];
+
+    public function counteragent()
+    {
+        return $this->belongsTo(Counteragent::class);
+    }
 
     public function items()
     {

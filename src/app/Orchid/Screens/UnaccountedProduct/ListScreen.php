@@ -22,7 +22,7 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return 'unaccounted-products';
+        return UnaccountedProductListLayout::DATA_KEY;
     }
 
     protected function getLayoutClassName(): string

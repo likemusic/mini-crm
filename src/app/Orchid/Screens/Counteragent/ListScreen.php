@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Orchid\Screens\ProductQuote;
+namespace App\Orchid\Screens\Counteragent;
 
-use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
-use App\Entity\ProductQuote\UseVariantProvider as UseVariant;
-use App\Model\ProductQuote;
-use App\Orchid\Layouts\ProductQuote\ProductQuoteListLayout;
+use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
+use App\Entity\Counteragent\UseVariantProvider as UseVariantProvider;
+use App\Model\Counteragent;
+use App\Orchid\Layouts\Counteragent\CounteragentListLayout;
 use App\Orchid\Screens\Base\ListScreen as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ListScreen extends BaseListScreen
 {
     public function __construct(
-        ProductQuote $model,
-        UseVariant $useVariant,
+        Counteragent $model,
+        UseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {
@@ -22,11 +22,11 @@ class ListScreen extends BaseListScreen
 
     protected function getDataKey(): string
     {
-        return ProductQuoteListLayout::DATA_KEY;
+        return CounteragentListLayout::DATA_KEY;
     }
 
     protected function getLayoutClassName(): string
     {
-        return ProductQuoteListLayout::class;
+        return CounteragentListLayout::class;
     }
 }

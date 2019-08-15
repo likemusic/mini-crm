@@ -1,14 +1,12 @@
 <?php
 
-use App\Contract\Entity\DiscountedProduct\Field\NameInterface as FieldNameInterface;
-use App\Contract\Entity\DiscountedProduct\TableInterface;
-use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
-use App\Contract\Entity\Product\TableInterface as ProductTableInterface;
+use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\Counteragent\TableInterface;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiscountedProductsTable extends Migration
+class CreateCounteragentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,16 +17,8 @@ class CreateDiscountedProductsTable extends Migration
     {
         Schema::create(TableInterface::NAME, function (Blueprint $table) {
             $table->bigIncrements(FieldNameInterface::ID);
-
-            $table->unsignedBigInteger(FieldNameInterface::PRODUCT_ID);
-
-            $table
-                ->foreign(FieldNameInterface::PRODUCT_ID)
-                ->references(ProductFieldNameInterface::ID)
-                ->on(ProductTableInterface::NAME);
-
+            $table->char(FieldNameInterface::NAME)->unique();
             $table->text(FieldNameInterface::NOTE)->nullable();
-
             $table->timestamps();
         });
     }

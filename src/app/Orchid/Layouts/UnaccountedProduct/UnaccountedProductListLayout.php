@@ -10,6 +10,8 @@ use Orchid\Screen\TD;
 
 class UnaccountedProductListLayout extends ListLayout
 {
+    const DATA_KEY = 'unaccounted-products';
+
     public function __construct(RouteNameProvider $routeNameProvider)
     {
         parent::__construct($routeNameProvider);
@@ -31,6 +33,6 @@ class UnaccountedProductListLayout extends ListLayout
 
     protected function getDataKey()
     {
-        return 'unaccounted-products';
+        return self::DATA_KEY;
     }
 }
