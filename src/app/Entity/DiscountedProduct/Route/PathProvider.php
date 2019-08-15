@@ -2,22 +2,12 @@
 
 namespace App\Entity\DiscountedProduct\Route;
 
-use App\Contract\Entity\Base\Route\PathProviderInterface;
+use App\Entity\Base\Route\PathProvider as BasePathProvider;
 
-class PathProvider implements PathProviderInterface
+class PathProvider extends BasePathProvider
 {
-    public function getList()
+    protected function getBasePath(): string
     {
         return 'discounted-products';
-    }
-
-    public function getNew()
-    {
-        return 'discounted-products/new';
-    }
-
-    public function getEdit()
-    {
-        return 'discounted-products/{discountedProduct}';
     }
 }

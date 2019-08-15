@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Layouts\ProductQuote;
 
-use App\Contract\Entity\ProductQuote\Field\LabelInterface;
+use App\Contract\Entity\ProductQuote\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ProductQuote\Field\LabelInterface as ProductLabelInterface;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
@@ -31,25 +31,24 @@ class ProductQuoteListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            TD::set(FieldNameInterface::ID, LabelInterface::ID)
-                ->link($this->routeNameProvider->getEdit(), [FieldNameInterface::ID], FieldNameInterface::ID),
+            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
-            TD::set(FieldNameInterface::PRODUCT_ID, LabelInterface::PRODUCT_ID)
+            TD::set(FieldNameInterface::PRODUCT_ID, FieldLabelInterface::PRODUCT_ID)
                 ->link(
                     $this->productRouteNameProvider->getEdit(),
                     FieldNameInterface::PRODUCT_ID,
                     FieldNameInterface::PRODUCT_ID
                 ),
 
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->getNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
-            TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
+            TD::set(FieldNameInterface::APPROXIMATE_PRICE, FieldLabelInterface::APPROXIMATE_PRICE),
+            TD::set(FieldNameInterface::SELLING_PRICE, FieldLabelInterface::SELLING_PRICE),
 
-            TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
+            TD::set(FieldNameInterface::NOTE, FieldLabelInterface::NOTE),
 
-            TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
-            TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
+            TD::set(FieldNameInterface::CREATED_AT, FieldLabelInterface::CREATED_AT),
+            TD::set(FieldNameInterface::UPDATED_AT, FieldLabelInterface::UPDATED_AT),
         ];
     }
 

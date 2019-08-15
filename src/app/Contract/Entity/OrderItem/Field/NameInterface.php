@@ -6,6 +6,7 @@ interface NameInterface
 {
     const ID = 'id';
 
+    const ORDER_ID = 'order_id';
     const PRODUCT_QUOTE_ID = 'product_quote_id';
 
     const SELLING_PRICE = 'selling_price';

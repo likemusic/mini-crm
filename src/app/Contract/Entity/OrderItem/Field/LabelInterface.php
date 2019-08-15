@@ -6,6 +6,9 @@ interface LabelInterface
 {
     const ID = 'Id';
 
+    const ORDER_ID = 'Id заказа';
+    const ORDER = 'Заказ';
+
     const PRODUCT_QUOTE = 'Снимок товара';
     const PRODUCT_QUOTE_ID = 'Id снимка товара';
 

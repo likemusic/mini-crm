@@ -14,10 +14,16 @@ class OrderItem extends Model
      * @var array
      */
     protected $fillable = [
+        FieldNameInterface::ORDER_ID,
         FieldNameInterface::PRODUCT_QUOTE_ID,
         FieldNameInterface::SELLING_PRICE,
         FieldNameInterface::COUNT,
         FieldNameInterface::AMOUNT,
         FieldNameInterface::NOTE,
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

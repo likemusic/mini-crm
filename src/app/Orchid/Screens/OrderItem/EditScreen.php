@@ -5,10 +5,12 @@ namespace App\Orchid\Screens\OrderItem;
 use App\Contract\Entity\OrderItem\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\OrderItem\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNameInterface;
+use App\Contract\Entity\Order\Field\NameInterface as OrderFieldNameInterface;
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\UseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\OrderItem as InfoMessageProvider;
+use App\Model\Order;
 use App\Model\OrderItem;
 use App\Model\ProductQuote;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
@@ -39,6 +41,17 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
+                Relation::make($this->getDataPath(FieldNameInterface::ORDER_ID))
+                    ->title(FieldLabelInterface::ORDER_ID)
+                    ->required()
+//                    ->placeholder('Уцененный товар')
+//                    ->help('Выберите товар для уцененки.')
+                    ->fromModel(
+                        Order::class,
+                        OrderFieldNameInterface::ID,
+                        OrderFieldNameInterface::ID
+                    ),
+
                 Relation::make($this->getDataPath(FieldNameInterface::PRODUCT_QUOTE_ID))
                     ->title(FieldLabelInterface::PRODUCT_QUOTE)
                     ->required()

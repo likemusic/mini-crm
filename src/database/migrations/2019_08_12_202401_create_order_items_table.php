@@ -3,7 +3,9 @@
 use App\Contract\Entity\OrderItem\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\OrderItem\TableInterface;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNameInterface;
+use App\Contract\Entity\Order\Field\NameInterface as OrderFieldNameInterface;
 use App\Contract\Entity\ProductQuote\TableInterface as ProductQuoteTableInterface;
+use App\Contract\Entity\Order\TableInterface as OrderTableInterface;
 use App\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +22,11 @@ class CreateOrderItemsTable extends Migration
     {
         Schema::create(TableInterface::NAME, function (Blueprint $table) {
             $table->bigIncrements(FieldNameInterface::ID);
+
+            $table->unsignedBigInteger(FieldNameInterface::ORDER_ID);
+            $table->foreign(FieldNameInterface::ORDER_ID)
+                ->references(OrderFieldNameInterface::ID)
+                ->on(OrderTableInterface::NAME);
 
             $table->unsignedBigInteger(FieldNameInterface::PRODUCT_QUOTE_ID);
             $table->foreign(FieldNameInterface::PRODUCT_QUOTE_ID)

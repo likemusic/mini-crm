@@ -2,22 +2,12 @@
 
 namespace App\Entity\OrderItem\Route;
 
-use App\Contract\Entity\Base\Route\PathProviderInterface;
+use App\Entity\Base\Route\PathProvider as BasePathProvider;
 
-class PathProvider implements PathProviderInterface
+class PathProvider extends BasePathProvider
 {
-    public function getList()
+    protected function getBasePath(): string
     {
-        return 'order-item';
-    }
-
-    public function getNew()
-    {
-        return 'order-item/new';
-    }
-
-    public function getEdit()
-    {
-        return 'order-item/{orderItem}';
+        return 'order-items';
     }
 }

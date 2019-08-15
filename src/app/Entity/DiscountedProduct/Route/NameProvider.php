@@ -2,22 +2,12 @@
 
 namespace App\Entity\DiscountedProduct\Route;
 
-use App\Contract\Entity\Base\Route\NameProviderInterface;
+use App\Entity\Base\Route\NameProvider as BaseNameProvider;
 
-class NameProvider implements NameProviderInterface
+class NameProvider extends BaseNameProvider
 {
-    public function getList(): string
+    protected function getEntityRouteName(): string
     {
-        return 'platform.discounted-product.list';
-    }
-
-    public function getNew(): string
-    {
-        return 'platform.discounted-product.new';
-    }
-
-    public function getEdit(): string
-    {
-        return 'platform.discounted-product.edit';
+        return 'discounted-product';
     }
 }

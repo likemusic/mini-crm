@@ -2,11 +2,13 @@
 
 namespace App\Orchid\Layouts\OrderItem;
 
-use App\Contract\Entity\OrderItem\Field\LabelInterface;
-use App\Contract\Entity\ProductQuote\Field\LabelInterface as ProductQuoteLabelInterface;
+use App\Contract\Entity\OrderItem\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\OrderItem\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\Order\Field\NameInterface as OrderFieldNameInterface;
+use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNameInterface;
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductQuote\Route\NameProvider as ProductQuoteRouteNameProvider;
+use App\Entity\Order\Route\NameProvider as OrderRouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
 
@@ -17,11 +19,19 @@ class OrderItemListLayout extends ListLayout
      */
     private $productQuoteRouteNameProvider;
 
+    /**
+     * @var OrderRouteNameProvider
+     */
+    private $orderRouteNameProvider;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        ProductQuoteRouteNameProvider $productQuoteRouteNameProvider
+        ProductQuoteRouteNameProvider $productQuoteRouteNameProvider,
+        OrderRouteNameProvider $orderRouteNameProvider
     ) {
         $this->productQuoteRouteNameProvider = $productQuoteRouteNameProvider;
+        $this->orderRouteNameProvider = $orderRouteNameProvider;
+
         parent::__construct($routeNameProvider);
     }
 
@@ -31,21 +41,30 @@ class OrderItemListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            TD::set(FieldNameInterface::ID, LabelInterface::ID)
-                ->link($this->routeNameProvider->getEdit(), FieldNameInterface::ID, FieldNameInterface::ID),
+            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
-            TD::set(FieldNameInterface::PRODUCT_QUOTE_ID, LabelInterface::PRODUCT_QUOTE_ID)
-                ->link($this->productQuoteRouteNameProvider->getEdit(), FieldNameInterface::ID, FieldNameInterface::ID),
+            $this->getLinkField(
+                FieldNameInterface::ORDER_ID,
+                FieldLabelInterface::ORDER_ID,
+                $this->orderRouteNameProvider->getEdit(),
+                OrderFieldNameInterface::ID
+            ),
 
+            $this->getLinkField(
+                FieldNameInterface::PRODUCT_QUOTE_ID,
+                FieldLabelInterface::PRODUCT_QUOTE_ID,
+                $this->productQuoteRouteNameProvider->getEdit(),
+                ProductQuoteFieldNameInterface::ID
+            ),
 
-            TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
-            TD::set(FieldNameInterface::COUNT, LabelInterface::COUNT),
-            TD::set(FieldNameInterface::AMOUNT, LabelInterface::AMOUNT),
+            TD::set(FieldNameInterface::SELLING_PRICE, FieldLabelInterface::SELLING_PRICE),
+            TD::set(FieldNameInterface::COUNT, FieldLabelInterface::COUNT),
+            TD::set(FieldNameInterface::AMOUNT, FieldLabelInterface::AMOUNT),
 
-            TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
+            TD::set(FieldNameInterface::NOTE, FieldLabelInterface::NOTE),
 
-            TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
-            TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
+            TD::set(FieldNameInterface::CREATED_AT, FieldLabelInterface::CREATED_AT),
+            TD::set(FieldNameInterface::UPDATED_AT, FieldLabelInterface::UPDATED_AT),
         ];
     }
 

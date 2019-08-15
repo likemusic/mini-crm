@@ -2,22 +2,12 @@
 
 namespace App\Entity\UnaccountedProduct\Route;
 
-use App\Contract\Entity\Base\Route\PathProviderInterface;
+use App\Entity\Base\Route\PathProvider as BasePathProvider;
 
-class PathProvider implements PathProviderInterface
+class PathProvider extends BasePathProvider
 {
-    public function getList()
+    protected function getBasePath(): string
     {
         return 'unaccounted-products';
-    }
-
-    public function getNew()
-    {
-        return 'unaccounted-products/new';
-    }
-
-    public function getEdit()
-    {
-        return 'unaccounted-products/{unaccountedProduct}';
     }
 }

@@ -2,22 +2,12 @@
 
 namespace App\Entity\Warehouse\Route;
 
-use App\Contract\Entity\Base\Route\PathProviderInterface;
+use App\Entity\Base\Route\PathProvider as BasePathProvider;
 
-class PathProvider implements PathProviderInterface
+class PathProvider extends BasePathProvider
 {
-    public function getList()
+    protected function getBasePath(): string
     {
         return 'warehouses';
-    }
-
-    public function getNew()
-    {
-        return 'warehouses/new';
-    }
-
-    public function getEdit()
-    {
-        return 'warehouses/{product}';
     }
 }

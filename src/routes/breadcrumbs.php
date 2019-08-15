@@ -11,6 +11,7 @@ use App\Entity\ProductQuote\BreadcrumbsRegistrar as ProductQuoteBreadcrumbsRegis
 use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
 use App\Entity\OrderItem\BreadcrumbsRegistrar as OrderItemBreadcrumbsRegistrar;
+use App\Entity\Order\BreadcrumbsRegistrar as OrderBreadcrumbsRegistrar;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
@@ -97,3 +98,7 @@ $productQuoteBreadcrumbsRegistrar->register();
 $orderItemBreadcrumbsRegistrar = App::make(OrderItemBreadcrumbsRegistrar::class);
 $orderItemBreadcrumbsRegistrar ->register();
 
+// Platform > Order
+/** @var OrderBreadcrumbsRegistrar $orderBreadcrumbsRegistrar */
+$orderBreadcrumbsRegistrar = App::make(OrderBreadcrumbsRegistrar::class);
+$orderBreadcrumbsRegistrar ->register();
