@@ -11,6 +11,7 @@ use App\Entity\OrderItem\Route\Registrar as OrderItemRouteRegistrar;
 use App\Entity\Order\Route\Registrar as OrderRouteRegistrar;
 use App\Entity\Counteragent\Route\Registrar as CounteragentRouteRegistrar;
 use App\Entity\Wallet\Route\Registrar as WalletRouteRegistrar;
+use App\Entity\ExchangeRate\Route\Registrar as ExchangeRateRouteRegistrar;
 
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
@@ -87,3 +88,7 @@ $counteragentRouteRegistrar->registerRoutes($this->router);
 /** @var WalletRouteRegistrar $walletRouteRegistrar */
 $walletRouteRegistrar = App::make(WalletRouteRegistrar::class);
 $walletRouteRegistrar->registerRoutes($this->router);
+
+/** @var ExchangeRateRouteRegistrar $exchangeRateRouteRegistrar */
+$exchangeRateRouteRegistrar = App::make(ExchangeRateRouteRegistrar::class);
+$exchangeRateRouteRegistrar->registerRoutes($this->router);
