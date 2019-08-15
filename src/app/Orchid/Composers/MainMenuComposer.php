@@ -12,6 +12,7 @@ use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
 use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
 use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
 use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
+use App\Entity\Wallet\MenuRegistrar as WalletMenuRegistrar;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
@@ -64,6 +65,11 @@ class MainMenuComposer
     private $counteragentMenuRegistrar;
 
     /**
+     * @var WalletMenuRegistrar
+     */
+    private $walletMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
@@ -75,6 +81,7 @@ class MainMenuComposer
      * @param OrderItemMenuRegistrar $orderItemMenuRegistrar
      * @param OrderMenuRegistrar $orderMenuRegistrar
      * @param CounteragentMenuRegistrar $counteragentMenuRegistrar
+     * @param WalletMenuRegistrar $walletMenuRegistrar
      */
     public function __construct(
         Dashboard $dashboard,
@@ -85,7 +92,8 @@ class MainMenuComposer
         ProductQuoteMenuRegistrar $productQuoteMenuRegistrar,
         OrderItemMenuRegistrar $orderItemMenuRegistrar,
         OrderMenuRegistrar $orderMenuRegistrar,
-        CounteragentMenuRegistrar $counteragentMenuRegistrar
+        CounteragentMenuRegistrar $counteragentMenuRegistrar,
+        WalletMenuRegistrar $walletMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
         $this->productMenuRegistrar = $productMenuRegistrar;
@@ -96,6 +104,8 @@ class MainMenuComposer
         $this->orderItemMenuRegistrar = $orderItemMenuRegistrar;
         $this->orderMenuRegistrar = $orderMenuRegistrar;
         $this->counteragentMenuRegistrar = $counteragentMenuRegistrar;
+        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+        $this->walletMenuRegistrar = $walletMenuRegistrar;
     }
 
     /**
@@ -159,5 +169,6 @@ class MainMenuComposer
             $this->orderItemMenuRegistrar->register($dashboardMenu);
             $this->orderMenuRegistrar->register($dashboardMenu);
             $this->counteragentMenuRegistrar->register($dashboardMenu);
+            $this->walletMenuRegistrar->register($dashboardMenu);
     }
 }

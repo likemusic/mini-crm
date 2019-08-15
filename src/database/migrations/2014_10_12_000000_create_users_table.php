@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Contract\Entity\User\TableInterface;
+use App\Contract\Entity\User\Field\NameInterface as FieldNameInterface;
 
 class CreateUsersTable extends Migration
 {
@@ -13,12 +15,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+        Schema::create(TableInterface::NAME, function (Blueprint $table) {
+            $table->bigIncrements(FieldNameInterface::ID);
+            $table->string(FieldNameInterface::NAME);
+            $table->string(FieldNameInterface::EMAIL)->unique();
+            $table->timestamp(FieldNameInterface::EMAIL_VERIFIED_AT)->nullable();
+            $table->string(FieldNameInterface::PASSWORD);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists(TableInterface::NAME);
     }
 }

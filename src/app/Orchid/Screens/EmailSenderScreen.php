@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens;
 
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;

@@ -13,6 +13,7 @@ use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
 use App\Entity\OrderItem\BreadcrumbsRegistrar as OrderItemBreadcrumbsRegistrar;
 use App\Entity\Order\BreadcrumbsRegistrar as OrderBreadcrumbsRegistrar;
 use App\Entity\Counteragent\BreadcrumbsRegistrar as CounteragentBreadcrumbsRegistrar;
+use App\Entity\Wallet\BreadcrumbsRegistrar as WalletBreadcrumbsRegistrar;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
@@ -108,3 +109,8 @@ $orderBreadcrumbsRegistrar ->register();
 /** @var CounteragentBreadcrumbsRegistrar $counteragentBreadcrumbsRegistrar */
 $counteragentBreadcrumbsRegistrar = App::make(CounteragentBreadcrumbsRegistrar::class);
 $counteragentBreadcrumbsRegistrar->register();
+
+// Platform > Wallet
+/** @var WalletBreadcrumbsRegistrar $walletBreadcrumbsRegistrar */
+$walletBreadcrumbsRegistrar = App::make(WalletBreadcrumbsRegistrar::class);
+$walletBreadcrumbsRegistrar->register();
