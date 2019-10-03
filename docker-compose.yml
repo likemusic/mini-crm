@@ -7,7 +7,7 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     ports:
-      - 3306:3306
+      - ${HOST_DB_PORT}:${DEFAULT_DB_PORT}
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
@@ -39,6 +39,8 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL}
+      SEED_ADMIN_PASSWORS: ${SEED_ADMIN_PASSWORS}
 
   composer:
     build: ./docker/composer
@@ -54,6 +56,8 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL}
+      SEED_ADMIN_PASSWORS: ${SEED_ADMIN_PASSWORS}
 
   tests:
     build: ./docker/composer
@@ -71,6 +75,8 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL}
+      SEED_ADMIN_PASSWORS: ${SEED_ADMIN_PASSWORS}
 
 volumes:
   db_data: {}
