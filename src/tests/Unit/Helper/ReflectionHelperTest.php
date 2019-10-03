@@ -2,17 +2,15 @@
 
 namespace Tests\Unit\Helper;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 use App\Contract\Entity\Platform\PermissionInterface;
 use App\Helper\ReflectionHelper;
+use Tests\SubjectTestCase;
 
-class ReflectionHelperTest extends TestCase
+class ReflectionHelperTest extends SubjectTestCase
 {
     public function testGetClassConstants()
     {
-        $reflectionHelper = $this->getTestReflectionHelper();
+        $reflectionHelper = $this->getTestSubject();
         $className = PermissionInterface::class;
         $constants = $reflectionHelper->getClassConstants($className);
         $expectedConstants = $this->getExpectedConstants();
@@ -33,8 +31,8 @@ class ReflectionHelperTest extends TestCase
         ];
     }
 
-    private function getTestReflectionHelper()
+    protected function getSubjectClassName(): string
     {
-        return new ReflectionHelper();
+        return ReflectionHelper::class;
     }
 }

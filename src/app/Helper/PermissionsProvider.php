@@ -2,8 +2,8 @@
 
 namespace App\Helper;
 
-
 use ReflectionException;
+use App\Contract\Entity\Platform\PermissionInterface;
 
 class PermissionsProvider
 {
@@ -12,13 +12,13 @@ class PermissionsProvider
      */
     private $reflectionHelper;
 
-    private function __construct(ReflectionHelper $reflectionHelper)
+    public function __construct(ReflectionHelper $reflectionHelper)
     {
         $this->reflectionHelper = $reflectionHelper;
     }
 
     private $permissionsClasses = [
-        ReflectionHelper::class,
+        PermissionInterface::class,
     ];
 
     public function getAvailablePermissions()
@@ -26,7 +26,7 @@ class PermissionsProvider
         $permissions = [];
 
         foreach ($this->permissionsClasses as $permissionClassName) {
-            $classPermissions = $this->getClassConstants($permissionClassName);
+            $classPermissions = $this->getClassConstantsValues($permissionClassName);
             $permissions = array_merge($permissions, $classPermissions);
         }
 
@@ -41,5 +41,12 @@ class PermissionsProvider
     private function getClassConstants($className)
     {
         return $this->reflectionHelper->getClassConstants($className);
+    }
+
+    private function getClassConstantsValues($className)
+    {
+        $classConstants = $this->getClassConstants($className);
+
+        return array_values($classConstants);
     }
 }
