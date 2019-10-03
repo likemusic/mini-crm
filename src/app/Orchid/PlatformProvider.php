@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
-use Orchid\Platform\Dashboard;
-use Orchid\Platform\ItemPermission;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\ServiceProvider;
+use App\Contract\Entity\Platform\PermissionInterface;
 use App\Orchid\Composers\MainMenuComposer;
 use App\Orchid\Composers\SystemMenuComposer;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+use Orchid\Platform\Dashboard;
+use Orchid\Platform\ItemPermission;
 
 class PlatformProvider extends ServiceProvider
 {
@@ -35,21 +36,21 @@ class PlatformProvider extends ServiceProvider
     /**
      * @return ItemPermission
      */
-    protected function registerPermissionsMain(): ItemPermission
+    protected function registerPermissionsSystems(): ItemPermission
     {
-        return ItemPermission::group(__('Main'))
-            ->addPermission('platform.index', __('Main'))
-            ->addPermission('platform.systems', __('Systems'))
-            ->addPermission('platform.systems.index', __('Settings'));
+        return ItemPermission::group(__('Systems'))
+            ->addPermission(PermissionInterface::SYSTEMS_ROLES, __('Roles'))
+            ->addPermission(PermissionInterface::SYSTEMS_USERS, __('Users'));
     }
 
     /**
      * @return ItemPermission
      */
-    protected function registerPermissionsSystems(): ItemPermission
+    protected function registerPermissionsMain(): ItemPermission
     {
-        return ItemPermission::group(__('Systems'))
-            ->addPermission('platform.systems.roles', __('Roles'))
-            ->addPermission('platform.systems.users', __('Users'));
+        return ItemPermission::group(__('Main'))
+            ->addPermission(PermissionInterface::INDEX, __('Main'))
+            ->addPermission(PermissionInterface::SYSTEMS, __('Systems'))
+            ->addPermission(PermissionInterface::SYSTEMS_INDEX, __('Settings'));
     }
 }

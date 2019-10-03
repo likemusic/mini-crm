@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Role;
 
-use Orchid\Screen\Link;
-use Orchid\Screen\Screen;
-use Illuminate\Http\Request;
-use Orchid\Platform\Models\Role;
-use Orchid\Support\Facades\Alert;
-use Orchid\Support\Facades\Dashboard;
+use App\Contract\Entity\Platform\PermissionInterface;
 use App\Orchid\Layouts\Role\RoleEditLayout;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
+use Illuminate\Http\Request;
+use Orchid\Platform\Models\Role;
+use Orchid\Screen\Link;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Dashboard;
 
 class RoleEditScreen extends Screen
 {
@@ -32,7 +33,7 @@ class RoleEditScreen extends Screen
     /**
      * @var string
      */
-    public $permission = 'platform.systems.roles';
+    public $permission = PermissionInterface::SYSTEMS_ROLES;
 
     /**
      * @var bool
@@ -65,7 +66,7 @@ class RoleEditScreen extends Screen
 
         return [
             'permission' => $permission,
-            'role'       => $role,
+            'role' => $role,
         ];
     }
 
@@ -102,7 +103,7 @@ class RoleEditScreen extends Screen
     }
 
     /**
-     * @param Role    $role
+     * @param Role $role
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse

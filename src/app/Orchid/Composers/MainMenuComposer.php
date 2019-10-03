@@ -6,6 +6,7 @@ namespace App\Orchid\Composers;
 
 use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;
 use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
+use App\Entity\ProductCategory\MenuRegistrar as ProductCategoryMenuRegistrar;
 use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
 use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
@@ -29,6 +30,11 @@ class MainMenuComposer
      * @var ProductMenuRegistrar
      */
     private $productMenuRegistrar;
+
+    /**
+     * @var ProductCategoryMenuRegistrar
+     */
+    private $productCategoryMenuRegistrar;
 
     /**
      * @var WarehouseMenuRegistrar
@@ -80,6 +86,7 @@ class MainMenuComposer
      *
      * @param Dashboard $dashboard
      * @param ProductMenuRegistrar $productMenuRegistrar
+     * @param ProductCategoryMenuRegistrar $productCategoryMenuRegistrar
      * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
      * @param UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
      * @param DiscountedProductMenuRegistrar $discountedProductMenuRegistrar
@@ -93,6 +100,7 @@ class MainMenuComposer
     public function __construct(
         Dashboard $dashboard,
         ProductMenuRegistrar $productMenuRegistrar,
+        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
         WarehouseMenuRegistrar $warehouseMenuRegistrar,
         UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
         DiscountedProductMenuRegistrar $discountedProductMenuRegistrar,
@@ -105,6 +113,7 @@ class MainMenuComposer
     ) {
         $this->dashboard = $dashboard;
         $this->productMenuRegistrar = $productMenuRegistrar;
+        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
         $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
         $this->discountedProductMenuRegistrar = $discountedProductMenuRegistrar;
@@ -171,6 +180,7 @@ class MainMenuComposer
 
             // Product
             $this->productMenuRegistrar->register($dashboardMenu);
+            $this->productCategoryMenuRegistrar->register($dashboardMenu);
             $this->warehouseMenuRegistrar->register($dashboardMenu);
             $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
             $this->discountedProductMenuRegistrar->register($dashboardMenu);

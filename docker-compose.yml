@@ -32,6 +32,13 @@ services:
       - ./src:/usr/share/nginx/html
     depends_on:
       - mariadb
+    environment:
+      XDEBUG_CONFIG: remote_enable=${XDEBUG_REMOTE_ENABLE} remote_host=${XDEBUG_REMOTE_HOST}
+      PHP_IDE_CONFIG: serverName=Docker
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
 
   composer:
     build: ./docker/composer
@@ -41,6 +48,8 @@ services:
       - ./src:/usr/share/nginx/html
     working_dir: /usr/share/nginx/html
     environment:
+      XDEBUG_CONFIG: remote_enable=${XDEBUG_REMOTE_ENABLE} remote_host=${XDEBUG_REMOTE_HOST}
+      PHP_IDE_CONFIG: serverName=Docker
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}

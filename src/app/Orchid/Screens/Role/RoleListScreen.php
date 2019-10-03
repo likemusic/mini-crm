@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Role;
 
+use App\Contract\Entity\Platform\PermissionInterface;
+use App\Orchid\Layouts\Role\RoleListLayout;
+use Orchid\Platform\Models\Role;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
-use Orchid\Platform\Models\Role;
-use App\Orchid\Layouts\Role\RoleListLayout;
 
 class RoleListScreen extends Screen
 {
@@ -28,14 +29,14 @@ class RoleListScreen extends Screen
     /**
      * @var string
      */
-    public $permission = 'platform.systems.roles';
+    public $permission = PermissionInterface::SYSTEMS_ROLES;
 
     /**
      * Query data.
      *
      * @return array
      */
-    public function query() : array
+    public function query(): array
     {
         return [
             'roles' => Role::filters()->defaultSort('id', 'desc')->paginate(),
@@ -47,7 +48,7 @@ class RoleListScreen extends Screen
      *
      * @return Link[]
      */
-    public function commandBar() : array
+    public function commandBar(): array
     {
         return [
             Link::name(__('Add'))
@@ -61,7 +62,7 @@ class RoleListScreen extends Screen
      *
      * @return Layout[]
      */
-    public function layout() : array
+    public function layout(): array
     {
         return [
             RoleListLayout::class,

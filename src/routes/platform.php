@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Entity\DiscountedProduct\Route\Registrar as DiscountedProductRouteRegistrar;
 use App\Entity\Product\Route\Registrar as ProductRouteRegistrar;
+use App\Entity\ProductCategory\Route\Registrar as ProductCategoryRouteRegistrar;
 use App\Entity\UnaccountedProduct\Route\Registrar as UnaccountedProductRouteRegistrar;
 use App\Entity\Warehouse\Route\Registrar as WarehouseRouteRegistrar;
 use App\Entity\ProductQuote\Route\Registrar as ProductQuoteRouteRegistrar;
@@ -56,6 +57,10 @@ $this->router->screen('email', EmailSenderScreen::class)->name('platform.email')
 /** @var ProductRouteRegistrar $productRouteRegistrar */
 $productRouteRegistrar = App::make(ProductRouteRegistrar::class);
 $productRouteRegistrar->registerRoutes($this->router);
+
+/** @var ProductRouteRegistrar $productRouteRegistrar */
+$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
+$productCategoryRouteRegistrar->registerRoutes($this->router);
 
 /** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
 $warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);

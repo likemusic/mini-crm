@@ -7,6 +7,7 @@ namespace App\Orchid\Composers;
 use Orchid\Platform\Menu;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Dashboard;
+use App\Contract\Entity\Platform\PermissionInterface;
 
 class SystemMenuComposer
 {
@@ -36,14 +37,14 @@ class SystemMenuComposer
                     ->icon('icon-lock')
                     ->slug('Auth')
                     ->active('platform.systems.*')
-                    ->permission('platform.systems')
+                    ->permission(PermissionInterface::SYSTEMS)
                     ->sort(1000)
             )
             ->add('Auth',
                 ItemMenu::label(__('Users'))
                     ->icon('icon-user')
                     ->route('platform.systems.users')
-                    ->permission('platform.systems.users')
+                    ->permission(PermissionInterface::SYSTEMS_USERS)
                     ->sort(1000)
                     ->title(__('All registered users'))
             )
@@ -51,7 +52,7 @@ class SystemMenuComposer
                 ItemMenu::label(__('Roles'))
                     ->icon('icon-lock')
                     ->route('platform.systems.roles')
-                    ->permission('platform.systems.roles')
+                    ->permission(PermissionInterface::SYSTEMS_ROLES)
                     ->sort(1000)
                     ->title(__('A Role defines a set of tasks a user assigned the role is allowed to perform. '))
             );
