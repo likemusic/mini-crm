@@ -11,7 +11,7 @@ use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Model\Product;
-use App\Orchid\Screens\Link;
+use App\Orchid\Screens\Button;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
@@ -84,30 +84,30 @@ abstract class EditScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return Button[]
      */
     public function commandBar(): array
     {
         return [
-            Link::name(SaveCommandInterface::NAME)
+            Button::name(SaveCommandInterface::NAME)
                 ->icon(SaveCommandInterface::ICON)
                 ->class(SaveCommandInterface::CLASS_NAME)
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
 
-            Link::name(UpdateCommandInterface::NAME)
+            Button::name(UpdateCommandInterface::NAME)
                 ->icon(UpdateCommandInterface::CLASS_NAME)
                 ->class(UpdateCommandInterface::CLASS_NAME)
                 ->method('createOrUpdate')
                 ->canSee($this->exists),
 
-            Link::name(DeleteCommandInterface::NAME)
+            Button::name(DeleteCommandInterface::NAME)
                 ->class(DeleteCommandInterface::CLASS_NAME)
                 ->icon(DeleteCommandInterface::ICON)
                 ->method('remove')
                 ->canSee($this->exists),
 
-            Link::name(CancelCommandInterface::NAME)
+            Button::name(CancelCommandInterface::NAME)
                 ->class(CancelCommandInterface::CLASS_NAME)
                 ->icon(CancelCommandInterface::ICON)
                 ->method('cancel'),

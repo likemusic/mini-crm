@@ -8,6 +8,7 @@ use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
+use Psr\Container\ContainerInterface;
 
 abstract class ListLayout extends Table
 {
@@ -16,30 +17,15 @@ abstract class ListLayout extends Table
      */
     protected $routeNameProvider;
 
-    public function __construct(RouteNameProviderInterface $routeNameProvider)
+    public function __construct(ContainerInterface $container, RouteNameProviderInterface $routeNameProvider)
     {
         $this->routeNameProvider = $routeNameProvider;
+        $this->target = $this->getDataKey();
 
-        $this->data = $this->getDataKey();
+        parent::__construct($container);
     }
 
     abstract protected function getDataKey();
-
-    /**
-     * @return TD[]
-     */
-    public function fields(): array
-    {
-        return [
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
-
-            TD::set(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
-            TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
-            TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
-            TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
-            TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
-        ];
-    }
 
     protected function getNameField($name, $label, $id)
     {

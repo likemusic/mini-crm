@@ -5,11 +5,13 @@ namespace App\Orchid\Screens\Base;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Base\UseVariantProviderInterface;
 use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
-use App\Orchid\Screens\Link;
+use App\Orchid\Screens\Button;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Layout;
+use Psr\Container\ContainerInterface;
 
 abstract class ListScreen extends Screen
 {
@@ -28,6 +30,7 @@ abstract class ListScreen extends Screen
     private $routeNameProvider;
 
     public function __construct(
+        ContainerInterface $container,
         Model $model,
         UseVariantProviderInterface $useVariant,
         RouteNameProviderInterface $routeNameProvider,
@@ -38,7 +41,7 @@ abstract class ListScreen extends Screen
         $this->routeNameProvider = $routeNameProvider;
         $this->name = $useVariant->getListName();
 
-        parent::__construct($request);
+        parent::__construct($container, $request);
     }
 
     /**
@@ -78,14 +81,14 @@ abstract class ListScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return Button[]
      */
     public function commandBar(): array
     {
         return [
-            Link::name(AddCommandInterface::NAME)
+            Link::make(AddCommandInterface::NAME)
+                ->href(route($this->routeNameProvider->getNew()))
                 ->icon(AddCommandInterface::ICON)
-                ->link(route($this->routeNameProvider->getNew()))
         ];
     }
 }

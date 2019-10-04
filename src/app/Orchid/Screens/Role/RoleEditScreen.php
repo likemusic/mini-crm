@@ -9,7 +9,7 @@ use App\Orchid\Layouts\Role\RoleEditLayout;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use Illuminate\Http\Request;
 use Orchid\Platform\Models\Role;
-use Orchid\Screen\Link;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Dashboard;
@@ -73,16 +73,16 @@ class RoleEditScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return Button[]
      */
     public function commandBar(): array
     {
         return [
-            Link::name(__('Save'))
+            Button::make(__('Save'))
                 ->icon('icon-check')
                 ->method('save'),
 
-            Link::name(__('Remove'))
+            Button::make(__('Remove'))
                 ->icon('icon-trash')
                 ->method('remove')
                 ->canSee($this->exist),

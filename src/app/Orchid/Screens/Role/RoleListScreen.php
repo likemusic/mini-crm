@@ -7,7 +7,7 @@ namespace App\Orchid\Screens\Role;
 use App\Contract\Entity\Platform\PermissionInterface;
 use App\Orchid\Layouts\Role\RoleListLayout;
 use Orchid\Platform\Models\Role;
-use Orchid\Screen\Link;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class RoleListScreen extends Screen
@@ -51,9 +51,9 @@ class RoleListScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Link::name(__('Add'))
-                ->icon('icon-plus')
-                ->link(route('platform.systems.roles.create')),
+            Link::make(__('Add'))
+                ->href(route('platform.systems.roles.create'))
+                ->icon('icon-plus'),
         ];
     }
 

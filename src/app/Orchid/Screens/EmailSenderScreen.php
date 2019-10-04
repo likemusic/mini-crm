@@ -6,11 +6,11 @@ use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Layout;
-use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 
@@ -45,14 +45,14 @@ class EmailSenderScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return Button[]
      */
     public function commandBar(): array
     {
         return [
-            Link::name('Send Message')
-                ->icon('icon-paper-plane')
+            Button::make('Send Message')
                 ->method('sendMessage')
+                ->icon('icon-paper-plane')
         ];
     }
 

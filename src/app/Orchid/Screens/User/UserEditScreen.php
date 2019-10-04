@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
-use Orchid\Screen\Link;
-use Orchid\Screen\Layout;
-use Orchid\Screen\Screen;
-use Illuminate\Http\Request;
-use Orchid\Access\UserSwitch;
-use Orchid\Platform\Models\User;
-use Orchid\Support\Facades\Alert;
-use Orchid\Screen\Fields\Password;
-use Illuminate\Support\Facades\Hash;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserRoleLayout;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Orchid\Access\UserSwitch;
+use Orchid\Platform\Models\User;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Fields\Password;
+use Orchid\Screen\Layout;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 
 class UserEditScreen extends Screen
 {
@@ -49,7 +50,7 @@ class UserEditScreen extends Screen
         $user->load(['roles']);
 
         return [
-            'user'       => $user,
+            'user' => $user,
             'permission' => $user->getStatusPermission(),
         ];
     }
@@ -57,33 +58,33 @@ class UserEditScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return DropDown[]
      */
     public function commandBar(): array
     {
         return [
 
-            Link::name(__('Settings'))
+            DropDown::make(__('Settings'))
                 ->icon('icon-open')
                 ->group([
-                    Link::name(__('Login as user'))
-                        ->icon('icon-login')
-                        ->method('loginAs'),
+                    Button::make(__('Login as user'))
+                        ->method('loginAs')
+                        ->icon('icon-login'),
 
-                    Link::name(__('Change Password'))
-                        ->icon('icon-lock-open')
-                        ->title(__('Change Password'))
+                    Button::make(__('Change Password'))
+                        ->modal('password')
                         ->method('changePassword')
-                        ->modal('password'),
+                        ->title(__('Change Password'))
+                        ->icon('icon-lock-open'),
                 ]),
 
-            Link::name(__('Save'))
-                ->icon('icon-check')
-                ->method('save'),
+            Button::make(__('Save'))
+                ->method('save')
+                ->icon('icon-check'),
 
-            Link::name(__('Remove'))
-                ->icon('icon-trash')
-                ->method('remove'),
+            Button::make(__('Remove'))
+                ->method('remove')
+                ->icon('icon-trash'),
         ];
     }
 
@@ -111,7 +112,7 @@ class UserEditScreen extends Screen
 
     /**
      * @param \Orchid\Platform\Models\User $user
-     * @param \Illuminate\Http\Request     $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -167,7 +168,7 @@ class UserEditScreen extends Screen
     }
 
     /**
-     * @param User    $user
+     * @param User $user
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse

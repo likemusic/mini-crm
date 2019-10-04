@@ -2,20 +2,20 @@
 
 namespace App\Orchid\Screens;
 
-use Orchid\Screen\Link;
-use Orchid\Screen\Layout;
-use Orchid\Screen\Screen;
-use Orchid\Screen\Repository;
-use Orchid\Screen\Fields\Input;
-use Orchid\Support\Facades\Alert;
-use Illuminate\Support\Facades\Auth;
+use App\Orchid\Layouts\Examples\ChartBarExample;
+use App\Orchid\Layouts\Examples\ChartLineExample;
+use App\Orchid\Layouts\Examples\ChartPieExample;
+use App\Orchid\Layouts\Examples\MetricsExample;
 use App\Orchid\Layouts\Examples\RowExample;
 use App\Orchid\Layouts\Examples\TableExample;
-use App\Orchid\Layouts\Examples\MetricsExample;
-use App\Orchid\Layouts\Examples\ChartBarExample;
-use App\Orchid\Layouts\Examples\ChartPieExample;
-use App\Orchid\Layouts\Examples\ChartLineExample;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Notifications\DashboardNotification;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Layout;
+use Orchid\Screen\Repository;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
 
 class ExampleScreen extends Screen
 {
@@ -49,25 +49,25 @@ class ExampleScreen extends Screen
     public function query(): array
     {
         return [
-            'charts'  => [
+            'charts' => [
                 [
-                    'name'   => 'Some Data',
+                    'name' => 'Some Data',
                     'values' => [25, 40, 30, 35, 8, 52, 17],
                 ],
                 [
-                    'name'   => 'Another Set',
+                    'name' => 'Another Set',
                     'values' => [25, 50, -10, 15, 18, 32, 27],
                 ],
                 [
-                    'name'   => 'Yet Another',
+                    'name' => 'Yet Another',
                     'values' => [15, 20, -3, -15, 58, 12, -17],
                 ],
                 [
-                    'name'   => 'And Last',
+                    'name' => 'And Last',
                     'values' => [10, 33, -8, -3, 70, 20, -34],
                 ],
             ],
-            'table'   => [
+            'table' => [
                 new Repository(['id' => 100, 'name' => self::TEXT_EXAMPLE, 'price' => 10.24, 'created_at' => '01.01.2020']),
                 new Repository(['id' => 200, 'name' => self::TEXT_EXAMPLE, 'price' => 65.9, 'created_at' => '01.01.2020']),
                 new Repository(['id' => 300, 'name' => self::TEXT_EXAMPLE, 'price' => 754.2, 'created_at' => '01.01.2020']),
@@ -82,7 +82,7 @@ class ExampleScreen extends Screen
                 ['keyValue' => number_format(10000, 0), 'keyDiff' => -169.54],
                 ['keyValue' => number_format(1454887.12, 2), 'keyDiff' => 0.2],
             ],
-            'place'   => [
+            'place' => [
                 'lat' => 37.181244855427394,
                 'lng' => -3.6021993309259415,
             ],
@@ -92,42 +92,42 @@ class ExampleScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Link[]
+     * @return Button[]
      */
     public function commandBar(): array
     {
         return [
 
-            Link::name('Example Button')
+            Button::make('Example Button')
                 ->method('example')
                 ->icon('icon-bag'),
 
-            Link::name('Example Modals')
+            Button::make('Example Modals')
                 ->modal('exampleModal')
                 ->method('example')
                 ->icon('icon-full-screen'),
 
-            Link::name('Example Group Button')
+            Button::make('Example Group Button')
                 ->icon('icon-folder-alt')
                 ->group([
 
-                    Link::name('Example Button')
+                    Button::make('Example Button')
                         ->method('example')
                         ->icon('icon-bag'),
 
-                    Link::name('Example Button')
+                    Button::make('Example Button')
                         ->method('example')
                         ->icon('icon-bag'),
 
-                    Link::name('Example Button')
+                    Button::make('Example Button')
                         ->method('example')
                         ->icon('icon-bag'),
 
-                    Link::name('Example Button')
+                    Button::make('Example Button')
                         ->method('example')
                         ->icon('icon-bag'),
 
-                    Link::name('Example Button')
+                    Button::make('Example Button')
                         ->method('example')
                         ->icon('icon-bag'),
                 ]),
@@ -156,7 +156,7 @@ class ExampleScreen extends Screen
 
             Layout::tabs([
                 'Example Tab Table' => TableExample::class,
-                'Example Tab Rows'  => RowExample::class,
+                'Example Tab Rows' => RowExample::class,
             ]),
 
             Layout::modal('exampleModal', [
@@ -178,10 +178,10 @@ class ExampleScreen extends Screen
         Alert::warning('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel vulputate mi.');
 
         Auth::user()->notify(new DashboardNotification([
-            'title'   => 'Hello Word',
+            'title' => 'Hello Word',
             'message' => self::TEXT_EXAMPLE,
-            'action'  => route('platform.main'),
-            'type'    => DashboardNotification::INFO,
+            'action' => route('platform.main'),
+            'type' => DashboardNotification::INFO,
         ]));
 
         return back();
