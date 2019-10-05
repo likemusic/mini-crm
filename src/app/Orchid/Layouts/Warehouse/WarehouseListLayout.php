@@ -23,6 +23,7 @@ class WarehouseListLayout extends ListLayout
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::CODE, LabelInterface::CODE),
+            TD::set(FieldNameInterface::SORT_ORDER, LabelInterface::SORT_ORDER),
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
             TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
             TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
