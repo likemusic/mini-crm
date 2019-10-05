@@ -6,7 +6,7 @@ use App\Contract\Entity\Wallet\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Wallet\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
-use App\Entity\Wallet\UseVariantProvider as UseVariantProvider;
+use App\Entity\Wallet\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Wallet as InfoMessageProvider;
 use App\Model\User;
@@ -29,7 +29,7 @@ class EditScreen extends BaseEditScreen
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariant,
+        EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         CurrenciesListProvider $currenciesListProvider,

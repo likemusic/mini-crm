@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\Counteragent;
 use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
-use App\Entity\Counteragent\UseVariantProvider as UseVariantProvider;
+use App\Entity\Counteragent\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Counteragent as InfoMessageProvider;
 use App\Model\Counteragent;
@@ -19,7 +19,7 @@ class EditScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariant,
+        EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

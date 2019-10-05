@@ -9,7 +9,7 @@ use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 class MenuRegistrar extends BaseMenuRegistrar
 {
     public function __construct(
-        UseVariantProvider $useVariantProvider,
+        EditableUseVariantProvider $useVariantProvider,
         RouteNameProvider $routeNameProvider
     ) {
         $menuTitle = null;

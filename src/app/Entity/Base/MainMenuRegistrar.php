@@ -3,14 +3,14 @@
 namespace App\Entity\Base;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\UseVariantProviderInterface;
+use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
 use App\Entity\Base\MenuRegistrar as BaseMenuRegistrar;
 use Orchid\Platform\Menu;
 
 class MainMenuRegistrar extends BaseMenuRegistrar
 {
     public function __construct(
-        UseVariantProviderInterface $useVariantProvider,
+        NotEditableUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider,
         ?string $menuTitle = null,
         ?string $menuIcon = null

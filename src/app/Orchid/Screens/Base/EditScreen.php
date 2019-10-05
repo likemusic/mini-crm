@@ -4,7 +4,7 @@ namespace App\Orchid\Screens\Base;
 
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\UseVariantProviderInterface;
+use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
 use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
 use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
@@ -28,7 +28,7 @@ abstract class EditScreen extends Screen
      */
     private $infoMessageProvider;
     /**
-     * @var UseVariantProviderInterface
+     * @var EditableUseVariantProviderInterface
      */
     private $useVariantProvider;
     /**
@@ -42,7 +42,7 @@ abstract class EditScreen extends Screen
 
     public function __construct(
         RouteNameProviderInterface $routeRouteNameProviderInterface,
-        UseVariantProviderInterface $useVariant,
+        EditableUseVariantProviderInterface $useVariant,
         InfoMessageProviderInterface $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

@@ -6,7 +6,7 @@ use App\Contract\Entity\Warehouse\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Warehouse\Field\LengthInterface as FieldLengthInterface;
 use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
 use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
-use App\Entity\Warehouse\UseVariantProvider as UseVariantProvider;
+use App\Entity\Warehouse\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Warehouse as InfoMessageProvider;
 use App\Model\Warehouse;
@@ -20,7 +20,7 @@ class EditScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariant,
+        EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

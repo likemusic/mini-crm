@@ -3,7 +3,7 @@
 namespace App\Helper;
 
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
-use App\Contract\Entity\Base\UseVariantProviderInterface;
+use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
 use App\Helper\InfoMessage as InfoMessageHelper;
 
 class BaseInfoMessageProvider implements InfoMessageProviderInterface
@@ -14,11 +14,11 @@ class BaseInfoMessageProvider implements InfoMessageProviderInterface
     private $infoMessageHelper;
 
     /**
-     * @var UseVariantProviderInterface
+     * @var EditableUseVariantProviderInterface
      */
     private $useVariant;
 
-    public function __construct(InfoMessageHelper $infoMessageHelper, UseVariantProviderInterface $useVariant)
+    public function __construct(InfoMessageHelper $infoMessageHelper, EditableUseVariantProviderInterface $useVariant)
     {
         $this->infoMessageHelper = $infoMessageHelper;
         $this->useVariant = $useVariant;

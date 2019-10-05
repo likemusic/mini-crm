@@ -7,7 +7,7 @@ use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\OrderItem\Field\NameInterface as OrderItemFieldNameInterface;
 use App\Contract\Entity\Counteragent\Field\NameInterface as CounteragentItemFieldNameInterface;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
-use App\Entity\Order\UseVariantProvider as UseVariantProvider;
+use App\Entity\Order\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Order as InfoMessageProvider;
 use App\Model\Order;
@@ -24,7 +24,7 @@ class EditScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariant,
+        EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

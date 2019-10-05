@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\ProductCategory;
 use App\Contract\Entity\ProductCategory\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
-use App\Entity\ProductCategory\UseVariantProvider as UseVariantProvider;
+use App\Entity\ProductCategory\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
 use App\Model\ProductCategory;
@@ -19,7 +19,7 @@ class EditScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariant,
+        EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

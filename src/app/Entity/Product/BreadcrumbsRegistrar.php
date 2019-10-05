@@ -2,9 +2,9 @@
 
 namespace App\Entity\Product;
 
-use App\Entity\Base\BreadcrumbsRegistrar as BaseBreadcrumbsRegistrar;
+use App\Entity\Base\BreadcrumbsRegistrar\Editable as BaseBreadcrumbsRegistrar;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Entity\Product\UseVariantProvider as UseVariantProvider;
+use App\Entity\Product\EditableUseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
 
@@ -14,7 +14,7 @@ class BreadcrumbsRegistrar extends BaseBreadcrumbsRegistrar
         BreadcrumbsManager $breadcrumbsManager,
         BreadcrumbsHelper $breadcrumbsHelper,
         RouteNameProvider $routeNameProvider,
-        UseVariantProvider $useVariantProvider
+        EditableUseVariantProvider $useVariantProvider
     ) {
         parent::__construct(
             $breadcrumbsManager,

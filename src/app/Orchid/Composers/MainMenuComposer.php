@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Composers;
 
 use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;
+use App\Entity\Pharmacy\MenuRegistrar as PharmacyMenuRegistrar;
 use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
 use App\Entity\ProductCategory\MenuRegistrar as ProductCategoryMenuRegistrar;
 use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
@@ -25,6 +26,11 @@ class MainMenuComposer
      * @var Dashboard
      */
     private $dashboard;
+
+    /**
+     * @var PharmacyMenuRegistrar
+     */
+    private $pharmacyMenuRegistrar;
 
     /**
      * @var ProductMenuRegistrar
@@ -85,6 +91,7 @@ class MainMenuComposer
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
+     * @param PharmacyMenuRegistrar $pharmacyMenuRegistrar
      * @param ProductMenuRegistrar $productMenuRegistrar
      * @param ProductCategoryMenuRegistrar $productCategoryMenuRegistrar
      * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
@@ -99,6 +106,7 @@ class MainMenuComposer
      */
     public function __construct(
         Dashboard $dashboard,
+        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
         ProductMenuRegistrar $productMenuRegistrar,
         ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
         WarehouseMenuRegistrar $warehouseMenuRegistrar,
@@ -112,6 +120,7 @@ class MainMenuComposer
         ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar
     ) {
         $this->dashboard = $dashboard;
+        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
         $this->productMenuRegistrar = $productMenuRegistrar;
         $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
@@ -178,7 +187,10 @@ class MainMenuComposer
                     ->title('Tools')
             );
 
-            // Product
+            // Calculated
+            $this->pharmacyMenuRegistrar->register($dashboardMenu);
+
+            //Entities
             $this->productMenuRegistrar->register($dashboardMenu);
             $this->productCategoryMenuRegistrar->register($dashboardMenu);
             $this->warehouseMenuRegistrar->register($dashboardMenu);

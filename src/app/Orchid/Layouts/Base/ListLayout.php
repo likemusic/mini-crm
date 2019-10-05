@@ -3,8 +3,6 @@
 namespace App\Orchid\Layouts\Base;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Product\Field\LabelInterface;
-use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -31,6 +29,11 @@ abstract class ListLayout extends Table
         return $this->getLinkField($name, $label, $routeName, $id);
     }
 
+    protected function getRouteNameEdit()
+    {
+        return $this->routeNameProvider->getEdit();
+    }
+
     protected function getLinkField($name, $label, $routeName, $id)
     {
         return TD::set($name, $label)
@@ -39,11 +42,6 @@ abstract class ListLayout extends Table
                 $id,
                 $name
             );
-    }
-
-    protected function getRouteNameEdit()
-    {
-        return $this->routeNameProvider->getEdit();
     }
 
     protected function getIdField($idFieldName, $idFieldLabel)

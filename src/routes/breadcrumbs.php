@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
 use App\Entity\DiscountedProduct\BreadcrumbsRegistrar as DiscountedProductBreadcrumbsRegistrar;
+use App\Entity\Pharmacy\BreadcrumbsRegistrar as PharmacyBreadcrumbsRegistrar;
 use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
-use App\Entity\Product\UseVariantProvider as ProductUseVariant;
+use App\Entity\Product\EditableUseVariantProvider as ProductUseVariant;
 use App\Entity\ProductQuote\BreadcrumbsRegistrar as ProductQuoteBreadcrumbsRegistrar;
 use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
@@ -70,6 +71,11 @@ $productUseVariant = App::make(ProductUseVariant::class);
 
 /** @var ProductRouteNameProvider $productRouteNameProvider */
 $productRouteNameProvider = App::make(ProductRouteNameProvider::class);
+
+// Platform > Pharmacy
+/** @var PharmacyBreadcrumbsRegistrar $pharmacyBreadcrumbsRegistrar */
+$pharmacyBreadcrumbsRegistrar = App::make(PharmacyBreadcrumbsRegistrar::class);
+$pharmacyBreadcrumbsRegistrar->register();
 
 // Platform > Product
 /** @var ProductBreadcrumbsRegistrar $productBreadcrumbsRegistrar */

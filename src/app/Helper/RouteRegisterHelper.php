@@ -8,7 +8,7 @@ use Illuminate\Contracts\Routing\Registrar;
 
 class RouteRegisterHelper
 {
-    public function addRoutes(
+    public function addEditableRoutes(
         Registrar $router,
         PathProviderInterface $pathProvider,
         NameProviderInterface $nameProvider,
@@ -23,6 +23,16 @@ class RouteRegisterHelper
             ->screen($pathProvider->getEdit(), $editScreenClassName)
             ->name($nameProvider->getEdit());
 
+        $this->addListRoutes($router, $pathProvider, $nameProvider, $listScreenClassName, $editScreenClassName);
+    }
+
+    public function addListRoutes(
+        Registrar $router,
+        PathProviderInterface $pathProvider,
+        NameProviderInterface $nameProvider,
+        string $listScreenClassName
+    )
+    {
         $router
             ->screen($pathProvider->getList(), $listScreenClassName)
             ->name($nameProvider->getList());

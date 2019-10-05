@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-use App\Entity\DiscountedProduct\Route\Registrar as DiscountedProductRouteRegistrar;
-use App\Entity\Product\Route\Registrar as ProductRouteRegistrar;
-use App\Entity\ProductCategory\Route\Registrar as ProductCategoryRouteRegistrar;
-use App\Entity\UnaccountedProduct\Route\Registrar as UnaccountedProductRouteRegistrar;
-use App\Entity\Warehouse\Route\Registrar as WarehouseRouteRegistrar;
-use App\Entity\ProductQuote\Route\Registrar as ProductQuoteRouteRegistrar;
-use App\Entity\OrderItem\Route\Registrar as OrderItemRouteRegistrar;
-use App\Entity\Order\Route\Registrar as OrderRouteRegistrar;
-use App\Entity\Counteragent\Route\Registrar as CounteragentRouteRegistrar;
-use App\Entity\Wallet\Route\Registrar as WalletRouteRegistrar;
-use App\Entity\ExchangeRate\Route\Registrar as ExchangeRateRouteRegistrar;
+use App\Entity\DiscountedProduct\Route\EditableRegistrar as DiscountedProductRouteRegistrar;
+use App\Entity\Pharmacy\Route\NotEditableRegistrar as PharmacyRouteRegistrar;
+use App\Entity\Product\Route\EditableRegistrar as ProductRouteRegistrar;
+use App\Entity\ProductCategory\Route\EditableRegistrar as ProductCategoryRouteRegistrar;
+use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
+use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
+use App\Entity\ProductQuote\Route\EditableRegistrar as ProductQuoteRouteRegistrar;
+use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
+use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
+use App\Entity\Counteragent\Route\EditableRegistrar as CounteragentRouteRegistrar;
+use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
+use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
 
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
@@ -53,6 +54,10 @@ $this->router->screen('example', ExampleScreen::class)->name('platform.example')
 //Route::screen('/dashboard/screen/idea', 'Idea::class','platform.screens.idea');
 
 $this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
+
+/** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
+$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);
+$pharmacyRouteRegistrar->registerRoutes($this->router);
 
 /** @var ProductRouteRegistrar $productRouteRegistrar */
 $productRouteRegistrar = App::make(ProductRouteRegistrar::class);
