@@ -2,7 +2,7 @@
 
 namespace App\Helper\InfoMessageProvider;
 
-use App\Entity\Wallet\EditableUseVariantProvider as UseVariantProvider;
+use App\Entity\Wallet\EditableUseVariantProvider;
 use App\Helper\BaseInfoMessageProvider;
 use App\Helper\InfoMessage as InfoMessageHelper;
 

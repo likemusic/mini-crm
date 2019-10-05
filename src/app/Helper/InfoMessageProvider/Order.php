@@ -2,7 +2,7 @@
 
 namespace App\Helper\InfoMessageProvider;
 
-use App\Entity\Order\EditableUseVariantProvider as UseVariantProvider;
+use App\Entity\Order\EditableUseVariantProvider;
 use App\Helper\BaseInfoMessageProvider;
 use App\Helper\InfoMessage as InfoMessageHelper;
 

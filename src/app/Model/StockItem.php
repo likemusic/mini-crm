@@ -10,7 +10,7 @@ class StockItem extends Model
 {
     use AsSource;
 
-//    protected $with = [FieldNameInterface::CATEGORY];
+    protected $with = [FieldNameInterface::PRODUCT, FieldNameInterface::WAREHOUSE];
 
     /**
      * @var array
@@ -18,6 +18,7 @@ class StockItem extends Model
     protected $fillable = [
         FieldNameInterface::PRODUCT_ID,
         FieldNameInterface::WAREHOUSE_ID,
+        FieldNameInterface::QUANTITY,
         FieldNameInterface::NOTE,
     ];
 

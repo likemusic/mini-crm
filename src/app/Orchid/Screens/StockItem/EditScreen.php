@@ -42,9 +42,6 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
-                Input::make($this->getDataPath(FieldNameInterface::ID))
-                    ->title(FieldLabelInterface::ID),
-
                 Select::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
                     ->fromModel(Product::class, ProductFieldNameInterface::NAME),
 

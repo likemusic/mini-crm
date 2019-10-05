@@ -35,6 +35,8 @@ class CreateStockItemsTable extends Migration
                 ->references(WarehouseFieldNameInterface::ID)
                 ->on(WarehouseTableInterface::NAME);
 
+            $table->unique([FieldNameInterface::PRODUCT_ID, FieldNameInterface::WAREHOUSE_ID]);
+
             $table->timestamps();
         });
     }
