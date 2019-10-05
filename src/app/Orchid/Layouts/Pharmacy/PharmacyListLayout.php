@@ -9,24 +9,31 @@ use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
 use App\Repositories\WarehouseRepository;
 use Illuminate\Support\Collection;
+use App\Helper\Entity\PharmacyHelper;
 
 class PharmacyListLayout extends ListLayout
 {
     const DATA_KEY = 'pharmacy';
-
-    const COLUMN_PREFIX_WAREHOUSE = 'wh-';
 
     /**
      * @var WarehouseRepository
      */
     private $warehouseRepository;
 
+    /**
+     * @var PharmacyHelper
+     */
+    private $pharmacyHelper;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        WarehouseRepository $warehouseRepository
+        WarehouseRepository $warehouseRepository,
+        PharmacyHelper $pharmacyHelper
     )
     {
         $this->warehouseRepository = $warehouseRepository;
+        $this->pharmacyHelper = $pharmacyHelper;
+
         parent::__construct($routeNameProvider);
     }
 
@@ -75,12 +82,12 @@ class PharmacyListLayout extends ListLayout
 
     private function warehouseColumnName($warehouseId)
     {
-        return self::COLUMN_PREFIX_WAREHOUSE . $warehouseId;
+        return $this->pharmacyHelper->getWarehouseColumnName($warehouseId);
     }
 
     private function getWarehousesCodes(): Collection
     {
-        return $this->warehouseRepository->getWarehousesCodes();
+        return $this->warehouseRepository->getSortedCodes();
     }
 
     private function getProductColumns()
@@ -88,7 +95,10 @@ class PharmacyListLayout extends ListLayout
         return [
             TD::set(FieldNameInterface::ID, LabelInterface::ID),
 
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            TD::set(FieldNameInterface::NAME, LabelInterface::NAME),
+//            $routeName = $this->getRouteNameEdit();
+//            $this->getLinkField($name, $label, $routeName, $id);
+//            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::CATEGORY . '.' . 'name', LabelInterface::CATEGORY),
 

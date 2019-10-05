@@ -6,11 +6,22 @@ use App\Entity\Pharmacy\NotEditableUseVariantProvider;
 use App\Orchid\Layouts\Pharmacy\PharmacyListLayout;
 use App\Orchid\Screens\Base\ListScreen\BaseListScreen;
 use Illuminate\Http\Request;
+use App\DataProviders\PharmacyDataProvider;
 
 class ListScreen extends BaseListScreen
 {
-    public function __construct(NotEditableUseVariantProvider $useVariant, ?Request $request = null)
-    {
+    /**
+     * @var PharmacyDataProvider
+     */
+    private $pharmacyDataProvider;
+
+    public function __construct(
+        NotEditableUseVariantProvider $useVariant,
+        PharmacyDataProvider $pharmacyDataProvider,
+        ?Request $request = null
+    ) {
+        $this->pharmacyDataProvider = $pharmacyDataProvider;
+
         parent::__construct($useVariant, $request);
     }
 
@@ -26,6 +37,6 @@ class ListScreen extends BaseListScreen
 
     protected function getData()
     {
-        return [];
+        return $this->pharmacyDataProvider->all();
     }
 }

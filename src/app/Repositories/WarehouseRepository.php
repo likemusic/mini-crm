@@ -15,10 +15,17 @@ class WarehouseRepository
         return Warehouse::all($columns);
     }
 
-    public function getWarehousesCodes(): Collection
+    public function getSortedCodes(): Collection
     {
         return DB::table(TableInterface::NAME)
             ->orderBy(NameInterface::SORT_ORDER)
             ->pluck(NameInterface::CODE, NameInterface::ID);
+    }
+
+    public function getSortedIds(): Collection
+    {
+        return DB::table(TableInterface::NAME)
+            ->orderBy(NameInterface::SORT_ORDER)
+            ->pluck(NameInterface::ID);
     }
 }
