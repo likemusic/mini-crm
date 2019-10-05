@@ -20,6 +20,7 @@ class WarehouseListLayout extends ListLayout
     protected function columns(): array
     {
         return [
+            TD::set(FieldNameInterface::ID, LabelInterface::ID),
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::CODE, LabelInterface::CODE),

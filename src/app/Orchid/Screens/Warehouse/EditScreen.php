@@ -44,6 +44,9 @@ class EditScreen extends BaseEditScreen
                     ->title(FieldLabelInterface::CODE)
                     ->size(FieldLengthInterface::CODE),
 
+                Input::make($this->getDataPath(FieldNameInterface::SORT_ORDER))
+                    ->title(FieldLabelInterface::SORT_ORDER),
+
                 TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
                     ->title(FieldLabelInterface::NOTE),
             ])
