@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2db6966d6724a8bf7bed8753a1b06cb6",
+    "content-hash": "e948ad321a3b74728021e3e9ac0f008d",
     "packages": [
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -3527,6 +3527,103 @@
             "time": "2016-01-20T08:20:44+00:00"
         },
         {
+            "name": "mbezhanov/faker-provider-collection",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mbezhanov/faker-provider-collection.git",
+                "reference": "076c00f0d438f12ec7da0fdaadbfb7940913763e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mbezhanov/faker-provider-collection/zipball/076c00f0d438f12ec7da0fdaadbfb7940913763e",
+                "reference": "076c00f0d438f12ec7da0fdaadbfb7940913763e",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "^1.6",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "php-mock/php-mock": "^2.0",
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bezhanov\\Faker\\": "src/Faker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marin Bezhanov",
+                    "email": "marin.bezhanov@gmail.com",
+                    "homepage": "http://marinbezhanov.com"
+                }
+            ],
+            "description": "A collection of custom providers for the Faker library",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2018-11-22T06:55:34+00:00"
+        },
+        {
+            "name": "mbezhanov/laravel-faker-provider-collection",
+            "version": "dev-l6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/likemusic/laravel-faker-provider-collection.git",
+                "reference": "67c6b8619cc20aae7c158d491b6dbb91fa3fa5a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/likemusic/laravel-faker-provider-collection/zipball/67c6b8619cc20aae7c158d491b6dbb91fa3fa5a1",
+                "reference": "67c6b8619cc20aae7c158d491b6dbb91fa3fa5a1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.1|^6.0",
+                "mbezhanov/faker-provider-collection": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bezhanov\\Faker\\Laravel\\FakerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bezhanov\\Faker\\Laravel\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marin Bezhanov",
+                    "email": "marin.bezhanov@gmail.com"
+                }
+            ],
+            "description": "A collection of custom Faker providers for your Laravel applications",
+            "keywords": [
+                "faker",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/likemusic/laravel-faker-provider-collection/tree/l6"
+            },
+            "time": "2019-10-05T06:19:13+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.2.4",
             "source": {
@@ -5014,7 +5111,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "orchid/platform": 20
+        "orchid/platform": 20,
+        "mbezhanov/laravel-faker-provider-collection": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

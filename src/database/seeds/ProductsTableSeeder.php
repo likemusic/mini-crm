@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\ProductCategory;
+use App\Model\Product;
 
-class ProductCategoriesTableSeeder extends Seeder
+class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class ProductCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(ProductCategory::class, SeedCountInterface::PRODUCT_CATEGORY)->create();
+        factory(Product::class, SeedCountInterface::PRODUCTS)->create();
 //            ->each(function (ProductCategory $productCategory) {
 //                $productCategory->posts()->save(factory(App\Post::class)->make());
 //            });
