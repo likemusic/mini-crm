@@ -8,7 +8,6 @@ use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
-use Psr\Container\ContainerInterface;
 
 abstract class ListLayout extends Table
 {
@@ -17,12 +16,10 @@ abstract class ListLayout extends Table
      */
     protected $routeNameProvider;
 
-    public function __construct(ContainerInterface $container, RouteNameProviderInterface $routeNameProvider)
+    public function __construct(RouteNameProviderInterface $routeNameProvider)
     {
         $this->routeNameProvider = $routeNameProvider;
         $this->target = $this->getDataKey();
-
-        parent::__construct($container);
     }
 
     abstract protected function getDataKey();

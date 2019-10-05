@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39cd3fbdc70b8d672b9fb1acfbc58953",
+    "content-hash": "2db6966d6724a8bf7bed8753a1b06cb6",
     "packages": [
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -1190,16 +1190,16 @@
         },
         {
             "name": "orchid/platform",
-            "version": "dev-ioc",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/likemusic/platform.git",
-                "reference": "b13716c6dad05276ba255405cf8a3a9107880402"
+                "url": "https://github.com/orchidsoftware/platform.git",
+                "reference": "6001ff1d3dbbdbb52b23b9ebd692b55c2d7e298b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/likemusic/platform/zipball/b13716c6dad05276ba255405cf8a3a9107880402",
-                "reference": "b13716c6dad05276ba255405cf8a3a9107880402",
+                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/6001ff1d3dbbdbb52b23b9ebd692b55c2d7e298b",
+                "reference": "6001ff1d3dbbdbb52b23b9ebd692b55c2d7e298b",
                 "shasum": ""
             },
             "require": {
@@ -1248,16 +1248,7 @@
                     "src/Support/helpers.php"
                 ]
             },
-            "autoload-dev": {
-                "classmap": [
-                    "database/seeds",
-                    "database/factories"
-                ],
-                "psr-4": {
-                    "Orchid\\Tests\\": "tests/",
-                    "App\\": "install-stubs/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1282,13 +1273,7 @@
                 "platform",
                 "rad"
             ],
-            "support": {
-                "issues": "https://github.com/orchidsoftware/platform/issues",
-                "source": "https://github.com/orchidsoftware/platform",
-                "docs": "https://orchid.software/en/docs",
-                "email": "bliz48rus@gmail.com"
-            },
-            "time": "2019-10-04T01:47:10+00:00"
+            "time": "2019-10-04T16:07:45+00:00"
         },
         {
             "name": "paragonie/random_compat",

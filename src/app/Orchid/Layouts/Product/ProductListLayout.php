@@ -7,15 +7,14 @@ use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
-use Psr\Container\ContainerInterface;
 
 class ProductListLayout extends ListLayout
 {
     const DATA_KEY = 'products';
 
-    public function __construct(ContainerInterface $container, RouteNameProvider $routeNameProvider)
+    public function __construct(RouteNameProvider $routeNameProvider)
     {
-        parent::__construct($container, $routeNameProvider);
+        parent::__construct($routeNameProvider);
     }
 
     /**
@@ -24,6 +23,8 @@ class ProductListLayout extends ListLayout
     public function columns(): array
     {
         return [
+            TD::set(FieldNameInterface::ID, LabelInterface::ID),
+
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::CATEGORY_ID, LabelInterface::CATEGORY),

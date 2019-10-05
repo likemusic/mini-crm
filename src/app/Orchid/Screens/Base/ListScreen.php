@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Layout;
-use Psr\Container\ContainerInterface;
 
 abstract class ListScreen extends Screen
 {
@@ -30,7 +29,6 @@ abstract class ListScreen extends Screen
     private $routeNameProvider;
 
     public function __construct(
-        ContainerInterface $container,
         Model $model,
         UseVariantProviderInterface $useVariant,
         RouteNameProviderInterface $routeNameProvider,
@@ -41,7 +39,7 @@ abstract class ListScreen extends Screen
         $this->routeNameProvider = $routeNameProvider;
         $this->name = $useVariant->getListName();
 
-        parent::__construct($container, $request);
+        parent::__construct($request);
     }
 
     /**

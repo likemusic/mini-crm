@@ -8,18 +8,16 @@ use App\Model\Product;
 use App\Orchid\Layouts\Product\ProductListLayout;
 use App\Orchid\Screens\Base\ListScreen as BaseListScreen;
 use Illuminate\Http\Request;
-use Psr\Container\ContainerInterface;
 
 class ListScreen extends BaseListScreen
 {
     public function __construct(
-        ContainerInterface $container,
         Product $model,
         UseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {
-        parent::__construct($container, $model, $useVariant, $routeNameProvider, $request);
+        parent::__construct($model, $useVariant, $routeNameProvider, $request);
     }
 
     protected function getDataKey(): string
