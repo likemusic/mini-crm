@@ -17,15 +17,12 @@ class WarehouseListLayout extends ListLayout
         parent::__construct($routeNameProvider);
     }
 
-    /**
-     * @return TD[]
-     */
-    public function fields(): array
+    protected function columns(): array
     {
         return [
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::CODE, LabelInterface::NOTE),
+            TD::set(FieldNameInterface::CODE, LabelInterface::CODE),
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
             TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
             TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),

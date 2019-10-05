@@ -19,6 +19,7 @@ class CreateWarehousesTable extends Migration
         Schema::create(TableInterface::NAME, function (Blueprint $table) {
             $table->bigIncrements(FieldNameInterface::ID);
             $table->char(FieldNameInterface::NAME)->unique();
+            $table->unsignedTinyInteger(FieldNameInterface::SORT_ORDER)->nullable();
             $table->char(FieldNameInterface::CODE, FieldLengthInterface::CODE)->unique();
             $table->text(FieldNameInterface::NOTE)->nullable();
             $table->timestamps();
