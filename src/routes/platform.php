@@ -8,6 +8,7 @@ use App\Entity\Product\Route\EditableRegistrar as ProductRouteRegistrar;
 use App\Entity\ProductCategory\Route\EditableRegistrar as ProductCategoryRouteRegistrar;
 use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
 use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
+use App\Entity\StockItem\Route\EditableRegistrar as StockItemRouteRegistrar;
 use App\Entity\ProductQuote\Route\EditableRegistrar as ProductQuoteRouteRegistrar;
 use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
 use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
@@ -70,6 +71,10 @@ $productCategoryRouteRegistrar->registerRoutes($this->router);
 /** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
 $warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);
 $warehouseRouteRegistrar->registerRoutes($this->router);
+
+/** @var StockItemRouteRegistrar $stockItemRouteRegistrar */
+$stockItemRouteRegistrar = App::make(StockItemRouteRegistrar::class);
+$stockItemRouteRegistrar->registerRoutes($this->router);
 
 /** @var UnaccountedProductRouteRegistrar $unaccountedProductRouteRegistrar */
 $unaccountedProductRouteRegistrar = App::make(UnaccountedProductRouteRegistrar::class);

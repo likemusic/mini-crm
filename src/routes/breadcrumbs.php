@@ -11,6 +11,7 @@ use App\Entity\Product\EditableUseVariantProvider as ProductUseVariant;
 use App\Entity\ProductQuote\BreadcrumbsRegistrar as ProductQuoteBreadcrumbsRegistrar;
 use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;
+use App\Entity\StockItem\BreadcrumbsRegistrar as StockItemBreadcrumbsRegistrar;
 use App\Entity\OrderItem\BreadcrumbsRegistrar as OrderItemBreadcrumbsRegistrar;
 use App\Entity\Order\BreadcrumbsRegistrar as OrderBreadcrumbsRegistrar;
 use App\Entity\Counteragent\BreadcrumbsRegistrar as CounteragentBreadcrumbsRegistrar;
@@ -86,6 +87,11 @@ $productBreadcrumbsRegistrar->register();
 /** @var WarehouseBreadcrumbsRegistrar $warehouseBreadcrumbsRegistrar */
 $warehouseBreadcrumbsRegistrar = App::make(WarehouseBreadcrumbsRegistrar::class);
 $warehouseBreadcrumbsRegistrar->register();
+
+// Platform > StockItem
+/** @var StockItemBreadcrumbsRegistrar $stockItemBreadcrumbsRegistrar */
+$stockItemBreadcrumbsRegistrar = App::make(StockItemBreadcrumbsRegistrar::class);
+$stockItemBreadcrumbsRegistrar->register();
 
 // Platform > UnaccountedProduct
 /** @var UnaccountedProductBreadcrumbsRegistrar $unaccountedProductBreadcrumbsRegistrar */

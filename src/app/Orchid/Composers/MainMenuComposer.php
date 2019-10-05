@@ -10,6 +10,7 @@ use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
 use App\Entity\ProductCategory\MenuRegistrar as ProductCategoryMenuRegistrar;
 use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
 use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
+use App\Entity\StockItem\MenuRegistrar as StockItemMenuRegistrar;
 use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
 use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
 use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
@@ -46,6 +47,11 @@ class MainMenuComposer
      * @var WarehouseMenuRegistrar
      */
     private $warehouseMenuRegistrar;
+
+    /**
+     * @var StockItemMenuRegistrar
+     */
+    private $stockItemMenuRegistrar;
 
     /**
      * @var UnaccountedProductMenuRegistrar
@@ -95,6 +101,7 @@ class MainMenuComposer
      * @param ProductMenuRegistrar $productMenuRegistrar
      * @param ProductCategoryMenuRegistrar $productCategoryMenuRegistrar
      * @param WarehouseMenuRegistrar $warehouseMenuRegistrar
+     * @param StockItemMenuRegistrar $stockItemMenuRegistrar
      * @param UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar
      * @param DiscountedProductMenuRegistrar $discountedProductMenuRegistrar
      * @param ProductQuoteMenuRegistrar $productQuoteMenuRegistrar
@@ -110,6 +117,7 @@ class MainMenuComposer
         ProductMenuRegistrar $productMenuRegistrar,
         ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
         WarehouseMenuRegistrar $warehouseMenuRegistrar,
+        StockItemMenuRegistrar $stockItemMenuRegistrar,
         UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
         DiscountedProductMenuRegistrar $discountedProductMenuRegistrar,
         ProductQuoteMenuRegistrar $productQuoteMenuRegistrar,
@@ -124,6 +132,7 @@ class MainMenuComposer
         $this->productMenuRegistrar = $productMenuRegistrar;
         $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+        $this->stockItemMenuRegistrar = $stockItemMenuRegistrar;
         $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
         $this->discountedProductMenuRegistrar = $discountedProductMenuRegistrar;
         $this->productQuoteMenuRegistrar = $productQuoteMenuRegistrar;
@@ -194,6 +203,7 @@ class MainMenuComposer
             $this->productMenuRegistrar->register($dashboardMenu);
             $this->productCategoryMenuRegistrar->register($dashboardMenu);
             $this->warehouseMenuRegistrar->register($dashboardMenu);
+            $this->stockItemMenuRegistrar->register($dashboardMenu);
             $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
             $this->discountedProductMenuRegistrar->register($dashboardMenu);
             $this->productQuoteMenuRegistrar->register($dashboardMenu);
