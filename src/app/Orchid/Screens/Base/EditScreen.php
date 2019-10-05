@@ -89,25 +89,25 @@ abstract class EditScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::name(SaveCommandInterface::NAME)
+            Button::make(SaveCommandInterface::NAME)
                 ->icon(SaveCommandInterface::ICON)
                 ->class(SaveCommandInterface::CLASS_NAME)
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
 
-            Button::name(UpdateCommandInterface::NAME)
+            Button::make(UpdateCommandInterface::NAME)
                 ->icon(UpdateCommandInterface::CLASS_NAME)
                 ->class(UpdateCommandInterface::CLASS_NAME)
                 ->method('createOrUpdate')
                 ->canSee($this->exists),
 
-            Button::name(DeleteCommandInterface::NAME)
+            Button::make(DeleteCommandInterface::NAME)
                 ->class(DeleteCommandInterface::CLASS_NAME)
                 ->icon(DeleteCommandInterface::ICON)
                 ->method('remove')
                 ->canSee($this->exists),
 
-            Button::name(CancelCommandInterface::NAME)
+            Button::make(CancelCommandInterface::NAME)
                 ->class(CancelCommandInterface::CLASS_NAME)
                 ->icon(CancelCommandInterface::ICON)
                 ->method('cancel'),

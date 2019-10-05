@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Product;
 
 use App\Contract\Entity\Product\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\ProductCategory\Field\NameInterface as ProductCategoryFieldNameInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\UseVariantProvider as UseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
@@ -12,8 +13,10 @@ use App\Model\Product;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
+use App\Model\ProductCategory;
 
 class EditScreen extends BaseEditScreen
 {
@@ -38,6 +41,9 @@ class EditScreen extends BaseEditScreen
             Layout::rows([
                 Input::make($this->getDataPath(FieldNameInterface::NAME))
                     ->title(FieldLabelInterface::NAME),
+
+                Select::make($this->getDataPath(FieldNameInterface::CATEGORY_ID))
+                    ->fromModel(ProductCategory::class, ProductCategoryFieldNameInterface::NAME),
 
                 Input::make($this->getDataPath(FieldNameInterface::APPROXIMATE_PRICE))
                     ->title(FieldLabelInterface::APPROXIMATE_PRICE),

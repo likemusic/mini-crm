@@ -6,6 +6,7 @@ interface NameInterface
 {
     const ID = 'id';
     const NAME = 'name';
+    const CATEGORY = 'category';
     const CATEGORY_ID = 'category_id';
     const NOTE = 'note';
     const SELLING_PRICE = 'selling_price';

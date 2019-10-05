@@ -27,7 +27,7 @@ class ProductListLayout extends ListLayout
 
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::CATEGORY_ID, LabelInterface::CATEGORY),
+            TD::set(FieldNameInterface::CATEGORY . '.' . 'name', LabelInterface::CATEGORY),
 
             TD::set(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
             TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
