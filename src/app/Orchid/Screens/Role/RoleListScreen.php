@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Role;
 
-use App\Contract\Entity\Platform\PermissionInterface;
+use App\Contract\Entity\Permission\Platform\NameInterface as PermissionNameInterface;
 use App\Orchid\Layouts\Role\RoleListLayout;
 use Orchid\Platform\Models\Role;
 use Orchid\Screen\Actions\Link;
@@ -29,7 +29,7 @@ class RoleListScreen extends Screen
     /**
      * @var string
      */
-    public $permission = PermissionInterface::SYSTEMS_ROLES;
+    public $permission = PermissionNameInterface::SYSTEMS_ROLES;
 
     /**
      * Query data.

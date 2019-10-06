@@ -2,51 +2,22 @@
 
 namespace App\Helper;
 
-use ReflectionException;
-use App\Contract\Entity\Platform\PermissionInterface;
+use Orchid\Platform\Dashboard;
 
 class PermissionsProvider
 {
     /**
-     * @var ReflectionHelper
+     * @var Dashboard
      */
-    private $reflectionHelper;
+    private $dashboard;
 
-    public function __construct(ReflectionHelper $reflectionHelper)
+    public function __construct(Dashboard $dashboard)
     {
-        $this->reflectionHelper = $reflectionHelper;
+        $this->dashboard = $dashboard;
     }
-
-    private $permissionsClasses = [
-        PermissionInterface::class,
-    ];
 
     public function getAvailablePermissions()
     {
-        $permissions = [];
-
-        foreach ($this->permissionsClasses as $permissionClassName) {
-            $classPermissions = $this->getClassConstantsValues($permissionClassName);
-            $permissions = array_merge($permissions, $classPermissions);
-        }
-
-        return $permissions;
-    }
-
-    /**
-     * @param $className
-     * @return array
-     * @throws ReflectionException
-     */
-    private function getClassConstants($className)
-    {
-        return $this->reflectionHelper->getClassConstants($className);
-    }
-
-    private function getClassConstantsValues($className)
-    {
-        $classConstants = $this->getClassConstants($className);
-
-        return array_values($classConstants);
+        return $this->dashboard->getPermission();
     }
 }

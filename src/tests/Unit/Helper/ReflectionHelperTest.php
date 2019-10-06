@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Helper;
 
-use App\Contract\Entity\Platform\PermissionInterface;
+use App\Contract\Entity\Permission\NameInterface as PermissionNameInterface;
 use App\Helper\ReflectionHelper;
 use Tests\SubjectTestCase;
 
@@ -11,7 +11,7 @@ class ReflectionHelperTest extends SubjectTestCase
     public function testGetClassConstants()
     {
         $reflectionHelper = $this->getTestSubject();
-        $className = PermissionInterface::class;
+        $className = PermissionNameInterface::class;
         $constants = $reflectionHelper->getClassConstants($className);
         $expectedConstants = $this->getExpectedConstants();
 

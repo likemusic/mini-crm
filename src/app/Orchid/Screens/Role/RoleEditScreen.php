@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Role;
 
-use App\Contract\Entity\Platform\PermissionInterface;
+use App\Contract\Entity\Permission\Platform\NameInterface as PermissionNameInterface;
 use App\Orchid\Layouts\Role\RoleEditLayout;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class RoleEditScreen extends Screen
     /**
      * @var string
      */
-    public $permission = PermissionInterface::SYSTEMS_ROLES;
+    public $permission = PermissionNameInterface::SYSTEMS_ROLES;
 
     /**
      * @var bool

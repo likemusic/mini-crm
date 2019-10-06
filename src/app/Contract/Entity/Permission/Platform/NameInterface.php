@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Contract\Entity\Platform;
 
-/**
- * Interface PermissionInterface
- */
-interface PermissionInterface
+namespace App\Contract\Entity\Permission\Platform;
+
+
+interface NameInterface
 {
     const INDEX = 'platform.index';
     const SYSTEMS = 'platform.systems';
