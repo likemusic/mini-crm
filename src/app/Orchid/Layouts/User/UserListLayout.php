@@ -13,12 +13,9 @@ class UserListLayout extends Table
     /**
      * @var string
      */
-    public $data = 'users';
+    public $target = 'users';
 
-    /**
-     * @return array
-     */
-    public function fields(): array
+    protected function columns(): array
     {
         return [
             TD::set('id', 'ID')

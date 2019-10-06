@@ -24,7 +24,7 @@ class OrderListLayout extends ListLayout
                     return $order->counteragent->name;
                 }),
 
-            TD::set(FieldNameInterface::ITEMS, FieldLabelInterface::ITEMS)
+            TD::set(FieldNameInterface::ITEM, FieldLabelInterface::ITEMS)
                 ->render(function (Order $order) {
                     /** @var OrderItem[] $orderItems */
                     $orderItems = $order->items;

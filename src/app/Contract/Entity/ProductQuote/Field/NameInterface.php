@@ -9,6 +9,7 @@ interface NameInterface
     const NOTE = 'note';
     const SELLING_PRICE = 'selling_price';
     const APPROXIMATE_PRICE = 'approximate_price';
+    const CATEGORY_ID = 'category_id';
 
     const PRODUCT_ID = 'product_id';
 

@@ -12,6 +12,7 @@ use Orchid\Access\UserSwitch;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\Password;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
@@ -66,16 +67,16 @@ class UserEditScreen extends Screen
 
             DropDown::make(__('Settings'))
                 ->icon('icon-open')
-                ->group([
+                ->list([
                     Button::make(__('Login as user'))
                         ->method('loginAs')
                         ->icon('icon-login'),
 
-                    Button::make(__('Change Password'))
-                        ->modal('password')
-                        ->method('changePassword')
+                    ModalToggle::make(__('Change Password'))
+                        ->icon('icon-lock-open')
                         ->title(__('Change Password'))
-                        ->icon('icon-lock-open'),
+                        ->method('changePassword')
+                        ->modal('password'),
                 ]),
 
             Button::make(__('Save'))

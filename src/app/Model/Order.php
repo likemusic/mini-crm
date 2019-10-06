@@ -15,7 +15,7 @@ class Order extends Model
      */
     protected $fillable = [
         FieldNameInterface::COUNTERAGENT_ID,
-        FieldNameInterface::ITEMS,
+        FieldNameInterface::ITEM,
         FieldNameInterface::TOTAL_AMOUNT,
         FieldNameInterface::NOTE,
     ];
