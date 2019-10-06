@@ -15,24 +15,7 @@ class OrderListLayout extends ListLayout
 {
     const DATA_KEY = 'orders';
 
-    /**
-     * @var OrderItemRouteNameProvider
-     */
-    private $orderItemRouteNameProvider;
-
-    public function __construct(
-        RouteNameProvider $routeNameProvider,
-        OrderItemRouteNameProvider $orderItemRouteNameProvider
-    ) {
-        $this->orderItemRouteNameProvider = $orderItemRouteNameProvider;
-
-        parent::__construct($routeNameProvider);
-    }
-
-    /**
-     * @return TD[]
-     */
-    public function fields(): array
+    protected function columns(): array
     {
         return [
             $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
@@ -61,6 +44,21 @@ class OrderListLayout extends ListLayout
             TD::set(FieldNameInterface::CREATED_AT, FieldLabelInterface::CREATED_AT),
             TD::set(FieldNameInterface::UPDATED_AT, FieldLabelInterface::UPDATED_AT),
         ];
+    }
+
+
+    /**
+     * @var OrderItemRouteNameProvider
+     */
+    private $orderItemRouteNameProvider;
+
+    public function __construct(
+        RouteNameProvider $routeNameProvider,
+        OrderItemRouteNameProvider $orderItemRouteNameProvider
+    ) {
+        $this->orderItemRouteNameProvider = $orderItemRouteNameProvider;
+
+        parent::__construct($routeNameProvider);
     }
 
     private function getOrderItemView(OrderItem $orderItem)

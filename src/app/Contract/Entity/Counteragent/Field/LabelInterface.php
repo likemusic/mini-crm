@@ -6,7 +6,7 @@ interface LabelInterface
 {
     const ID = 'Id';
 
-    const NAME = 'Название';
+    const NAME = 'Имя';
 
     const NOTE = 'Примечание';
 

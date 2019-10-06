@@ -7,22 +7,20 @@ use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
-use Psr\Container\ContainerInterface;
-
 
 class CounteragentListLayout extends ListLayout
 {
     const DATA_KEY = 'counteragents';
 
-    public function __construct(ContainerInterface $container, RouteNameProvider $routeNameProvider)
+    public function __construct(RouteNameProvider $routeNameProvider)
     {
-        parent::__construct($container, $routeNameProvider);
+        parent::__construct($routeNameProvider);
     }
 
     /**
      * @return TD[]
      */
-    public function fields(): array
+    protected function columns(): array
     {
         return [
             $this->getNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
