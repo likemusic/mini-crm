@@ -4,6 +4,7 @@ namespace App\Orchid\Layouts\Pharmacy;
 
 use App\Contract\Entity\Pharmacy\Field\LabelInterface;
 use App\Contract\Entity\Pharmacy\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\Pharmacy\Field\NameInterface;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
@@ -49,6 +50,35 @@ class PharmacyListLayout extends ListLayout
     }
 
     private function getWarehousesColumns()
+    {
+        $selectedColumns = $this->getWarehousesSelectedColumns();
+        $calculatedColumns = $this->getWarehousesCalculatedColumns();
+
+        return array_merge($selectedColumns, $calculatedColumns);
+    }
+
+    private function getWarehousesCalculatedColumns()
+    {
+        $columnsData = [
+            NameInterface::WAREHOUSES_TOTAL_QUANTITY => LabelInterface::WAREHOUSES_TOTAL_QUANTITY,
+            NameInterface::WAREHOUSES_TOTAL_AMOUNT => LabelInterface::WAREHOUSES_TOTAL_AMOUNT,
+        ];
+
+        return $this->arrayToColumns($columnsData);
+    }
+
+    private function arrayToColumns($columnsData)
+    {
+        $ret = [];
+
+        foreach ($columnsData as $name => $label) {
+            $ret[] = TD::set($name, $label);
+        }
+
+        return $ret;
+    }
+
+    private function getWarehousesSelectedColumns()
     {
         $warehousesCodes = $this->getWarehousesCodes();
 

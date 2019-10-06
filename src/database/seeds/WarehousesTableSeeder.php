@@ -28,8 +28,8 @@ class WarehousesTableSeeder extends Seeder
                 NameInterface::NOTE => '',
             ],
             [
-                NameInterface::NAME => 'Склад 3',
-                NameInterface::CODE => 'скл 3',
+                NameInterface::NAME => 'База',
+                NameInterface::CODE => 'база',
                 NameInterface::SORT_ORDER => 3,
                 NameInterface::NOTE => '',
             ]
