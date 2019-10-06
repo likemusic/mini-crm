@@ -28,33 +28,33 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $allPermissions = $this->getAllPermissions();
+        $allPermissionsSlugs = $this->getAllPermissionsSlugs();
 
         $data = [
             [
                 NameInterface::NAME => RoleNameInterface::SUPER_ADMIN,
                 NameInterface::SLUG => RoleSlugInterface::SUPER_ADMIN,
-                NameInterface::PERMISSIONS => $allPermissions,
+                NameInterface::PERMISSIONS => $allPermissionsSlugs,
             ],
             [
                 NameInterface::NAME => RoleNameInterface::ADMIN,
                 NameInterface::SLUG => RoleSlugInterface::ADMIN,
-                NameInterface::PERMISSIONS => $allPermissions,
+                NameInterface::PERMISSIONS => $allPermissionsSlugs,
             ],
             [
                 NameInterface::NAME => RoleNameInterface::COURIER,
                 NameInterface::SLUG => RoleSlugInterface::COURIER,
-                NameInterface::PERMISSIONS => CrmPermissionNameInterface::COURIER,
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::COURIER],
             ],
             [
                 NameInterface::NAME => RoleNameInterface::WAREHOUSEMAN,
                 NameInterface::SLUG => RoleSlugInterface::WAREHOUSEMAN,
-                NameInterface::PERMISSIONS => CrmPermissionNameInterface::WAREHOUSEMAN,
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::WAREHOUSEMAN],
             ],
             [
                 NameInterface::NAME => RoleNameInterface::ORDER_OPERATOR,
                 NameInterface::SLUG => RoleSlugInterface::ORDER_OPERATOR,
-                NameInterface::PERMISSIONS => CrmPermissionNameInterface::ORDER_OPERATOR,
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::ORDER_OPERATOR],
             ],
         ];
 
@@ -65,8 +65,8 @@ class RolesTableSeeder extends Seeder
         }
     }
 
-    private function getAllPermissions(): Collection
+    private function getAllPermissionsSlugs(): array
     {
-        return $this->permissionsProvider->getAvailablePermissions();
+        return $this->permissionsProvider->getAvailablePermissionsSlugs();
     }
 }

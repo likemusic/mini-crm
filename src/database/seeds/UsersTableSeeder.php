@@ -9,6 +9,8 @@ use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 
 class UsersTableSeeder extends Seeder
 {
+    const DEFAULT_PASSWORD = 'qazxsw';
+
     /**
      * @var PermissionsProvider
      */
@@ -55,15 +57,17 @@ class UsersTableSeeder extends Seeder
         $name = 'Courier';
         $email = 'courier@test.loc';
         $permissions = [CrmPermissionNameInterface::COURIER];
+        $password = self::DEFAULT_PASSWORD;
 
-        $this->addUser($name, $email, $permissions);
+        $this->addUser($name, $email, $password, $permissions);
     }
 
-    private function addUser(string $name, string $email, $permissions)
+    private function addUser(string $name, string $email, $password, $permissions)
     {
         $attributes = [
             UserFieldNameInterface::NAME => $name,
             UserFieldNameInterface::EMAIL => $email,
+            UserFieldNameInterface::PASSWORD => $password,
             UserFieldNameInterface::PERMISSIONS => $permissions,
         ];
 
@@ -76,8 +80,9 @@ class UsersTableSeeder extends Seeder
         $name = 'Operator';
         $email = 'operator@test.loc';
         $permissions = [CrmPermissionNameInterface::ORDER_OPERATOR];
+        $password = self::DEFAULT_PASSWORD;
 
-        $this->addUser($name, $email, $permissions);
+        $this->addUser($name, $email, $password, $permissions);
     }
 
     private function addWarehouseman()
@@ -85,7 +90,8 @@ class UsersTableSeeder extends Seeder
         $name = 'Warehouseman';
         $email = 'warehouseman@test.loc';
         $permissions = [CrmPermissionNameInterface::WAREHOUSEMAN];
+        $password = self::DEFAULT_PASSWORD;
 
-        $this->addUser($name, $email, $permissions);
+        $this->addUser($name, $email, $password, $permissions);
     }
 }

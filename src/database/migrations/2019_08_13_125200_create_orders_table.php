@@ -58,25 +58,7 @@ class CreateOrdersTable extends Migration
     {
         $this->addRelationColumn($table, $fieldName, CounteragentTableInterface::NAME, CounteragentFieldNameInterface::ID);
     }
-
-    private function addRelationColumn(
-        Blueprint $table,
-        string $fieldName,
-        string $relatedTableName,
-        string $relatedFieldName,
-        bool $nullable = false
-    ) {
-        $columnDefinition = $table->unsignedBigInteger($fieldName);
-
-        if (!$nullable) {
-            $columnDefinition->nullable();
-        }
-
-        $table->foreign($fieldName)
-            ->references($relatedFieldName)
-            ->on($relatedTableName);
-    }
-
+    
     /**
      * Reverse the migrations.
      *
