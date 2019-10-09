@@ -41,20 +41,47 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
-                Relation::make($this->getDataPath(FieldNameInterface::COUNTERAGENT_ID))
-                    ->title(FieldLabelInterface::COUNTERAGENT_ID)
-                    ->required()
-                    ->fromModel(
-                        Counteragent::class,
-                        CounteragentItemFieldNameInterface::NAME,
-                        CounteragentItemFieldNameInterface::ID
-                    ),
+                Input::make($this->getDataPath(FieldNameInterface::DATETIME))
+                    ->title(FieldLabelInterface::DATETIME),
 
-                Input::make($this->getDataPath(FieldNameInterface::TOTAL_AMOUNT))
-                    ->title(FieldLabelInterface::TOTAL_AMOUNT),
+                Input::make($this->getDataPath(FieldNameInterface::DATE_ORDER_ID))
+                    ->title(FieldLabelInterface::DATE_ORDER_ID),
 
-                TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
+                Input::make($this->getDataPath(FieldNameInterface::PRODUCT_QUOTE_ID))
+                    ->title(FieldLabelInterface::PRODUCT_QUOTE_ID),
+
+                Input::make($this->getDataPath(FieldNameInterface::IMEIES))
+                    ->title(FieldLabelInterface::IMEIES),
+
+                Input::make($this->getDataPath(FieldNameInterface::COUNT))
+                    ->title(FieldLabelInterface::COUNT),
+
+                Input::make($this->getDataPath(FieldNameInterface::AMOUNT))
+                    ->title(FieldLabelInterface::AMOUNT),
+
+                Input::make($this->getDataPath(FieldNameInterface::PROVIDER_ID))
+                    ->title(FieldLabelInterface::PROVIDER_ID),
+
+                Input::make($this->getDataPath(FieldNameInterface::BUYER_ID))
+                    ->title(FieldLabelInterface::BUYER_ID),
+
+                Input::make($this->getDataPath(FieldNameInterface::COURIER_ID))
+                    ->title(FieldLabelInterface::COURIER_ID),
+
+                Input::make($this->getDataPath(FieldNameInterface::INCOMES))
+                    ->title(FieldLabelInterface::INCOMES),
+
+                Input::make($this->getDataPath(FieldNameInterface::NOTE))
                     ->title(FieldLabelInterface::NOTE),
+
+//                Relation::make($this->getDataPath(FieldNameInterface::COUNTERAGENT_ID))
+//                    ->title(FieldLabelInterface::COUNTERAGENT_ID)
+//                    ->required()
+//                    ->fromModel(
+//                        Counteragent::class,
+//                        CounteragentItemFieldNameInterface::NAME,
+//                        CounteragentItemFieldNameInterface::ID
+//                    ),
             ])
         ];
     }
