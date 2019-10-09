@@ -2,13 +2,15 @@
 
 namespace App\Orchid\Screens\ExchangeRate;
 
+use App\Contract\Entity\Currency\Field\NameInterface as CurrencyFieldNameInterface;
 use App\Contract\Entity\ExchangeRate\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
-use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Entity\ExchangeRate\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\CurrenciesListProvider;
 use App\Helper\InfoMessageProvider\ExchangeRate as InfoMessageProvider;
+use App\Model\Currency;
 use App\Model\ExchangeRate;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
@@ -29,10 +31,9 @@ class EditScreen extends BaseEditScreen
         EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
-        CurrenciesListProvider $currenciesListProvider,
         ?Request $request = null
-    ) {
-        $this->currenciesListProvider = $currenciesListProvider;
+    )
+    {
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
     }
 
@@ -43,16 +44,14 @@ class EditScreen extends BaseEditScreen
      */
     public function layout(): array
     {
-        $currencyList = $this->currenciesListProvider->getCurrenciesList();
-
         return [
             Layout::rows([
-                Select::make($this->getDataPath(FieldNameInterface::FROM_CURRENCY_CODE))
-                    ->options($currencyList)
+                Select::make($this->getDataPath(FieldNameInterface::FROM_CURRENCY_ID))
+                    ->fromModel(Currency::class, CurrencyFieldNameInterface::CODE)
                     ->title(FieldLabelInterface::FROM_CURRENCY_CODE),
 
-                Select::make($this->getDataPath(FieldNameInterface::TO_CURRENCY_CODE))
-                    ->options($currencyList)
+                Select::make($this->getDataPath(FieldNameInterface::TO_CURRENCY_ID))
+                    ->fromModel(Currency::class, CurrencyFieldNameInterface::CODE)
                     ->title(FieldLabelInterface::TO_CURRENCY_CODE),
 
                 Input::make($this->getDataPath(FieldNameInterface::RATE))

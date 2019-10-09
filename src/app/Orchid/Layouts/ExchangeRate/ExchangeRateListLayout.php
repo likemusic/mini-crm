@@ -4,6 +4,7 @@ namespace App\Orchid\Layouts\ExchangeRate;
 
 use App\Contract\Entity\ExchangeRate\Field\LabelInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
+use App\Contract\Entity\Currency\Field\NameInterface as CurrencyFieldNameInterface;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout;
 use Orchid\Screen\TD;
@@ -20,20 +21,21 @@ class ExchangeRateListLayout extends ListLayout
     /**
      * @return TD[]
      */
-    public function fields(): array
+    public function columns(): array
     {
         $editRouteName = $this->routeNameProvider->getEdit();
 
         return [
+//            TD::set(FieldNameInterface::FROM_CURRENCY . '.' . CurrencyFieldNameInterface::CODE, LabelInterface::FROM_CURRENCY_CODE),
             $this->getLinkField(
-                FieldNameInterface::FROM_CURRENCY_CODE,
+                FieldNameInterface::FROM_CURRENCY . '.' . CurrencyFieldNameInterface::CODE,
                 LabelInterface::FROM_CURRENCY_CODE,
                 $editRouteName,
                 FieldNameInterface::ID
             ),
 
             $this->getLinkField(
-                FieldNameInterface::TO_CURRENCY_CODE,
+                FieldNameInterface::TO_CURRENCY . '.' . CurrencyFieldNameInterface::CODE,
                 LabelInterface::TO_CURRENCY_CODE,
                 $editRouteName,
                 FieldNameInterface::ID

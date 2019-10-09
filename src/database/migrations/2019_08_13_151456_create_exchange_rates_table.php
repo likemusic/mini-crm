@@ -2,7 +2,11 @@
 
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ExchangeRate\TableInterface;
-use Illuminate\Database\Migrations\Migration;
+
+use App\Contract\Entity\Currency\Field\NameInterface as CurrencyFieldNameInterface;
+use App\Contract\Entity\Currency\TableInterface as CurrencyTableInterface;
+
+use App\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -17,8 +21,21 @@ class CreateExchangeRatesTable extends Migration
     {
         Schema::create(TableInterface::NAME, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char(FieldNameInterface::FROM_CURRENCY_CODE, 3);
-            $table->char(FieldNameInterface::TO_CURRENCY_CODE, 3);
+
+            $this->addRelationColumn(
+                $table,
+                FieldNameInterface::FROM_CURRENCY_ID,
+                CurrencyTableInterface::NAME,
+                CurrencyFieldNameInterface::ID
+            );
+
+            $this->addRelationColumn(
+                $table,
+                FieldNameInterface::TO_CURRENCY_ID,
+                CurrencyTableInterface::NAME,
+                CurrencyFieldNameInterface::ID
+            );
+
             $table->decimal(FieldNameInterface::RATE, 9, 5);
             $table->text(FieldNameInterface::NOTE)->nullable();
             $table->timestamps();

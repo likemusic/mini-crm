@@ -2,7 +2,7 @@
 
 namespace App\Contract\Domain;
 
-interface CurrencyInterface
+interface CurrencyCodeInterface
 {
     const BYN = 'BYN';
     const RUR = 'RUR';
