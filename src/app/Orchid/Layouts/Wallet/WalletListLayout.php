@@ -22,7 +22,7 @@ class WalletListLayout extends ListLayout
     /**
      * @return TD[]
      */
-    public function fields(): array
+    public function columns(): array
     {
         return [
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
