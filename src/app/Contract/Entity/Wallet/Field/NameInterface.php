@@ -7,7 +7,10 @@ interface NameInterface
     const ID = 'id';
     const NAME = 'name';
 
+    const OWNER = 'owner';
     const OWNER_ID = 'owner_id';
+    const OWNER_TYPE = 'owner_type';
+
     const CURRENCY_CODE = 'currency_code';
     const AMOUNT = 'amount';
     const NOTE = 'note';

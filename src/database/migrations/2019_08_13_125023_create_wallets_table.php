@@ -22,9 +22,7 @@ class CreateWalletsTable extends Migration
             $table->char(FieldNameInterface::NAME)->unique();
 
             $table->unsignedBigInteger(FieldNameInterface::OWNER_ID)->nullable();
-            $table->foreign(FieldNameInterface::OWNER_ID)
-                ->references(UserFieldNameInterface::ID)
-                ->on(UserTableInterface::NAME);
+            $table->string(FieldNameInterface::OWNER_TYPE)->nullable();
 
             $table->char(FieldNameInterface::CURRENCY_CODE, 3);
 

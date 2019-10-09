@@ -9,6 +9,8 @@ interface LabelInterface
     const NAME = 'Название';
 
     const OWNER_ID = 'Id владельца';
+    const OWNER_TYPE = 'Тип владельца';
+
     const OWNER = 'Владелец';
 
     const CURRENCY_CODE = 'Валюта';
