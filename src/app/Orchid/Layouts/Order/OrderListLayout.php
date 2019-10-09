@@ -20,26 +20,43 @@ class OrderListLayout extends ListLayout
         return [
             $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
-            TD::set(FieldNameInterface::COUNTERAGENT_ID, FieldLabelInterface::COUNTERAGENT)
-                ->render(function (Order $order) {
-                    return $order->counteragent->name;
-                }),
+            TD::set(FieldNameInterface::DATETIME, FieldLabelInterface::DATETIME),
+            TD::set(FieldNameInterface::DATE_ORDER_ID, FieldLabelInterface::DATE_ORDER_ID),
 
-            TD::set(FieldNameInterface::ITEM, FieldLabelInterface::ITEMS)
-                ->render(function (Order $order) {
-                    /** @var OrderItem[] $orderItems */
-                    $orderItems = $order->items;
+            TD::set(FieldNameInterface::PRODUCT_QUOTE_ID, FieldLabelInterface::PRODUCT_QUOTE_ID),
 
-                    $orderItemsViews = [];
+            TD::set(FieldNameInterface::IMEIES, FieldLabelInterface::IMEIES),
 
-                    foreach ($orderItems as $orderItem) {
-                        $orderItemsViews[] = $this->getOrderItemView($orderItem);
-                    }
+            TD::set(FieldNameInterface::COUNT, FieldLabelInterface::COUNT),
+            TD::set(FieldNameInterface::AMOUNT, FieldLabelInterface::AMOUNT),
 
-                    return implode(', ', $orderItemsViews);
-                }),
+            TD::set(FieldNameInterface::PROVIDER_ID, FieldLabelInterface::PROVIDER_ID),
+            TD::set(FieldNameInterface::BUYER_ID, FieldLabelInterface::BUYER_ID),
 
-            TD::set(FieldNameInterface::TOTAL_AMOUNT, FieldLabelInterface::TOTAL_AMOUNT),
+            TD::set(FieldNameInterface::COURIER_ID, FieldLabelInterface::COURIER_ID),
+
+            TD::set(FieldNameInterface::INCOMES, FieldLabelInterface::INCOMES),
+
+
+//            TD::set(FieldNameInterface::COUNTERAGENT_ID, FieldLabelInterface::COUNTERAGENT)
+//                ->render(function (Order $order) {
+//                    return $order->counteragent->name;
+//                }),
+//
+//            TD::set(FieldNameInterface::ITEM, FieldLabelInterface::ITEMS)
+//                ->render(function (Order $order) {
+//                    /** @var OrderItem[] $orderItems */
+//                    $orderItems = $order->items;
+//
+//                    $orderItemsViews = [];
+//
+//                    foreach ($orderItems as $orderItem) {
+//                        $orderItemsViews[] = $this->getOrderItemView($orderItem);
+//                    }
+//
+//                    return implode(', ', $orderItemsViews);
+//                }),
+
             TD::set(FieldNameInterface::NOTE, FieldLabelInterface::NOTE),
 
             TD::set(FieldNameInterface::CREATED_AT, FieldLabelInterface::CREATED_AT),
