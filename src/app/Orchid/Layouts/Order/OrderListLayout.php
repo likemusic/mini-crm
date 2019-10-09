@@ -19,6 +19,7 @@ class OrderListLayout extends ListLayout
     {
         return [
             $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+
             TD::set(FieldNameInterface::COUNTERAGENT_ID, FieldLabelInterface::COUNTERAGENT)
                 ->render(function (Order $order) {
                     return $order->counteragent->name;

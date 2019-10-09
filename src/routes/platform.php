@@ -13,6 +13,7 @@ use App\Entity\ProductQuote\Route\EditableRegistrar as ProductQuoteRouteRegistra
 use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
 use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
 use App\Entity\Counteragent\Route\EditableRegistrar as CounteragentRouteRegistrar;
+use App\Entity\Currency\Route\EditableRegistrar as CurrencyRouteRegistrar;
 use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
 use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
 
@@ -99,6 +100,10 @@ $orderRouteRegistrar->registerRoutes($this->router);
 /** @var CounteragentRouteRegistrar $counteragentRouteRegistrar */
 $counteragentRouteRegistrar = App::make(CounteragentRouteRegistrar::class);
 $counteragentRouteRegistrar->registerRoutes($this->router);
+
+/** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
+$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
+$currencyRouteRegistrar->registerRoutes($this->router);
 
 /** @var WalletRouteRegistrar $walletRouteRegistrar */
 $walletRouteRegistrar = App::make(WalletRouteRegistrar::class);

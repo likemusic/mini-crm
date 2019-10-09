@@ -15,6 +15,7 @@ use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
 use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
 use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
 use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
+use App\Entity\Currency\MenuRegistrar as CurrencyMenuRegistrar;
 use App\Entity\Wallet\MenuRegistrar as WalletMenuRegistrar;
 use App\Entity\ExchangeRate\MenuRegistrar as ExchangeRateMenuRegistrar;
 use Orchid\Platform\Dashboard;
@@ -108,6 +109,7 @@ class MainMenuComposer
      * @param OrderItemMenuRegistrar $orderItemMenuRegistrar
      * @param OrderMenuRegistrar $orderMenuRegistrar
      * @param CounteragentMenuRegistrar $counteragentMenuRegistrar
+     * @param CurrencyMenuRegistrar $currencyMenuRegistrar
      * @param WalletMenuRegistrar $walletMenuRegistrar
      * @param ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar
      */
@@ -124,6 +126,7 @@ class MainMenuComposer
         OrderItemMenuRegistrar $orderItemMenuRegistrar,
         OrderMenuRegistrar $orderMenuRegistrar,
         CounteragentMenuRegistrar $counteragentMenuRegistrar,
+        CurrencyMenuRegistrar $currencyMenuRegistrar,
         WalletMenuRegistrar $walletMenuRegistrar,
         ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar
     ) {
@@ -140,6 +143,7 @@ class MainMenuComposer
         $this->orderMenuRegistrar = $orderMenuRegistrar;
         $this->counteragentMenuRegistrar = $counteragentMenuRegistrar;
         $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+        $this->currencyMenuRegistrar = $currencyMenuRegistrar;
         $this->walletMenuRegistrar = $walletMenuRegistrar;
         $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
     }
@@ -210,6 +214,7 @@ class MainMenuComposer
             $this->orderItemMenuRegistrar->register($dashboardMenu);
             $this->orderMenuRegistrar->register($dashboardMenu);
             $this->counteragentMenuRegistrar->register($dashboardMenu);
+            $this->currencyMenuRegistrar->register($dashboardMenu);
             $this->walletMenuRegistrar->register($dashboardMenu);
             $this->exchangeRateMenuRegistrar->register($dashboardMenu);
     }
