@@ -15,6 +15,7 @@ use App\Model\OrderItem;
 use App\Model\Counteragent;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
+use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
@@ -41,8 +42,10 @@ class EditScreen extends BaseEditScreen
     {
         return [
             Layout::rows([
-                Input::make($this->getDataPath(FieldNameInterface::DATETIME))
-                    ->title(FieldLabelInterface::DATETIME),
+                DateTimer::make($this->getDataPath(FieldNameInterface::DATETIME))
+                    ->title(FieldLabelInterface::DATETIME)
+                    ->enableTime()
+                    ->allowInput(),
 
                 Input::make($this->getDataPath(FieldNameInterface::DATE_ORDER_ID))
                     ->title(FieldLabelInterface::DATE_ORDER_ID),

@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
@@ -26,6 +27,20 @@ class Order extends Model
 //        FieldNameInterface::INCOMES,
         FieldNameInterface::NOTE,
     ];
+
+
+//    protected $attributes = [
+//        FieldNameInterface::DATETIME => new \DateTime(),
+//    ];
+
+    public function getDatetimeAttribute($value)
+    {
+        if ($value) {
+            return $value;
+        }
+
+        return date('Y-m-d H:i:s');
+    }
 
     public function productQuote()
     {
