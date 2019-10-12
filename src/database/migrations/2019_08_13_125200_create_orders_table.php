@@ -10,6 +10,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNameInterface;
 use App\Contract\Entity\ProductQuote\TableInterface as ProductQuoteTableInterface;
+use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
+use App\Contract\Entity\Product\TableInterface as ProductTableInterface;
 use App\Contract\Entity\User\TableInterface as UserTableInterface;
 
 class CreateOrdersTable extends Migration
@@ -25,6 +27,13 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements(FieldNameInterface::ID);
             $table->dateTime(FieldNameInterface::DATETIME);
             $table->integer(FieldNameInterface::DATE_ORDER_ID);
+
+            $this->addRelationColumn(
+                $table,
+                FieldNameInterface::PRODUCT_ID,
+                ProductTableInterface::NAME,
+                ProductFieldNameInterface::ID
+            );
 
             $this->addRelationColumn(
                 $table,
@@ -58,7 +67,7 @@ class CreateOrdersTable extends Migration
     {
         $this->addRelationColumn($table, $fieldName, CounteragentTableInterface::NAME, CounteragentFieldNameInterface::ID);
     }
-    
+
     /**
      * Reverse the migrations.
      *

@@ -29,32 +29,33 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $allPermissionsSlugs = $this->getAllPermissionsSlugs();
+        $allPermissions = array_fill_keys($allPermissionsSlugs, true);
 
         $data = [
             [
                 NameInterface::NAME => RoleNameInterface::SUPER_ADMIN,
                 NameInterface::SLUG => RoleSlugInterface::SUPER_ADMIN,
-                NameInterface::PERMISSIONS => $allPermissionsSlugs,
+                NameInterface::PERMISSIONS => $allPermissions,
             ],
             [
                 NameInterface::NAME => RoleNameInterface::ADMIN,
                 NameInterface::SLUG => RoleSlugInterface::ADMIN,
-                NameInterface::PERMISSIONS => $allPermissionsSlugs,
+                NameInterface::PERMISSIONS => $allPermissions,
             ],
             [
                 NameInterface::NAME => RoleNameInterface::COURIER,
                 NameInterface::SLUG => RoleSlugInterface::COURIER,
-                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::COURIER],
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::COURIER => true],
             ],
             [
                 NameInterface::NAME => RoleNameInterface::WAREHOUSEMAN,
                 NameInterface::SLUG => RoleSlugInterface::WAREHOUSEMAN,
-                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::WAREHOUSEMAN],
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::WAREHOUSEMAN => true],
             ],
             [
                 NameInterface::NAME => RoleNameInterface::ORDER_OPERATOR,
                 NameInterface::SLUG => RoleSlugInterface::ORDER_OPERATOR,
-                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::ORDER_OPERATOR],
+                NameInterface::PERMISSIONS => [CrmPermissionNameInterface::ORDER_OPERATOR => true],
             ],
         ];
 

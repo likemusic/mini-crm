@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
+use App\Repositories\OrderRepository;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
@@ -28,10 +29,20 @@ class Order extends Model
         FieldNameInterface::NOTE,
     ];
 
+    /**
+     * @var OrderRepository
+     */
+    private $orderRepository;
 
 //    protected $attributes = [
 //        FieldNameInterface::DATETIME => new \DateTime(),
 //    ];
+
+    public function __construct(OrderRepository $orderRepository, array $attributes = [])
+    {
+        $this->orderRepository = $orderRepository;
+        parent::__construct($attributes);
+    }
 
     public function getDatetimeAttribute($value)
     {
@@ -40,6 +51,20 @@ class Order extends Model
         }
 
         return date('Y-m-d H:i:s');
+    }
+
+    public function getDateOrderIdAttribute($value)
+    {
+        if ($value) {
+            return $value;
+        }
+
+        return $this->getNextDateOrderId();
+    }
+
+    private function getNextDateOrderId()
+    {
+        return $this->orderRepository->getNextDateOrderId();
     }
 
     public function productQuote()

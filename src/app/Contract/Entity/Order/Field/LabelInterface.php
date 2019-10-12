@@ -9,6 +9,8 @@ interface LabelInterface
     const DATETIME = 'Дата и время заказа';
     const DATE_ORDER_ID = 'Номер заказа за день';
 
+    const PRODUCT = 'Товар';
+    const PRODUCT_ID = 'Id товара';
     const PRODUCT_QUOTE_ID = 'Id снимка товара';
     const PRODUCT_QUOTE = 'Снимок товара';
 

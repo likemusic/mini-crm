@@ -1,11 +1,13 @@
 <?php
 
+use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
+use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\Helper\PermissionsProvider;
 use App\Model\User;
+use App\Repositories\RoleRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
-use App\Contract\Entity\Permission\Crm\NameInterface as CrmPermissionNameInterface;
-use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
+use Orchid\Platform\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,9 +18,15 @@ class UsersTableSeeder extends Seeder
      */
     private $permissionsProvider;
 
-    public function __construct(PermissionsProvider $permissionsProvider)
+    /**
+     * @var RoleRepository
+     */
+    private $roleRepository;
+
+    public function __construct(PermissionsProvider $permissionsProvider, RoleRepository $roleRepository)
     {
         $this->permissionsProvider = $permissionsProvider;
+        $this->roleRepository = $roleRepository;
     }
 
     /**
@@ -29,7 +37,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $this->addAdmin();
-        $this->addCourier();
+        $this->addCouriers();
         $this->addOperator();
         $this->addWarehouseman();
     }
@@ -52,46 +60,81 @@ class UsersTableSeeder extends Seeder
         ]);
     }
 
-    private function addCourier()
+    private function addCouriers()
     {
-        $name = 'Courier';
-        $email = 'courier@test.loc';
-        $permissions = [CrmPermissionNameInterface::COURIER];
-        $password = self::DEFAULT_PASSWORD;
+        $courierRole = $this->getCourierRole();
+        $maxCouriersCount = SeedCountInterface::USERS_COURIERS;
 
-        $this->addUser($name, $email, $password, $permissions);
+        for($i = 0; $i < $maxCouriersCount; $i++) {
+            $this->addCourier($i, $courierRole);
+        }
     }
 
-    private function addUser(string $name, string $email, $password, $permissions)
+    private function getCourierRole(): Role
+    {
+        $courierRoleSlug = RoleSlugInterface::COURIER;
+
+        return $this->getRoleBySlug($courierRoleSlug);
+    }
+
+    private function getRoleBySlug(string $roleSlug): Role
+    {
+        return $this->roleRepository->getRoleBySlug($roleSlug);
+    }
+
+    private function addCourier($i, $courierRole)
+    {
+        $name = "Courier {$i}";
+        $email = "courier{$i}@test.loc";
+        $password = self::DEFAULT_PASSWORD;
+
+        $this->addUser($name, $email, $password, $courierRole);
+    }
+
+    private function addUser(string $name, string $email, $password, Role $role)
     {
         $attributes = [
             UserFieldNameInterface::NAME => $name,
             UserFieldNameInterface::EMAIL => $email,
             UserFieldNameInterface::PASSWORD => $password,
-            UserFieldNameInterface::PERMISSIONS => $permissions,
         ];
 
         $entity = new User($attributes);
         $entity->save();
+        $entity->addRole($role);
     }
 
     private function addOperator()
     {
         $name = 'Operator';
         $email = 'operator@test.loc';
-        $permissions = [CrmPermissionNameInterface::ORDER_OPERATOR];
         $password = self::DEFAULT_PASSWORD;
+        $operatorRole = $this->getOperatorRole();
 
-        $this->addUser($name, $email, $password, $permissions);
+        $this->addUser($name, $email, $password, $operatorRole);
+    }
+
+    private function getOperatorRole(): Role
+    {
+        $courierRoleSlug = RoleSlugInterface::ORDER_OPERATOR;
+
+        return $this->getRoleBySlug($courierRoleSlug);
     }
 
     private function addWarehouseman()
     {
         $name = 'Warehouseman';
         $email = 'warehouseman@test.loc';
-        $permissions = [CrmPermissionNameInterface::WAREHOUSEMAN];
         $password = self::DEFAULT_PASSWORD;
+        $role = $this->getWarehousemanRole();
 
-        $this->addUser($name, $email, $password, $permissions);
+        $this->addUser($name, $email, $password, $role);
+    }
+
+    private function getWarehousemanRole(): Role
+    {
+        $courierRoleSlug = RoleSlugInterface::WAREHOUSEMAN;
+
+        return $this->getRoleBySlug($courierRoleSlug);
     }
 }

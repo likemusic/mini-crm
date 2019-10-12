@@ -9,6 +9,7 @@ interface NameInterface
     const DATETIME = 'datetime';
     const DATE_ORDER_ID = 'date_order_id';
 
+    const PRODUCT_ID = 'product_id';
     const PRODUCT_QUOTE_ID = 'product_quote_id';
     const IMEIES = 'imeies';
 
