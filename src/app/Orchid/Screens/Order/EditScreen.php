@@ -21,6 +21,7 @@ use App\Model\User;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Orchid\Platform\Dashboard;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
@@ -36,14 +37,24 @@ class EditScreen extends BaseEditScreen
      */
     private $currencyRepository;
 
+    /**
+     * @var Dashboard
+     */
+    private $dashboard;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
         EditableUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         CurrencyRepository $currencyRepository,
+        Dashboard $dashboard,
         ?Request $request = null
     ) {
+        $this->dashboard = $dashboard;
+
+        $dashboard->registerResource('scripts','https://cdn.jsdelivr.net/npm/vue@2.6.0');
+        $dashboard->registerResource('scripts','/js/order.js');
         $this->currencyRepository = $currencyRepository;
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
     }
@@ -70,17 +81,17 @@ class EditScreen extends BaseEditScreen
 //                    ->empty('Выберите товар')
                 ->required(),
 
-            Input::make($this->getDataPath(FieldNameInterface::COUNT))
-                ->title(FieldLabelInterface::COUNT)
-                ->required(),
-
             Input::make($this->getDataPath(FieldNameInterface::ITEM_PRICE))
                 ->title(FieldLabelInterface::ITEM_PRICE)
                 ->required(),
 
+            Input::make($this->getDataPath(FieldNameInterface::COUNT))
+                ->title(FieldLabelInterface::COUNT)
+                ->required(),
+
             Input::make($this->getDataPath(FieldNameInterface::AMOUNT))
                 ->title(FieldLabelInterface::AMOUNT)
-                ->disabled(),
+                ->readonly(),
 
 //                Input::make($this->getDataPath(FieldNameInterface::PRODUCT_QUOTE_ID))
 //                    ->title(FieldLabelInterface::PRODUCT_QUOTE_ID),

@@ -59,6 +59,12 @@ services:
       SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL}
       SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD}
 
+  nodejs:
+    image: node:12.11
+    volumes:
+      - ./src:/usr/share/nginx/html
+    working_dir: /usr/share/nginx/html
+
   tests:
     build: ./docker/composer
     depends_on:
