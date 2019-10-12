@@ -114,11 +114,10 @@ class EditScreen extends BaseEditScreen
                 ->title(FieldLabelInterface::COURIER)
                 ->fromModel(User::class, UserFieldNameInterface::NAME)
                 ->required()
-                ->applyScope('courier')
-            ,
+                ->applyScope('courier'),
 
-            Input::make($this->getDataPath(FieldNameInterface::INCOMES))
-                ->title(FieldLabelInterface::INCOMES),
+//            Input::make($this->getDataPath(FieldNameInterface::INCOMES))
+//                ->title(FieldLabelInterface::INCOMES),
 
 //                Relation::make($this->getDataPath(FieldNameInterface::COUNTERAGENT_ID))
 //                    ->title(FieldLabelInterface::COUNTERAGENT_ID)
