@@ -27,24 +27,27 @@ class WalletListLayout extends ListLayout
         return [
             $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
-            TD::set(FieldNameInterface::OWNER_ID, LabelInterface::OWNER)
-                ->render(function (Wallet $wallet) {
-                    /** @var User $owner */
-                    $owner = $wallet->owner;
-                    $ownerName = $owner->name;
+            TD::set(FieldNameInterface::OWNER_ID, LabelInterface::OWNER_ID),
+            TD::set(FieldNameInterface::OWNER_TYPE, LabelInterface::OWNER_TYPE),
+//            TD::set(FieldNameInterface::OWNER_ID, LabelInterface::OWNER)
+//                ->render(function (Wallet $wallet) {
+//                    /** @var User $owner */
+//                    $ownerId = $wallet->ownerId;
+//                    $ownerType = $wallet->ownerType;
+//                    $ownerName = $owner->name;
 
-                    $ownerRoles = $owner->getRoles();
+//                    $ownerRoles = $owner->getRoles();
 
-                    $roleNames = [];
-                    foreach ($ownerRoles as $ownerRole) {
-                        $roleNames[] = $ownerRole->name;
-                    }
+//                    $roleNames = [];
+//                    foreach ($ownerRoles as $ownerRole) {
+//                        $roleNames[] = $ownerRole->name;
+//                    }
 
 
-                    $ownerRoleNames = implode(', ', $roleNames);
+//                    $ownerRoleNames = implode(', ', $roleNames);
 
-                    return "{$ownerName} ({$ownerRoleNames})";
-                }),
+//                    return "{$ownerId} ({$ownerType})";
+//                }),
 
             TD::set(FieldNameInterface::CURRENCY_CODE, LabelInterface::CURRENCY_CODE),
             TD::set(FieldNameInterface::AMOUNT, LabelInterface::AMOUNT),

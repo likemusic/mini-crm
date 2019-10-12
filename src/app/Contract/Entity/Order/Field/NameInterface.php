@@ -14,6 +14,8 @@ interface NameInterface
     const IMEIES = 'imeies';
 
     const COUNT = 'count';
+    const ITEM_PRICE = 'item_price';
+
     const AMOUNT = 'amount';
 
     const PROVIDER_ID = 'provider_id';

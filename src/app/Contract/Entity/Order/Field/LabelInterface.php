@@ -17,6 +17,7 @@ interface LabelInterface
     const IMEIES = 'IMEI коды';
 
     const COUNT = 'Кол-во';
+    const ITEM_PRICE = 'Цена за шт., $';
     const AMOUNT = 'Общая сумма';
 
     const PROVIDER_ID = 'Id поставщика';

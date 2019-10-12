@@ -23,4 +23,9 @@ class CurrencyRepository
             ->first(NameInterface::ID)
             ->id;
     }
+
+    public function getAvailableCurrencies()
+    {
+        return $this->currencyModel->all();
+    }
 }

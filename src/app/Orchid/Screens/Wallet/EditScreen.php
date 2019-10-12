@@ -9,6 +9,7 @@ use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Entity\Wallet\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Wallet as InfoMessageProvider;
+use App\Model\Counteragent;
 use App\Model\User;
 use App\Model\Wallet;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
@@ -46,21 +47,29 @@ class EditScreen extends BaseEditScreen
      */
     public function layout(): array
     {
+        $walletOwnerTypes = $this->getWalletOwnerTypes();
+
         return [
             Layout::rows([
                 Input::make($this->getDataPath(FieldNameInterface::NAME))
                     ->title(FieldLabelInterface::NAME),
 
-                Relation::make($this->getDataPath(FieldNameInterface::OWNER_ID))
-                    ->title(FieldLabelInterface::OWNER)
-                    ->required()
-//                    ->placeholder('Уцененный товар')
-//                    ->help('Выберите товар для уцененки.')
-                    ->fromModel(
-                        User::class,
-                        UserFieldNameInterface::NAME,
-                        UserFieldNameInterface::ID
-                    ),
+                Input::make($this->getDataPath(FieldNameInterface::OWNER_ID))
+                    ->title(FieldLabelInterface::OWNER_ID),
+//                Relation::make($this->getDataPath(FieldNameInterface::OWNER_ID))
+//                    ->title(FieldLabelInterface::OWNER)
+//                    ->required()
+////                    ->placeholder('Уцененный товар')
+////                    ->help('Выберите товар для уцененки.')
+//                    ->fromModel(
+//                        User::class,
+//                        UserFieldNameInterface::NAME,
+//                        UserFieldNameInterface::ID
+//                    ),
+
+                Select::make($this->getDataPath(FieldNameInterface::OWNER_TYPE))
+                    ->title(FieldLabelInterface::OWNER_TYPE)
+                    ->options($walletOwnerTypes),
 
                 Select::make($this->getDataPath(FieldNameInterface::CURRENCY_CODE))
                     ->options($this->currenciesListProvider->getCurrenciesList())
@@ -72,6 +81,14 @@ class EditScreen extends BaseEditScreen
                 TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
                     ->title(FieldLabelInterface::NOTE),
             ])
+        ];
+    }
+
+    private function getWalletOwnerTypes()
+    {
+        return [
+            User::class => 'Пользователь',
+            Counteragent::class => 'Контрагент',
         ];
     }
 
