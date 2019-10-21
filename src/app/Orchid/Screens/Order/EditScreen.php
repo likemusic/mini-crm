@@ -29,6 +29,8 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
+use App\Orchid\Screen\Fields\RelationWithData;
+
 
 class EditScreen extends BaseEditScreen
 {
@@ -67,6 +69,12 @@ class EditScreen extends BaseEditScreen
      */
     public function layout(): array
     {
+        $productDataFieldName = [
+            PharmacyFieldNameInterface::SELLING_PRICE,
+            PharmacyFieldNameInterface::APPROXIMATE_PRICE,
+            PharmacyFieldNameInterface::WAREHOUSES_TOTAL_QUANTITY
+        ];
+
         $rows = [
             Field::group([
                 DateTimer::make($this->getDataPath(FieldNameInterface::DATETIME))
@@ -78,11 +86,16 @@ class EditScreen extends BaseEditScreen
                     ->title(FieldLabelInterface::DATE_ORDER_ID),
             ]),
 
-            Relation::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
+            Relation::make($this->getDataPath(FieldNameInterface::PRODUCT_ID . '1'))
                 ->title(FieldLabelInterface::PRODUCT)
-                ->fromModel(Product::class, ProductFieldNameInterface::NAME)
-//                    ->empty('Выберите товар')
-                ->required(),
+                ->fromModel(Product::class, ProductFieldNameInterface::NAME),
+//                ->empty('Выберите товар'),
+
+            RelationWithData::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
+                ->title(FieldLabelInterface::PRODUCT)
+                ->fromModel(Product::class, ProductFieldNameInterface::NAME, null, $productDataFieldName)
+//                ->empty('Выберите товар')
+
         ];
 
         if (!$this->exists) {

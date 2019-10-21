@@ -13,8 +13,9 @@ const mix = require('laravel-mix');
 
 mix
     .copy('resources/js/order.js', 'public/js')
+    .js('resources/js/dashboard.js', 'public/js')
     // .js('resources/js/app.js', 'public/js')
     // .js('resources/js/test.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    // .sourceMaps();
+    .sourceMaps()
 ;

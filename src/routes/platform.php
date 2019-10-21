@@ -17,6 +17,7 @@ use App\Entity\Currency\Route\EditableRegistrar as CurrencyRouteRegistrar;
 use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
 use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
 
+use App\Http\Controllers\Orchid\Patform\RelationWithDataController;
 use App\Orchid\Screens\EmailSenderScreen;
 use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -112,3 +113,6 @@ $walletRouteRegistrar->registerRoutes($this->router);
 /** @var ExchangeRateRouteRegistrar $exchangeRateRouteRegistrar */
 $exchangeRateRouteRegistrar = App::make(ExchangeRateRouteRegistrar::class);
 $exchangeRateRouteRegistrar->registerRoutes($this->router);
+
+$this->router->post('relation-with-data', [RelationWithDataController::class, 'view'])
+    ->name('platform.systems.relation-with-data');
