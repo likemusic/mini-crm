@@ -35,27 +35,44 @@ class PharmacyDataProvider
 
     public function __construct(
         WarehouseRepository $warehouseRepository,
-        PharmacyHelper $pharmacyHelper,
-        Pharmacy $pharmacy
+        PharmacyHelper $pharmacyHelper
+//        Pharmacy $pharmacy
     )
     {
         $this->warehouseRepository = $warehouseRepository;
         $this->pharmacyHelper = $pharmacyHelper;
-        $this->pharmacy = $pharmacy;
+//        $this->pharmacy = $pharmacy;
     }
 
     public function all()
     {
-        $sortedWarehouseIds = $this->getSortedWarehouseIds();
-
         $productTableName = ProductTableInterface::NAME;
         $productTableAlias = 'p';
         $builder = $this->getQueryBuilder($productTableName, $productTableAlias);
 
+        $this->addJoins($builder, $productTableAlias);
+
+        return $this->getRepositoriesArrayByBuilder($builder);
+    }
+
+    private function getRepositoriesArrayByBuilder(Builder $builder)
+    {
+        $ret = $builder->get();
+        $arr = $ret->toArray();
+        $repositories = $this->arrayToRepositories($arr);
+
+        return $repositories;
+    }
+
+
+    public function addJoins(Builder $builder, $productTableAlias)
+    {
+        $sortedWarehouseIds = $this->getSortedWarehouseIds();
         $stockItemTablesAliases = $this->getStockItemTableAliases($sortedWarehouseIds);
 
         $this->joinWarehousesQuantities($builder, $productTableAlias, $sortedWarehouseIds, $stockItemTablesAliases);
         $builder
+            ->addSelect($this->buildFieldName($productTableAlias, ProductFieldNameInterface::ID))
             ->addSelect(ProductFieldNameInterface::NAME)
             ->addSelect(ProductFieldNameInterface::APPROXIMATE_PRICE)
             ->addSelect(ProductFieldNameInterface::SELLING_PRICE);
@@ -63,14 +80,19 @@ class PharmacyDataProvider
         $this->addSelectTotalWarehouseQuantities($builder, $stockItemTablesAliases);
         $this->addSelectTotalWarehouseAmount($builder, $stockItemTablesAliases);
 
-        $ret = $builder->get();
-
-        $arr = $ret->toArray();
-
-        $repositories = $this->arrayToRepositories($arr);
-
-        return $repositories;
+//        $sortedWarehouseIds = $this->getSortedWarehouseIds();
+//
+//        $productTableName = ProductTableInterface::NAME;
+//        $productTableAlias = 'p';
+////        $builder = $this->getQueryBuilder($productTableName, $productTableAlias);
+//
+//        $this->joinWarehousesQuantities($builder, $productTableAlias, $sortedWarehouseIds);
+//
+//        $ret = $builder->get();
+//
+//        return $ret->toArray();
     }
+
 
     private function addSelectTotalWarehouseQuantities(Builder $builder, $stockItemTablesAliases)
     {
@@ -218,19 +240,4 @@ class PharmacyDataProvider
 
         return $ret;
     }
-
-//    public function addJoins(Builder $builder)
-//    {
-//        $sortedWarehouseIds = $this->getSortedWarehouseIds();
-//
-//        $productTableName = ProductTableInterface::NAME;
-//        $productTableAlias = 'p';
-////        $builder = $this->getQueryBuilder($productTableName, $productTableAlias);
-//
-//        $this->joinWarehousesQuantities($builder, $productTableAlias, $sortedWarehouseIds);
-//
-//        $ret = $builder->get();
-//
-//        return $ret->toArray();
-//    }
 }

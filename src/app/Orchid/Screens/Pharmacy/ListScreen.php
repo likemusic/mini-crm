@@ -37,6 +37,9 @@ class ListScreen extends BaseListScreen
 
     protected function getData()
     {
-        return $this->pharmacyDataProvider->all();
+        return \App\Model\Pharmacy::paginate();
+        //\App\Model\Pharmacy::all();
+
+//        return $this->pharmacyDataProvider->all();
     }
 }

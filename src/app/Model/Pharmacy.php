@@ -2,12 +2,11 @@
 
 namespace App\Model;
 
-use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
-use Illuminate\Database\Eloquent\Model;
+use App\Database\Eloquent\Builder as ExtendedEloquentBuilder;
+use App\Database\Eloquent\Model;
+use App\DataProviders\PharmacyDataProvider;
 use Illuminate\Database\Query\Builder;
 use Orchid\Screen\AsSource;
-use App\Model\ProductCategory;
-use App\DataProviders\PharmacyDataProvider;
 
 class Pharmacy extends Model
 {
@@ -25,26 +24,42 @@ class Pharmacy extends Model
      */
     private $pharmacyDataProvider;
 
-    public function __construct(array $attributes = [])
+    public function __construct(PharmacyDataProvider $pharmacyDataProvider, array $attributes = [])
     {
+        $this->pharmacyDataProvider = $pharmacyDataProvider;
         parent::__construct($attributes);
     }
 
-
     public function newModelQuery()
     {
-        $modelQuery = parent::newModelQuery();
+        $newBaseQueryBuilder = $this->newBaseQueryBuilder();
+        $newEloquentBuilder = $this->newEloquentBuilder($newBaseQueryBuilder);
 
-        $query = $modelQuery->getQuery();
+        $productTableAlias = 'p';
+//        $newEloquentBuilder->setModelWithTableAlias($this, $productTableAlias);
+        $newEloquentBuilder->setModel($this);
 
-//        $this->addJoins($query);
+        $query = $newEloquentBuilder->getQuery();
 
-        return $modelQuery;
+        $this->addJoins($query, $productTableAlias);
+
+        return $newEloquentBuilder;
     }
 
-    private function addJoins(Builder $query)
+    /**
+     * Create a new Eloquent query builder for the model.
+     *
+     * @param  \Illuminate\Database\Query\Builder $query
+     * @return ExtendedEloquentBuilder|static
+     */
+    public function newEloquentBuilder($query)
     {
-        $this->pharmacyDataProvider->addJoins($query);
+        return new ExtendedEloquentBuilder($query);
+    }
+
+    private function addJoins(Builder $query, string $productTableAlias)
+    {
+        $this->pharmacyDataProvider->addJoins($query, $productTableAlias);
     }
 
 }
