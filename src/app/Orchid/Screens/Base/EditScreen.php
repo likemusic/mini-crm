@@ -38,7 +38,7 @@ abstract class EditScreen extends Screen
     /**
      * @var bool
      */
-    private $exists = false;
+    protected $exists = false;
 
     public function __construct(
         RouteNameProviderInterface $routeRouteNameProviderInterface,
