@@ -6,7 +6,7 @@ use App\Entity\Base\Route\Registrar\NotEditableRegistrar as BaseRegistrar;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Entity\Pharmacy\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Pharmacy\ListScreen as ListScreen;
+use App\Orchid\Screens\Pharmacy\ModelBasedListScreen;
 
 class NotEditableRegistrar extends BaseRegistrar
 {
@@ -16,7 +16,7 @@ class NotEditableRegistrar extends BaseRegistrar
         RoutePathProvider $pathProvider
     )
     {
-        $listScreenClassName = ListScreen::class;
+        $listScreenClassName = ModelBasedListScreen::class;
 
         parent::__construct(
             $routeRegisterHelper,

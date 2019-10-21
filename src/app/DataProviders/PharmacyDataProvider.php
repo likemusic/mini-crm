@@ -79,18 +79,6 @@ class PharmacyDataProvider
 
         $this->addSelectTotalWarehouseQuantities($builder, $stockItemTablesAliases);
         $this->addSelectTotalWarehouseAmount($builder, $stockItemTablesAliases);
-
-//        $sortedWarehouseIds = $this->getSortedWarehouseIds();
-//
-//        $productTableName = ProductTableInterface::NAME;
-//        $productTableAlias = 'p';
-////        $builder = $this->getQueryBuilder($productTableName, $productTableAlias);
-//
-//        $this->joinWarehousesQuantities($builder, $productTableAlias, $sortedWarehouseIds);
-//
-//        $ret = $builder->get();
-//
-//        return $ret->toArray();
     }
 
 

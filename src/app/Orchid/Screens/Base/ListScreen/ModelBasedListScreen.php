@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
+use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
 
 abstract class ModelBasedListScreen extends BaseListScreen
 {
@@ -27,7 +28,7 @@ abstract class ModelBasedListScreen extends BaseListScreen
 
     public function __construct(
         Model $model,
-        EditableUseVariantProviderInterface $useVariant,
+        NotEditableUseVariantProviderInterface $useVariant,
         RouteNameProviderInterface $routeNameProvider,
         ?Request $request = null)
     {
@@ -57,6 +58,11 @@ abstract class ModelBasedListScreen extends BaseListScreen
         ];
     }
 
+    protected function canAdd()
+    {
+        return true;
+    }
+
     /**
      * Button commands.
      *
@@ -64,6 +70,10 @@ abstract class ModelBasedListScreen extends BaseListScreen
      */
     public function commandBar(): array
     {
+        if (!$this->canAdd()) {
+            return [];
+        }
+
         return [
             Link::make(AddCommandInterface::NAME)
                 ->href(route($this->routeNameProvider->getNew()))
