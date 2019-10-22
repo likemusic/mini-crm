@@ -33,7 +33,12 @@ class EditableRegistrar implements RegistrarInterface
     /**
      * @var string
      */
-    private $editScreenClassName;
+    private $createScreenClassName;
+
+    /**
+     * @var string
+     */
+    private $updateScreenClassName;
 
     /**
      * Registrar constructor.
@@ -42,19 +47,22 @@ class EditableRegistrar implements RegistrarInterface
      * @param PathProviderInterface $pathProvider
      * @param string $listScreenClassName
      * @param string $editScreenClassName
+     * @param string $updateScreenClassName
      */
     public function __construct(
         RouteRegisterHelper $routeRegisterHelper,
         NameProviderInterface $nameProvider,
         PathProviderInterface $pathProvider,
         string $listScreenClassName,
-        string $editScreenClassName
+        string $editScreenClassName,
+        string $updateScreenClassName
     ) {
         $this->routeRegisterHelper = $routeRegisterHelper;
         $this->nameProvider = $nameProvider;
         $this->pathProvider = $pathProvider;
         $this->listScreenClassName = $listScreenClassName;
-        $this->editScreenClassName = $editScreenClassName;
+        $this->createScreenClassName = $editScreenClassName;
+        $this->updateScreenClassName = $updateScreenClassName;
     }
 
     /**
@@ -67,7 +75,8 @@ class EditableRegistrar implements RegistrarInterface
             $this->pathProvider,
             $this->nameProvider,
             $this->listScreenClassName,
-            $this->editScreenClassName
+            $this->createScreenClassName,
+            $this->updateScreenClassName
         );
     }
 }

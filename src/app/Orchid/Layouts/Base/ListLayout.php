@@ -31,7 +31,7 @@ abstract class ListLayout extends Table
 
     protected function getRouteNameEdit()
     {
-        return $this->routeNameProvider->getEdit();
+        return $this->routeNameProvider->getUpdate();
     }
 
     protected function getLinkField($name, $label, $routeName, $id)
@@ -46,7 +46,7 @@ abstract class ListLayout extends Table
 
     protected function getIdField($idFieldName, $idFieldLabel)
     {
-        $editRouteName = $this->routeNameProvider->getEdit();
+        $editRouteName = $this->routeNameProvider->getUpdate();
 
         return $this->getLinkField($idFieldName, $idFieldLabel, $editRouteName, $idFieldName);
     }

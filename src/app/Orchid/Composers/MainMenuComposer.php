@@ -170,52 +170,61 @@ class MainMenuComposer
         // Main
         $dashboardMenu = $this->dashboard->menu;
 
+//            ->add(Menu::MAIN,
+//                ItemMenu::label('Example')
+//                    ->icon('icon-folder')
+//                    ->route('platform.example')
+//                    ->title('Example boilerplate')
+//            )
+//            ->add(Menu::MAIN,
+//                ItemMenu::label('Empty menu')
+//                    ->slug('example-menu')
+//                    ->icon('icon-code')
+//                    ->childs()
+//            )
+//            ->add('example-menu',
+//                ItemMenu::label('Empty sub item 1')
+//                    ->icon('icon-bag')
+//            )
+//            ->add('example-menu',
+//                ItemMenu::label('Empty sub item 2')
+//                    ->icon('icon-heart')
+//                    ->title('Separate')
+//            )
+//            // Email sender
+//            ->add(Menu::MAIN,
+//                ItemMenu::label('Email sender')
+//                    ->icon('icon-envelope-letter')
+//                    ->route('platform.email')
+//                    ->title('Tools')
+//            );
+
         $dashboardMenu
             ->add(Menu::MAIN,
-                ItemMenu::label('Example')
-                    ->icon('icon-folder')
-                    ->route('platform.example')
-                    ->title('Example boilerplate')
-            )
-            ->add(Menu::MAIN,
-                ItemMenu::label('Empty menu')
-                    ->slug('example-menu')
-                    ->icon('icon-code')
+                ItemMenu::label('Каталог товаров')
+                    ->slug('catalog')
+                    ->icon('icon-book-open')
                     ->childs()
-            )
-            ->add('example-menu',
-                ItemMenu::label('Empty sub item 1')
-                    ->icon('icon-bag')
-            )
-            ->add('example-menu',
-                ItemMenu::label('Empty sub item 2')
-                    ->icon('icon-heart')
-                    ->title('Separate')
-            )
-            // Email sender
-            ->add(Menu::MAIN,
-                ItemMenu::label('Email sender')
-                    ->icon('icon-envelope-letter')
-                    ->route('platform.email')
-                    ->title('Tools')
             );
 
-            // Calculated
-            $this->pharmacyMenuRegistrar->register($dashboardMenu);
 
             //Entities
-            $this->productMenuRegistrar->register($dashboardMenu);
-            $this->productCategoryMenuRegistrar->register($dashboardMenu);
-            $this->warehouseMenuRegistrar->register($dashboardMenu);
-            $this->stockItemMenuRegistrar->register($dashboardMenu);
-            $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
-            $this->discountedProductMenuRegistrar->register($dashboardMenu);
-            $this->productQuoteMenuRegistrar->register($dashboardMenu);
-            $this->orderItemMenuRegistrar->register($dashboardMenu);
-            $this->orderMenuRegistrar->register($dashboardMenu);
-            $this->counteragentMenuRegistrar->register($dashboardMenu);
-            $this->currencyMenuRegistrar->register($dashboardMenu);
-            $this->walletMenuRegistrar->register($dashboardMenu);
-            $this->exchangeRateMenuRegistrar->register($dashboardMenu);
+            $this->productCategoryMenuRegistrar->register($dashboardMenu, 'catalog');
+//            $this->productMenuRegistrar->register($dashboardMenu);
+//            $this->warehouseMenuRegistrar->register($dashboardMenu);
+//            $this->stockItemMenuRegistrar->register($dashboardMenu);
+//            $this->unaccountedProductMenuRegistrar->register($dashboardMenu);
+//            $this->discountedProductMenuRegistrar->register($dashboardMenu);
+//            $this->productQuoteMenuRegistrar->register($dashboardMenu);
+//            $this->orderItemMenuRegistrar->register($dashboardMenu);
+//            $this->orderMenuRegistrar->register($dashboardMenu);
+//            $this->counteragentMenuRegistrar->register($dashboardMenu);
+//            $this->currencyMenuRegistrar->register($dashboardMenu);
+//            $this->walletMenuRegistrar->register($dashboardMenu);
+//            $this->exchangeRateMenuRegistrar->register($dashboardMenu);
+
+        // Calculated
+//        $this->pharmacyMenuRegistrar->register($dashboardMenu);
+
     }
 }

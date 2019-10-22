@@ -65,70 +65,70 @@ Breadcrumbs::for('platform.email', function (BreadcrumbsGenerator $trail) {
 });
 
 /** @var BreadcrumbsHelper $breadcrumbsHelper */
-$breadcrumbsHelper = App::make(BreadcrumbsHelper::class);
+//$breadcrumbsHelper = App::make(BreadcrumbsHelper::class);
 
 /** @var ProductUseVariant $productUseVariant */
-$productUseVariant = App::make(ProductUseVariant::class);
+//$productUseVariant = App::make(ProductUseVariant::class);
 
 /** @var ProductRouteNameProvider $productRouteNameProvider */
-$productRouteNameProvider = App::make(ProductRouteNameProvider::class);
+//$productRouteNameProvider = App::make(ProductRouteNameProvider::class);
 
 // Platform > Pharmacy
 /** @var PharmacyBreadcrumbsRegistrar $pharmacyBreadcrumbsRegistrar */
-$pharmacyBreadcrumbsRegistrar = App::make(PharmacyBreadcrumbsRegistrar::class);
-$pharmacyBreadcrumbsRegistrar->register();
+//$pharmacyBreadcrumbsRegistrar = App::make(PharmacyBreadcrumbsRegistrar::class);
+//$pharmacyBreadcrumbsRegistrar->register();
 
 // Platform > Product
 /** @var ProductBreadcrumbsRegistrar $productBreadcrumbsRegistrar */
-$productBreadcrumbsRegistrar = App::make(ProductBreadcrumbsRegistrar::class);
-$productBreadcrumbsRegistrar->register();
+//$productBreadcrumbsRegistrar = App::make(ProductBreadcrumbsRegistrar::class);
+//$productBreadcrumbsRegistrar->register();
 
 // Platform > Warehouse
 /** @var WarehouseBreadcrumbsRegistrar $warehouseBreadcrumbsRegistrar */
-$warehouseBreadcrumbsRegistrar = App::make(WarehouseBreadcrumbsRegistrar::class);
-$warehouseBreadcrumbsRegistrar->register();
+//$warehouseBreadcrumbsRegistrar = App::make(WarehouseBreadcrumbsRegistrar::class);
+//$warehouseBreadcrumbsRegistrar->register();
 
 // Platform > StockItem
 /** @var StockItemBreadcrumbsRegistrar $stockItemBreadcrumbsRegistrar */
-$stockItemBreadcrumbsRegistrar = App::make(StockItemBreadcrumbsRegistrar::class);
-$stockItemBreadcrumbsRegistrar->register();
+//$stockItemBreadcrumbsRegistrar = App::make(StockItemBreadcrumbsRegistrar::class);
+//$stockItemBreadcrumbsRegistrar->register();
 
 // Platform > UnaccountedProduct
 /** @var UnaccountedProductBreadcrumbsRegistrar $unaccountedProductBreadcrumbsRegistrar */
-$unaccountedProductBreadcrumbsRegistrar = App::make(UnaccountedProductBreadcrumbsRegistrar::class);
-$unaccountedProductBreadcrumbsRegistrar->register();
+//$unaccountedProductBreadcrumbsRegistrar = App::make(UnaccountedProductBreadcrumbsRegistrar::class);
+//$unaccountedProductBreadcrumbsRegistrar->register();
 
 // Platform > DiscountedProduct
 /** @var DiscountedProductBreadcrumbsRegistrar $discountedProductBreadcrumbsRegistrar */
-$discountedProductBreadcrumbsRegistrar = App::make(DiscountedProductBreadcrumbsRegistrar::class);
-$discountedProductBreadcrumbsRegistrar->register();
+//$discountedProductBreadcrumbsRegistrar = App::make(DiscountedProductBreadcrumbsRegistrar::class);
+//$discountedProductBreadcrumbsRegistrar->register();
 
 // Platform > ProductQuote
 /** @var ProductQuoteBreadcrumbsRegistrar $productQuoteBreadcrumbsRegistrar */
-$productQuoteBreadcrumbsRegistrar = App::make(ProductQuoteBreadcrumbsRegistrar::class);
-$productQuoteBreadcrumbsRegistrar->register();
+//$productQuoteBreadcrumbsRegistrar = App::make(ProductQuoteBreadcrumbsRegistrar::class);
+//$productQuoteBreadcrumbsRegistrar->register();
 
 // Platform > OrderItem
 /** @var OrderItemBreadcrumbsRegistrar $orderItemBreadcrumbsRegistrar */
-$orderItemBreadcrumbsRegistrar = App::make(OrderItemBreadcrumbsRegistrar::class);
-$orderItemBreadcrumbsRegistrar ->register();
+//$orderItemBreadcrumbsRegistrar = App::make(OrderItemBreadcrumbsRegistrar::class);
+//$orderItemBreadcrumbsRegistrar ->register();
 
 // Platform > Order
 /** @var OrderBreadcrumbsRegistrar $orderBreadcrumbsRegistrar */
-$orderBreadcrumbsRegistrar = App::make(OrderBreadcrumbsRegistrar::class);
-$orderBreadcrumbsRegistrar ->register();
+//$orderBreadcrumbsRegistrar = App::make(OrderBreadcrumbsRegistrar::class);
+//$orderBreadcrumbsRegistrar ->register();
 
 // Platform > Counteragent
 /** @var CounteragentBreadcrumbsRegistrar $counteragentBreadcrumbsRegistrar */
-$counteragentBreadcrumbsRegistrar = App::make(CounteragentBreadcrumbsRegistrar::class);
-$counteragentBreadcrumbsRegistrar->register();
+//$counteragentBreadcrumbsRegistrar = App::make(CounteragentBreadcrumbsRegistrar::class);
+//$counteragentBreadcrumbsRegistrar->register();
 
 // Platform > Wallet
 /** @var WalletBreadcrumbsRegistrar $walletBreadcrumbsRegistrar */
-$walletBreadcrumbsRegistrar = App::make(WalletBreadcrumbsRegistrar::class);
-$walletBreadcrumbsRegistrar->register();
+//$walletBreadcrumbsRegistrar = App::make(WalletBreadcrumbsRegistrar::class);
+//$walletBreadcrumbsRegistrar->register();
 
 // Platform > ExchangeRate
 /** @var ExchangeRateBreadcrumbsRegistrar $exchangeRateBreadcrumbsRegistrar */
-$exchangeRateBreadcrumbsRegistrar = App::make(ExchangeRateBreadcrumbsRegistrar::class);
-$exchangeRateBreadcrumbsRegistrar->register();
+//$exchangeRateBreadcrumbsRegistrar = App::make(ExchangeRateBreadcrumbsRegistrar::class);
+//$exchangeRateBreadcrumbsRegistrar->register();

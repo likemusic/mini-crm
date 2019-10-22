@@ -38,10 +38,14 @@ class MenuRegistrar
         $this->routeNameProvider = $routeNameProvider;
     }
 
-    public function register(Menu $menu)
+    public function register(Menu $menu, $place = null)
     {
+        if (!$place) {
+            $place = $this->menuPlace;
+        }
+
         $menuItem = $this->getMenuItem();
-        $menu->add($this->menuPlace, $menuItem);
+        $menu->add($place, $menuItem);
     }
 
     private function getMenuItem()

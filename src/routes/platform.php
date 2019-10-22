@@ -58,61 +58,63 @@ $this->router->screen('example', ExampleScreen::class)->name('platform.example')
 
 $this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
 
-/** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
-$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);
-$pharmacyRouteRegistrar->registerRoutes($this->router);
-
-/** @var ProductRouteRegistrar $productRouteRegistrar */
-$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
-$productRouteRegistrar->registerRoutes($this->router);
-
-/** @var ProductRouteRegistrar $productRouteRegistrar */
-$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
-$productCategoryRouteRegistrar->registerRoutes($this->router);
-
-/** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
-$warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);
-$warehouseRouteRegistrar->registerRoutes($this->router);
-
-/** @var StockItemRouteRegistrar $stockItemRouteRegistrar */
-$stockItemRouteRegistrar = App::make(StockItemRouteRegistrar::class);
-$stockItemRouteRegistrar->registerRoutes($this->router);
-
-/** @var UnaccountedProductRouteRegistrar $unaccountedProductRouteRegistrar */
-$unaccountedProductRouteRegistrar = App::make(UnaccountedProductRouteRegistrar::class);
-$unaccountedProductRouteRegistrar->registerRoutes($this->router);
-
-/** @var DiscountedProductRouteRegistrar $discountedProductRouteRegistrar */
-$discountedProductRouteRegistrar = App::make(DiscountedProductRouteRegistrar::class);
-$discountedProductRouteRegistrar->registerRoutes($this->router);
-
-/** @var ProductRouteRegistrar $productRouteRegistrar */
-$productQuoteRouteRegistrar = App::make(ProductQuoteRouteRegistrar::class);
-$productQuoteRouteRegistrar->registerRoutes($this->router);
-
-/** @var OrderItemRouteRegistrar $orderItemRouteRegistrar */
-$orderItemRouteRegistrar = App::make(OrderItemRouteRegistrar::class);
-$orderItemRouteRegistrar->registerRoutes($this->router);
-
-/** @var OrderRouteRegistrar $orderRouteRegistrar */
-$orderRouteRegistrar = App::make(OrderRouteRegistrar::class);
-$orderRouteRegistrar->registerRoutes($this->router);
-
-/** @var CounteragentRouteRegistrar $counteragentRouteRegistrar */
-$counteragentRouteRegistrar = App::make(CounteragentRouteRegistrar::class);
-$counteragentRouteRegistrar->registerRoutes($this->router);
-
-/** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
-$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
-$currencyRouteRegistrar->registerRoutes($this->router);
-
-/** @var WalletRouteRegistrar $walletRouteRegistrar */
-$walletRouteRegistrar = App::make(WalletRouteRegistrar::class);
-$walletRouteRegistrar->registerRoutes($this->router);
-
-/** @var ExchangeRateRouteRegistrar $exchangeRateRouteRegistrar */
-$exchangeRateRouteRegistrar = App::make(ExchangeRateRouteRegistrar::class);
-$exchangeRateRouteRegistrar->registerRoutes($this->router);
 
 $this->router->post('relation-with-data', [RelationWithDataController::class, 'view'])
     ->name('platform.systems.relation-with-data');
+
+
+/** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
+$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
+$productCategoryRouteRegistrar->registerRoutes($this->router);
+
+/** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
+//$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);
+//$pharmacyRouteRegistrar->registerRoutes($this->router);
+
+/** @var ProductRouteRegistrar $productRouteRegistrar */
+//$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
+//$productRouteRegistrar->registerRoutes($this->router);
+
+/** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
+//$warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);
+//$warehouseRouteRegistrar->registerRoutes($this->router);
+
+/** @var StockItemRouteRegistrar $stockItemRouteRegistrar */
+//$stockItemRouteRegistrar = App::make(StockItemRouteRegistrar::class);
+//$stockItemRouteRegistrar->registerRoutes($this->router);
+
+/** @var UnaccountedProductRouteRegistrar $unaccountedProductRouteRegistrar */
+//$unaccountedProductRouteRegistrar = App::make(UnaccountedProductRouteRegistrar::class);
+//$unaccountedProductRouteRegistrar->registerRoutes($this->router);
+
+/** @var DiscountedProductRouteRegistrar $discountedProductRouteRegistrar */
+//$discountedProductRouteRegistrar = App::make(DiscountedProductRouteRegistrar::class);
+//$discountedProductRouteRegistrar->registerRoutes($this->router);
+
+/** @var ProductRouteRegistrar $productRouteRegistrar */
+//$productQuoteRouteRegistrar = App::make(ProductQuoteRouteRegistrar::class);
+//$productQuoteRouteRegistrar->registerRoutes($this->router);
+
+/** @var OrderItemRouteRegistrar $orderItemRouteRegistrar */
+//$orderItemRouteRegistrar = App::make(OrderItemRouteRegistrar::class);
+//$orderItemRouteRegistrar->registerRoutes($this->router);
+
+/** @var OrderRouteRegistrar $orderRouteRegistrar */
+//$orderRouteRegistrar = App::make(OrderRouteRegistrar::class);
+//$orderRouteRegistrar->registerRoutes($this->router);
+
+/** @var CounteragentRouteRegistrar $counteragentRouteRegistrar */
+//$counteragentRouteRegistrar = App::make(CounteragentRouteRegistrar::class);
+//$counteragentRouteRegistrar->registerRoutes($this->router);
+
+/** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
+//$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
+//$currencyRouteRegistrar->registerRoutes($this->router);
+
+/** @var WalletRouteRegistrar $walletRouteRegistrar */
+//$walletRouteRegistrar = App::make(WalletRouteRegistrar::class);
+//$walletRouteRegistrar->registerRoutes($this->router);
+
+/** @var ExchangeRateRouteRegistrar $exchangeRateRouteRegistrar */
+//$exchangeRateRouteRegistrar = App::make(ExchangeRateRouteRegistrar::class);
+//$exchangeRateRouteRegistrar->registerRoutes($this->router);

@@ -38,7 +38,7 @@ abstract class NameProvider implements NameProviderInterface
         return "{$baseEntityRouteName}.{$actionPostfix}";
     }
 
-    public function getNew(): string
+    public function getCreate(): string
     {
         $baseEntityRouteName = $this->getBaseEntityRouteName();
         $actionPostfix = self::POSTFIX_NEW;
@@ -46,7 +46,7 @@ abstract class NameProvider implements NameProviderInterface
         return $this->getFullRouteName($baseEntityRouteName, $actionPostfix);
     }
 
-    public function getEdit(): string
+    public function getUpdate(): string
     {
         $baseEntityRouteName = $this->getBaseEntityRouteName();
         $actionPostfix = self::POSTFIX_EDIT;

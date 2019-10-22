@@ -57,7 +57,7 @@ class Editable extends NotEditable implements EditableInterface
 
     private function getRouteNameNew()
     {
-        return $this->routeNameProvider->getNew();
+        return $this->routeNameProvider->getCreate();
     }
 
     /**
@@ -87,7 +87,7 @@ class Editable extends NotEditable implements EditableInterface
         EditableUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider
     ) {
-        $routeName = $routeNameProvider->getEdit();
+        $routeName = $routeNameProvider->getUpdate();
         $parentRouteName = $routeNameProvider->getList();
         $name = $breadcrumbsHelper->getUpdateName($useVariantProvider->getGenitiveName());
 

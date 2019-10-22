@@ -13,17 +13,18 @@ class RouteRegisterHelper
         PathProviderInterface $pathProvider,
         NameProviderInterface $nameProvider,
         string $listScreenClassName,
-        string $editScreenClassName
+        string $createScreenClassName,
+        string $updateScreenClassName
     ) {
         $router
-            ->screen($pathProvider->getNew(), $editScreenClassName)
-            ->name($nameProvider->getNew());
+            ->screen($pathProvider->getCreate(), $createScreenClassName)
+            ->name($nameProvider->getCreate());
 
         $router
-            ->screen($pathProvider->getEdit(), $editScreenClassName)
-            ->name($nameProvider->getEdit());
+            ->screen($pathProvider->getUpdate(), $updateScreenClassName)
+            ->name($nameProvider->getUpdate());
 
-        $this->addListRoutes($router, $pathProvider, $nameProvider, $listScreenClassName, $editScreenClassName);
+        $this->addListRoutes($router, $pathProvider, $nameProvider, $listScreenClassName, $createScreenClassName);
     }
 
     public function addListRoutes(

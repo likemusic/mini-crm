@@ -61,7 +61,7 @@ abstract class ModelBasedListScreen extends BaseListScreen
 
         return [
             Link::make(AddCommandInterface::NAME)
-                ->href(route($this->routeNameProvider->getNew()))
+                ->href(route($this->routeNameProvider->getCreate()))
                 ->icon(AddCommandInterface::ICON)
         ];
     }

@@ -16,7 +16,7 @@ abstract class PathProvider implements PathProviderInterface
 
     abstract protected function getBasePath(): string;
 
-    public function getNew()
+    public function getCreate()
     {
         $basePath = $this->getBasePath();
         $actionPostfix = self::POSTFIX_NEW;
@@ -24,7 +24,7 @@ abstract class PathProvider implements PathProviderInterface
         return "{$basePath}/{$actionPostfix}";
     }
 
-    public function getEdit()
+    public function getUpdate()
     {
         $basePath = $this->getBasePath();
         $postfixId = self::POSTFIX_ID;

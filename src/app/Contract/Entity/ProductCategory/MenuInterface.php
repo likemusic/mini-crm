@@ -4,5 +4,5 @@ namespace App\Contract\Entity\ProductCategory;
 
 interface MenuInterface
 {
-    const ICON = '';
+    const ICON = 'icon-tag';
 }

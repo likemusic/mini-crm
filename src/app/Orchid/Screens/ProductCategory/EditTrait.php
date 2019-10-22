@@ -2,20 +2,20 @@
 
 namespace App\Orchid\Screens\ProductCategory;
 
+use App\Contract\Entity\Permission\Crm\Product\Category\NameInterface as PermissionNameInterface;
 use App\Contract\Entity\ProductCategory\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
-use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductCategory\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
 use App\Model\ProductCategory;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 
-class EditScreen extends BaseEditScreen
+trait EditTrait
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
@@ -23,8 +23,14 @@ class EditScreen extends BaseEditScreen
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
-    ) {
+    )
+    {
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
+    }
+
+    public function query(ProductCategory $model): array
+    {
+        return $this::onQuery($model);
     }
 
     /**
@@ -45,13 +51,13 @@ class EditScreen extends BaseEditScreen
         ];
     }
 
-    public function createOrUpdate(ProductCategory $model, Request $request)
+    protected function getDataKey(): string
     {
-        return $this->onCreateOrUpdate($model, $request);
+        return 'category';
     }
 
-    public function query(ProductCategory $model): array
+    protected function getPermissionsClassName(): string
     {
-        return $this::onQuery($model);
+        return PermissionNameInterface::class;
     }
 }

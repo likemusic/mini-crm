@@ -6,7 +6,8 @@ use App\Entity\Base\Route\Registrar\EditableRegistrar as BaseRegistrar;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductCategory\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\ProductCategory\EditScreen as EditScreen;
+use App\Orchid\Screens\ProductCategory\Edit\Create as CreateScreen;
+use App\Orchid\Screens\ProductCategory\Edit\Update as UpdateScreen;
 use App\Orchid\Screens\ProductCategory\ModelBasedListScreen;
 
 class EditableRegistrar extends BaseRegistrar
@@ -17,14 +18,17 @@ class EditableRegistrar extends BaseRegistrar
         RoutePathProvider $pathProvider
     ) {
         $listScreenClassName = ModelBasedListScreen::class;
-        $editScreenClassName = EditScreen::class;
+        $createScreenClassName = CreateScreen::class;
+        $updateScreenClassName = UpdateScreen::class;
+
 
         parent::__construct(
             $routeRegisterHelper,
             $nameProvider,
             $pathProvider,
             $listScreenClassName,
-            $editScreenClassName
+            $createScreenClassName,
+            $updateScreenClassName
         );
     }
 }

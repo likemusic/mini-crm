@@ -106,7 +106,7 @@ abstract class EditScreen extends BaseScreen
 
     private function getClassConstantValue($className, $constantName): string
     {
-        return $className::$constantName;
+        return constant("{$className}::{$constantName}");
     }
 
     private function createDeleteCommandBarButton()
