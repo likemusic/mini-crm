@@ -2,17 +2,15 @@
 
 namespace App\Orchid\Screens\Base\ListScreen;
 
-use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
-use App\Orchid\Screens\Base\Screen;
 use App\Orchid\Screens\Button;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
-use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
 
 abstract class ModelBasedListScreen extends BaseListScreen
 {
@@ -39,14 +37,6 @@ abstract class ModelBasedListScreen extends BaseListScreen
     }
 
     /**
-     * @return LengthAwarePaginator
-     */
-    protected function getData()
-    {
-        return $this->model->paginate();
-    }
-
-    /**
      * Views.
      *
      * @return Layout[]
@@ -56,11 +46,6 @@ abstract class ModelBasedListScreen extends BaseListScreen
         return [
             $this->getLayoutClassName()
         ];
-    }
-
-    protected function canAdd()
-    {
-        return true;
     }
 
     /**
@@ -79,5 +64,18 @@ abstract class ModelBasedListScreen extends BaseListScreen
                 ->href(route($this->routeNameProvider->getNew()))
                 ->icon(AddCommandInterface::ICON)
         ];
+    }
+
+    protected function canAdd()
+    {
+        return true;
+    }
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    protected function getData()
+    {
+        return $this->model->paginate();
     }
 }

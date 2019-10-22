@@ -3,12 +3,12 @@
 namespace App\Orchid\Screens\Base\ListScreen;
 
 use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
-use App\Orchid\Screens\Base\Screen;
+use App\Orchid\Screens\Base;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Layout;
 
-abstract class BaseListScreen extends Screen
+abstract class BaseListScreen extends Base
 {
     /**
      * @var NotEditableUseVariantProviderInterface

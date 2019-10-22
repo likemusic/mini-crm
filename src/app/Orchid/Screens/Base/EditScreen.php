@@ -2,31 +2,33 @@
 
 namespace App\Orchid\Screens\Base;
 
+use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
+use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
-use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
-use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Model\Product;
+use App\Model\User;
+use App\Orchid\Screens\Base as BaseScreen;
 use App\Orchid\Screens\Button;
 use Exception;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Orchid\Support\Facades\Alert;
 
-abstract class EditScreen extends Screen
+abstract class EditScreen extends BaseScreen
 {
     /** @var BreadcrumbsHelper */
-    private $breadcrumbsHelper;
+    protected $breadcrumbsHelper;
     /**
      * @var InfoMessageProviderInterface
      */
-    private $infoMessageProvider;
+    protected $infoMessageProvider;
     /**
      * @var EditableUseVariantProviderInterface
      */
@@ -35,10 +37,6 @@ abstract class EditScreen extends Screen
      * @var RouteNameProviderInterface
      */
     private $routeNameProvider;
-    /**
-     * @var bool
-     */
-    protected $exists = false;
 
     public function __construct(
         RouteNameProviderInterface $routeRouteNameProviderInterface,
@@ -46,7 +44,8 @@ abstract class EditScreen extends Screen
         InfoMessageProviderInterface $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
-    ) {
+    )
+    {
         $this->breadcrumbsHelper = $breadcrumbsHelper;
         $this->routeNameProvider = $routeRouteNameProviderInterface;
         $this->infoMessageProvider = $infoMessageProvider;
@@ -56,112 +55,98 @@ abstract class EditScreen extends Screen
     }
 
     /**
-     * Query data.
-     *
-     * @param Model $model
-     * @return array
-     */
-    protected function onQuery($model): array
-    {
-        $this->exists = $model->exists;
-
-        $productGenitiveName = $this->useVariantProvider->getGenitiveName();
-
-        $this->name = $this->exists
-            ? $this->breadcrumbsHelper->getUpdateName($productGenitiveName)
-            : $this->breadcrumbsHelper->getCreateName($productGenitiveName);
-
-        return [
-            $this->getDataKey() => $model
-        ];
-    }
-
-    protected function getDataKey(): string
-    {
-        return 'product';
-    }
-
-    /**
      * Button commands.
      *
      * @return Button[]
      */
     public function commandBar(): array
     {
-        return [
-            Button::make(SaveCommandInterface::NAME)
-                ->icon(SaveCommandInterface::ICON)
-                ->class(SaveCommandInterface::CLASS_NAME)
-                ->method('createOrUpdate')
-                ->canSee(!$this->exists),
+        $buttons = [];
 
-            Button::make(UpdateCommandInterface::NAME)
-                ->icon(UpdateCommandInterface::CLASS_NAME)
-                ->class(UpdateCommandInterface::CLASS_NAME)
-                ->method('createOrUpdate')
-                ->canSee($this->exists),
+        if ($this->canDelete()) {
+            $buttons[] = $this->createDeleteCommandBarButton();
+        }
 
-            Button::make(DeleteCommandInterface::NAME)
-                ->class(DeleteCommandInterface::CLASS_NAME)
-                ->icon(DeleteCommandInterface::ICON)
-                ->method('remove')
-                ->canSee($this->exists),
+        $buttons[] = $this->createCancelCommandBarButton();
 
-            Button::make(CancelCommandInterface::NAME)
-                ->class(CancelCommandInterface::CLASS_NAME)
-                ->icon(CancelCommandInterface::ICON)
-                ->method('cancel'),
-        ];
+        return $buttons;
+    }
+
+    private function canDelete(): bool
+    {
+        $currentUser = $this->getCurrentUser();
+        $permission = $this->getDeletePermission();
+
+        return $currentUser->hasAccess($permission);
+    }
+
+    /**
+     * @return Authenticatable|User
+     */
+    protected function getCurrentUser(): Authenticatable
+    {
+        return Auth::user();
+    }
+
+    private function getDeletePermission(): string
+    {
+        $constantName = PermissionConstantNameInterface::DELETE;
+
+        return $this->getPermissionClassConstant($constantName);
+    }
+
+    protected function getPermissionClassConstant(string $constantName): string
+    {
+        $permissionClassName = $this->getPermissionsClassName();
+
+        return $this->getClassConstantValue($permissionClassName, $constantName);
+    }
+
+    abstract protected function getPermissionsClassName(): string;
+
+    private function getClassConstantValue($className, $constantName): string
+    {
+        return $className::$constantName;
+    }
+
+    private function createDeleteCommandBarButton()
+    {
+        return Button::make(DeleteCommandInterface::NAME)
+            ->class(DeleteCommandInterface::CLASS_NAME)
+            ->icon(DeleteCommandInterface::ICON)
+            ->method('delete');
+    }
+
+    private function createCancelCommandBarButton()
+    {
+        return Button::make(CancelCommandInterface::NAME)
+            ->class(CancelCommandInterface::CLASS_NAME)
+            ->icon(CancelCommandInterface::ICON)
+            ->method('cancel');
     }
 
     /**
      * @param Model $model
-     * @param Request $request
      *
      * @return RedirectResponse
      */
-    protected function onCreateOrUpdate($model, Request $request)
+    public function delete(Model $model)
     {
         try {
-            $requestData = $request->get($this->getDataKey());
-
-            $message = $model->exists
-                ? $this->infoMessageProvider->getUpdateMessage()
-                : $this->infoMessageProvider->getCreateMessage();
-
-            $model->fill($requestData)->save();
-
-            Alert::info($message);
+            $model->delete();
+            $message = $this->getDeleteMessage();
+            $this->addAlertMessage($message);
         } catch (Exception $exception) {
-            Alert::error($exception->getMessage());
-
-            return Redirect::back()->withInput();
+            $message = $exception->getMessage();
+            $this->addErrorMessage($message);
         }
 
-        return redirect()->route($this->getRouteNameList());
+        return $this->redirectToList();
     }
 
-    private function getRouteNameList()
+    private function getDeleteMessage()
     {
-        return $this->routeNameProvider->getList();
-    }
-
-    /**
-     * @param Product $product
-     *
-     * @return RedirectResponse
-     * @throws Exception
-     */
-    public function remove(Product $product)
-    {
-        try {
-            $product->delete();
-            Alert::info($this->infoMessageProvider->getDeleteMessage());
-        }catch (\Exception $exception) {
-            Alert::error($exception->getMessage());
-        }
-
-        return redirect()->route($this->getRouteNameList());
+        return $this->infoMessageProvider->getDeleteMessage();
     }
 
     /**
@@ -173,11 +158,99 @@ abstract class EditScreen extends Screen
     }
 
     /**
+     * @param Model $model
+     * @param Request $request
+     *
+     * @param string $successMessage
+     * @return RedirectResponse
+     */
+    protected function save($model, Request $request, string $successMessage)
+    {
+        try {
+            $requestData = $this->getRequestData($request);
+            $model->fill($requestData)->save();
+            $this->addAlertMessage($successMessage);
+        } catch (Exception $exception) {
+            $this->addErrorMessageByException($exception);
+
+            return $this->redirectBackWithInput();
+        }
+
+        return $this->redirectToList();
+    }
+
+    protected function getRequestData(Request $request): array
+    {
+        $dataKey = $this->getDataKey();
+
+        return $request->get($dataKey);
+    }
+
+    protected function addAlertMessage(string $message)
+    {
+        Alert::info($message);
+    }
+
+    private function addErrorMessageByException(Exception $exception)
+    {
+        $message = $exception->getMessage();
+        $this->addErrorMessage($message);
+    }
+
+    protected function addErrorMessage(string $message)
+    {
+        Alert::error($message);
+    }
+
+    protected function redirectBackWithInput()
+    {
+        return Redirect::back()->withInput();
+    }
+
+    protected function redirectToList()
+    {
+        $routeName = $this->getRouteNameList();
+
+        return $this->redirectToRoute($routeName);
+    }
+
+    private function getRouteNameList()
+    {
+        return $this->routeNameProvider->getList();
+    }
+
+    protected function redirectToRoute($routeName)
+    {
+        return redirect()->route($routeName);
+    }
+
+    /**
+     * Query data.
+     *
+     * @param Model $model
+     * @return array
+     */
+    protected function onQuery($model): array
+    {
+        $this->name = $this->getScreenName();
+        $dataKey = $this->getDataKey();
+
+        return [$dataKey => $model];
+    }
+
+    abstract protected function getScreenName(): string;
+
+    protected function getGenitiveName()
+    {
+        return $this->useVariantProvider->getGenitiveName();
+    }
+
+    /**
      * @param string $key
      * @return string
      */
     protected function getDataPath(string $key)
     {
-        return $this->getDataKey(). '.'. $key;
+        return $this->getDataKey() . '.' . $key;
     }
 }

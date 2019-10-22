@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens\Base;
+namespace App\Orchid\Screens;
 
 use Orchid\Screen\Screen as BaseScreen;
 
-abstract class Screen extends BaseScreen
+abstract class Base extends BaseScreen
 {
     abstract protected function getDataKey(): string;
 }
