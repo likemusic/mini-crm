@@ -154,18 +154,18 @@ class MainMenuComposer
     public function compose()
     {
         // Profile
-        $this->dashboard->menu
-            ->add(Menu::PROFILE,
-                ItemMenu::label('Empty 1')
-                    ->icon('icon-compass')
-            )
-            ->add(Menu::PROFILE,
-                ItemMenu::label('Empty 2')
-                    ->icon('icon-heart')
-                    ->badge(function () {
-                        return 6;
-                    })
-            );
+//        $this->dashboard->menu
+//            ->add(Menu::PROFILE,
+//                ItemMenu::label('Empty 1')
+//                    ->icon('icon-compass')
+//            )
+//            ->add(Menu::PROFILE,
+//                ItemMenu::label('Empty 2')
+//                    ->icon('icon-heart')
+//                    ->badge(function () {
+//                        return 6;
+//                    })
+//            );
 
         // Main
         $dashboardMenu = $this->dashboard->menu;
