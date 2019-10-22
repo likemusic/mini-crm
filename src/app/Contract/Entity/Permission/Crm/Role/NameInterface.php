@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contract\Entity\Permission\Crm;
+namespace App\Contract\Entity\Permission\Crm\Role;
 
 /**
  * Interface PermissionInterface

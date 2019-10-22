@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Orchid;
 
 use App\Contract\Entity\Permission\Platform\NameInterface as PermissionNameInterface;
+use App\Contract\Entity\Permission\Platform\Systems\NameInterface as SystemsNameInterface;
 use App\Contract\Entity\Permission\Platform\LabelInterface as PermissionLabelInterface;
+use App\Contract\Entity\Permission\Platform\Systems\LabelInterface as SystemsLabelInterface;
 use App\Orchid\Composers\MainMenuComposer;
 use App\Orchid\Composers\SystemMenuComposer;
 use Illuminate\Support\Facades\View;
@@ -41,8 +43,8 @@ class PlatformProvider extends ServiceProvider
     protected function registerPermissionsSystems(): ItemPermission
     {
         return ItemPermission::group(__(PermissionGroupNamesInterface::SYSTEMS))
-            ->addPermission(PermissionNameInterface::SYSTEMS_ROLES, __(PermissionLabelInterface::SYSTEMS_ROLES))
-            ->addPermission(PermissionNameInterface::SYSTEMS_USERS, __(PermissionLabelInterface::SYSTEMS_USERS));
+            ->addPermission(SystemsNameInterface::ROLES, __(SystemsLabelInterface::ROLES))
+            ->addPermission(SystemsNameInterface::USERS, __(SystemsLabelInterface::USERS));
     }
 
     /**
@@ -53,6 +55,6 @@ class PlatformProvider extends ServiceProvider
         return ItemPermission::group(__(PermissionGroupNamesInterface::SYSTEMS))
             ->addPermission(PermissionNameInterface::INDEX, __(PermissionLabelInterface::INDEX))
             ->addPermission(PermissionNameInterface::SYSTEMS, __(PermissionLabelInterface::SYSTEMS))
-            ->addPermission(PermissionNameInterface::SYSTEMS_INDEX, __(PermissionLabelInterface::SYSTEMS_INDEX));
+            ->addPermission(SystemsNameInterface::INDEX, __(SystemsLabelInterface::INDEX));
     }
 }
