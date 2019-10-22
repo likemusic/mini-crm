@@ -110,6 +110,8 @@ class EditScreen extends BaseEditScreen
                     ->required(),
 
                 Input::make($this->getDataPath(FieldNameInterface::COUNT))
+                    ->type('number')
+                    ->min(1)
                     ->title(FieldLabelInterface::COUNT)
                     ->required(),
 
@@ -148,6 +150,7 @@ class EditScreen extends BaseEditScreen
 
             TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
                 ->title(FieldLabelInterface::NOTE)
+                ->rows(5)
         ]);
 
 //                Input::make($this->getDataPath(FieldNameInterface::PRODUCT_QUOTE_ID))
