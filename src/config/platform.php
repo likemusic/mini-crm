@@ -80,7 +80,9 @@ return [
     */
 
     'resource' => [
-        'stylesheets' => [],
+        'stylesheets' => [
+            '/css/app.css',
+        ],
         'scripts'     => [],
     ],
 
