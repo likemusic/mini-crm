@@ -16,6 +16,7 @@ use App\Helper\InfoMessageProvider\Order as InfoMessageProvider;
 use App\Model\Counteragent;
 use App\Model\Currency;
 use App\Model\Order;
+use App\Model\Pharmacy;
 use App\Model\Product;
 use App\Model\User;
 use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
@@ -86,14 +87,14 @@ class EditScreen extends BaseEditScreen
                     ->title(FieldLabelInterface::DATE_ORDER_ID),
             ]),
 
-            Relation::make($this->getDataPath(FieldNameInterface::PRODUCT_ID . '1'))
-                ->title(FieldLabelInterface::PRODUCT)
-                ->fromModel(Product::class, ProductFieldNameInterface::NAME),
+//            Relation::make($this->getDataPath(FieldNameInterface::PRODUCT_ID . '1'))
+//                ->title(FieldLabelInterface::PRODUCT)
+//                ->fromModel(Product::class, ProductFieldNameInterface::NAME),
 //                ->empty('Выберите товар'),
 
             RelationWithData::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
                 ->title(FieldLabelInterface::PRODUCT)
-                ->fromModel(Product::class, ProductFieldNameInterface::NAME, null, $productDataFieldName)
+                ->fromModel(Pharmacy::class, PharmacyFieldNameInterface::NAME, null, $productDataFieldName)
 //                ->empty('Выберите товар')
 
         ];
@@ -159,18 +160,24 @@ class EditScreen extends BaseEditScreen
 
     private function getProductInfoFieldGroup()
     {
-       return
+       return [
             Field::group([
                 Input::make($this->getDataPath(PharmacyFieldNameInterface::APPROXIMATE_PRICE))
-                    ->title(PharmacyFieldLabelInterface::APPROXIMATE_PRICE),
+                    ->title(PharmacyFieldLabelInterface::APPROXIMATE_PRICE)
+                    ->readonly()
+                ,
 
                 Input::make($this->getDataPath(PharmacyFieldNameInterface::SELLING_PRICE))
-                    ->title(PharmacyFieldLabelInterface::SELLING_PRICE),
+                    ->title(PharmacyFieldLabelInterface::SELLING_PRICE)
+                    ->readonly()
+                ,
 
                 Input::make($this->getDataPath(PharmacyFieldNameInterface::WAREHOUSES_TOTAL_QUANTITY))
-                    ->title(PharmacyFieldLabelInterface::WAREHOUSES_TOTAL_QUANTITY),
+                    ->title(PharmacyFieldLabelInterface::WAREHOUSES_TOTAL_QUANTITY)
+                    ->readonly()
+                ,
             ])
-        ;
+        ];
     }
 
     private function getIncomesRows()

@@ -29,10 +29,10 @@ class RelationWithData extends Relation
     {
 //        parent::fromModel($model, $name, $key);
 
-        $key = $key ?? (new $model())->getModel()->getKeyName();
+        $key = $key ?? (app($model))->getModel()->getKeyName();
 
+        $this->set('relationName', $name);
         $this->set('relationModel', Crypt::encryptString($model));
-        $this->set('relationName', Crypt::encryptString($name));
         $this->set('relationKey', Crypt::encryptString($key));
         $this->set('relationDataFieldNames', Crypt::encrypt($dataFieldNames));
 

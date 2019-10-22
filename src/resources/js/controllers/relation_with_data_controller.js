@@ -15,7 +15,7 @@ export default class extends Controller {
         const name = this.data.get('name');
         const key = this.data.get('key');
         const scope = this.data.get('scope');
-        const dataFieldNames = this.data.get('dataFieldNames');
+        const dataFieldNames = this.data.get('data_field_names');
 
         $.ajaxSetup({
             headers: {
@@ -33,7 +33,6 @@ export default class extends Controller {
                 url: () => this.data.get('route'),
                 dataType: 'json',
                 processResults: (data) => {
-                    debugger;
                     console.log("Data:");
                     console.log(data);
                     let selectValues = $(select).val();
@@ -41,7 +40,6 @@ export default class extends Controller {
 
                     console.log("Select value:");
                     console.log(selectValues);
-                    debugger;
 
                     const ret = {
                         results: Object.keys(data).reduce((res, id) => {
@@ -51,7 +49,8 @@ export default class extends Controller {
 
                             return [...res, {
                                 id,
-                                text: data[id],
+                                text: data[id][name],
+                                ...data[id]
                             }];
                         }, []),
                     };
@@ -59,7 +58,6 @@ export default class extends Controller {
                     console.log("Ret:");
                     console.log(ret);
 
-                    debugger;
                     return ret;
                 },
                 data: params => ({
