@@ -6,7 +6,7 @@ use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductQuote\EditableUseVariantProvider as UseVariant;
 use App\Model\ProductQuote;
 use App\Orchid\Layouts\ProductQuote\ProductQuoteListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

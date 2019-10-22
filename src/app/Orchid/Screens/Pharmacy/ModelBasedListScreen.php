@@ -7,7 +7,7 @@ use App\Entity\Pharmacy\NotEditableUseVariantProvider;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Model\Pharmacy;
 use App\Orchid\Layouts\Pharmacy\PharmacyListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen
@@ -28,7 +28,7 @@ class ModelBasedListScreen extends BaseListScreen
         parent::__construct($model, $useVariant, $routeNameProvider, $request);
     }
 
-    protected function canAdd()
+    protected function canCreate()
     {
         return false;
     }

@@ -6,7 +6,7 @@ use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Entity\ExchangeRate\EditableUseVariantProvider;
 use App\Model\ExchangeRate;
 use App\Orchid\Layouts\ExchangeRate\ExchangeRateListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

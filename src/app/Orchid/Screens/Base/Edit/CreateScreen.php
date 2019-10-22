@@ -10,9 +10,12 @@ use App\Orchid\Screens\Button;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Orchid\Screens\Base\CanCreateTrait;
 
 abstract class CreateScreen extends EditScreen
 {
+    use CanCreateTrait;
+
     /**
      * Button commands.
      *
@@ -27,21 +30,6 @@ abstract class CreateScreen extends EditScreen
         }
 
         return $buttons;
-    }
-
-    private function canCreate(): bool
-    {
-        $currentUser = $this->getCurrentUser();
-        $permission = $this->getCreatePermission();
-
-        return $currentUser->hasAccess($permission);
-    }
-
-    private function getCreatePermission(): string
-    {
-        $constantName = PermissionConstantNameInterface::DELETE;
-
-        return $this->getPermissionClassConstant($constantName);
     }
 
     private function createCreateCommandBarButton()

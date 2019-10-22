@@ -6,7 +6,7 @@ use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Entity\Currency\EditableUseVariantProvider;
 use App\Model\Currency;
 use App\Orchid\Layouts\Currency\CurrencyListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

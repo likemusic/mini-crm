@@ -2,7 +2,6 @@
 
 namespace App\Orchid\Screens\ProductCategory;
 
-use App\Contract\Entity\Permission\Crm\Product\Category\NameInterface as PermissionNameInterface;
 use App\Contract\Entity\ProductCategory\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
 use App\Entity\ProductCategory\EditableUseVariantProvider as EditableUseVariantProvider;
@@ -17,6 +16,8 @@ use Orchid\Screen\Layout;
 
 trait EditTrait
 {
+    use PermissionsClassNameTrait;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
         EditableUseVariantProvider $useVariant,
@@ -54,10 +55,5 @@ trait EditTrait
     protected function getDataKey(): string
     {
         return 'category';
-    }
-
-    protected function getPermissionsClassName(): string
-    {
-        return PermissionNameInterface::class;
     }
 }

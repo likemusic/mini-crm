@@ -6,11 +6,13 @@ use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductCategory\EditableUseVariantProvider;
 use App\Model\ProductCategory;
 use App\Orchid\Layouts\ProductCategory\ProductCategoryListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
-class ModelBasedListScreen extends BaseListScreen
+class ListScreen extends BaseListScreen
 {
+    use PermissionsClassNameTrait;
+
     public function __construct(
         ProductCategory $model,
         EditableUseVariantProvider $useVariant,

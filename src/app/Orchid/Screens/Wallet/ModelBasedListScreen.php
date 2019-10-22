@@ -6,7 +6,7 @@ use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Entity\Wallet\EditableUseVariantProvider;
 use App\Model\Wallet;
 use App\Orchid\Layouts\Wallet\WalletListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

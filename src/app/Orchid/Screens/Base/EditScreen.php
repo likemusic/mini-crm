@@ -9,15 +9,12 @@ use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNa
 use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Model\User;
 use App\Orchid\Screens\Base as BaseScreen;
 use App\Orchid\Screens\Button;
 use Exception;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Orchid\Support\Facades\Alert;
 
@@ -80,33 +77,11 @@ abstract class EditScreen extends BaseScreen
         return $currentUser->hasAccess($permission);
     }
 
-    /**
-     * @return Authenticatable|User
-     */
-    protected function getCurrentUser(): Authenticatable
-    {
-        return Auth::user();
-    }
-
     private function getDeletePermission(): string
     {
         $constantName = PermissionConstantNameInterface::DELETE;
 
         return $this->getPermissionClassConstant($constantName);
-    }
-
-    protected function getPermissionClassConstant(string $constantName): string
-    {
-        $permissionClassName = $this->getPermissionsClassName();
-
-        return $this->getClassConstantValue($permissionClassName, $constantName);
-    }
-
-    abstract protected function getPermissionsClassName(): string;
-
-    private function getClassConstantValue($className, $constantName): string
-    {
-        return constant("{$className}::{$constantName}");
     }
 
     private function createDeleteCommandBarButton()

@@ -6,7 +6,7 @@ use App\Entity\UnaccountedProduct\Route\NameProvider as ProductRouteNameProvider
 use App\Entity\UnaccountedProduct\EditableUseVariantProvider as ProductUseVariant;
 use App\Model\UnaccountedProduct;
 use App\Orchid\Layouts\UnaccountedProduct\UnaccountedProductListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

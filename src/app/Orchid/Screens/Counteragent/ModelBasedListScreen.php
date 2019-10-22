@@ -6,7 +6,7 @@ use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 use App\Entity\Counteragent\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Model\Counteragent;
 use App\Orchid\Layouts\Counteragent\CounteragentListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

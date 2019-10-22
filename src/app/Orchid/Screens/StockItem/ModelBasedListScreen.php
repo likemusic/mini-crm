@@ -6,7 +6,7 @@ use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\StockItem\EditableUseVariantProvider;
 use App\Model\StockItem;
 use App\Orchid\Layouts\StockItem\StockItemListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

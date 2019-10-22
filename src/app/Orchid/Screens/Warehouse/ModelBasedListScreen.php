@@ -6,7 +6,7 @@ use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
 use App\Entity\Warehouse\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Model\Warehouse;
 use App\Orchid\Layouts\Warehouse\WarehouseListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBasedListScreen as BaseListScreen;
+use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen
