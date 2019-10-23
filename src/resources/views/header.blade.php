@@ -12,6 +12,12 @@
     <meta name="msapplication-navbutton-color" content="#3e4348">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-starturl" content="/">
+
+    @if(config('app.debug'))
+        <link href="/css/autologin.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/js/autologin.js"></script>
+    @endif
 @endpush
 
 <p class="h2 n-m font-thin v-center">

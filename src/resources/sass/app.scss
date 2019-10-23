@@ -10,3 +10,11 @@
 .form-control[readonly] {
     color: rgba(28,43,54, 0.8);
 }
+
+.autologin a{
+    color: rgba(28,43,54, 1);
+}
+
+.autologin a:hover {
+    color: black;
+}

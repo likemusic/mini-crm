@@ -2,3 +2,11 @@
   color: rgba(28, 43, 54, 0.8);
 }
 
+.autologin a {
+  color: #1c2b36;
+}
+
+.autologin a:hover {
+  color: black;
+}
+

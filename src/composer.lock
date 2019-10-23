@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e948ad321a3b74728021e3e9ac0f008d",
+    "content-hash": "e6395fc2e252ef7af1b1abcb4834f647",
     "packages": [
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -1195,12 +1195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchidsoftware/platform.git",
-                "reference": "7fb640a6f0fb9927a825821feaf958aca36f50cf"
+                "reference": "a5eb0e0948089a8fd45fb43c012050030c6e42f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/7fb640a6f0fb9927a825821feaf958aca36f50cf",
-                "reference": "7fb640a6f0fb9927a825821feaf958aca36f50cf",
+                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/a5eb0e0948089a8fd45fb43c012050030c6e42f9",
+                "reference": "a5eb0e0948089a8fd45fb43c012050030c6e42f9",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "platform",
                 "rad"
             ],
-            "time": "2019-10-21T18:06:08+00:00"
+            "time": "2019-10-23T09:09:57+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3529,6 +3529,58 @@
             "time": "2016-01-20T08:20:44+00:00"
         },
         {
+            "name": "likemusic/laravel-autologin-panel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/likemusic/laravel-autologin-panel.git",
+                "reference": "df92f7635f1e79e49c9c37a9150f108934182265"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/likemusic/laravel-autologin-panel/zipball/df92f7635f1e79e49c9c37a9150f108934182265",
+                "reference": "df92f7635f1e79e49c9c37a9150f108934182265",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.4|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Likemusic\\Laravel\\AutologinPanel\\Providers\\AutologinServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Likemusic\\Laravel\\AutologinPanel\\": "src/app/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valerij Ivashchenko",
+                    "email": "likemusicdev@gmail.com"
+                }
+            ],
+            "description": "Provide panel with links to autologin as configured users.",
+            "keywords": [
+                "autologin",
+                "laravel",
+                "login",
+                "user"
+            ],
+            "support": {
+                "source": "https://github.com/likemusic/laravel-autologin-panel/tree/master",
+                "issues": "https://github.com/likemusic/laravel-autologin-panel/issues"
+            },
+            "time": "2019-10-15T14:33:10+00:00"
+        },
+        {
             "name": "mbezhanov/faker-provider-collection",
             "version": "1.2.1",
             "source": {
@@ -5114,7 +5166,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "orchid/platform": 20,
-        "mbezhanov/laravel-faker-provider-collection": 20
+        "mbezhanov/laravel-faker-provider-collection": 20,
+        "likemusic/laravel-autologin-panel": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
