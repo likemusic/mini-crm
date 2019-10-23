@@ -12,7 +12,7 @@ class MenuRegistrar extends BaseMenuRegistrar
         EditableUseVariantProvider $useVariantProvider,
         RouteNameProvider $routeNameProvider
     ) {
-        $menuTitle = 'Товары/склады';
+        $menuTitle = null;
         $menuIcon = MenuInterface::ICON;
 
         parent::__construct($useVariantProvider, $routeNameProvider, $menuTitle, $menuIcon);

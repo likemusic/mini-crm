@@ -7,7 +7,7 @@ use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterfac
 use App\Entity\ProductCategory\EditableUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
+use App\Helper\InfoMessageProvider\ProductCategory as InfoMessageProvider;
 use App\Model\ProductCategory;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;

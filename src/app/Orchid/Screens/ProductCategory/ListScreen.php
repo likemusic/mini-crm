@@ -2,8 +2,8 @@
 
 namespace App\Orchid\Screens\ProductCategory;
 
-use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductCategory\EditableUseVariantProvider;
+use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Model\ProductCategory;
 use App\Orchid\Layouts\ProductCategory\ProductCategoryListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
@@ -18,7 +18,8 @@ class ListScreen extends BaseListScreen
         EditableUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
-    ) {
+    )
+    {
         parent::__construct($model, $useVariant, $routeNameProvider, $request);
     }
 

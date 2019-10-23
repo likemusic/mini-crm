@@ -13,17 +13,14 @@ use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
 use App\Entity\Pharmacy\Route\NotEditableRegistrar as PharmacyRouteRegistrar;
 use App\Entity\Product\Route\EditableRegistrar as ProductRouteRegistrar;
 use App\Entity\ProductCategory\Route\EditableRegistrar as ProductCategoryRouteRegistrar;
-use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
+use App\Entity\Role\Route\EditableRegistrar as RoleRouteRegistrar;
 use App\Entity\StockItem\Route\EditableRegistrar as StockItemRouteRegistrar;
 use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
 use App\Entity\User\Route\EditableRegistrar as UserRouteRegistrar;
-use App\Entity\Role\Route\EditableRegistrar as RoleRouteRegistrar;
 use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
 use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
 use App\Http\Controllers\Orchid\Patform\RelationWithDataController;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\Role\RoleEditScreen;
-use App\Orchid\Screens\Role\RoleListScreen;
 use Illuminate\Routing\RouteFileRegistrar;
 
 /*
@@ -46,27 +43,30 @@ $this->router->post('relation-with-data', [RelationWithDataController::class, 'v
 // Main
 $this->router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
 
-// Users...
-/** @var UserRouteRegistrar $userRouteRegistrar */
-$userRouteRegistrar = App::make(UserRouteRegistrar::class);
-$userRouteRegistrar->registerRoutes($this->router);
-
-// Roles...
+// Roles
 /** @var RoleRouteRegistrar $userRouteRegistrar */
 $roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
 $roleRouteRegistrar->registerRoutes($this->router);
 
+// Users
+/** @var UserRouteRegistrar $userRouteRegistrar */
+$userRouteRegistrar = App::make(UserRouteRegistrar::class);
+$userRouteRegistrar->registerRoutes($this->router);
+
+// Product Category
 /** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
 $productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
 $productCategoryRouteRegistrar->registerRoutes($this->router);
+
+// Product
+/** @var ProductRouteRegistrar $productRouteRegistrar */
+$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
+$productRouteRegistrar->registerRoutes($this->router);
 
 /** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
 //$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);
 //$pharmacyRouteRegistrar->registerRoutes($this->router);
 
-/** @var ProductRouteRegistrar $productRouteRegistrar */
-//$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
-//$productRouteRegistrar->registerRoutes($this->router);
 
 /** @var WarehouseRouteRegistrar $warehouseRouteRegistrar */
 //$warehouseRouteRegistrar = App::make(WarehouseRouteRegistrar::class);

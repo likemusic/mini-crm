@@ -31,6 +31,7 @@ use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
 use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterface;
+use App\Entity\Base\MainMenuRegistrar;
 
 class MainMenuComposer
 {
@@ -246,19 +247,19 @@ class MainMenuComposer
 
     private function addProductCatalogMenuIfCanAccess(Menu $menu)
     {
-        if ($this->canAccess(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
+        if ($this->canAccessMenu(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
             $this->addProductCatalogMenu($menu);
         }
     }
 
     private function addUsersAndRolesMenuIfCanAccess(Menu $menu)
     {
-        if ($this->canAccess(MainMenuPermissionNameInterface::USERS_AND_ROLES)) {
+        if ($this->canAccessMenu(MainMenuPermissionNameInterface::USERS_AND_ROLES)) {
             $this->addUsersAndRolesMenu($menu);
         }
     }
 
-    private function canAccess($menuPermission)
+    private function canAccessMenu($menuPermission)
     {
         $crmPermissions = $this->getCRMPermissionsByMenuPermission($menuPermission);
         $currentUser = $this->getCurrentUser();
@@ -270,6 +271,13 @@ class MainMenuComposer
         }
 
         return false;
+    }
+
+    private function hasAccess(string $permission)
+    {
+        $currentUser = $this->getCurrentUser();
+
+        return $currentUser->hasAccess($permission);
     }
 
     private function getCRMPermissionsByMenuPermission($menuPermission)
@@ -308,7 +316,37 @@ class MainMenuComposer
                     ->childs()
             );
 
-        $this->productCategoryMenuRegistrar->register($menu, $slug);
+        $this->addProductMenuIfCanAccess($menu, $slug);
+        $this->addProductCategoryMenuIfCanAccess($menu, $slug);
+    }
+
+    private function addProductCategoryMenuIfCanAccess(Menu $menu, string $place)
+    {
+        $menuRegistrar = $this->productCategoryMenuRegistrar;
+        $permission = ProductCategoryNameInterface::LIST;
+
+        $this->addEntityMenuIfCanAccess($menu, $place, $menuRegistrar, $permission);
+    }
+
+    private function addProductMenuIfCanAccess(Menu $menu, string $place)
+    {
+        $menuRegistrar = $this->productMenuRegistrar;
+        $permission = ProductNameInterface::LIST;
+        $this->addEntityMenuIfCanAccess($menu, $place, $menuRegistrar, $permission);
+    }
+
+    private function addEntityMenuIfCanAccess(
+        Menu $menu,
+        string $place,
+        MainMenuRegistrar $menuRegistrar,
+        string $permission
+    )
+    {
+        if (!$this->hasAccess($permission)) {
+            return;
+        }
+
+        $menuRegistrar->register($menu, $place);
     }
 
     private function addUsersAndRolesMenu(Menu $menu)
