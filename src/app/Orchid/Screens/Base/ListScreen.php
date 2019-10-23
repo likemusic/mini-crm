@@ -6,9 +6,9 @@ use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
 use App\Orchid\Screens\Base;
-use App\Orchid\Screens\Button;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 

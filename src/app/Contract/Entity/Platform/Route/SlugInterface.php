@@ -6,7 +6,5 @@ interface SlugInterface
 {
     const INDEX = 'index';
     const MAIN = 'main';
-    const EMAIL = 'email';
-
     const SYSTEMS = 'systems';
 }

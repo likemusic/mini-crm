@@ -8,6 +8,5 @@ interface NameInterface
 {
     const INDEX = RouteInterface::NAME . '.' . SlugInterface::INDEX;
     const MAIN = RouteInterface::NAME . '.' . SlugInterface::MAIN;
-    const EMAIL = RouteInterface::NAME . '.' . SlugInterface::EMAIL;
     const SYSTEMS = RouteInterface::NAME . '.' . SlugInterface::SYSTEMS;
 }

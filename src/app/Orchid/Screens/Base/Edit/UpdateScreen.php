@@ -6,10 +6,10 @@ use App\Contract\Common\HttpCodeInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
 use App\Orchid\Screens\Base\EditScreen;
-use App\Orchid\Screens\Button;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Button;
 
 abstract class UpdateScreen extends EditScreen
 {

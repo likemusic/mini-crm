@@ -41,7 +41,7 @@ class PlatformScreen extends Screen
     /**
      * Button commands.
      *
-     * @return Button[]
+     * @return Link[]
      */
     public function commandBar(): array
     {

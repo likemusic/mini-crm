@@ -10,12 +10,12 @@ use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterfac
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Orchid\Screens\Base as BaseScreen;
-use App\Orchid\Screens\Button;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 
 abstract class EditScreen extends BaseScreen
@@ -124,6 +124,33 @@ abstract class EditScreen extends BaseScreen
         return $this->infoMessageProvider->getDeleteMessage();
     }
 
+    protected function addAlertMessage(string $message)
+    {
+        Alert::info($message);
+    }
+
+    protected function addErrorMessage(string $message)
+    {
+        Alert::error($message);
+    }
+
+    protected function redirectToList()
+    {
+        $routeName = $this->getRouteNameList();
+
+        return $this->redirectToRoute($routeName);
+    }
+
+    private function getRouteNameList()
+    {
+        return $this->routeNameProvider->getList();
+    }
+
+    protected function redirectToRoute($routeName)
+    {
+        return redirect()->route($routeName);
+    }
+
     /**
      * @return RedirectResponse
      */
@@ -161,42 +188,15 @@ abstract class EditScreen extends BaseScreen
         return $request->get($dataKey);
     }
 
-    protected function addAlertMessage(string $message)
-    {
-        Alert::info($message);
-    }
-
     private function addErrorMessageByException(Exception $exception)
     {
         $message = $exception->getMessage();
         $this->addErrorMessage($message);
     }
 
-    protected function addErrorMessage(string $message)
-    {
-        Alert::error($message);
-    }
-
     protected function redirectBackWithInput()
     {
         return Redirect::back()->withInput();
-    }
-
-    protected function redirectToList()
-    {
-        $routeName = $this->getRouteNameList();
-
-        return $this->redirectToRoute($routeName);
-    }
-
-    private function getRouteNameList()
-    {
-        return $this->routeNameProvider->getList();
-    }
-
-    protected function redirectToRoute($routeName)
-    {
-        return redirect()->route($routeName);
     }
 
     /**
