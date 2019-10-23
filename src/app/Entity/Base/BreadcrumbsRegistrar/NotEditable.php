@@ -5,7 +5,7 @@ namespace App\Entity\Base\BreadcrumbsRegistrar;
 use App\Contract\Entity\Base\EditableInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
-use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
+use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;

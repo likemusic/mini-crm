@@ -17,6 +17,7 @@ use Orchid\Screen\Fields\Password;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
+use App\Entity\User\Route\NameProvider as UserRouteNameProvider;
 
 class UserEditScreen extends Screen
 {
@@ -38,6 +39,17 @@ class UserEditScreen extends Screen
      * @var string
      */
     public $permission = 'platform.systems.users';
+
+    /**
+     * @var UserRouteNameProvider
+     */
+    private $userRouteNameProvider;
+
+    public function __construct(UserRouteNameProvider $userRouteNameProvider, ?Request $request = null)
+    {
+        $this->userRouteNameProvider = $userRouteNameProvider;
+        parent::__construct($request);
+    }
 
     /**
      * Query data.
@@ -137,7 +149,12 @@ class UserEditScreen extends Screen
 
         Alert::info(__('User was saved.'));
 
-        return redirect()->route('platform.systems.users');
+        return redirect()->route($this->getUserListRouteName());
+    }
+
+    private function getUserListRouteName()
+    {
+        return $this->userRouteNameProvider->getList();
     }
 
     /**
@@ -153,7 +170,7 @@ class UserEditScreen extends Screen
 
         Alert::info(__('User was removed'));
 
-        return redirect()->route('platform.systems.users');
+        return redirect()->route($this->getUserListRouteName());
     }
 
     /**

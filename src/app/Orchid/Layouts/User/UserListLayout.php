@@ -7,9 +7,21 @@ namespace App\Orchid\Layouts\User;
 use Orchid\Screen\TD;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Layouts\Table;
+use App\Contract\Entity\User\Route\NameInterface as UserRouteNameInterface;
+use App\Entity\User\Route\NameProvider as UserRouteNameProvider;
 
 class UserListLayout extends Table
 {
+    /**
+     * @var UserRouteNameProvider
+     */
+    private $routeNameProvider;
+
+    public function __construct(UserRouteNameProvider $routeNameProvider)
+    {
+        $this->routeNameProvider = $routeNameProvider;
+    }
+
     /**
      * @var string
      */
@@ -22,7 +34,7 @@ class UserListLayout extends Table
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
                 ->sort()
-                ->link('platform.systems.users.edit', 'id'),
+                ->link($this->getEditRouteName(), 'id'),
 
             TD::set('name', __('Name'))
                 ->sort()
@@ -34,7 +46,7 @@ class UserListLayout extends Table
                     $avatar = e($user->getAvatar());
                     $name = e($user->getNameTitle());
                     $sub = e($user->getSubTitle());
-                    $route = route('platform.systems.users.edit', $user->id);
+                    $route = route($this->getEditRouteName(), $user->id);
 
                     return "<a href='{$route}'>
                                 <div class='d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center'>
@@ -57,5 +69,10 @@ class UserListLayout extends Table
             TD::set('updated_at', __('Last edit'))
                 ->sort(),
         ];
+    }
+
+    private function getEditRouteName()
+    {
+        return $this->routeNameProvider->getUpdate();
     }
 }

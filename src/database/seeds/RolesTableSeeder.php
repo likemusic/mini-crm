@@ -1,6 +1,6 @@
 <?php
 
-use App\Contract\Entity\Permission\Crm\Role\NameInterface as CrmPermissionNameInterface;
+use App\Contract\Entity\Permission\Crm\Role\Type\NameInterface as CrmPermissionNameInterface;
 use App\Contract\Entity\Role\Field\NameInterface;
 use App\Contract\Entity\Role\NameInterface as RoleNameInterface;
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;

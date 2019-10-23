@@ -16,6 +16,7 @@ use Orchid\Screen\Layout;
 use Orchid\Screen\Repository;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
+use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 
 class ExampleScreen extends Screen
 {
@@ -180,7 +181,7 @@ class ExampleScreen extends Screen
         Auth::user()->notify(new DashboardNotification([
             'title' => 'Hello Word',
             'message' => self::TEXT_EXAMPLE,
-            'action' => route('platform.main'),
+            'action' => route(PlatformRouteNameInterface::MAIN),
             'type' => DashboardNotification::INFO,
         ]));
 

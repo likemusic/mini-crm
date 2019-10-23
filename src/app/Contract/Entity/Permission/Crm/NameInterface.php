@@ -8,5 +8,6 @@ interface NameInterface
 {
     const PRODUCT = PermissionNameInterface::CRM . '.product';
     const PRODUCT_CATEGORY = PermissionNameInterface::CRM . '.product-category';
+    const USER = PermissionNameInterface::CRM . '.user';
     const ROLE = PermissionNameInterface::CRM . '.role';
 }

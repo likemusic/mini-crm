@@ -7,9 +7,12 @@ namespace App\Orchid\Screens\Role;
 use App\Contract\Entity\Permission\Platform\NameInterface as PermissionNameInterface;
 use App\Contract\Entity\Permission\Platform\Systems\NameInterface as SystemsNameInterface;
 use App\Orchid\Layouts\Role\RoleListLayout;
+use Illuminate\Http\Request;
 use Orchid\Platform\Models\Role;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use App\Contract\Entity\Role\Route\NameInterface as RoleRouteNameInterface;
+use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
 
 class RoleListScreen extends Screen
 {
@@ -33,6 +36,17 @@ class RoleListScreen extends Screen
     public $permission = SystemsNameInterface::ROLES;
 
     /**
+     * @var RoleRouteNameProvider
+     */
+    private $roleRouteNameProvider;
+
+    public function __construct(RoleRouteNameProvider $roleRouteNameProvider, ?Request $request = null)
+    {
+        $this->roleRouteNameProvider = $roleRouteNameProvider;
+        parent::__construct($request);
+    }
+
+    /**
      * Query data.
      *
      * @return array
@@ -53,9 +67,14 @@ class RoleListScreen extends Screen
     {
         return [
             Link::make(__('Add'))
-                ->href(route('platform.systems.roles.create'))
+                ->href(route($this->getRoleCreateRouteName()))
                 ->icon('icon-plus'),
         ];
+    }
+
+    private function getRoleCreateRouteName()
+    {
+        return $this->roleRouteNameProvider->getCreate();
     }
 
     /**

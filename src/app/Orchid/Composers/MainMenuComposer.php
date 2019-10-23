@@ -4,28 +4,33 @@ declare(strict_types=1);
 
 namespace App\Orchid\Composers;
 
-use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;
-use App\Entity\Pharmacy\MenuRegistrar as PharmacyMenuRegistrar;
-use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
-use App\Entity\ProductCategory\MenuRegistrar as ProductCategoryMenuRegistrar;
-use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
-use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
-use App\Entity\StockItem\MenuRegistrar as StockItemMenuRegistrar;
-use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
-use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
-use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
+use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
+use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
+use App\Contract\Entity\Permission\Crm\User\NameInterface as UserNameInterface;
+use App\Contract\Entity\Permission\Crm\Role\NameInterface as RoleNameInterface;
+use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
 use App\Entity\Currency\MenuRegistrar as CurrencyMenuRegistrar;
-use App\Entity\Wallet\MenuRegistrar as WalletMenuRegistrar;
+use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;
 use App\Entity\ExchangeRate\MenuRegistrar as ExchangeRateMenuRegistrar;
+use App\Entity\Order\MenuRegistrar as OrderMenuRegistrar;
+use App\Entity\OrderItem\MenuRegistrar as OrderItemMenuRegistrar;
+use App\Entity\Pharmacy\MenuRegistrar as PharmacyMenuRegistrar;
+use App\Entity\Product\MenuRegistrar as ProductMenuRegistrar;
+use App\Entity\User\MenuRegistrar as UserMenuRegistrar;
+use App\Entity\Role\MenuRegistrar as RoleMenuRegistrar;
+use App\Entity\ProductCategory\MenuRegistrar as ProductCategoryMenuRegistrar;
+use App\Entity\ProductQuote\MenuRegistrar as ProductQuoteMenuRegistrar;
+use App\Entity\StockItem\MenuRegistrar as StockItemMenuRegistrar;
+use App\Entity\UnaccountedProduct\MenuRegistrar as UnaccountedProductMenuRegistrar;
+use App\Entity\Wallet\MenuRegistrar as WalletMenuRegistrar;
+use App\Entity\Warehouse\MenuRegistrar as WarehouseMenuRegistrar;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
-use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
-use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
+use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterface;
 
 class MainMenuComposer
 {
@@ -100,6 +105,21 @@ class MainMenuComposer
     private $exchangeRateMenuRegistrar;
 
     /**
+     * @var CurrencyMenuRegistrar
+     */
+    private $currencyMenuRegistrar;
+
+    /**
+     * @var UserMenuRegistrar
+     */
+    private $userMenuRegistrar;
+
+    /**
+     * @var RoleMenuRegistrar
+     */
+    private $roleMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
@@ -133,8 +153,11 @@ class MainMenuComposer
         CounteragentMenuRegistrar $counteragentMenuRegistrar,
         CurrencyMenuRegistrar $currencyMenuRegistrar,
         WalletMenuRegistrar $walletMenuRegistrar,
-        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar
-    ) {
+        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar,
+        UserMenuRegistrar $userMenuRegistrar,
+        RoleMenuRegistrar $roleMenuRegistrar
+    )
+    {
         $this->dashboard = $dashboard;
         $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
         $this->productMenuRegistrar = $productMenuRegistrar;
@@ -151,6 +174,8 @@ class MainMenuComposer
         $this->currencyMenuRegistrar = $currencyMenuRegistrar;
         $this->walletMenuRegistrar = $walletMenuRegistrar;
         $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
+        $this->userMenuRegistrar = $userMenuRegistrar;
+        $this->roleMenuRegistrar = $roleMenuRegistrar;
     }
 
     /**
@@ -178,7 +203,7 @@ class MainMenuComposer
 //            ->add(Menu::MAIN,
 //                ItemMenu::label('Example')
 //                    ->icon('icon-folder')
-//                    ->route('platform.example')
+//                    ->route(PlatformRouteNameInterface::EXAMPLE)
 //                    ->title('Example boilerplate')
 //            )
 //            ->add(Menu::MAIN,
@@ -200,15 +225,14 @@ class MainMenuComposer
 //            ->add(Menu::MAIN,
 //                ItemMenu::label('Email sender')
 //                    ->icon('icon-envelope-letter')
-//                    ->route('platform.email')
+//                    ->route(PlatformRouteNameInterface::EMAIL)
 //                    ->title('Tools')
 //            );
 
-        if ($this->canAccess(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
-            $this->addProductCatalogMenu($dashboardMenu);
-        }
+        $this->addProductCatalogMenuIfCanAccess($dashboardMenu);
+        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
 
-            //Entities
+        //Entities
 //            $this->productMenuRegistrar->register($dashboardMenu);
 //            $this->warehouseMenuRegistrar->register($dashboardMenu);
 //            $this->stockItemMenuRegistrar->register($dashboardMenu);
@@ -226,17 +250,18 @@ class MainMenuComposer
 //        $this->pharmacyMenuRegistrar->register($dashboardMenu);
     }
 
-    private function addProductCatalogMenu(Menu $menu)
+    private function addProductCatalogMenuIfCanAccess(Menu $menu)
     {
-        $menu
-            ->add(Menu::MAIN,
-                ItemMenu::label('Каталог товаров')
-                    ->slug('catalog')
-                    ->icon('icon-book-open')
-                    ->childs()
-            );
+        if ($this->canAccess(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
+            $this->addProductCatalogMenu($menu);
+        }
+    }
 
-        $this->productCategoryMenuRegistrar->register($menu, 'catalog');
+    private function addUsersAndRolesMenuIfCanAccess(Menu $menu)
+    {
+        if ($this->canAccess(MainMenuPermissionNameInterface::USERS_AND_ROLES)) {
+            $this->addUsersAndRolesMenu($menu);
+        }
     }
 
     private function canAccess($menuPermission)
@@ -253,19 +278,16 @@ class MainMenuComposer
         return false;
     }
 
-
-    private function getCurrentUser(): User
-    {
-        return Auth::user();
-    }
-
-
     private function getCRMPermissionsByMenuPermission($menuPermission)
     {
         $menuPermissionMap = [
             MainMenuPermissionNameInterface::PRODUCT_CATALOG => [
                 ProductNameInterface::LIST,
                 ProductCategoryNameInterface::LIST,
+            ],
+            MainMenuPermissionNameInterface::USERS_AND_ROLES => [
+                UserNameInterface::LIST,
+                RoleNameInterface::LIST,
             ]
         ];
 
@@ -276,4 +298,37 @@ class MainMenuComposer
         return $menuPermissionMap[$menuPermission];
     }
 
+    private function getCurrentUser(): User
+    {
+        return Auth::user();
+    }
+
+    private function addProductCatalogMenu(Menu $menu)
+    {
+        $slug = MainMenuSlugInterface::PRODUCT_CATALOG;
+        $menu
+            ->add(Menu::MAIN,
+                ItemMenu::label('Каталог товаров')
+                    ->slug($slug)
+                    ->icon('icon-book-open')
+                    ->childs()
+            );
+
+        $this->productCategoryMenuRegistrar->register($menu, $slug);
+    }
+
+    private function addUsersAndRolesMenu(Menu $menu)
+    {
+        $slug = MainMenuSlugInterface::USERS_AND_ROLES;
+        $menu
+            ->add(Menu::MAIN,
+                ItemMenu::label('Пользователи и роли')
+                    ->slug($slug)
+                    ->icon('icon-shield')
+                    ->childs()
+            );
+
+        $this->userMenuRegistrar->register($menu, $slug);
+        $this->roleMenuRegistrar->register($menu, $slug);
+    }
 }

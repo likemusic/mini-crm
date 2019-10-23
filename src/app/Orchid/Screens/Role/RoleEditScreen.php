@@ -14,6 +14,8 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Dashboard;
+use App\Contract\Entity\Role\Route\NameInterface as RoleRouteNameInterface;
+use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
 
 class RoleEditScreen extends Screen
 {
@@ -40,6 +42,17 @@ class RoleEditScreen extends Screen
      * @var bool
      */
     private $exist = false;
+
+    /**
+     * @var RoleRouteNameProvider
+     */
+    private $roleRouteNameProvider;
+
+    public function __construct(RoleRouteNameProvider $roleRouteNameProvider,?Request $request = null)
+    {
+        $this->roleRouteNameProvider = $roleRouteNameProvider;
+        parent::__construct($request);
+    }
 
     /**
      * Query data.
@@ -122,7 +135,12 @@ class RoleEditScreen extends Screen
 
         Alert::info(__('Role was saved'));
 
-        return redirect()->route('platform.systems.roles');
+        return redirect()->route($this->getRoleListRouteName());
+    }
+
+    private function getRoleListRouteName()
+    {
+        return $this->roleRouteNameProvider->getList();
     }
 
     /**
@@ -136,6 +154,6 @@ class RoleEditScreen extends Screen
 
         Alert::info(__('Role was removed'));
 
-        return redirect()->route('platform.systems.roles');
+        return redirect()->route($this->getRoleListRouteName());
     }
 }

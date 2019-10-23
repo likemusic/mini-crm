@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\User;
 
+use App\Contract\Common\UserRoleLayoutInterface;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Label;
 use Orchid\Screen\Layouts\Rows;
@@ -48,7 +49,7 @@ class UserRoleLayout extends Rows
                 ->title($group)
                 ->horizontal();
 
-            foreach (collect($items)->chunk(3) as $chunks) {
+            foreach (collect($items)->chunk(UserRoleLayoutInterface::CHUNK_SIZE) as $chunks) {
                 $fields[] = Field::group(function () use ($chunks) {
                     foreach ($chunks as $permission) {
                         $permissions[] = CheckBox::make('permissions.'.base64_encode($permission['slug']))

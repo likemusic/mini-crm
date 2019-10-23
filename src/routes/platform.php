@@ -2,29 +2,28 @@
 
 declare(strict_types=1);
 
+use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
+use App\Contract\Entity\Platform\Route\Systems\NameInterface as PlatformSystemRouteNameInterface;
+use App\Entity\Counteragent\Route\EditableRegistrar as CounteragentRouteRegistrar;
+use App\Entity\Currency\Route\EditableRegistrar as CurrencyRouteRegistrar;
 use App\Entity\DiscountedProduct\Route\EditableRegistrar as DiscountedProductRouteRegistrar;
+use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
+use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
+use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
 use App\Entity\Pharmacy\Route\NotEditableRegistrar as PharmacyRouteRegistrar;
 use App\Entity\Product\Route\EditableRegistrar as ProductRouteRegistrar;
 use App\Entity\ProductCategory\Route\EditableRegistrar as ProductCategoryRouteRegistrar;
-use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
-use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
+use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
 use App\Entity\StockItem\Route\EditableRegistrar as StockItemRouteRegistrar;
-use App\Entity\ProductQuote\Route\EditableRegistrar as ProductQuoteRouteRegistrar;
-use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
-use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
-use App\Entity\Counteragent\Route\EditableRegistrar as CounteragentRouteRegistrar;
-use App\Entity\Currency\Route\EditableRegistrar as CurrencyRouteRegistrar;
+use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
+use App\Entity\User\Route\EditableRegistrar as UserRouteRegistrar;
+use App\Entity\Role\Route\EditableRegistrar as RoleRouteRegistrar;
 use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
-use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
-
+use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
 use App\Http\Controllers\Orchid\Patform\RelationWithDataController;
-use App\Orchid\Screens\EmailSenderScreen;
-use App\Orchid\Screens\ExampleScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
-use App\Orchid\Screens\User\UserEditScreen;
-use App\Orchid\Screens\User\UserListScreen;
 use Illuminate\Routing\RouteFileRegistrar;
 
 /*
@@ -40,28 +39,22 @@ use Illuminate\Routing\RouteFileRegistrar;
 
 /** @var RouteFileRegistrar $this */
 
+// RelationWithData
+$this->router->post('relation-with-data', [RelationWithDataController::class, 'view'])
+    ->name(PlatformSystemRouteNameInterface::RELATION_WITH_DATA);
+
 // Main
-$this->router->screen('/main', PlatformScreen::class)->name('platform.main');
+$this->router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
 
 // Users...
-$this->router->screen('users/{users}/edit', UserEditScreen::class)->name('platform.systems.users.edit');
-$this->router->screen('users', UserListScreen::class)->name('platform.systems.users');
+/** @var UserRouteRegistrar $userRouteRegistrar */
+$userRouteRegistrar = App::make(UserRouteRegistrar::class);
+$userRouteRegistrar->registerRoutes($this->router);
 
 // Roles...
-$this->router->screen('roles/{roles}/edit', RoleEditScreen::class)->name('platform.systems.roles.edit');
-$this->router->screen('roles/create', RoleEditScreen::class)->name('platform.systems.roles.create');
-$this->router->screen('roles', RoleListScreen::class)->name('platform.systems.roles');
-
-// Example...
-$this->router->screen('example', ExampleScreen::class)->name('platform.example');
-//Route::screen('/dashboard/screen/idea', 'Idea::class','platform.screens.idea');
-
-$this->router->screen('email', EmailSenderScreen::class)->name('platform.email');
-
-
-$this->router->post('relation-with-data', [RelationWithDataController::class, 'view'])
-    ->name('platform.systems.relation-with-data');
-
+/** @var RoleRouteRegistrar $userRouteRegistrar */
+$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
+$roleRouteRegistrar->registerRoutes($this->router);
 
 /** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
 $productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);

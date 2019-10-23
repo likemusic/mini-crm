@@ -6,8 +6,12 @@ use App\Contract\Entity\Permission\Crm\ProductCategory\LabelInterface as Product
 use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryPermissionNameInterface;
 use App\Contract\Entity\Permission\Crm\Product\LabelInterface as ProductPermissionLabelInterface;
 use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\Role\LabelInterface;
-use App\Contract\Entity\Permission\Crm\Role\NameInterface;
+use App\Contract\Entity\Permission\Crm\User\LabelInterface as UserPermissionLabelInterface;
+use App\Contract\Entity\Permission\Crm\User\NameInterface as UserPermissionNameInterface;
+use App\Contract\Entity\Permission\Crm\Role\LabelInterface as RolePermissionLabelInterface;
+use App\Contract\Entity\Permission\Crm\Role\NameInterface as RolePermissionNameInterface;
+use App\Contract\Entity\Permission\Crm\Role\Type\LabelInterface;
+use App\Contract\Entity\Permission\Crm\Role\Type\NameInterface;
 use App\Contract\Entity\PermissionGroup\CRM\LabelInterface as CrmPermissionGroupLabelInterface;
 use App\Contract\Entity\PermissionGroup\LabelInterface as PermissionGroupLabelInterface;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +29,8 @@ class PermissionServiceProvider extends ServiceProvider
         $this->registerCrmPermissions($dashboard);
         $this->registerProductPermissions($dashboard);
         $this->registerProductCategoryPermissions($dashboard);
+        $this->registerUserPermissions($dashboard);
+        $this->registerRolePermissions($dashboard);
     }
 
     private function registerCrmPermissions(Dashboard $dashboard)
@@ -70,6 +76,26 @@ class PermissionServiceProvider extends ServiceProvider
             CrmPermissionGroupLabelInterface::PRODUCT_CATEGORY,
             ProductCategoryPermissionNameInterface::class,
             ProductCategoryPermissionLabelInterface::class
+        );
+    }
+
+    private function registerUserPermissions(Dashboard $dashboard)
+    {
+        $this->registerPermissionGroup(
+            $dashboard,
+            CrmPermissionGroupLabelInterface::USER,
+            UserPermissionNameInterface::class,
+            UserPermissionLabelInterface::class
+        );
+    }
+
+    private function registerRolePermissions(Dashboard $dashboard)
+    {
+        $this->registerPermissionGroup(
+            $dashboard,
+            CrmPermissionGroupLabelInterface::ROLE,
+            RolePermissionNameInterface::class,
+            RolePermissionLabelInterface::class
         );
     }
 

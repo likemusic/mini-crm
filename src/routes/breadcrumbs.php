@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Contract\Entity\Platform\Route\PlatformRouteNameInterface;
+use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 use App\Entity\DiscountedProduct\BreadcrumbsRegistrar as DiscountedProductBreadcrumbsRegistrar;
 use App\Entity\Pharmacy\BreadcrumbsRegistrar as PharmacyBreadcrumbsRegistrar;
 use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
