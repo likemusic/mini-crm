@@ -3,7 +3,7 @@
 
 namespace App\Contract\Entity\PermissionGroup;
 
-interface NameInterface
+interface LabelInterface
 {
     const SYSTEMS = 'Systems';
     const MAIN = 'Main';

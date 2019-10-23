@@ -37,7 +37,7 @@ class RolePermissionLayout extends Rows
             $fields[] = Label::make($group)
                 ->title($group);
 
-            foreach (collect($items)->chunk(3) as $chunks) {
+            foreach (collect($items)->chunk(4) as $chunks) {
                 $fields[] = Field::group(function () use ($chunks) {
                     foreach ($chunks as $permission) {
                         $permissions[] = CheckBox::make('permissions.'.base64_encode($permission['slug']))

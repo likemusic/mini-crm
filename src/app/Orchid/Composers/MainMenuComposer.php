@@ -18,9 +18,14 @@ use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
 use App\Entity\Currency\MenuRegistrar as CurrencyMenuRegistrar;
 use App\Entity\Wallet\MenuRegistrar as WalletMenuRegistrar;
 use App\Entity\ExchangeRate\MenuRegistrar as ExchangeRateMenuRegistrar;
+use App\Model\User;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
+use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
+use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
+use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
 
 class MainMenuComposer
 {
@@ -199,17 +204,11 @@ class MainMenuComposer
 //                    ->title('Tools')
 //            );
 
-        $dashboardMenu
-            ->add(Menu::MAIN,
-                ItemMenu::label('Каталог товаров')
-                    ->slug('catalog')
-                    ->icon('icon-book-open')
-                    ->childs()
-            );
-
+        if ($this->canAccess(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
+            $this->addProductCatalogMenu($dashboardMenu);
+        }
 
             //Entities
-            $this->productCategoryMenuRegistrar->register($dashboardMenu, 'catalog');
 //            $this->productMenuRegistrar->register($dashboardMenu);
 //            $this->warehouseMenuRegistrar->register($dashboardMenu);
 //            $this->stockItemMenuRegistrar->register($dashboardMenu);
@@ -225,6 +224,56 @@ class MainMenuComposer
 
         // Calculated
 //        $this->pharmacyMenuRegistrar->register($dashboardMenu);
-
     }
+
+    private function addProductCatalogMenu(Menu $menu)
+    {
+        $menu
+            ->add(Menu::MAIN,
+                ItemMenu::label('Каталог товаров')
+                    ->slug('catalog')
+                    ->icon('icon-book-open')
+                    ->childs()
+            );
+
+        $this->productCategoryMenuRegistrar->register($menu, 'catalog');
+    }
+
+    private function canAccess($menuPermission)
+    {
+        $crmPermissions = $this->getCRMPermissionsByMenuPermission($menuPermission);
+        $currentUser = $this->getCurrentUser();
+
+        foreach ($crmPermissions as $crmPermission) {
+            if ($currentUser->hasAccess($crmPermission)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    private function getCurrentUser(): User
+    {
+        return Auth::user();
+    }
+
+
+    private function getCRMPermissionsByMenuPermission($menuPermission)
+    {
+        $menuPermissionMap = [
+            MainMenuPermissionNameInterface::PRODUCT_CATALOG => [
+                ProductNameInterface::LIST,
+                ProductCategoryNameInterface::LIST,
+            ]
+        ];
+
+        if (!array_key_exists($menuPermission, $menuPermissionMap)) {
+            throw new \InvalidArgumentException('Invalid menu permission value: ' . $menuPermission);
+        }
+
+        return $menuPermissionMap[$menuPermission];
+    }
+
 }

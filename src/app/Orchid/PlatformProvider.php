@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
-use App\Contract\Entity\PermissionGroup\NameInterface as PermissionGroupNamesInterface;
+use App\Contract\Entity\PermissionGroup\LabelInterface as PermissionGroupNamesInterface;
 
 class PlatformProvider extends ServiceProvider
 {

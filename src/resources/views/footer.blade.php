@@ -6,5 +6,3 @@
         </a>
     </p>
 </div>
-
-@include('autologin::autologin')

@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\ProductCategory;
 
-use App\Contract\Entity\Permission\Crm\Product\Category\NameInterface as PermissionNameInterface;
+use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as PermissionNameInterface;
 
 trait PermissionsClassNameTrait
 {
