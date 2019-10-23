@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
+use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 
 abstract class CreateScreen extends EditScreen
 {
@@ -73,5 +74,10 @@ abstract class CreateScreen extends EditScreen
     private function getCreateMessage()
     {
         return $this->infoMessageProvider->getCreateMessage();
+    }
+
+    protected function getPermissionClassConstantName(): string
+    {
+        return PermissionConstantNameInterface::CREATE;
     }
 }

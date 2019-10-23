@@ -87,4 +87,9 @@ abstract class UpdateScreen extends EditScreen
     {
         return $this->infoMessageProvider->getUpdateMessage();
     }
+
+    protected function getPermissionClassConstantName(): string
+    {
+        return PermissionConstantNameInterface::UPDATE;
+    }
 }

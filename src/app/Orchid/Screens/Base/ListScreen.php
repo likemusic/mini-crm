@@ -11,6 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
+use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 
 abstract class ListScreen extends Base
 {
@@ -91,4 +92,10 @@ abstract class ListScreen extends Base
     }
 
     abstract protected function getLayoutClassName(): string;
+
+    protected function getPermissionClassConstantName(): string
+    {
+        return PermissionConstantNameInterface::LIST;
+    }
+
 }
