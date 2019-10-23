@@ -2,12 +2,8 @@
 
 namespace App\Contract\Entity\ProductCategory\Field;
 
-interface NameInterface
-{
-    const ID = 'id';
-    const NAME = 'name';
-    const NOTE = 'note';
+use App\Contract\Entity\Base\Field\Name\NamedEntityInterface;
 
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+interface NameInterface extends NamedEntityInterface
+{
 }

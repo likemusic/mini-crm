@@ -2,10 +2,11 @@
 
 namespace App\Contract\Entity\Role\Field;
 
-interface NameInterface
+use App\Contract\Entity\Base\Field\Name\IdInterface;
+use App\Contract\Entity\Base\Field\Name\NameInterface as FieldNameNameInterface;
+
+interface NameInterface extends IdInterface, FieldNameNameInterface
 {
-    const ID = 'id';
-    const NAME = 'name';
     const SLUG = 'slug';
     const PERMISSIONS = 'permissions';
 }

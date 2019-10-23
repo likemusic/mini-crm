@@ -2,10 +2,10 @@
 
 namespace App\Contract\Entity\Order\Field;
 
-interface NameInterface
-{
-    const ID = 'id';
+use App\Contract\Entity\Base\Field\Name\EntityInterface;
 
+interface NameInterface extends EntityInterface
+{
     const DATETIME = 'datetime';
     const DATE_ORDER_ID = 'date_order_id';
 
@@ -24,9 +24,4 @@ interface NameInterface
     const COURIER_ID = 'courier';
 
     const INCOMES = 'incomes';
-
-    const NOTE = 'note';
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 }

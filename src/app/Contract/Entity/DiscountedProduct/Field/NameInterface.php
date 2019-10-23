@@ -2,12 +2,9 @@
 
 namespace App\Contract\Entity\DiscountedProduct\Field;
 
-interface NameInterface
-{
-    const ID = 'id';
-    const PRODUCT_ID = 'product_id';
-    const NOTE = 'note';
+use App\Contract\Entity\Base\Field\Name\EntityInterface;
 
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+interface NameInterface extends EntityInterface
+{
+    const PRODUCT_ID = 'product_id';
 }

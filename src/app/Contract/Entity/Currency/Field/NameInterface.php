@@ -2,14 +2,12 @@
 
 namespace App\Contract\Entity\Currency\Field;
 
-interface NameInterface
+use App\Contract\Entity\Base\Field\Name\IdInterface;
+use App\Contract\Entity\Base\Field\Name\NameInterface as FieldNameNameInterface;
+use App\Contract\Entity\Base\Field\Name\SortOrderInterface;
+use App\Contract\Entity\Base\Field\Name\TimestampsInterface;
+
+interface NameInterface extends IdInterface, FieldNameNameInterface, SortOrderInterface, TimestampsInterface
 {
-    const ID = 'id';
-    const NAME = 'name';
     const CODE = 'code';
-
-    const SORT_ORDER = 'sort_order';
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 }

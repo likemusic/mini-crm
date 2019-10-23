@@ -2,16 +2,13 @@
 
 namespace App\Contract\Entity\User\Field;
 
-interface NameInterface
+use App\Contract\Entity\Base\Field\Name\EntityInterface;
+
+interface NameInterface extends EntityInterface
 {
-    const ID = 'id';
-    const NAME = 'name';
     const EMAIL = 'email';
     const EMAIL_VERIFIED_AT = 'email_verified_at';
     const PASSWORD = 'password';
     const PERMISSIONS = 'permissions';
     const ROLES = 'roles';
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 }
