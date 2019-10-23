@@ -201,12 +201,6 @@ class MainMenuComposer
         $dashboardMenu = $this->dashboard->menu;
 
 //            ->add(Menu::MAIN,
-//                ItemMenu::label('Example')
-//                    ->icon('icon-folder')
-//                    ->route(PlatformRouteNameInterface::EXAMPLE)
-//                    ->title('Example boilerplate')
-//            )
-//            ->add(Menu::MAIN,
 //                ItemMenu::label('Empty menu')
 //                    ->slug('example-menu')
 //                    ->icon('icon-code')
