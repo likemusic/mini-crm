@@ -2,12 +2,11 @@
 
 namespace App\Contract\Entity\UnaccountedProduct\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
     const NAME = 'Наименование';
     const NOTE = 'Примечание';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }

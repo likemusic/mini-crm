@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\Wallet\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
 
@@ -16,7 +18,4 @@ interface LabelInterface
     const CURRENCY_CODE = 'Валюта';
     const AMOUNT = 'Сумма';
     const NOTE = 'Примечание';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }

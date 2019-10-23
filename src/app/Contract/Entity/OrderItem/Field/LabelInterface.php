@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\OrderItem\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
 
@@ -17,7 +19,4 @@ interface LabelInterface
     const AMOUNT = 'Сумма';
 
     const NOTE = 'Примечание';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }

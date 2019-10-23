@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\StockItem\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
     const PRODUCT_ID = 'Id товара';
@@ -12,7 +14,4 @@ interface LabelInterface
     const QUANTITY = 'Кол-во';
 
     const NOTE = 'Примечание';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }

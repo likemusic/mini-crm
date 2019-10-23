@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\Product\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
     const NAME = 'Наименование';
@@ -10,7 +12,4 @@ interface LabelInterface
     const NOTE = 'Примечание';
     const APPROXIMATE_PRICE = 'Текущая ориентировочная цена';
     const SELLING_PRICE = 'Текущая отпускная цена';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }

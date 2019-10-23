@@ -2,13 +2,12 @@
 
 namespace App\Contract\Entity\Currency\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\TimestampsInterface;
+
+interface LabelInterface extends TimestampsInterface
 {
     const ID = 'Id';
     const NAME = 'Название';
     const CODE = 'Код';
     const SORT_ORDER = 'Приоритет';
-
-    const CREATED_AT = 'Дата создания';
-    const UPDATED_AT = 'Дата обновления';
 }
