@@ -2,13 +2,11 @@
 
 namespace App\Contract\Entity\ProductQuote\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
+use App\Contract\Entity\Base\Field\Label\NameInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface, NameInterface
 {
-    const ID = 'Id';
-    const NAME = 'Наименование';
-    const NOTE = 'Примечание';
     const APPROXIMATE_PRICE = 'Текущая ориентировочная цена';
     const SELLING_PRICE = 'Текущая отпускная цена';
 

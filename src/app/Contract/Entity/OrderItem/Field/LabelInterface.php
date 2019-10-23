@@ -2,12 +2,10 @@
 
 namespace App\Contract\Entity\OrderItem\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
-
     const ORDER_ID = 'Id заказа';
     const ORDER = 'Заказ';
 
@@ -17,6 +15,4 @@ interface LabelInterface extends TimestampsInterface
     const SELLING_PRICE = 'Отпускная цена';
     const COUNT = 'Количество';
     const AMOUNT = 'Сумма';
-
-    const NOTE = 'Примечание';
 }

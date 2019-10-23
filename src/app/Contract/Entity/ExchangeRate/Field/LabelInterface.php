@@ -2,12 +2,10 @@
 
 namespace App\Contract\Entity\ExchangeRate\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
-
     const FROM_CURRENCY_ID = 'Id исходной валюты';
     const FROM_CURRENCY_CODE = 'Код исходной валюты';
 
@@ -15,5 +13,4 @@ interface LabelInterface extends TimestampsInterface
     const TO_CURRENCY_CODE = 'Код конечной валюты';
 
     const RATE = 'Курс';
-    const NOTE = 'Примечание';
 }

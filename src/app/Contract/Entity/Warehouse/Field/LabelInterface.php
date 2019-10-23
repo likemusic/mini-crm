@@ -2,13 +2,11 @@
 
 namespace App\Contract\Entity\Warehouse\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
+use App\Contract\Entity\Base\Field\Label\SortOrderInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface, SortOrderInterface
 {
-    const ID = 'Id';
     const NAME = 'Название';
     const CODE = 'Код';
-    const SORT_ORDER = 'Приоритет';
-    const NOTE = 'Примечание';
 }

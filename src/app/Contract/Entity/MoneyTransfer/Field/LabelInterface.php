@@ -2,13 +2,10 @@
 
 namespace App\Contract\Entity\MoneyTransfer\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
     const OUTCOME_MONEY_CHANGE_ID = 'Id изменения баланса отправителя';
     const INCOME_MONEY_CHANGE_ID = 'Id изменения баланса получателя';
-
-    const NOTE = 'Примечание';
 }

@@ -2,13 +2,10 @@
 
 namespace App\Contract\Entity\MoneyChange\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
     const WALLET_ID = 'Id кошелька';
     const AMOUNT = 'Сумма';
-
-    const NOTE = 'Примечание';
 }

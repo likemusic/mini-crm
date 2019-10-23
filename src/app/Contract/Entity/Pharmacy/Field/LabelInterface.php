@@ -2,12 +2,13 @@
 
 namespace App\Contract\Entity\Pharmacy\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\Label\IdInterface;
+use App\Contract\Entity\Base\Field\Label\NoteInterface;
+use App\Contract\Entity\Base\Field\Label\NameInterface;
+
+interface LabelInterface extends IdInterface, NoteInterface, NameInterface
 {
-    const ID = 'Id';
-    const NAME = 'Наименование';
     const CATEGORY = 'Категория';
-    const NOTE = 'Примечание';
     const APPROXIMATE_PRICE = 'Ориентировочная цена';
     const SELLING_PRICE = 'Отпускная цена';
 

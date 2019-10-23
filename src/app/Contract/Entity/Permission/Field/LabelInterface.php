@@ -2,10 +2,11 @@
 
 namespace App\Contract\Entity\Permission\Field;
 
-interface LabelInterface
+use App\Contract\Entity\Base\Field\Label\IdInterface;
+use App\Contract\Entity\Base\Field\Label\NameInterface;
+
+interface LabelInterface extends IdInterface, NameInterface
 {
-    const ID = 'Id';
-    const NAME = 'Наименование';
     const SLUG = 'slug';
     const PERMISSIONS = 'Разрешения';
 }

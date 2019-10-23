@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contract\Entity\Base\Field;
+namespace App\Contract\Entity\Base\Field\Label;
 
 interface CreatedAtInterface
 {

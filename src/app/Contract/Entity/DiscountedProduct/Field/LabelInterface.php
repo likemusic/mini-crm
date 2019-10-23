@@ -2,13 +2,10 @@
 
 namespace App\Contract\Entity\DiscountedProduct\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
     const PRODUCT_ID = 'Id Товара';
-
     const PRODUCT = 'Товар';
-    const NOTE = 'Примечание';
 }

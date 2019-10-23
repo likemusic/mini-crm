@@ -2,12 +2,10 @@
 
 namespace App\Contract\Entity\Order\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
-
     const DATETIME = 'Дата и время заказа';
     const DATE_ORDER_ID = 'Номер заказа за день';
 
@@ -32,6 +30,4 @@ interface LabelInterface extends TimestampsInterface
     const COURIER = 'Курьер';
 
     const INCOMES = 'Поступления';
-
-    const NOTE = 'Примечание';
 }

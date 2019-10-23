@@ -2,13 +2,9 @@
 
 namespace App\Contract\Entity\Counteragent\Field;
 
-use App\Contract\Entity\Base\Field\TimestampsInterface;
+use App\Contract\Entity\Base\Field\Label\EntityInterface;
 
-interface LabelInterface extends TimestampsInterface
+interface LabelInterface extends EntityInterface
 {
-    const ID = 'Id';
-
     const NAME = 'Имя';
-
-    const NOTE = 'Примечание';
 }
