@@ -17,26 +17,56 @@ class ProductListLayout extends ListLayout
         parent::__construct($routeNameProvider);
     }
 
+    protected function showIdField(): bool
+    {
+        return true;
+    }
+
+    protected function showFieldsAsLink()
+    {
+        return true;
+    }
+
     /**
      * @return TD[]
      */
     public function columns(): array
     {
-        return [
-            TD::set(FieldNameInterface::ID, LabelInterface::ID),
+        $columns = [];
 
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+        if ($this->showIdField()) {
+            $columns[] = $this->createIdField(FieldNameInterface::ID, LabelInterface::ID);
+        }
 
-            TD::set(FieldNameInterface::CATEGORY . '.' . 'name', LabelInterface::CATEGORY),
+        $editRouteName = $this->getRouteNameEdit();
+
+        $mergedColumns = [
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+
+            $this->createField(FieldNameInterface::CATEGORY . '.' . 'name', LabelInterface::CATEGORY, $editRouteName, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
             TD::set(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
 
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
 
-            TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
-            TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
+//            TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),
+//            TD::set(FieldNameInterface::UPDATED_AT, LabelInterface::UPDATED_AT),
         ];
+
+        $columns = array_merge($columns, $mergedColumns);
+
+        if ($this->showTimestampsFields()) {
+            $timestampsColumns = $this->createTimestampsFields(FieldNameInterface::class, LabelInterface::class, $editRouteName, FieldNameInterface::ID);
+            $columns = array_merge($columns, $timestampsColumns);
+        }
+
+        if ($this->showActionsField()) {
+            $actionField = $this->createActionsField($editRouteName, FieldNameInterface::ID);
+            $columns[] = $actionField;
+        }
+
+        return $columns;
     }
 
     protected function getDataKey()

@@ -25,7 +25,7 @@ class DiscountedProductListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+            $this->createIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
             TD::set(FieldNameInterface::PRODUCT_ID, ProductLabelInterface::NAME)
                 ->render(function (DiscountedProduct $discountedProduct) {

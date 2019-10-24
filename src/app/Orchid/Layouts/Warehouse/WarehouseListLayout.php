@@ -21,7 +21,7 @@ class WarehouseListLayout extends ListLayout
     {
         return [
             TD::set(FieldNameInterface::ID, LabelInterface::ID),
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::CODE, LabelInterface::CODE),
             TD::set(FieldNameInterface::SORT_ORDER, LabelInterface::SORT_ORDER),

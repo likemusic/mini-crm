@@ -23,7 +23,7 @@ class ProductCategoryListLayout extends ListLayout
     public function columns(): array
     {
         return [
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
 

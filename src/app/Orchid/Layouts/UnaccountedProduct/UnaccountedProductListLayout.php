@@ -23,7 +23,7 @@ class UnaccountedProductListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
             TD::set(FieldNameInterface::CREATED_AT, LabelInterface::CREATED_AT),

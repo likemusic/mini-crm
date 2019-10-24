@@ -33,7 +33,7 @@ class ProductQuoteListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+            $this->createIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
             TD::set(FieldNameInterface::PRODUCT_ID, FieldLabelInterface::PRODUCT_ID)
                 ->link(
@@ -42,7 +42,7 @@ class ProductQuoteListLayout extends ListLayout
                     FieldNameInterface::PRODUCT_ID
                 ),
 
-            $this->getNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::APPROXIMATE_PRICE, FieldLabelInterface::APPROXIMATE_PRICE),
             TD::set(FieldNameInterface::SELLING_PRICE, FieldLabelInterface::SELLING_PRICE),

@@ -43,16 +43,16 @@ class OrderItemListLayout extends ListLayout
     public function fields(): array
     {
         return [
-            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+            $this->createIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
-            $this->getLinkField(
+            $this->createLinkField(
                 FieldNameInterface::ORDER_ID,
                 FieldLabelInterface::ORDER_ID,
                 $this->orderRouteNameProvider->getUpdate(),
                 OrderFieldNameInterface::ID
             ),
 
-            $this->getLinkField(
+            $this->createLinkField(
                 FieldNameInterface::PRODUCT_QUOTE_ID,
                 FieldLabelInterface::PRODUCT_QUOTE_ID,
                 $this->productQuoteRouteNameProvider->getUpdate(),

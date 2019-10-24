@@ -18,7 +18,7 @@ class OrderListLayout extends ListLayout
     protected function columns(): array
     {
         return [
-            $this->getIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
+            $this->createIdField(FieldNameInterface::ID, FieldLabelInterface::ID),
 
             TD::set(FieldNameInterface::DATETIME, FieldLabelInterface::DATETIME),
             TD::set(FieldNameInterface::DATE_ORDER_ID, FieldLabelInterface::DATE_ORDER_ID),

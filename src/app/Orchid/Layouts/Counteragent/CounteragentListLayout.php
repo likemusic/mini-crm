@@ -23,7 +23,7 @@ class CounteragentListLayout extends ListLayout
     protected function columns(): array
     {
         return [
-            $this->getNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, FieldLabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::NOTE, FieldLabelInterface::NOTE),
 

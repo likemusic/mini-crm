@@ -27,21 +27,21 @@ class ExchangeRateListLayout extends ListLayout
 
         return [
 //            TD::set(FieldNameInterface::FROM_CURRENCY . '.' . CurrencyFieldNameInterface::CODE, LabelInterface::FROM_CURRENCY_CODE),
-            $this->getLinkField(
+            $this->createLinkField(
                 FieldNameInterface::FROM_CURRENCY . '.' . CurrencyFieldNameInterface::CODE,
                 LabelInterface::FROM_CURRENCY_CODE,
                 $editRouteName,
                 FieldNameInterface::ID
             ),
 
-            $this->getLinkField(
+            $this->createLinkField(
                 FieldNameInterface::TO_CURRENCY . '.' . CurrencyFieldNameInterface::CODE,
                 LabelInterface::TO_CURRENCY_CODE,
                 $editRouteName,
                 FieldNameInterface::ID
             ),
 
-            $this->getLinkField(
+            $this->createLinkField(
                 FieldNameInterface::RATE,
                 LabelInterface::RATE,
                 $editRouteName,

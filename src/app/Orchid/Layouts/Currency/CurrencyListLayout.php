@@ -26,7 +26,7 @@ class CurrencyListLayout extends ListLayout
             TD::set(FieldNameInterface::ID, LabelInterface::ID),
 
             TD::set(FieldNameInterface::CODE, LabelInterface::CODE),
-            $this->getNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
 
             TD::set(FieldNameInterface::SORT_ORDER, LabelInterface::SORT_ORDER),
 
