@@ -5,5 +5,6 @@
 @include('html-element.a', [
     'class' => $class,
     'title' => $label,
-    'text' => $text
+    'text' => $text,
+    'onclick' => $onclick
 ])

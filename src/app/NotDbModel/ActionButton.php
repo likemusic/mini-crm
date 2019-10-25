@@ -9,9 +9,6 @@ class ActionButton
     public $name;
 
     /** @var string */
-    public $route;
-
-    /** @var string */
     public $icon;
 
     /** @var string */
@@ -20,12 +17,17 @@ class ActionButton
     /** @var string */
     public $style;
 
-    public function __construct(string $route, string $name, string $label, string $icon, string $style)
+    /**
+     * @var string
+     */
+    public $onclick;
+
+    public function __construct(string $name, string $label, string $icon, string $style, string $onclick = null)
     {
         $this->name = $name;
-        $this->route = $route;
         $this->icon = $icon;
         $this->label = $label;
         $this->style = $style;
+        $this->onclick = $onclick;
     }
 }

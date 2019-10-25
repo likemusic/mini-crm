@@ -28,19 +28,38 @@ class ListLayout extends BaseListLayout
     {
         $columns = [];
 
+        $routeIdFieldName = $this->getRouteIdFieldName();
+
         if ($this->showIdField()) {
             $columns[] = $this->createIdField(FieldNameInterface::ID, LabelInterface::ID);
         }
 
         $editRouteName = $this->getRouteNameEdit();
+        $deleteRouteName = $this->getRouteNameDelete();
 
         $mergedColumns = [
-            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, FieldNameInterface::ID),
+            $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, $routeIdFieldName),
 
-            $this->createField(FieldNameInterface::CATEGORY . '.' . 'name', LabelInterface::CATEGORY, $editRouteName, FieldNameInterface::ID),
+            $this->createField(
+                FieldNameInterface::CATEGORY . '.' . 'name',
+                LabelInterface::CATEGORY,
+                $editRouteName,
+                $routeIdFieldName
+            ),
 
-            $this->createCurrencyField(FieldNameInterface::APPROXIMATE_PRICE, LabelInterface::APPROXIMATE_PRICE),
-            $this->createCurrencyField(FieldNameInterface::SELLING_PRICE, LabelInterface::SELLING_PRICE),
+            $this->createCurrencyField(
+                FieldNameInterface::APPROXIMATE_PRICE,
+                LabelInterface::APPROXIMATE_PRICE,
+                $editRouteName,
+                $routeIdFieldName
+            ),
+
+            $this->createCurrencyField(
+                FieldNameInterface::SELLING_PRICE,
+                LabelInterface::SELLING_PRICE,
+                $editRouteName,
+                $routeIdFieldName
+            ),
 
             TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
         ];
@@ -53,12 +72,18 @@ class ListLayout extends BaseListLayout
         }
 
         if ($this->showActionsField()) {
-            $actionField = $this->createActionsField($editRouteName, FieldNameInterface::ID);
+            $actionField = $this->createActionsField();
             $columns[] = $actionField;
         }
 
         return $columns;
     }
+
+    protected function getRouteIdFieldName(): string
+    {
+        return FieldNameInterface::ID;
+    }
+
 
     protected function showIdField(): bool
     {
@@ -72,12 +97,9 @@ class ListLayout extends BaseListLayout
 
     protected function getActionsButtons()
     {
-        $editRouteName = $this->getRouteNameEdit();
-        $deleteRouteName = $this->getRouteNameDelete();
-
         return [
-            new EditButton($editRouteName),
-            new DeleteButton($deleteRouteName),
+            new EditButton(),
+            new DeleteButton(),
         ];
     }
 }

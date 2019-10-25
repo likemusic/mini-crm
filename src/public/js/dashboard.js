@@ -2298,6 +2298,12 @@ __webpack_require__.r(__webpack_exports__);
 
 application.register("fields--relationWithData", _controllers_relation_with_data_controller__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
+function onDelete() {
+  return confirm("Вы действительно хотите удалить эту строку?");
+}
+
+window.onDelete = onDelete;
+
 /***/ }),
 
 /***/ "./resources/sass/app.scss":

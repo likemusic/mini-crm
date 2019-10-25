@@ -2,18 +2,22 @@
 
 namespace App\NotDbModel\ActionButton;
 
+use App\Contract\Screen\Table\Td\Action\IconInterface;
+use App\Contract\Screen\Table\Td\Action\LabelInterface;
+use App\Contract\Screen\Table\Td\Action\NameInterface;
+use App\Contract\Screen\Table\Td\Action\StyleInterface;
 use App\NotDbModel\ActionButton;
 
 class DeleteButton extends ActionButton
 {
     public function __construct(
-        string $route,
-        string $name = 'delete',
-        string $icon = 'trash',
-        string $label = 'Delete',
-        string $style = 'danger'
+        string $name = NameInterface::DELETE,
+        string $icon = IconInterface::DELETE,
+        string $label = LabelInterface::DELETE,
+        string $style = StyleInterface::DELETE,
+        string $onclick = 'return onDelete();'
     )
     {
-        parent::__construct($route, $name, $label, $icon, $style);
+        parent::__construct($name, $label, $icon, $style, $onclick);
     }
 }

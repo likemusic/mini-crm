@@ -4,11 +4,12 @@ namespace App\Orchid\Layouts\Base;
 
 use App\Contract\Entity\Base\Field\MetaInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
+use App\Contract\Screen\Table\Td\CurrencyInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use App\Contract\Entity\Base\NamesProviderInterface as NamesProviderInterface;
-
+use App\Contract\Screen\Table\Td\Action\NameInterface as ActionNameInterface;
 
 abstract class ListLayout extends Table
 {
@@ -82,11 +83,15 @@ abstract class ListLayout extends Table
             );
     }
 
-    protected function createCurrencyField(string $name, string $label)
+    protected function createCurrencyField(string $name, string $label, string $routeName, string $routeIdFieldName)
     {
-        $priceWidth = '7em';
+        $priceWidth = CurrencyInterface::WIDTH;
+        $align = CurrencyInterface::ALIGN;
 
-        return TD::set($name, $label)->width($priceWidth)->align('right');
+        $field = $this->createField($name, $label, $routeName, $routeIdFieldName);
+        $field->width($priceWidth)->align($align);
+
+        return $field;
     }
 
     protected function createIdField($idFieldName, $idFieldLabel)
@@ -161,15 +166,23 @@ abstract class ListLayout extends Table
         return $this->createField($valueFieldName, $label, $routeName, $routeIdFieldName);
     }
 
-    protected function createActionsField(string $routeName, string $routeIdFieldName)
+    abstract protected function getRouteIdFieldName(): string;
+
+    protected function createActionsField()
     {
         $actionButtons = $this->getActionsButtons();
+        $actionRoutes = [
+            ActionNameInterface::EDIT => $this->getRouteNameEdit(),
+            ActionNameInterface::DELETE => $this->getRouteNameDelete(),
+        ];
 
-        return TD::set('Действия')->render(function ($item) use ($actionButtons, $routeIdFieldName) {
+        $routeIdFieldName = $this->getRouteIdFieldName();
+
+        return TD::set('Действия')->render(function ($item) use ($actionButtons, $actionRoutes, $routeIdFieldName) {
             $id = $item->{$routeIdFieldName};
             $vars = [
+                'routes' => $actionRoutes,
                 'id' => $id,
-                '$attributes' => $id,
                 'actionButtons' => $actionButtons,
             ];
 
