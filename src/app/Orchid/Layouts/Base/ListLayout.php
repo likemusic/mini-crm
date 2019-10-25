@@ -163,7 +163,7 @@ abstract class ListLayout extends Table
             $id = $item->{$routeIdFieldName};
             $actionButtonsHtml = [];
             foreach ($actionsRoutes as $actionText => $actionRouteName) {
-                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn');
+                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn btn-default');
             }
 
             return implode(' ',$actionButtonsHtml);
