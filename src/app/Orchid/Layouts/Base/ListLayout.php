@@ -82,6 +82,13 @@ abstract class ListLayout extends Table
             );
     }
 
+    protected function createCurrencyField(string $name, string $label)
+    {
+        $priceWidth = '7em';
+
+        return TD::set($name, $label)->width($priceWidth)->align('right');
+    }
+
     protected function createIdField($idFieldName, $idFieldLabel)
     {
         $updateRouteName = $this->getUpdateRouteName();
@@ -156,21 +163,32 @@ abstract class ListLayout extends Table
 
     protected function createActionsField(string $routeName, string $routeIdFieldName)
     {
-        $actionsRoutes = $this->getActionsRoutes();
+        $actionButtons = $this->getActionsButtons();
 
-        return TD::set('Actions')->render(function ($item) use($actionsRoutes, $routeIdFieldName) {
-
+        return TD::set('Действия')->render(function ($item) use ($actionButtons, $routeIdFieldName) {
             $id = $item->{$routeIdFieldName};
-            $actionButtonsHtml = [];
-            foreach ($actionsRoutes as $actionText => $actionRouteName) {
-                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn btn-default');
-            }
+            $vars = [
+                'id' => $id,
+                '$attributes' => $id,
+                'actionButtons' => $actionButtons,
+            ];
 
-            return implode(' ',$actionButtonsHtml);
+            return view('layouts.actions', $vars);
         });
+//        return TD::set('Действия')->render(function ($item) use($actionsRoutes, $routeIdFieldName) {
+//
+//            $id = $item->{$routeIdFieldName};
+//            $actionButtonsHtml = [];
+//
+//            foreach ($actionsRoutes as $actionText => $actionRouteName) {
+//                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn btn-default');
+//            }
+//
+//            return implode(' ',$actionButtonsHtml);
+//        });
     }
 
-    abstract protected function getActionsRoutes();
+    abstract protected function getActionsButtons();
 
     private function createEditLink($routeName, $routeIdFieldName)
     {
@@ -180,9 +198,9 @@ abstract class ListLayout extends Table
     private function createLink(string $routeName, $routeParams, string $text, $class = null)
     {
         return view('html-element.a', [
-            'route'      => $routeName,
+            'route' => $routeName,
             'attributes' => $routeParams,
-            'text'       => $text,
+            'text' => $text,
             'class' => $class,
         ])->render();
     }

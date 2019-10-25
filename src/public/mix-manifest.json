@@ -1,5 +1,15 @@
 {
-    "/js/dashboard.js": "/js/dashboard.js",
-    "/css/app.css": "/css/app.css",
-    "/js/order.js": "/js/order.js"
+    "/js/dashboard.js": "/js/dashboard.js?id=aafd7cc7b8a158c3223a",
+    "/css/app.css": "/css/app.css?id=f542e15015b25413fdaf",
+    "/resources/orchid/css/orchid.css": "/resources/orchid/css/orchid.css?id=dea3482ff7d4362e6a42",
+    "/js/dashboard.js.map": "/js/dashboard.js.map?id=e06563ccc561eb23bbd6",
+    "/css/app.css.map": "/css/app.css.map?id=bfdaa2802dc4a4515f86",
+    "/resources/orchid/css/orchid.css.map": "/resources/orchid/css/orchid.css.map?id=0747039fdc131e889b27",
+    "/resources/orchid/js/manifest.js": "/resources/orchid/js/manifest.js?id=97c3afce3c270fccd2aa",
+    "/resources/orchid/js/manifest.js.map": "/resources/orchid/js/manifest.js.map?id=4b89df65eeac221b7357",
+    "/resources/orchid/js/orchid.js": "/resources/orchid/js/orchid.js?id=66a6b2fcecfc3c34720a",
+    "/resources/orchid/js/orchid.js.map": "/resources/orchid/js/orchid.js.map?id=adb8ef15f83a497ef2dd",
+    "/resources/orchid/js/vendor.js": "/resources/orchid/js/vendor.js?id=36f492d696b87248b9c6",
+    "/resources/orchid/js/vendor.js.map": "/resources/orchid/js/vendor.js.map?id=4245365250ca4bc8812a",
+    "/js/order.js": "/js/order.js?id=725b8dfd8986140fac98"
 }

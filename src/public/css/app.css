@@ -10,10 +10,6 @@
   color: black;
 }
 
-.table td .btn {
-  background-color: unset;
-}
-
 .table tbody tr td {
   word-break: initial;
 }
@@ -24,3 +20,4 @@
   }
 }
 
+/*# sourceMappingURL=app.css.map*/

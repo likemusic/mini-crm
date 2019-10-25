@@ -1,3 +1,1 @@
-<a href="{{route($route,$attributes)}}" @isset($class)class="{{$class}}"@endisset>
-    @isset($text) {{$text}} @else <i class="icon-menu"></i> @endisset
-</a>
+<a href="{{route($route, $id)}}" @isset($class)class="{{$class}}"@endisset @isset($title)title="{{$title}}"@endisset>@isset($text){!! $text !!}@endisset</a>
