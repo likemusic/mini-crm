@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\UnaccountedProduct;
 
 use App\Entity\UnaccountedProduct\Route\NameProvider as ProductRouteNameProvider;
-use App\Entity\UnaccountedProduct\EditableUseVariantProvider as ProductUseVariant;
+use App\Entity\UnaccountedProduct\CrudUseVariantProvider as ProductUseVariant;
 use App\Model\UnaccountedProduct;
 use App\Orchid\Layouts\UnaccountedProduct\UnaccountedProductListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;

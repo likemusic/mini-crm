@@ -6,7 +6,7 @@ use App\Contract\Entity\DiscountedProduct\Field\LabelInterface as FieldLabelInte
 use App\Contract\Entity\DiscountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
-use App\Entity\DiscountedProduct\EditableUseVariantProvider as UseVariant;
+use App\Entity\DiscountedProduct\CrudUseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\DiscountedProduct as InfoMessageProvider;
 use App\Model\DiscountedProduct;

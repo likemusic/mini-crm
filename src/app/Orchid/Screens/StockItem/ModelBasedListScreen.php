@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\StockItem;
 
 use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
-use App\Entity\StockItem\EditableUseVariantProvider;
+use App\Entity\StockItem\CrudUseVariantProvider;
 use App\Model\StockItem;
 use App\Orchid\Layouts\StockItem\StockItemListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
@@ -13,7 +13,7 @@ class ModelBasedListScreen extends BaseListScreen
 {
     public function __construct(
         StockItem $model,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {

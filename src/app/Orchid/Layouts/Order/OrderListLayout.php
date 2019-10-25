@@ -97,7 +97,7 @@ class OrderListLayout extends ListLayout
 
     private function getOrderItemEditRouteName()
     {
-        return $this->orderItemRouteNameProvider->getUpdate();
+        return $this->orderItemRouteNameProvider->getEdit();
     }
 
     protected function getDataKey()

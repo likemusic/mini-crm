@@ -3,18 +3,43 @@
 namespace App\Entity\Base\Route;
 
 use App\Contract\Entity\Base\Route\PathProviderInterface;
+use App\Contract\Entity\Base\NamesProviderInterface;
 
 abstract class PathProvider implements PathProviderInterface
 {
     const POSTFIX_NEW = 'new';
-    const POSTFIX_ID = '{id}';
+
+    /**
+     * @var NamesProviderInterface
+     */
+    private $namesProvider;
+
+    public function __construct(NamesProviderInterface $namesProvider)
+    {
+        $this->namesProvider = $namesProvider;
+    }
+
+    private function getIdPlaceholder(): string
+    {
+        $routePlaceholder = $this->getRoutePlaceholder();
+
+        return '{' . $routePlaceholder . '}';
+    }
+
+    private function getRoutePlaceholder()
+    {
+        return $this->namesProvider->getRoutePlaceholder();
+    }
 
     public function getList()
     {
         return $this->getBasePath();
     }
 
-    abstract protected function getBasePath(): string;
+    protected function getBasePath(): string
+    {
+        return $this->namesProvider->getRouteBasePath();
+    }
 
     public function getCreate()
     {
@@ -24,11 +49,19 @@ abstract class PathProvider implements PathProviderInterface
         return "{$basePath}/{$actionPostfix}";
     }
 
-    public function getUpdate()
+    public function getEdit()
     {
         $basePath = $this->getBasePath();
-        $postfixId = self::POSTFIX_ID;
+        $postfixId = $this->getIdPlaceholder();
 
-        return "{$basePath}/{$postfixId}";
+        return "{$basePath}/{$postfixId}/edit";
+    }
+
+    public function getDelete()
+    {
+        $basePath = $this->getBasePath();
+        $postfixId = $this->getIdPlaceholder();
+
+        return "{$basePath}/{$postfixId}/delete";
     }
 }

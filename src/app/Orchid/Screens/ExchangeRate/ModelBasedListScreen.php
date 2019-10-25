@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\ExchangeRate;
 
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
-use App\Entity\ExchangeRate\EditableUseVariantProvider;
+use App\Entity\ExchangeRate\CrudUseVariantProvider;
 use App\Model\ExchangeRate;
 use App\Orchid\Layouts\ExchangeRate\ExchangeRateListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
@@ -13,7 +13,7 @@ class ModelBasedListScreen extends BaseListScreen
 {
     public function __construct(
         ExchangeRate $model,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {

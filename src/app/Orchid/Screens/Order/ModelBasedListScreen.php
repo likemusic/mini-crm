@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Order;
 
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
-use App\Entity\Order\EditableUseVariantProvider;
+use App\Entity\Order\CrudUseVariantProvider;
 use App\Model\Order;
 use App\Orchid\Layouts\Order\OrderListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
@@ -13,7 +13,7 @@ class ModelBasedListScreen extends BaseListScreen
 {
     public function __construct(
         Order $model,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {

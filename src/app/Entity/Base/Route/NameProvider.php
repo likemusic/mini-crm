@@ -9,6 +9,7 @@ abstract class NameProvider implements NameProviderInterface
     const POSTFIX_LIST = 'list';
     const POSTFIX_NEW = 'new';
     const POSTFIX_EDIT = 'edit';
+    const POSTFIX_DELETE = 'delete';
 
     public function getList(): string
     {
@@ -46,10 +47,18 @@ abstract class NameProvider implements NameProviderInterface
         return $this->getFullRouteName($baseEntityRouteName, $actionPostfix);
     }
 
-    public function getUpdate(): string
+    public function getEdit(): string
     {
         $baseEntityRouteName = $this->getBaseEntityRouteName();
         $actionPostfix = self::POSTFIX_EDIT;
+
+        return $this->getFullRouteName($baseEntityRouteName, $actionPostfix);
+    }
+
+    public function getDelete(): string
+    {
+        $baseEntityRouteName = $this->getBaseEntityRouteName();
+        $actionPostfix = self::POSTFIX_DELETE;
 
         return $this->getFullRouteName($baseEntityRouteName, $actionPostfix);
     }

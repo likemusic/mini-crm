@@ -51,6 +51,6 @@ class RoleListLayout extends Table
 
     private function getEditRouteName()
     {
-        return $this->roleRouteNameProvider->getUpdate();
+        return $this->roleRouteNameProvider->getEdit();
     }
 }

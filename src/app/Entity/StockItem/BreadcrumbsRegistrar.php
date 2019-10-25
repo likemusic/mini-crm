@@ -13,7 +13,7 @@ class BreadcrumbsRegistrar extends BaseBreadcrumbsRegistrar
         BreadcrumbsManager $breadcrumbsManager,
         BreadcrumbsHelper $breadcrumbsHelper,
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariantProvider
+        CrudUseVariantProvider $useVariantProvider
     )
     {
         parent::__construct(

@@ -9,7 +9,7 @@ use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 class MenuRegistrar extends BaseMenuRegistrar
 {
     public function __construct(
-        EditableUseVariantProvider $useVariantProvider,
+        CrudUseVariantProvider $useVariantProvider,
         RouteNameProvider $routeNameProvider
     ) {
         $menuTitle = null;

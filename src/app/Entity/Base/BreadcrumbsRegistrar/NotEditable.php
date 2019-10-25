@@ -4,7 +4,7 @@ namespace App\Entity\Base\BreadcrumbsRegistrar;
 
 use App\Contract\Entity\Base\EditableInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
@@ -26,7 +26,7 @@ class NotEditable implements EditableInterface
     protected $breadcrumbsHelper;
 
     /**
-     * @var NotEditableUseVariantProviderInterface
+     * @var ListUseVariantProviderInterface
      */
     protected $useVariantProvider;
 
@@ -34,7 +34,7 @@ class NotEditable implements EditableInterface
         BreadcrumbsManager $breadcrumbsManager,
         BreadcrumbsHelper $breadcrumbsHelper,
         RouteNameProviderInterface $routeNameProvider,
-        NotEditableUseVariantProviderInterface $useVariantProvider
+        ListUseVariantProviderInterface $useVariantProvider
     ) {
         $this->breadcrumbsManager = $breadcrumbsManager;
         $this->routeNameProvider = $routeNameProvider;
@@ -72,13 +72,13 @@ class NotEditable implements EditableInterface
 
     /**
      * @param BreadcrumbsHelper $breadcrumbsHelper
-     * @param NotEditableUseVariantProviderInterface $useVariantProvider
+     * @param ListUseVariantProviderInterface $useVariantProvider
      * @param RouteNameProviderInterface $routeNameProvider
      * @throws DuplicateBreadcrumbException
      */
     private function addBreadcrumbList(
         BreadcrumbsHelper $breadcrumbsHelper,
-        NotEditableUseVariantProviderInterface $useVariantProvider,
+        ListUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider)
     {
         $routeName = $routeNameProvider->getList();

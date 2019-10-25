@@ -4,7 +4,7 @@ namespace App\Orchid\Screens\ProductCategory;
 
 use App\Contract\Entity\ProductCategory\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
-use App\Entity\ProductCategory\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\ProductCategory\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\ProductCategory as InfoMessageProvider;
@@ -20,7 +20,7 @@ trait EditTrait
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

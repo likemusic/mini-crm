@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Base;
 
-use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\CrudInterface as CrudUseVariantProviderInterface;
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
+use App\Contract\Entity\Base\NamesProviderInterface;
 
 abstract class EditScreen extends BaseScreen
 {
@@ -27,7 +28,7 @@ abstract class EditScreen extends BaseScreen
      */
     protected $infoMessageProvider;
     /**
-     * @var EditableUseVariantProviderInterface
+     * @var CrudUseVariantProviderInterface
      */
     private $useVariantProvider;
     /**
@@ -35,11 +36,17 @@ abstract class EditScreen extends BaseScreen
      */
     private $routeNameProvider;
 
+    /**
+     * @var NamesProviderInterface
+     */
+    private $namesProvider;
+
     public function __construct(
         RouteNameProviderInterface $routeRouteNameProviderInterface,
-        EditableUseVariantProviderInterface $useVariant,
+        CrudUseVariantProviderInterface $useVariant,
         InfoMessageProviderInterface $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
+        NamesProviderInterface $namesProvider,
         ?Request $request = null
     )
     {
@@ -47,8 +54,14 @@ abstract class EditScreen extends BaseScreen
         $this->routeNameProvider = $routeRouteNameProviderInterface;
         $this->infoMessageProvider = $infoMessageProvider;
         $this->useVariantProvider = $useVariant;
+        $this->namesProvider = $namesProvider;
 
         parent::__construct($request);
+    }
+
+    protected function getDataKey(): string
+    {
+        $this->namesProvider->getItemDataKey();
     }
 
     /**

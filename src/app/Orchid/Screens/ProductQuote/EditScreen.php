@@ -6,7 +6,7 @@ use App\Contract\Entity\ProductQuote\Field\LabelInterface as FieldLabelInterface
 use App\Contract\Entity\ProductQuote\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
-use App\Entity\ProductQuote\EditableUseVariantProvider as UseVariant;
+use App\Entity\ProductQuote\CrudUseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\ProductQuote as InfoMessageProvider;
 use App\Model\ProductQuote;

@@ -7,6 +7,8 @@ use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInt
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
+use App\Contract\Entity\Base\NamesProviderInterface as NamesProviderInterface;
+
 
 abstract class ListLayout extends Table
 {
@@ -15,9 +17,16 @@ abstract class ListLayout extends Table
      */
     protected $routeNameProvider;
 
-    public function __construct(RouteNameProviderInterface $routeNameProvider)
+    /**
+     * @var NamesProviderInterface
+     */
+    protected $namesProvider;
+
+    public function __construct(RouteNameProviderInterface $routeNameProvider, NamesProviderInterface $namesProvider)
     {
         $this->routeNameProvider = $routeNameProvider;
+        $this->namesProvider = $namesProvider;
+
         $this->target = $this->getDataKey();
     }
 
@@ -41,7 +50,10 @@ abstract class ListLayout extends Table
         return true;
     }
 
-    abstract protected function getDataKey();
+    protected function getDataKey()
+    {
+        return $this->namesProvider->getListDataKey();
+    }
 
     protected function createNameField($name, $label, $id)
     {
@@ -52,7 +64,12 @@ abstract class ListLayout extends Table
 
     protected function getRouteNameEdit()
     {
-        return $this->routeNameProvider->getUpdate();
+        return $this->routeNameProvider->getEdit();
+    }
+
+    protected function getRouteNameDelete()
+    {
+        return $this->routeNameProvider->getDelete();
     }
 
     protected function createLinkField($name, $label, $routeName, $id)
@@ -74,7 +91,7 @@ abstract class ListLayout extends Table
 
     protected function getUpdateRouteName()
     {
-        return $this->routeNameProvider->getUpdate();
+        return $this->routeNameProvider->getEdit();
     }
 
     protected function createField($valueFieldName, $label, $routeName, $routeIdFieldName)
@@ -139,17 +156,34 @@ abstract class ListLayout extends Table
 
     protected function createActionsField(string $routeName, string $routeIdFieldName)
     {
-        $editLink = $this->createEditLink($routeName, $routeIdFieldName);
+        $actionsRoutes = $this->getActionsRoutes();
 
-        return $editLink;
+        return TD::set('Actions')->render(function ($item) use($actionsRoutes, $routeIdFieldName) {
+
+            $id = $item->{$routeIdFieldName};
+            $actionButtonsHtml = [];
+            foreach ($actionsRoutes as $actionText => $actionRouteName) {
+                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn');
+            }
+
+            return implode(' ',$actionButtonsHtml);
+        });
     }
+
+    abstract protected function getActionsRoutes();
 
     private function createEditLink($routeName, $routeIdFieldName)
     {
-        return TD::set('Actions')->render(function ($item) use($routeName, $routeIdFieldName) {
-            $url = route($routeName, $item->{$routeIdFieldName});
+        return $this->createLink($routeName, $routeIdFieldName, 'Edit');
+    }
 
-            return "<a href=\"{$url}\" class=\"btn\" >Edit</a> <a href=\"{$url}\" class=\"btn btn-danger\" >Delete</a>";
-        });
+    private function createLink(string $routeName, $routeParams, string $text, $class = null)
+    {
+        return view('html-element.a', [
+            'route'      => $routeName,
+            'attributes' => $routeParams,
+            'text'       => $text,
+            'class' => $class,
+        ])->render();
     }
 }

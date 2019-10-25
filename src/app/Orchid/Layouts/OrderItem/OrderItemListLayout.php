@@ -48,14 +48,14 @@ class OrderItemListLayout extends ListLayout
             $this->createLinkField(
                 FieldNameInterface::ORDER_ID,
                 FieldLabelInterface::ORDER_ID,
-                $this->orderRouteNameProvider->getUpdate(),
+                $this->orderRouteNameProvider->getEdit(),
                 OrderFieldNameInterface::ID
             ),
 
             $this->createLinkField(
                 FieldNameInterface::PRODUCT_QUOTE_ID,
                 FieldLabelInterface::PRODUCT_QUOTE_ID,
-                $this->productQuoteRouteNameProvider->getUpdate(),
+                $this->productQuoteRouteNameProvider->getEdit(),
                 ProductQuoteFieldNameInterface::ID
             ),
 

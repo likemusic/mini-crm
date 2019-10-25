@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Base;
 
-use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
 use App\Orchid\Screens\Base;
@@ -12,13 +12,14 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
+use App\Contract\Entity\Base\NamesProviderInterface;
 
 abstract class ListScreen extends Base
 {
     use CanCreateTrait;
 
     /**
-     * @var NotEditableUseVariantProviderInterface
+     * @var ListUseVariantProviderInterface
      */
     protected $useVariant;
 
@@ -27,14 +28,21 @@ abstract class ListScreen extends Base
      */
     private $routeNameProvider;
 
+    /**
+     * @var NamesProviderInterface
+     */
+    protected $namesProvider;
+
     public function __construct(
-        NotEditableUseVariantProviderInterface $useVariant,
+        ListUseVariantProviderInterface $useVariant,
         RouteNameProviderInterface $routeNameProvider,
+        NamesProviderInterface $namesProvider,
         ?Request $request = null)
     {
         $this->name = $useVariant->getListName();
         $this->useVariant = $useVariant;
         $this->routeNameProvider = $routeNameProvider;
+        $this->namesProvider = $namesProvider;
 
         parent::__construct($request);
     }

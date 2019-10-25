@@ -24,7 +24,7 @@ class StockItemListLayout extends ListLayout
      */
     public function columns(): array
     {
-        $editRouteName = $this->routeNameProvider->getUpdate();
+        $editRouteName = $this->routeNameProvider->getEdit();
 
         return [
             TD::set(FieldNameInterface::ID, LabelInterface::ID)

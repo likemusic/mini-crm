@@ -4,7 +4,7 @@ namespace App\Entity\Base\BreadcrumbsRegistrar;
 
 use App\Contract\Entity\Base\EditableInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\EditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\CrudInterface as CrudUseVariantProviderInterface;
 use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
@@ -17,7 +17,7 @@ class Editable extends NotEditable implements EditableInterface
         BreadcrumbsManager $breadcrumbsManager,
         BreadcrumbsHelper $breadcrumbsHelper,
         RouteNameProviderInterface $routeNameProvider,
-        EditableUseVariantProviderInterface $useVariantProvider
+        CrudUseVariantProviderInterface $useVariantProvider
     ) {
         parent::__construct($breadcrumbsManager, $breadcrumbsHelper, $routeNameProvider, $useVariantProvider);
     }
@@ -39,13 +39,13 @@ class Editable extends NotEditable implements EditableInterface
 
     /**
      * @param BreadcrumbsHelper $breadcrumbsHelper
-     * @param EditableUseVariantProviderInterface $useVariantProvider
+     * @param CrudUseVariantProviderInterface $useVariantProvider
      * @param RouteNameProviderInterface $routeNameProvider
      * @throws DuplicateBreadcrumbException
      */
     private function addBreadcrumbNew(
         BreadcrumbsHelper $breadcrumbsHelper,
-        EditableUseVariantProviderInterface $useVariantProvider,
+        CrudUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider
     ) {
         $routeName = $this->getRouteNameNew();
@@ -78,16 +78,16 @@ class Editable extends NotEditable implements EditableInterface
 
     /**
      * @param BreadcrumbsHelper $breadcrumbsHelper
-     * @param EditableUseVariantProviderInterface $useVariantProvider
+     * @param CrudUseVariantProviderInterface $useVariantProvider
      * @param RouteNameProviderInterface $routeNameProvider
      * @throws DuplicateBreadcrumbException
      */
     private function addBreadcrumbEdit(
         BreadcrumbsHelper $breadcrumbsHelper,
-        EditableUseVariantProviderInterface $useVariantProvider,
+        CrudUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider
     ) {
-        $routeName = $routeNameProvider->getUpdate();
+        $routeName = $routeNameProvider->getEdit();
         $parentRouteName = $routeNameProvider->getList();
         $name = $breadcrumbsHelper->getUpdateName($useVariantProvider->getGenitiveName());
 
@@ -96,13 +96,13 @@ class Editable extends NotEditable implements EditableInterface
 
     /**
      * @param BreadcrumbsHelper $breadcrumbsHelper
-     * @param EditableUseVariantProviderInterface $useVariantProvider
+     * @param CrudUseVariantProviderInterface $useVariantProvider
      * @param RouteNameProviderInterface $routeNameProvider
      * @throws DuplicateBreadcrumbException
      */
     private function addBreadcrumbList(
         BreadcrumbsHelper $breadcrumbsHelper,
-        EditableUseVariantProviderInterface $useVariantProvider,
+        CrudUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider)
     {
         $routeName = $routeNameProvider->getList();

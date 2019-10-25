@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\ExchangeRate;
 use App\Contract\Entity\Currency\Field\NameInterface as CurrencyFieldNameInterface;
 use App\Contract\Entity\ExchangeRate\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
-use App\Entity\ExchangeRate\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\ExchangeRate\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\CurrenciesListProvider;
@@ -28,7 +28,7 @@ class EditScreen extends BaseEditScreen
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

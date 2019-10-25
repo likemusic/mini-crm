@@ -23,7 +23,7 @@ class ExchangeRateListLayout extends ListLayout
      */
     public function columns(): array
     {
-        $editRouteName = $this->routeNameProvider->getUpdate();
+        $editRouteName = $this->routeNameProvider->getEdit();
 
         return [
 //            TD::set(FieldNameInterface::FROM_CURRENCY . '.' . CurrencyFieldNameInterface::CODE, LabelInterface::FROM_CURRENCY_CODE),

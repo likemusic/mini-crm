@@ -9,7 +9,7 @@ use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Pharmacy\Field\NameInterface as PharmacyFieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
-use App\Entity\Order\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\Order\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Order as InfoMessageProvider;
@@ -47,7 +47,7 @@ class EditScreen extends BaseEditScreen
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         CurrencyRepository $currencyRepository,

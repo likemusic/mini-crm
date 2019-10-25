@@ -2,11 +2,33 @@
 
 namespace App\Providers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Helper\EntityRoutePlaceholderProvider;
+use App\Helper\Entity\ModelClassNameProvider;
+use App\Contract\EntityInterface;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    /**
+     * @var EntityRoutePlaceholderProvider
+     */
+    private $entityRoutePlaceholderProvider;
+
+    /**
+     * @var ModelClassNameProvider
+     */
+    private $modelClassNameProvider;
+
+    public function __construct(Application $app)
+    {
+        parent::__construct($app);
+
+        $this->entityRoutePlaceholderProvider = $app->get(EntityRoutePlaceholderProvider::class);
+        $this->modelClassNameProvider = $app->get(ModelClassNameProvider::class);
+    }
+
     /**
      * This namespace is applied to your controller routes.
      *
@@ -23,9 +45,47 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+        $this->setModelsBinding();
+    }
+
+    private function setModelsBinding()
+    {
+        $entityCodes = [
+            EntityInterface::PRODUCT,
+        ];
+
+        $this->setModelBindingByEntityCodes($entityCodes);
+    }
+
+    private function setModelBindingByEntityCodes(array $entityCodes)
+    {
+        foreach ($entityCodes as $entityCode) {
+            $this->setModelBindingByEntityCode($entityCode);
+        }
+    }
+
+    private function setModelBindingByEntityCode(string $entityCode)
+    {
+        $routePlaceholder = $this->getRoutePlaceholderByEntityCode($entityCode);
+        $modelClassName = $this->getModelClassNameByEntityCode($entityCode);
+
+        $this->bindRoutePlaceholder($routePlaceholder, $modelClassName);
+    }
+
+    private function getModelClassNameByEntityCode(string $entityCode)
+    {
+        return $this->modelClassNameProvider->getClassNameByEntityCode($entityCode);
+    }
+
+    private function getRoutePlaceholderByEntityCode(string $entityCode)
+    {
+        return $this->entityRoutePlaceholderProvider->getRoutePlaceholderByEntityCode($entityCode);
+    }
+
+    private function bindRoutePlaceholder(string $routePlaceholder, string $modelClassName)
+    {
+        Route::model($routePlaceholder, $modelClassName);
     }
 
     /**

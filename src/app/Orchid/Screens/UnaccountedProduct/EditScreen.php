@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\UnaccountedProduct;
 use App\Contract\Entity\UnaccountedProduct\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
-use App\Entity\UnaccountedProduct\EditableUseVariantProvider as UseVariant;
+use App\Entity\UnaccountedProduct\CrudUseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\UnaccountedProduct as InfoMessageProvider;
 use App\Model\UnaccountedProduct;

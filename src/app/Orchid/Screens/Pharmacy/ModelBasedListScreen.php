@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Pharmacy;
 
 use App\DataProviders\PharmacyDataProvider;
-use App\Entity\Pharmacy\NotEditableUseVariantProvider;
+use App\Entity\Pharmacy\ListUseVariantProvider;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Model\Pharmacy;
 use App\Orchid\Layouts\Pharmacy\PharmacyListLayout;
@@ -19,7 +19,7 @@ class ModelBasedListScreen extends BaseListScreen
 
     public function __construct(
         Pharmacy $model,
-        NotEditableUseVariantProvider $useVariant,
+        ListUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         PharmacyDataProvider $pharmacyDataProvider,
         ?Request $request = null

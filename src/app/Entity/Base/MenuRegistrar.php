@@ -3,7 +3,7 @@
 namespace App\Entity\Base;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
-use App\Contract\Entity\Base\NotEditableUseVariantProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
 
@@ -12,7 +12,7 @@ class MenuRegistrar
     /** @var string */
     private $menuPlace;
 
-    /** @var NotEditableUseVariantProviderInterface */
+    /** @var ListUseVariantProviderInterface */
     private $useVariantProvider;
 
     /** @var string */
@@ -26,7 +26,7 @@ class MenuRegistrar
 
     public function __construct(
         string $menuPlace,
-        NotEditableUseVariantProviderInterface $useVariantProvider,
+        ListUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider,
         ?string $menuIcon = null,
         ?string $menuTitle = null

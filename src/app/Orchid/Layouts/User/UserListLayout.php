@@ -73,6 +73,6 @@ class UserListLayout extends Table
 
     private function getEditRouteName()
     {
-        return $this->routeNameProvider->getUpdate();
+        return $this->routeNameProvider->getEdit();
     }
 }

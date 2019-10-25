@@ -6,7 +6,7 @@ use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface
 use App\Contract\Entity\StockItem\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\StockItem\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Warehouse\Field\NameInterface as WarehouseFieldNameInterface;
-use App\Entity\StockItem\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\StockItem\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
@@ -24,7 +24,7 @@ class EditScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null

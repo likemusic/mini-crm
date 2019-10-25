@@ -2,10 +2,11 @@
 
 namespace App\Orchid\Screens\Product;
 
-use App\Entity\Product\EditableUseVariantProvider;
+use App\Entity\Product\CrudUseVariantProvider;
+use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Model\Product;
-use App\Orchid\Layouts\Product\ProductListLayout;
+use App\Orchid\Layouts\Product\ListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
@@ -15,21 +16,17 @@ class ListScreen extends BaseListScreen
 
     public function __construct(
         Product $model,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
+        NamesProvider $namesProvider,
         ?Request $request = null
     )
     {
-        parent::__construct($model, $useVariant, $routeNameProvider, $request);
-    }
-
-    protected function getDataKey(): string
-    {
-        return ProductListLayout::DATA_KEY;
+        parent::__construct($model, $useVariant, $routeNameProvider, $namesProvider, $request);
     }
 
     protected function getLayoutClassName(): string
     {
-        return ProductListLayout::class;
+        return ListLayout::class;
     }
 }

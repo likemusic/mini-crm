@@ -9,7 +9,7 @@ use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 class MenuRegistrar extends BaseMenuRegistrar
 {
     public function __construct(
-        NotEditableUseVariantProvider $useVariantProvider,
+        ListUseVariantProvider $useVariantProvider,
         RouteNameProvider $routeNameProvider
     ) {
         $menuTitle = 'Аптека';

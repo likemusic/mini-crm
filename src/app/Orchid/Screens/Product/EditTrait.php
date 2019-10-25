@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\Product;
 use App\Contract\Entity\Product\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as ProductCategoryFieldNameInterface;
-use App\Entity\Product\EditableUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\Product\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
@@ -23,7 +23,7 @@ trait EditTrait
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
@@ -62,10 +62,5 @@ trait EditTrait
                     ->title(FieldLabelInterface::NOTE),
             ])
         ];
-    }
-
-    protected function getDataKey(): string
-    {
-        return 'product';
     }
 }

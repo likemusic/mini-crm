@@ -225,7 +225,7 @@ class MainMenuComposer
 //            );
 
         $this->addProductCatalogMenuIfCanAccess($dashboardMenu);
-        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
+//        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
 
         //Entities
 //            $this->productMenuRegistrar->register($dashboardMenu);
@@ -317,7 +317,7 @@ class MainMenuComposer
             );
 
         $this->addProductMenuIfCanAccess($menu, $slug);
-        $this->addProductCategoryMenuIfCanAccess($menu, $slug);
+//        $this->addProductCategoryMenuIfCanAccess($menu, $slug);
     }
 
     private function addProductCategoryMenuIfCanAccess(Menu $menu, string $place)

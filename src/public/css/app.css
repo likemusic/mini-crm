@@ -10,6 +10,14 @@
   color: black;
 }
 
+.table td .btn {
+  background-color: unset;
+}
+
+.table tbody tr td {
+  word-break: initial;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1440px;

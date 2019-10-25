@@ -6,5 +6,6 @@ interface PathProviderInterface
 {
     public function getList();
     public function getCreate();
-    public function getUpdate();
+    public function getEdit();
+    public function getDelete();
 }

@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\ProductQuote;
 
 use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
-use App\Entity\ProductQuote\EditableUseVariantProvider as UseVariant;
+use App\Entity\ProductQuote\CrudUseVariantProvider as UseVariant;
 use App\Model\ProductQuote;
 use App\Orchid\Layouts\ProductQuote\ProductQuoteListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;

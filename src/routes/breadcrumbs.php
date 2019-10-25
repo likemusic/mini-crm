@@ -7,7 +7,7 @@ use App\Entity\DiscountedProduct\BreadcrumbsRegistrar as DiscountedProductBreadc
 use App\Entity\Pharmacy\BreadcrumbsRegistrar as PharmacyBreadcrumbsRegistrar;
 use App\Entity\Product\BreadcrumbsRegistrar as ProductBreadcrumbsRegistrar;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
-use App\Entity\Product\EditableUseVariantProvider as ProductUseVariant;
+use App\Entity\Product\CrudUseVariantProvider as ProductUseVariant;
 use App\Entity\ProductQuote\BreadcrumbsRegistrar as ProductQuoteBreadcrumbsRegistrar;
 use App\Entity\UnaccountedProduct\BreadcrumbsRegistrar as UnaccountedProductBreadcrumbsRegistrar;
 use App\Entity\Warehouse\BreadcrumbsRegistrar as WarehouseBreadcrumbsRegistrar;

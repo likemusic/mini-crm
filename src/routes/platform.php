@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
 use App\Contract\Entity\Platform\Route\Systems\NameInterface as PlatformSystemRouteNameInterface;
-use App\Entity\Counteragent\Route\EditableRegistrar as CounteragentRouteRegistrar;
-use App\Entity\Currency\Route\EditableRegistrar as CurrencyRouteRegistrar;
-use App\Entity\DiscountedProduct\Route\EditableRegistrar as DiscountedProductRouteRegistrar;
-use App\Entity\ExchangeRate\Route\EditableRegistrar as ExchangeRateRouteRegistrar;
-use App\Entity\Order\Route\EditableRegistrar as OrderRouteRegistrar;
-use App\Entity\OrderItem\Route\EditableRegistrar as OrderItemRouteRegistrar;
-use App\Entity\Pharmacy\Route\NotEditableRegistrar as PharmacyRouteRegistrar;
-use App\Entity\Product\Route\EditableRegistrar as ProductRouteRegistrar;
-use App\Entity\ProductCategory\Route\EditableRegistrar as ProductCategoryRouteRegistrar;
-use App\Entity\Role\Route\EditableRegistrar as RoleRouteRegistrar;
-use App\Entity\StockItem\Route\EditableRegistrar as StockItemRouteRegistrar;
-use App\Entity\UnaccountedProduct\Route\EditableRegistrar as UnaccountedProductRouteRegistrar;
-use App\Entity\User\Route\EditableRegistrar as UserRouteRegistrar;
-use App\Entity\Wallet\Route\EditableRegistrar as WalletRouteRegistrar;
-use App\Entity\Warehouse\Route\EditableRegistrar as WarehouseRouteRegistrar;
+use App\Entity\Counteragent\Route\CrudRegistrar as CounteragentRouteRegistrar;
+use App\Entity\Currency\Route\CrudRegistrar as CurrencyRouteRegistrar;
+use App\Entity\DiscountedProduct\Route\CrudRegistrar as DiscountedProductRouteRegistrar;
+use App\Entity\ExchangeRate\Route\CrudRegistrar as ExchangeRateRouteRegistrar;
+use App\Entity\Order\Route\CrudRegistrar as OrderRouteRegistrar;
+use App\Entity\OrderItem\Route\CrudRegistrar as OrderItemRouteRegistrar;
+use App\Entity\Pharmacy\Route\ListableRegistrar as PharmacyRouteRegistrar;
+use App\Entity\Product\Route\CrudRegistrar as ProductRouteRegistrar;
+use App\Entity\ProductCategory\Route\CrudRegistrar as ProductCategoryRouteRegistrar;
+use App\Entity\Role\Route\CrudRegistrar as RoleRouteRegistrar;
+use App\Entity\StockItem\Route\CrudRegistrar as StockItemRouteRegistrar;
+use App\Entity\UnaccountedProduct\Route\CrudRegistrar as UnaccountedProductRouteRegistrar;
+use App\Entity\User\Route\CrudRegistrar as UserRouteRegistrar;
+use App\Entity\Wallet\Route\CrudRegistrar as WalletRouteRegistrar;
+use App\Entity\Warehouse\Route\CrudRegistrar as WarehouseRouteRegistrar;
 use App\Http\Controllers\Orchid\Patform\RelationWithDataController;
 use App\Orchid\Screens\PlatformScreen;
 use Illuminate\Routing\RouteFileRegistrar;
@@ -45,18 +45,18 @@ $this->router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInt
 
 // Roles
 /** @var RoleRouteRegistrar $userRouteRegistrar */
-$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
-$roleRouteRegistrar->registerRoutes($this->router);
+//$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
+//$roleRouteRegistrar->registerRoutes($this->router);
 
 // Users
 /** @var UserRouteRegistrar $userRouteRegistrar */
-$userRouteRegistrar = App::make(UserRouteRegistrar::class);
-$userRouteRegistrar->registerRoutes($this->router);
+//$userRouteRegistrar = App::make(UserRouteRegistrar::class);
+//$userRouteRegistrar->registerRoutes($this->router);
 
 // Product Category
 /** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
-$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
-$productCategoryRouteRegistrar->registerRoutes($this->router);
+//$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
+//$productCategoryRouteRegistrar->registerRoutes($this->router);
 
 // Product
 /** @var ProductRouteRegistrar $productRouteRegistrar */

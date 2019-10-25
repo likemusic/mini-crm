@@ -37,7 +37,7 @@ class ProductQuoteListLayout extends ListLayout
 
             TD::set(FieldNameInterface::PRODUCT_ID, FieldLabelInterface::PRODUCT_ID)
                 ->link(
-                    $this->productRouteNameProvider->getUpdate(),
+                    $this->productRouteNameProvider->getEdit(),
                     FieldNameInterface::PRODUCT_ID,
                     FieldNameInterface::PRODUCT_ID
                 ),

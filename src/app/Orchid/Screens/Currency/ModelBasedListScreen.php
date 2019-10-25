@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Currency;
 
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
-use App\Entity\Currency\EditableUseVariantProvider;
+use App\Entity\Currency\CrudUseVariantProvider;
 use App\Model\Currency;
 use App\Orchid\Layouts\Currency\CurrencyListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
@@ -13,7 +13,7 @@ class ModelBasedListScreen extends BaseListScreen
 {
     public function __construct(
         Currency $model,
-        EditableUseVariantProvider $useVariant,
+        CrudUseVariantProvider $useVariant,
         RouteNameProvider $routeNameProvider,
         ?Request $request = null
     ) {
