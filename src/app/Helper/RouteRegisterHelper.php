@@ -78,7 +78,7 @@ class RouteRegisterHelper
     private function registerPostController($router, $routePath, $routeName, $controllerClassName)
     {
         $router
-            ->post($routePath, $controllerClassName)
+            ->get($routePath, $controllerClassName)
             ->name($routeName);
     }
 
