@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Entity;
+namespace App\Http\Controllers\Entity\Base;
 
+use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -9,6 +10,16 @@ use Orchid\Support\Facades\Alert;
 
 class Delete extends Controller
 {
+    /**
+     * @var RouteNameProviderInterface
+     */
+    private $routeNameProvider;
+
+    public function __construct(RouteNameProviderInterface $routeNameProvider)
+    {
+        $this->routeNameProvider = $routeNameProvider;
+    }
+
     public function __invoke(Model $model)
     {
         try {
@@ -17,7 +28,7 @@ class Delete extends Controller
             $this->addErrorMessageByException($exception);
         }
 
-        return $this->redirectBack();
+        return $this->redirectToList();
     }
 
     private function addErrorMessageByException(Exception $exception)
@@ -31,8 +42,15 @@ class Delete extends Controller
         Alert::error($message);
     }
 
-    private function redirectBack()
+    private function redirectToList()
     {
-        return redirect()->back();
+        $listRouteName = $this->getListRouteName();
+
+        return redirect()->route($listRouteName);
+    }
+
+    private function getListRouteName()
+    {
+        return $this->routeNameProvider->getList();
     }
 }

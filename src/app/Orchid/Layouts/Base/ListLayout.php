@@ -3,13 +3,16 @@
 namespace App\Orchid\Layouts\Base;
 
 use App\Contract\Entity\Base\Field\MetaInterface;
+use App\Contract\Entity\Base\NamesProviderInterface as NamesProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
+use App\Contract\Screen\Table\Td\Action\NameInterface as ActionNameInterface;
 use App\Contract\Screen\Table\Td\CurrencyInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
-use App\Contract\Entity\Base\NamesProviderInterface as NamesProviderInterface;
-use App\Contract\Screen\Table\Td\Action\NameInterface as ActionNameInterface;
+
+//use Orchid\Screen\Actions\Button;
+//use App\Orchid\Screen\Actions\Button;
 
 abstract class ListLayout extends Table
 {
@@ -31,12 +34,12 @@ abstract class ListLayout extends Table
         $this->target = $this->getDataKey();
     }
 
-    protected function showIdField(): bool
+    protected function getDataKey()
     {
-        return true;
+        return $this->namesProvider->getListDataKey();
     }
 
-    protected function showFieldsAsLink()
+    protected function showIdField(): bool
     {
         return true;
     }
@@ -51,11 +54,6 @@ abstract class ListLayout extends Table
         return true;
     }
 
-    protected function getDataKey()
-    {
-        return $this->namesProvider->getListDataKey();
-    }
-
     protected function createNameField($name, $label, $id)
     {
         $routeName = $this->getRouteNameEdit();
@@ -68,9 +66,16 @@ abstract class ListLayout extends Table
         return $this->routeNameProvider->getEdit();
     }
 
-    protected function getRouteNameDelete()
+    protected function createField($valueFieldName, $label, $routeName, $routeIdFieldName)
     {
-        return $this->routeNameProvider->getDelete();
+        return $this->showFieldsAsLink()
+            ? $this->createLinkField($valueFieldName, $label, $routeName, $routeIdFieldName)
+            : $this->createTextField($valueFieldName, $label);
+    }
+
+    protected function showFieldsAsLink()
+    {
+        return true;
     }
 
     protected function createLinkField($name, $label, $routeName, $id)
@@ -81,6 +86,11 @@ abstract class ListLayout extends Table
                 $id,
                 $name
             );
+    }
+
+    protected function createTextField($valueFieldName, $label)
+    {
+        return TD::set($valueFieldName, $label);
     }
 
     protected function createCurrencyField(string $name, string $label, string $routeName, string $routeIdFieldName)
@@ -106,18 +116,6 @@ abstract class ListLayout extends Table
         return $this->routeNameProvider->getEdit();
     }
 
-    protected function createField($valueFieldName, $label, $routeName, $routeIdFieldName)
-    {
-        return $this->showFieldsAsLink()
-            ? $this->createLinkField($valueFieldName, $label, $routeName, $routeIdFieldName)
-            : $this->createTextField($valueFieldName, $label);
-    }
-
-    protected function createTextField($valueFieldName, $label)
-    {
-        return TD::set($valueFieldName, $label);
-    }
-
     protected function createTimestampsFields(string $nameClassName, string $labelClassName, string $routeName, string $routeIdFieldName)
     {
         $createdAtField = $this->createCreatedAtField($nameClassName, $labelClassName, $routeName, $routeIdFieldName);
@@ -134,24 +132,9 @@ abstract class ListLayout extends Table
         return $this->createDateField($valueFieldName, $label, $routeName, $routeIdFieldName);
     }
 
-    protected function createUpdatedAtField(string $nameClassName, string $labelClassName, string $routeName, string $routeIdFieldName)
-    {
-        $valueFieldName = $this->getUpdatedAtConstantValue($nameClassName);
-        $label = $this->getUpdatedAtConstantValue($labelClassName);
-
-        return $this->createDateField($valueFieldName, $label, $routeName, $routeIdFieldName);
-    }
-
     protected function getCreatedAtConstantValue($className)
     {
         $constantName = MetaInterface::CREATED_AT;
-
-        return $this->getClassConstantValue($className, $constantName);
-    }
-
-    protected function getUpdatedAtConstantValue($className)
-    {
-        $constantName = MetaInterface::UPDATED_AT;
 
         return $this->getClassConstantValue($className, $constantName);
     }
@@ -166,7 +149,20 @@ abstract class ListLayout extends Table
         return $this->createField($valueFieldName, $label, $routeName, $routeIdFieldName);
     }
 
-    abstract protected function getRouteIdFieldName(): string;
+    protected function createUpdatedAtField(string $nameClassName, string $labelClassName, string $routeName, string $routeIdFieldName)
+    {
+        $valueFieldName = $this->getUpdatedAtConstantValue($nameClassName);
+        $label = $this->getUpdatedAtConstantValue($labelClassName);
+
+        return $this->createDateField($valueFieldName, $label, $routeName, $routeIdFieldName);
+    }
+
+    protected function getUpdatedAtConstantValue($className)
+    {
+        $constantName = MetaInterface::UPDATED_AT;
+
+        return $this->getClassConstantValue($className, $constantName);
+    }
 
     protected function createActionsField()
     {
@@ -188,33 +184,14 @@ abstract class ListLayout extends Table
 
             return view('layouts.actions', $vars);
         });
-//        return TD::set('Действия')->render(function ($item) use($actionsRoutes, $routeIdFieldName) {
-//
-//            $id = $item->{$routeIdFieldName};
-//            $actionButtonsHtml = [];
-//
-//            foreach ($actionsRoutes as $actionText => $actionRouteName) {
-//                $actionButtonsHtml[] = $this->createLink($actionRouteName, $id, $actionText, 'btn btn-default');
-//            }
-//
-//            return implode(' ',$actionButtonsHtml);
-//        });
     }
 
     abstract protected function getActionsButtons();
 
-    private function createEditLink($routeName, $routeIdFieldName)
+    protected function getRouteNameDelete()
     {
-        return $this->createLink($routeName, $routeIdFieldName, 'Edit');
+        return $this->routeNameProvider->getDelete();
     }
 
-    private function createLink(string $routeName, $routeParams, string $text, $class = null)
-    {
-        return view('html-element.a', [
-            'route' => $routeName,
-            'attributes' => $routeParams,
-            'text' => $text,
-            'class' => $class,
-        ])->render();
-    }
+    abstract protected function getRouteIdFieldName(): string;
 }

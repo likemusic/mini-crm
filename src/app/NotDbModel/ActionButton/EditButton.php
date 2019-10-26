@@ -14,10 +14,9 @@ class EditButton extends ActionButton
         string $name = NameInterface::EDIT,
         string $icon = IconInterface::EDIT,
         string $label = LabelInterface::EDIT,
-        string $style = StyleInterface::EDIT,
-        string $onclick = null
+        string $style = StyleInterface::EDIT
     )
     {
-        parent::__construct($name, $label, $icon, $style, $onclick);
+        parent::__construct($name, $label, $icon, $style);
     }
 }

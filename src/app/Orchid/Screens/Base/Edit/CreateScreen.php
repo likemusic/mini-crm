@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Base\Edit;
 
-use App\Contract\Common\HttpCodeInterface;
+use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
 use App\Orchid\Screens\Base\CanCreateTrait;
 use App\Orchid\Screens\Base\EditScreen;

@@ -6,10 +6,10 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
+use App\Http\Controllers\Entity\Product\Delete as DeleteController;
 use App\Orchid\Screens\Product\Edit\Create as CreateScreen;
 use App\Orchid\Screens\Product\Edit\Update as UpdateScreen;
 use App\Orchid\Screens\Product\ListScreen;
-use App\Http\Controllers\Entity\Delete as DeleteController;
 
 class CrudRegistrar extends BaseRegistrar
 {
@@ -17,7 +17,8 @@ class CrudRegistrar extends BaseRegistrar
         RouteRegisterHelper $routeRegisterHelper,
         RouteNameProvider $nameProvider,
         RoutePathProvider $pathProvider
-    ) {
+    )
+    {
         $listScreenClassName = ListScreen::class;
         $createScreenClassName = CreateScreen::class;
         $updateScreenClassName = UpdateScreen::class;

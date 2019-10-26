@@ -63,7 +63,8 @@ class CrudRegistrar implements RegistrarInterface
         string $editScreenClassName,
         string $updateScreenClassName,
         string $deleteControllerClassName
-    ) {
+    )
+    {
         $this->routeRegisterHelper = $routeRegisterHelper;
         $this->nameProvider = $nameProvider;
         $this->pathProvider = $pathProvider;

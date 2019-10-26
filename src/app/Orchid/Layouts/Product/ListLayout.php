@@ -35,7 +35,6 @@ class ListLayout extends BaseListLayout
         }
 
         $editRouteName = $this->getRouteNameEdit();
-        $deleteRouteName = $this->getRouteNameDelete();
 
         $mergedColumns = [
             $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, $routeIdFieldName),

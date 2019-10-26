@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Base\Edit;
 
-use App\Contract\Common\HttpCodeInterface;
+use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
 use App\Orchid\Screens\Base\EditScreen;

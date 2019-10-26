@@ -1,7 +1,8 @@
 <?php
 
-
 namespace App\NotDbModel;
+
+use App\Contract\Http\MethodInterface;
 
 class ActionButton
 {
@@ -17,17 +18,26 @@ class ActionButton
     /** @var string */
     public $style;
 
-    /**
-     * @var string
-     */
+    /** @var string */
+    public $method;
+
+    /** @var string */
     public $onclick;
 
-    public function __construct(string $name, string $label, string $icon, string $style, string $onclick = null)
+    public function __construct(
+        string $name,
+        string $label,
+        string $icon,
+        string $style,
+        string $method = MethodInterface::GET,
+        string $onclick = null
+    )
     {
         $this->name = $name;
         $this->icon = $icon;
         $this->label = $label;
         $this->style = $style;
+        $this->method = $method;
         $this->onclick = $onclick;
     }
 }
