@@ -8,11 +8,10 @@ use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInt
 use App\Contract\Screen\Table\Td\Action\NameInterface as ActionNameInterface;
 use App\Contract\Screen\Table\Td\CurrencyInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
+use App\NotDbModel\ActionButton\DeleteButton;
+use App\NotDbModel\ActionButton\EditButton;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
-
-//use Orchid\Screen\Actions\Button;
-//use App\Orchid\Screen\Actions\Button;
 
 abstract class ListLayout extends Table
 {
@@ -39,29 +38,61 @@ abstract class ListLayout extends Table
         return $this->namesProvider->getListDataKey();
     }
 
-    protected function showIdField(): bool
+    /**
+     * @return TD[]
+     */
+    public function columns(): array
     {
-        return true;
+        $columns = [];
+
+        $routeIdFieldName = $this->getRouteIdFieldName();
+
+        if ($this->showIdField()) {
+            $idFieldLabel = $this->getIdFieldLabel();
+            $columns[] = $this->createIdField($routeIdFieldName, $idFieldLabel);
+        }
+
+        $editRouteName = $this->getRouteNameEdit();
+
+        $notStandardColumns = $this->getNotStandardColumns();
+        $columns = array_merge($columns, $notStandardColumns);
+
+        if ($this->showTimestampsFields()) {
+            $namesClassName = $this->getFieldNamesClassName();
+            $labelsClassName = $this->getFieldLabelsClassName();
+            $timestampsColumns = $this->createTimestampsFields($namesClassName, $labelsClassName, $editRouteName, $routeIdFieldName);
+            $columns = array_merge($columns, $timestampsColumns);
+        }
+
+        if ($this->showActionsField()) {
+            $actionField = $this->createActionsField();
+            $columns[] = $actionField;
+        }
+
+        return $columns;
     }
 
-    protected function showTimestampsFields()
+    abstract protected function getRouteIdFieldName(): string;
+
+    abstract protected function showIdField(): bool;
+
+    abstract protected function getIdFieldLabel(): string;
+
+    protected function createIdField($idFieldName, $idFieldLabel, $routeIdFieldName = null)
     {
-        return true;
+        if (!$routeIdFieldName) {
+            $routeIdFieldName = $idFieldName;
+        }
+
+        $updateRouteName = $this->getUpdateRouteName();
+
+        $field = $this->createField($idFieldName, $idFieldLabel, $updateRouteName, $routeIdFieldName);
+        $field->align(TD::ALIGN_CENTER)->sort();
+
+        return $field;
     }
 
-    protected function showActionsField()
-    {
-        return true;
-    }
-
-    protected function createNameField($name, $label, $id)
-    {
-        $routeName = $this->getRouteNameEdit();
-
-        return $this->createField($name, $label, $routeName, $id);
-    }
-
-    protected function getRouteNameEdit()
+    protected function getUpdateRouteName()
     {
         return $this->routeNameProvider->getEdit();
     }
@@ -73,10 +104,12 @@ abstract class ListLayout extends Table
             : $this->createTextField($valueFieldName, $label);
     }
 
-    protected function showFieldsAsLink()
+    protected function createNoteField(string $valueFieldName, string $label, string $routeName, string $routeIdFieldName)
     {
-        return true;
+        return $this->createField($valueFieldName, $label, $routeName, $routeIdFieldName);
     }
+
+    abstract protected function showFieldsAsLink(): bool;
 
     protected function createLinkField($name, $label, $routeName, $id)
     {
@@ -93,28 +126,18 @@ abstract class ListLayout extends Table
         return TD::set($valueFieldName, $label);
     }
 
-    protected function createCurrencyField(string $name, string $label, string $routeName, string $routeIdFieldName)
-    {
-        $priceWidth = CurrencyInterface::WIDTH;
-        $align = CurrencyInterface::ALIGN;
-
-        $field = $this->createField($name, $label, $routeName, $routeIdFieldName);
-        $field->width($priceWidth)->align($align);
-
-        return $field;
-    }
-
-    protected function createIdField($idFieldName, $idFieldLabel)
-    {
-        $updateRouteName = $this->getUpdateRouteName();
-
-        return $this->createField($idFieldName, $idFieldLabel, $updateRouteName, $idFieldName);
-    }
-
-    protected function getUpdateRouteName()
+    protected function getRouteNameEdit()
     {
         return $this->routeNameProvider->getEdit();
     }
+
+    abstract protected function getNotStandardColumns(): array;
+
+    abstract protected function showTimestampsFields(): bool;
+
+    abstract protected function getFieldNamesClassName(): string;
+
+    abstract protected function getFieldLabelsClassName(): string;
 
     protected function createTimestampsFields(string $nameClassName, string $labelClassName, string $routeName, string $routeIdFieldName)
     {
@@ -164,6 +187,8 @@ abstract class ListLayout extends Table
         return $this->getClassConstantValue($className, $constantName);
     }
 
+    abstract protected function showActionsField(): bool;
+
     protected function createActionsField()
     {
         $actionButtons = $this->getActionsButtons();
@@ -172,7 +197,7 @@ abstract class ListLayout extends Table
             ActionNameInterface::DELETE => $this->getRouteNameDelete(),
         ];
 
-        $routeIdFieldName = $this->getRouteIdFieldName();
+        $routeIdFieldName = $this->getIdFieldName();
 
         return TD::set('Действия')->render(function ($item) use ($actionButtons, $actionRoutes, $routeIdFieldName) {
             $id = $item->{$routeIdFieldName};
@@ -186,12 +211,36 @@ abstract class ListLayout extends Table
         });
     }
 
-    abstract protected function getActionsButtons();
+    protected function getActionsButtons()
+    {
+        return [
+            new EditButton(),
+            new DeleteButton(),
+        ];
+    }
 
     protected function getRouteNameDelete()
     {
         return $this->routeNameProvider->getDelete();
     }
 
-    abstract protected function getRouteIdFieldName(): string;
+    abstract protected function getIdFieldName(): string;
+
+    protected function createNameField($name, $label, $id)
+    {
+        $routeName = $this->getRouteNameEdit();
+
+        return $this->createField($name, $label, $routeName, $id);
+    }
+
+    protected function createCurrencyField(string $name, string $label, string $routeName, string $routeIdFieldName)
+    {
+        $priceWidth = CurrencyInterface::WIDTH;
+        $align = CurrencyInterface::ALIGN;
+
+        $field = $this->createField($name, $label, $routeName, $routeIdFieldName);
+        $field->width($priceWidth)->align($align);
+
+        return $field;
+    }
 }

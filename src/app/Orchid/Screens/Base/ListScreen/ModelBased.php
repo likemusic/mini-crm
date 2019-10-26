@@ -33,12 +33,27 @@ abstract class ModelBased extends ListScreen
         parent::__construct($useVariant, $routeNameProvider, $namesProvider, $request);
     }
 
+    abstract protected function hasFilters(): bool;
+
+    abstract protected function getDefaultSort();
+
     /**
      * @return LengthAwarePaginator
      */
     protected function getData()
     {
-        return $this->model->paginate();
+        $model = $this->model;
+
+        if ($this->hasFilters()) {
+            $model->filters();
+        }
+
+        if ($defaultSort = $this->getDefaultSort()) {
+            [$fieldName, $order] = $defaultSort;
+            $model->defaultSort($fieldName, $order);
+        }
+
+        return $model->paginate();
     }
 
     protected function getDataKey(): string

@@ -3,11 +3,12 @@
 namespace App\Entity\ProductCategory\Route;
 
 use App\Entity\Base\Route\PathProvider as BasePathProvider;
+use App\Entity\ProductCategory\NamesProvider;
 
 class PathProvider extends BasePathProvider
 {
-    protected function getBasePath(): string
+    public function __construct(NamesProvider $namesProvider)
     {
-        return 'categories';
+        parent::__construct($namesProvider);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Entity\Base\Route;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface;
+use App\Contract\Entity\Base\NamesProviderInterface;
 
 abstract class NameProvider implements NameProviderInterface
 {
@@ -10,6 +11,14 @@ abstract class NameProvider implements NameProviderInterface
     const POSTFIX_NEW = 'new';
     const POSTFIX_EDIT = 'edit';
     const POSTFIX_DELETE = 'delete';
+
+    /** @var NamesProviderInterface  */
+    private $namesProvider;
+
+    public function __construct(NamesProviderInterface $namesProvider)
+    {
+        $this->namesProvider = $namesProvider;
+    }
 
     public function getList(): string
     {
@@ -29,10 +38,13 @@ abstract class NameProvider implements NameProviderInterface
 
     private function getBaseRouteName()
     {
-        return 'platform';
+        return 'crm';
     }
 
-    abstract protected function getEntityRouteName(): string;
+    protected function getEntityRouteName(): string
+    {
+        return $this->namesProvider->getRouteBaseName();
+    }
 
     private function getFullRouteName($baseEntityRouteName, $actionPostfix)
     {

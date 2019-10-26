@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Orchid\Screens\Product;
 
 use App\Entity\Product\CrudUseVariantProvider;
@@ -28,5 +30,15 @@ class ListScreen extends BaseListScreen
     protected function getLayoutClassName(): string
     {
         return ListLayout::class;
+    }
+
+    protected function hasFilters(): bool
+    {
+        return false;
+    }
+
+    protected function getDefaultSort()
+    {
+        return null;
     }
 }

@@ -45,18 +45,18 @@ $this->router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInt
 
 // Roles
 /** @var RoleRouteRegistrar $userRouteRegistrar */
-//$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
-//$roleRouteRegistrar->registerRoutes($this->router);
+$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
+$roleRouteRegistrar->registerRoutes($this->router);
 
 // Users
 /** @var UserRouteRegistrar $userRouteRegistrar */
-//$userRouteRegistrar = App::make(UserRouteRegistrar::class);
-//$userRouteRegistrar->registerRoutes($this->router);
+$userRouteRegistrar = App::make(UserRouteRegistrar::class);
+$userRouteRegistrar->registerRoutes($this->router);
 
 // Product Category
 /** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
-//$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
-//$productCategoryRouteRegistrar->registerRoutes($this->router);
+$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
+$productCategoryRouteRegistrar->registerRoutes($this->router);
 
 // Product
 /** @var ProductRouteRegistrar $productRouteRegistrar */

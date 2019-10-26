@@ -3,11 +3,12 @@
 namespace App\Entity\Role\Route;
 
 use App\Entity\Base\Route\NameProvider as BaseNameProvider;
+use App\Entity\Role\NamesProvider;
 
 class NameProvider extends BaseNameProvider
 {
-    protected function getEntityRouteName(): string
+    public function __construct(NamesProvider $namesProvider)
     {
-        return 'role';
+        parent::__construct($namesProvider);
     }
 }

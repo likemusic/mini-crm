@@ -3,11 +3,12 @@
 namespace App\Entity\User\Route;
 
 use App\Entity\Base\Route\PathProvider as BasePathProvider;
+use App\Entity\User\NamesProvider;
 
 class PathProvider extends BasePathProvider
 {
-    protected function getBasePath(): string
+    public function __construct(NamesProvider $namesProvider)
     {
-        return 'users';
+        parent::__construct($namesProvider);
     }
 }

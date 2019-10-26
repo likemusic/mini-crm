@@ -3,11 +3,12 @@
 namespace App\Entity\Product\Route;
 
 use App\Entity\Base\Route\NameProvider as BaseNameProvider;
+use App\Entity\Product\NamesProvider;
 
 class NameProvider extends BaseNameProvider
 {
-    protected function getEntityRouteName(): string
+    public function __construct(NamesProvider $namesProvider)
     {
-        return 'product';
+        parent::__construct($namesProvider);
     }
 }

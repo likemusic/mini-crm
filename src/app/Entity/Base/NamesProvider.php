@@ -15,4 +15,9 @@ abstract class NamesProvider implements NamesProviderInterface
     {
         return $this->getListDataKey();
     }
+
+    public function getRouteBaseName(): string
+    {
+        return $this->getItemDataKey();
+    }
 }

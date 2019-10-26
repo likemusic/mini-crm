@@ -6,6 +6,7 @@ interface NamesProviderInterface
 {
     public function getRoutePlaceholder(): string;
     public function getRouteBasePath(): string;
-    public function getItemDataKey();
-    public function getListDataKey();
+    public function getRouteBaseName(): string;
+    public function getItemDataKey(): string;
+    public function getListDataKey(): string;
 }

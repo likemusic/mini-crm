@@ -141,40 +141,40 @@ class MainMenuComposer
      */
     public function __construct(
         Dashboard $dashboard,
-        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
+//        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
         ProductMenuRegistrar $productMenuRegistrar,
         ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
-        WarehouseMenuRegistrar $warehouseMenuRegistrar,
-        StockItemMenuRegistrar $stockItemMenuRegistrar,
-        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
-        DiscountedProductMenuRegistrar $discountedProductMenuRegistrar,
-        ProductQuoteMenuRegistrar $productQuoteMenuRegistrar,
-        OrderItemMenuRegistrar $orderItemMenuRegistrar,
-        OrderMenuRegistrar $orderMenuRegistrar,
-        CounteragentMenuRegistrar $counteragentMenuRegistrar,
-        CurrencyMenuRegistrar $currencyMenuRegistrar,
-        WalletMenuRegistrar $walletMenuRegistrar,
-        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar,
+//        WarehouseMenuRegistrar $warehouseMenuRegistrar,
+//        StockItemMenuRegistrar $stockItemMenuRegistrar,
+//        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
+//        DiscountedProductMenuRegistrar $discountedProductMenuRegistrar,
+//        ProductQuoteMenuRegistrar $productQuoteMenuRegistrar,
+//        OrderItemMenuRegistrar $orderItemMenuRegistrar,
+//        OrderMenuRegistrar $orderMenuRegistrar,
+//        CounteragentMenuRegistrar $counteragentMenuRegistrar,
+//        CurrencyMenuRegistrar $currencyMenuRegistrar,
+//        WalletMenuRegistrar $walletMenuRegistrar,
+//        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar,
         UserMenuRegistrar $userMenuRegistrar,
         RoleMenuRegistrar $roleMenuRegistrar
     )
     {
         $this->dashboard = $dashboard;
-        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
+//        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
         $this->productMenuRegistrar = $productMenuRegistrar;
         $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
-        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
-        $this->stockItemMenuRegistrar = $stockItemMenuRegistrar;
-        $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
-        $this->discountedProductMenuRegistrar = $discountedProductMenuRegistrar;
-        $this->productQuoteMenuRegistrar = $productQuoteMenuRegistrar;
-        $this->orderItemMenuRegistrar = $orderItemMenuRegistrar;
-        $this->orderMenuRegistrar = $orderMenuRegistrar;
-        $this->counteragentMenuRegistrar = $counteragentMenuRegistrar;
-        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
-        $this->currencyMenuRegistrar = $currencyMenuRegistrar;
-        $this->walletMenuRegistrar = $walletMenuRegistrar;
-        $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
+//        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+//        $this->stockItemMenuRegistrar = $stockItemMenuRegistrar;
+//        $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
+//        $this->discountedProductMenuRegistrar = $discountedProductMenuRegistrar;
+//        $this->productQuoteMenuRegistrar = $productQuoteMenuRegistrar;
+//        $this->orderItemMenuRegistrar = $orderItemMenuRegistrar;
+//        $this->orderMenuRegistrar = $orderMenuRegistrar;
+//        $this->counteragentMenuRegistrar = $counteragentMenuRegistrar;
+//        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
+//        $this->currencyMenuRegistrar = $currencyMenuRegistrar;
+//        $this->walletMenuRegistrar = $walletMenuRegistrar;
+//        $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
         $this->userMenuRegistrar = $userMenuRegistrar;
         $this->roleMenuRegistrar = $roleMenuRegistrar;
     }
@@ -225,7 +225,7 @@ class MainMenuComposer
 //            );
 
         $this->addProductCatalogMenuIfCanAccess($dashboardMenu);
-//        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
+        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
 
         //Entities
 //            $this->productMenuRegistrar->register($dashboardMenu);
@@ -317,7 +317,7 @@ class MainMenuComposer
             );
 
         $this->addProductMenuIfCanAccess($menu, $slug);
-//        $this->addProductCategoryMenuIfCanAccess($menu, $slug);
+        $this->addProductCategoryMenuIfCanAccess($menu, $slug);
     }
 
     private function addProductCategoryMenuIfCanAccess(Menu $menu, string $place)

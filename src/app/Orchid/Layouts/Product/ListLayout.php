@@ -6,8 +6,6 @@ use App\Contract\Entity\Product\Field\LabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\NotDbModel\ActionButton\DeleteButton;
-use App\NotDbModel\ActionButton\EditButton;
 use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
 use Orchid\Screen\TD;
 
@@ -21,22 +19,32 @@ class ListLayout extends BaseListLayout
         parent::__construct($routeNameProvider, $namesProvider);
     }
 
-    /**
-     * @return TD[]
-     */
-    public function columns(): array
+    protected function getIdFieldLabel(): string
     {
-        $columns = [];
+        return LabelInterface::ID;
+    }
 
-        $routeIdFieldName = $this->getRouteIdFieldName();
+    protected function getFieldNamesClassName(): string
+    {
+        return FieldNameInterface::class;
+    }
 
-        if ($this->showIdField()) {
-            $columns[] = $this->createIdField(FieldNameInterface::ID, LabelInterface::ID);
-        }
+    protected function getFieldLabelsClassName(): string
+    {
+        return LabelInterface::class;
+    }
 
+    protected function getRouteIdFieldName(): string
+    {
+        return $this->getIdFieldName();
+    }
+
+    protected function getNotStandardColumns(): array
+    {
         $editRouteName = $this->getRouteNameEdit();
+        $routeIdFieldName = $this->getIdFieldName();
 
-        $mergedColumns = [
+        return [
             $this->createNameField(FieldNameInterface::NAME, LabelInterface::NAME, $routeIdFieldName),
 
             $this->createField(
@@ -60,45 +68,37 @@ class ListLayout extends BaseListLayout
                 $routeIdFieldName
             ),
 
-            TD::set(FieldNameInterface::NOTE, LabelInterface::NOTE),
+            $this->createNoteField(
+                FieldNameInterface::NOTE,
+                LabelInterface::NOTE,
+                $editRouteName,
+                $routeIdFieldName
+            )
         ];
-
-        $columns = array_merge($columns, $mergedColumns);
-
-        if ($this->showTimestampsFields()) {
-            $timestampsColumns = $this->createTimestampsFields(FieldNameInterface::class, LabelInterface::class, $editRouteName, FieldNameInterface::ID);
-            $columns = array_merge($columns, $timestampsColumns);
-        }
-
-        if ($this->showActionsField()) {
-            $actionField = $this->createActionsField();
-            $columns[] = $actionField;
-        }
-
-        return $columns;
     }
 
-    protected function getRouteIdFieldName(): string
+    protected function getIdFieldName(): string
     {
         return FieldNameInterface::ID;
     }
 
+    protected function showFieldsAsLink(): bool
+    {
+        return true;
+    }
 
     protected function showIdField(): bool
     {
         return true;
     }
 
-    protected function showFieldsAsLink()
+    protected function showTimestampsFields(): bool
     {
         return true;
     }
 
-    protected function getActionsButtons()
+    protected function showActionsField(): bool
     {
-        return [
-            new EditButton(),
-            new DeleteButton(),
-        ];
+        return true;
     }
 }

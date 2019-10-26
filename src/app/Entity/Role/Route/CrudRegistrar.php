@@ -6,11 +6,12 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Role\Route\NameProvider as RouteNameProvider;
 use App\Entity\Role\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Role\RoleEditScreen as EditScreen;
-use App\Orchid\Screens\Role\RoleListScreen as ListScreen;
-
-//use App\Orchid\Screens\Role\EditScreen as EditScreen;
-//use App\Orchid\Screens\Role\ModelBasedListScreen;
+use App\Http\Controllers\Entity\Role\Delete as DeleteController;
+//use App\Orchid\Screens\Role\Edit\Create as CreateScreen;
+//use App\Orchid\Screens\Role\Edit\Update as UpdateScreen;
+use App\Orchid\Screens\Role\RoleEditScreen as CreateScreen;
+use App\Orchid\Screens\Role\RoleEditScreen as UpdateScreen;
+use App\Orchid\Screens\Role\ListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {
@@ -21,8 +22,9 @@ class CrudRegistrar extends BaseRegistrar
     )
     {
         $listScreenClassName = ListScreen::class;
-        $updateScreenClassName = EditScreen::class;
-        $createScreenClassName = EditScreen::class;
+        $createScreenClassName = CreateScreen::class;
+        $updateScreenClassName = UpdateScreen::class;
+        $deleteControllerClassName = DeleteController::class;
 
         parent::__construct(
             $routeRegisterHelper,
@@ -30,7 +32,8 @@ class CrudRegistrar extends BaseRegistrar
             $pathProvider,
             $listScreenClassName,
             $createScreenClassName,
-            $updateScreenClassName
+            $updateScreenClassName,
+            $deleteControllerClassName
         );
     }
 }
