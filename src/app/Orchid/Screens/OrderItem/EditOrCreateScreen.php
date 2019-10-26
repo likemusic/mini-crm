@@ -13,14 +13,14 @@ use App\Helper\InfoMessageProvider\OrderItem as InfoMessageProvider;
 use App\Model\Order;
 use App\Model\OrderItem;
 use App\Model\ProductQuote;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,

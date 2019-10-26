@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Redirect;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 use App\Contract\Entity\Base\NamesProviderInterface;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Input;
 
-abstract class EditScreen extends BaseScreen
+abstract class EditOrCreateScreen extends BaseScreen
 {
     /** @var BreadcrumbsHelper */
     protected $breadcrumbsHelper;
@@ -61,7 +63,7 @@ abstract class EditScreen extends BaseScreen
 
     protected function getDataKey(): string
     {
-        $this->namesProvider->getItemDataKey();
+        return $this->namesProvider->getItemDataKey();
     }
 
     /**
@@ -240,5 +242,21 @@ abstract class EditScreen extends BaseScreen
     protected function getDataPath(string $key)
     {
         return $this->getDataKey() . '.' . $key;
+    }
+
+    protected function createNoteTextArea(string $name, string $title)
+    {
+        return TextArea::make($this->getDataPath($name))
+            ->title($title)
+            ->rows(4);
+    }
+
+    protected function createPriceInput(string $name, string $title)
+    {
+        return Input::make($this->getDataPath($name))
+            ->title($title)
+            ->type('number')
+            ->min(0)
+            ;
     }
 }

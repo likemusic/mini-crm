@@ -11,13 +11,13 @@ use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\DiscountedProduct as InfoMessageProvider;
 use App\Model\DiscountedProduct;
 use App\Model\Product;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,

@@ -17988,7 +17988,7 @@ button.close {
 
 .select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection {
   border-color: rgba(28, 43, 54, 0.1);
-  background-color: #edeeee;
+  background-color: #efffff;
   outline: 0 !important;
   box-shadow: none;
 }
@@ -18015,7 +18015,7 @@ button.close {
 }
 
 .select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
-  background-color: #edeeee;
+  background-color: #efffff;
   color: inherit;
 }
 
@@ -20328,7 +20328,7 @@ a.text-black:hover {
 
 .form-control:focus, .chosen-choices:focus, .chosen-single:focus, .bootstrap-tagsinput:focus {
   border-color: rgba(28, 43, 54, 0.1);
-  background-color: #edeeee;
+  background-color: #efffff;
   outline: 0 !important;
   color: #1c2b36;
   box-shadow: none;

@@ -19,7 +19,7 @@ use App\Model\Order;
 use App\Model\Pharmacy;
 use App\Model\Product;
 use App\Model\User;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use App\Repositories\CurrencyRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ use Orchid\Screen\Layout;
 use App\Orchid\Screen\Fields\RelationWithData;
 
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     /**
      * @var CurrencyRepository

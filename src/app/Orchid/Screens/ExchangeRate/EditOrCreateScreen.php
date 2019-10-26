@@ -12,14 +12,14 @@ use App\Helper\CurrenciesListProvider;
 use App\Helper\InfoMessageProvider\ExchangeRate as InfoMessageProvider;
 use App\Model\Currency;
 use App\Model\ExchangeRate;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     /**
      * @var CurrenciesListProvider

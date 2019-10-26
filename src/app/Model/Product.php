@@ -13,6 +13,10 @@ class Product extends Model
 
     protected $with = [FieldNameInterface::CATEGORY];
 
+    protected $casts = [
+        FieldNameInterface::APPROXIMATE_PRICE => 'int',
+        FieldNameInterface::SELLING_PRICE => 'int',
+    ];
     /**
      * @var array
      */

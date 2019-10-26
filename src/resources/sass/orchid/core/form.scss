@@ -17,7 +17,7 @@
   @include transition(background 0.2s linear 0s);
   &:focus {
     border-color: fade-out($brand-black, 0.9);
-    background-color: $brand-grey-light;
+    background-color: $brand-control-focus;
     outline: 0 !important;
     color: $brand-black;
     @include box-shadow(none);

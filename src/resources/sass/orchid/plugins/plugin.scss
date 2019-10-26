@@ -33,14 +33,14 @@
 
   &.select2-container--focus .select2-selection, &.select2-container--open .select2-selection {
     border-color     : fade-out($brand-black, 0.9);
-    background-color : $brand-grey-light;
+    background-color : $brand-control-focus;
     outline          : 0 !important;
     @include box-shadow(none);
     @include placeholder($text-muted);
   }
 
   .select2-results__option--highlighted[aria-selected]{
-    background-color : $brand-grey-light;
+    background-color : $brand-control-focus;
     color: inherit;
   }
 

@@ -5,7 +5,8 @@ namespace App\Orchid\Screens\Product;
 use App\Contract\Entity\Product\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as ProductCategoryFieldNameInterface;
-use App\Entity\Product\CrudUseVariantProvider as EditableUseVariantProvider;
+use App\Entity\Product\CrudUseVariantProvider;
+use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
@@ -16,6 +17,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
+use Orchid\Screen\Field;
 
 trait EditTrait
 {
@@ -26,10 +28,11 @@ trait EditTrait
         CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
+        NamesProvider $namesProvider,
         ?Request $request = null
     )
     {
-        parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
+        parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $namesProvider, $request);
     }
 
     public function query(Product $model): array
@@ -47,19 +50,19 @@ trait EditTrait
         return [
             Layout::rows([
                 Input::make($this->getDataPath(FieldNameInterface::NAME))
-                    ->title(FieldLabelInterface::NAME),
+                    ->title(FieldLabelInterface::NAME)
+                    ->required(),
 
-                Select::make($this->getDataPath(FieldNameInterface::CATEGORY_ID))
-                    ->fromModel(ProductCategory::class, ProductCategoryFieldNameInterface::NAME),
+                Field::group([
+                    Select::make($this->getDataPath(FieldNameInterface::CATEGORY_ID))
+                        ->fromModel(ProductCategory::class, ProductCategoryFieldNameInterface::NAME)
+                        ->title(FieldLabelInterface::CATEGORY),
 
-                Input::make($this->getDataPath(FieldNameInterface::APPROXIMATE_PRICE))
-                    ->title(FieldLabelInterface::APPROXIMATE_PRICE),
+                    $this->createPriceInput(FieldNameInterface::APPROXIMATE_PRICE, FieldLabelInterface::APPROXIMATE_PRICE),
+                    $this->createPriceInput(FieldNameInterface::SELLING_PRICE, FieldLabelInterface::SELLING_PRICE),
+                ]),
 
-                Input::make($this->getDataPath(FieldNameInterface::SELLING_PRICE))
-                    ->title(FieldLabelInterface::SELLING_PRICE),
-
-                TextArea::make($this->getDataPath(FieldNameInterface::NOTE))
-                    ->title(FieldLabelInterface::NOTE),
+                $this->createNoteTextArea(FieldNameInterface::NOTE, FieldLabelInterface::NOTE),
             ])
         ];
     }

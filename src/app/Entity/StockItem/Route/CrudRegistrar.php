@@ -6,7 +6,7 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\StockItem\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\StockItem\EditScreen as EditScreen;
+use App\Orchid\Screens\StockItem\EditOrCreateScreen as EditScreen;
 use App\Orchid\Screens\StockItem\ModelBasedListScreen;
 
 class CrudRegistrar extends BaseRegistrar
@@ -17,7 +17,7 @@ class CrudRegistrar extends BaseRegistrar
         RoutePathProvider $pathProvider
     ) {
         $listScreenClassName = ModelBasedListScreen::class;
-        $editScreenClassName = EditScreen::class;
+        $editScreenClassName = EditOrCreateScreen::class;
 
         parent::__construct(
             $routeRegisterHelper,

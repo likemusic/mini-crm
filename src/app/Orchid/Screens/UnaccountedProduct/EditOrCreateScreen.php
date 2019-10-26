@@ -1,29 +1,30 @@
 <?php
 
-namespace App\Orchid\Screens\Counteragent;
+namespace App\Orchid\Screens\UnaccountedProduct;
 
-use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface;
-use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
-use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
-use App\Entity\Counteragent\CrudUseVariantProvider as EditableUseVariantProvider;
+use App\Contract\Entity\UnaccountedProduct\Field\LabelInterface as FieldLabelInterface;
+use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
+use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
+use App\Entity\UnaccountedProduct\CrudUseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Counteragent as InfoMessageProvider;
-use App\Model\Counteragent;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Helper\InfoMessageProvider\UnaccountedProduct as InfoMessageProvider;
+use App\Model\UnaccountedProduct;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     public function __construct(
         RouteNameProvider $routeNameProvider,
-        CrudUseVariantProvider $useVariant,
+        UseVariant $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         ?Request $request = null
-    ) {
+    )
+    {
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
     }
 
@@ -45,12 +46,12 @@ class EditScreen extends BaseEditScreen
         ];
     }
 
-    public function createOrUpdate(Counteragent $model, Request $request)
+    public function createOrUpdate(UnaccountedProduct $model, Request $request)
     {
         return $this->onCreateOrUpdate($model, $request);
     }
 
-    public function query(Counteragent $model): array
+    public function query(UnaccountedProduct $model): array
     {
         return $this::onQuery($model);
     }

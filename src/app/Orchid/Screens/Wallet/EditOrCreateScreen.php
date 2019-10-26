@@ -12,7 +12,7 @@ use App\Helper\InfoMessageProvider\Wallet as InfoMessageProvider;
 use App\Model\Counteragent;
 use App\Model\User;
 use App\Model\Wallet;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
@@ -21,7 +21,7 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 use App\Helper\CurrenciesListProvider;
 
-class EditScreen extends BaseEditScreen
+class EditOrCreateScreen extends BaseEditScreen
 {
     /**
      * @var CurrenciesListProvider

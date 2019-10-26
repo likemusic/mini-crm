@@ -5,13 +5,13 @@ namespace App\Orchid\Screens\Base\Edit;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
-use App\Orchid\Screens\Base\EditScreen;
+use App\Orchid\Screens\Base\EditOrCreateScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 
-abstract class UpdateScreen extends EditScreen
+abstract class UpdateOrCreateScreen extends EditOrCreateScreen
 {
     /**
      * Button commands.
