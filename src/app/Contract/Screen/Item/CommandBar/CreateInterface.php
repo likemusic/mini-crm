@@ -2,9 +2,9 @@
 
 namespace App\Contract\Screen\Item\CommandBar;
 
-interface UpdateInterface
+interface CreateInterface
 {
-    const NAME = 'Сохранить';
+    const NAME = 'Создать';
     const CLASS_NAME = 'btn btn-primary';
-    const ICON = 'icon-save';
+    const ICON = null;
 }

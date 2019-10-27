@@ -32,9 +32,11 @@ use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
 use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterface;
 use App\Entity\Base\MainMenuRegistrar;
+use App\Common\GetCurrentUserTrait;
 
 class MainMenuComposer
 {
+    use GetCurrentUserTrait;
     /**
      * @var Dashboard
      */
@@ -298,11 +300,6 @@ class MainMenuComposer
         }
 
         return $menuPermissionMap[$menuPermission];
-    }
-
-    private function getCurrentUser(): User
-    {
-        return Auth::user();
     }
 
     private function addProductCatalogMenu(Menu $menu)

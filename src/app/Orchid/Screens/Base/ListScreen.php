@@ -13,9 +13,12 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Entity\Base\NamesProviderInterface;
+use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
+use App\Common\GetCurrentUserTrait;
 
 abstract class ListScreen extends Base
 {
+    use GetCurrentUserTrait;
     use CanCreateTrait;
 
     /**
@@ -67,7 +70,9 @@ abstract class ListScreen extends Base
     {
         return Link::make(AddCommandInterface::NAME)
             ->href(route($this->routeNameProvider->getCreate()))
-            ->icon(AddCommandInterface::ICON);
+            ->icon(AddCommandInterface::ICON)
+            ->class(AddCommandInterface::CLASS_ATTRIBUTE)
+            ;
     }
 
     /**

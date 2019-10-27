@@ -53,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $entityCodes = [
             EntityInterface::PRODUCT,
+            EntityInterface::ROLE,
         ];
 
         $this->setModelBindingByEntityCodes($entityCodes);

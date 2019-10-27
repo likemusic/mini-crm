@@ -5,13 +5,14 @@ namespace App\Orchid\Screens\Base\Edit;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
-use App\Orchid\Screens\Base\EditOrCreateScreen;
+use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
+use App\Orchid\Screens\Base\EditScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 
-abstract class UpdateOrCreateScreen extends EditOrCreateScreen
+abstract class UpdateScreen extends EditScreen
 {
     /**
      * Button commands.
@@ -24,6 +25,10 @@ abstract class UpdateOrCreateScreen extends EditOrCreateScreen
 
         if ($this->canUpdate()) {
             $buttons[] = $this->createUpdateCommandBarButton();
+        }
+
+        if ($this->canDelete()) {
+            $buttons[] = $this->createDeleteCommandBarButton();
         }
 
         return $buttons;
@@ -39,6 +44,13 @@ abstract class UpdateOrCreateScreen extends EditOrCreateScreen
 
     private function getUpdatePermission(): string
     {
+        $constantName = PermissionConstantNameInterface::UPDATE;
+
+        return $this->getPermissionClassConstant($constantName);
+    }
+
+    private function getDeletePermission(): string
+    {
         $constantName = PermissionConstantNameInterface::DELETE;
 
         return $this->getPermissionClassConstant($constantName);
@@ -46,11 +58,33 @@ abstract class UpdateOrCreateScreen extends EditOrCreateScreen
 
     private function createUpdateCommandBarButton()
     {
-        return Button::make(UpdateCommandInterface::NAME)
-            ->icon(UpdateCommandInterface::CLASS_NAME)
-            ->class(UpdateCommandInterface::CLASS_NAME)
-            ->method('update');
+        return $this->createCommandBarButton(
+        UpdateCommandInterface::NAME,
+            UpdateCommandInterface::ICON,
+            UpdateCommandInterface::CLASS_NAME,
+            'update'
+        );
     }
+
+    private function canDelete(): bool
+    {
+        $currentUser = $this->getCurrentUser();
+        $permission = $this->getDeletePermission();
+
+        return $currentUser->hasAccess($permission);
+    }
+
+
+    private function createDeleteCommandBarButton()
+    {
+         return $this->createCommandBarButton(
+             DeleteCommandInterface::NAME,
+             DeleteCommandInterface::ICON,
+             DeleteCommandInterface::CLASS_NAME,
+             'delete'
+         );
+    }
+
 
     protected function getScreenName(): string
     {

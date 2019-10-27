@@ -6,7 +6,7 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 use App\Entity\Counteragent\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Counteragent\EditOrCreateScreen as EditScreen;
+use App\Orchid\Screens\Counteragent\EditScreen as EditScreen;
 use App\Orchid\Screens\Counteragent\ModelBasedListScreen;
 
 class CrudRegistrar extends BaseRegistrar

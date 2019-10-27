@@ -7,10 +7,12 @@ use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
-use Orchid\Screen\TD;
+use App\Orchid\Screens\Product\PermissionsClassNameTrait;
 
 class ListLayout extends BaseListLayout
 {
+    use PermissionsClassNameTrait;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
         NamesProvider $namesProvider
@@ -37,6 +39,11 @@ class ListLayout extends BaseListLayout
     protected function getRouteIdFieldName(): string
     {
         return $this->getIdFieldName();
+    }
+
+    protected function getIdFieldName(): string
+    {
+        return FieldNameInterface::ID;
     }
 
     protected function getNotStandardColumns(): array
@@ -75,11 +82,6 @@ class ListLayout extends BaseListLayout
                 $routeIdFieldName
             )
         ];
-    }
-
-    protected function getIdFieldName(): string
-    {
-        return FieldNameInterface::ID;
     }
 
     protected function showFieldsAsLink(): bool

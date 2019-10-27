@@ -12,9 +12,18 @@ use App\NotDbModel\ActionButton\DeleteButton;
 use App\NotDbModel\ActionButton\EditButton;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
+use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
+use App\Orchid\Screens\Base\Can\DeleteTrait as CanDeleteTrait;
+use App\Orchid\Screens\Base\Can\UpdateTrait as CanUpdateTrait;
+use App\Common\GetCurrentUserTrait;
+use App\Common\GetPermissionClassConstantTrait;
 
 abstract class ListLayout extends Table
 {
+    use GetPermissionClassConstantTrait;
+    use GetCurrentUserTrait;
+    use CanCreateTrait, CanDeleteTrait, CanUpdateTrait;
+
     /**
      * @var RouteNameProvider
      */
@@ -213,10 +222,17 @@ abstract class ListLayout extends Table
 
     protected function getActionsButtons()
     {
-        return [
-            new EditButton(),
-            new DeleteButton(),
-        ];
+        $ret = [];
+
+        if ($this->canUpdate()) {
+            $ret[] = new EditButton();
+        }
+
+        if ($this->canDelete()) {
+            $ret[] = new DeleteButton();
+        }
+
+        return $ret;
     }
 
     protected function getRouteNameDelete()

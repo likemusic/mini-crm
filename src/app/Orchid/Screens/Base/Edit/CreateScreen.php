@@ -2,17 +2,17 @@
 
 namespace App\Orchid\Screens\Base\Edit;
 
+use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
-use App\Contract\Screen\Item\CommandBar\SaveInterface as SaveCommandInterface;
-use App\Orchid\Screens\Base\CanCreateTrait;
-use App\Orchid\Screens\Base\EditOrCreateScreen;
+use App\Contract\Screen\Item\CommandBar\CreateInterface as SaveCommandInterface;
+use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
+use App\Orchid\Screens\Base\EditScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
-use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 
-abstract class CreateOrCreateScreen extends EditOrCreateScreen
+abstract class CreateScreen extends EditScreen
 {
     use CanCreateTrait;
 

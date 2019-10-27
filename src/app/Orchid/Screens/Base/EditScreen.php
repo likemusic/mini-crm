@@ -21,7 +21,7 @@ use App\Contract\Entity\Base\NamesProviderInterface;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Input;
 
-abstract class EditOrCreateScreen extends BaseScreen
+abstract class EditScreen extends BaseScreen
 {
     /** @var BreadcrumbsHelper */
     protected $breadcrumbsHelper;
@@ -74,45 +74,38 @@ abstract class EditOrCreateScreen extends BaseScreen
     public function commandBar(): array
     {
         $buttons = [];
-
-        if ($this->canDelete()) {
-            $buttons[] = $this->createDeleteCommandBarButton();
-        }
-
         $buttons[] = $this->createCancelCommandBarButton();
 
         return $buttons;
     }
 
-    private function canDelete(): bool
-    {
-        $currentUser = $this->getCurrentUser();
-        $permission = $this->getDeletePermission();
-
-        return $currentUser->hasAccess($permission);
-    }
-
-    private function getDeletePermission(): string
-    {
-        $constantName = PermissionConstantNameInterface::DELETE;
-
-        return $this->getPermissionClassConstant($constantName);
-    }
-
-    private function createDeleteCommandBarButton()
-    {
-        return Button::make(DeleteCommandInterface::NAME)
-            ->class(DeleteCommandInterface::CLASS_NAME)
-            ->icon(DeleteCommandInterface::ICON)
-            ->method('delete');
-    }
-
     private function createCancelCommandBarButton()
     {
-        return Button::make(CancelCommandInterface::NAME)
-            ->class(CancelCommandInterface::CLASS_NAME)
-            ->icon(CancelCommandInterface::ICON)
-            ->method('cancel');
+        return $this->createCommandBarButton(
+            CancelCommandInterface::NAME,
+            CancelCommandInterface::ICON,
+            CancelCommandInterface::CLASS_NAME,
+            'cancel'
+        );
+    }
+
+    protected function createCommandBarButton($name, $icon = null, $className = null, $method = null)
+    {
+        $button = Button::make($name);
+
+        if ($icon) {
+            $button->icon($icon);
+        }
+
+        if ($className) {
+            $button->class($className);
+        }
+
+        if ($method) {
+            $button->method($method);
+        }
+
+        return $button;
     }
 
     /**

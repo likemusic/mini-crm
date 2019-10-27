@@ -2,25 +2,15 @@
 
 namespace App\Orchid\Screens;
 
+use App\Common\GetCurrentUserTrait;
+use App\Common\GetPermissionClassConstantTrait;
 use Illuminate\Http\Request;
 use Orchid\Screen\Screen as BaseScreen;
-use Illuminate\Contracts\Auth\Authenticatable;
-use App\Model\User;
-use Illuminate\Support\Facades\Auth;
 
 abstract class Base extends BaseScreen
 {
-    abstract protected function getDataKey(): string;
-    abstract protected function getPermissionsClassName(): string;
-    abstract protected function getPermissionClassConstantName(): string;
-
-    protected function getPermission(): string
-    {
-        $constantName = $this->getPermissionClassConstantName();
-
-        return $this->getPermissionClassConstant($constantName);
-    }
-
+    use GetPermissionClassConstantTrait;
+    use GetCurrentUserTrait;
 
     public function __construct(?Request $request = null)
     {
@@ -29,23 +19,14 @@ abstract class Base extends BaseScreen
         $this->permission = $this->getPermission();
     }
 
-    /**
-     * @return Authenticatable|User
-     */
-    protected function getCurrentUser(): Authenticatable
+    protected function getPermission(): string
     {
-        return Auth::user();
+        $constantName = $this->getPermissionClassConstantName();
+
+        return $this->getPermissionClassConstant($constantName);
     }
 
-    protected function getPermissionClassConstant(string $constantName): string
-    {
-        $permissionClassName = $this->getPermissionsClassName();
+    abstract protected function getPermissionClassConstantName(): string;
 
-        return $this->getClassConstantValue($permissionClassName, $constantName);
-    }
-
-    private function getClassConstantValue($className, $constantName): string
-    {
-        return constant("{$className}::{$constantName}");
-    }
+    abstract protected function getDataKey(): string;
 }

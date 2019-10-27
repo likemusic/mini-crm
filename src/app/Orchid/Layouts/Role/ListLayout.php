@@ -9,10 +9,13 @@ use App\Contract\Entity\Role\Field\NameInterface as FieldNameInterface;
 use App\Entity\Role\NamesProvider;
 use App\Entity\Role\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
+use App\Orchid\Screens\Role\PermissionsClassNameTrait;
 use Orchid\Screen\TD;
 
 class ListLayout extends BaseListLayout
 {
+    use PermissionsClassNameTrait;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
         NamesProvider $namesProvider
@@ -36,12 +39,6 @@ class ListLayout extends BaseListLayout
         $routeIdFieldName = $this->getRouteIdFieldName();
 
         return [
-//            TD::set('id', 'ID')
-//                ->align(TD::ALIGN_CENTER)
-//                ->width('100px')
-//                ->sort()
-//                ->link($this->getEditRouteName(), 'slug'),
-
             TD::set(FieldNameInterface::NAME, __(LabelInterface::NAME))
                 ->sort()
                 ->filter(TD::FILTER_TEXT)
@@ -54,6 +51,11 @@ class ListLayout extends BaseListLayout
             TD::set(FieldNameInterface::CREATED_AT, __(LabelInterface::CREATED_AT))
                 ->sort(),
         ];
+    }
+
+    protected function getRouteIdFieldName(): string
+    {
+        return FieldNameInterface::SLUG;
     }
 
     protected function showIdField(): bool
@@ -74,11 +76,6 @@ class ListLayout extends BaseListLayout
     protected function showActionsField(): bool
     {
         return true;
-    }
-
-    protected function getRouteIdFieldName(): string
-    {
-        return FieldNameInterface::SLUG;
     }
 
     protected function getFieldNamesClassName(): string
