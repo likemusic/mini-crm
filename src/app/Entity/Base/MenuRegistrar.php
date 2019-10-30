@@ -6,6 +6,7 @@ use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInt
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
+use App\Contract\MainMenu\ItemData\ChildInterface as  ChildMenuItemDataInterface;
 
 class MenuRegistrar
 {
@@ -24,10 +25,16 @@ class MenuRegistrar
     /** @var string */
     private $menuTitle;
 
+    /**
+     * @var ChildMenuItemDataInterface
+     */
+    private $menuItemData;
+
     public function __construct(
         string $menuPlace,
         ListUseVariantProviderInterface $useVariantProvider,
         RouteNameProviderInterface $routeNameProvider,
+        ChildMenuItemDataInterface $menuItemData,
         ?string $menuIcon = null,
         ?string $menuTitle = null
     ) {
@@ -36,6 +43,7 @@ class MenuRegistrar
         $this->menuTitle = $menuTitle;
         $this->useVariantProvider = $useVariantProvider;
         $this->routeNameProvider = $routeNameProvider;
+        $this->menuItemData = $menuItemData;
     }
 
     public function register(Menu $menu, $place = null)
@@ -44,19 +52,31 @@ class MenuRegistrar
             $place = $this->menuPlace;
         }
 
-        $menuItem = $this->getMenuItem();
+        $menuItem = $this->createMenuItem();
         $menu->add($place, $menuItem);
     }
 
-    private function getMenuItem()
+    private function createMenuItem()
     {
         $label = $this->getMenuLabel();
-        $routeName = $this->getRouteName();
+        $routeName = $this->getMenuRouteName();
+        $menuIcon = $this->getMenuIcon();
+        $menuTitle = $this->getMenuTitle();
 
         return ItemMenu::label($label)
-            ->icon($this->menuIcon)
+            ->icon($menuIcon )
             ->route($routeName)
             ->title($this->menuTitle);
+    }
+
+    private function getMenuTitle()
+    {
+        return $this->menuItemData->getTitle();
+    }
+
+    private function getMenuIcon()
+    {
+        return $this->menuItemData->getIcon();
     }
 
     /**
@@ -64,14 +84,14 @@ class MenuRegistrar
      */
     private function getMenuLabel()
     {
-        return $this->useVariantProvider->getListName();
+        return $this->menuItemData->getLabel();
     }
 
     /**
      * @return string
      */
-    private function getRouteName()
+    private function getMenuRouteName()
     {
-        return $this->routeNameProvider->getList();
+        return $this->menuItemData->getRouteName();
     }
 }

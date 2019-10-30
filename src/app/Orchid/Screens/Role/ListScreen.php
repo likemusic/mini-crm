@@ -34,19 +34,7 @@ class ListScreen extends BaseListScreen
         parent::__construct($model, $useVariant, $routeNameProvider, $namesProvider, $request);
     }
 
-    /**
-     * Query data.
-     *
-     * @return array
-     */
-    /*    public function query(): array
-        {
-            return [
-                'roles' => Role::filters()->defaultSort('id', 'desc')->paginate(),
-            ];
-        }*/
-
-    protected function hasFilters(): bool
+    protected function isFilterable(): bool
     {
         return true;
     }
@@ -55,25 +43,6 @@ class ListScreen extends BaseListScreen
     {
         return ['id', 'desc'];
     }
-
-    /**
-     * Button commands.
-     *
-     * @return Link[]
-     */
-//    public function commandBar(): array
-//    {
-//        return [
-//            Link::make(__('Add'))
-//                ->href(route($this->getRoleCreateRouteName()))
-//                ->icon('icon-plus'),
-//        ];
-//    }
-
-//    private function getRoleCreateRouteName()
-//    {
-//        return $this->roleRouteNameProvider->getCreate();
-//    }
 
     protected function getLayoutClassName(): string
     {

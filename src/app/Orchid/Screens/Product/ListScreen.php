@@ -11,6 +11,7 @@ use App\Model\Product;
 use App\Orchid\Layouts\Product\ListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
+use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 
 class ListScreen extends BaseListScreen
 {
@@ -32,13 +33,8 @@ class ListScreen extends BaseListScreen
         return ListLayout::class;
     }
 
-    protected function hasFilters(): bool
-    {
-        return false;
-    }
-
     protected function getDefaultSort()
     {
-        return null;
+        return [FieldNameInterface::ID, 'desc'];
     }
 }

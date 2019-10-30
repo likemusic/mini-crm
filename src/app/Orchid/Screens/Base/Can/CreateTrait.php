@@ -16,7 +16,7 @@ trait CreateTrait
 
     protected function getCreatePermission(): string
     {
-        $constantName = PermissionConstantNameInterface::DELETE;
+        $constantName = PermissionConstantNameInterface::CREATE;
 
         return $this->getPermissionClassConstant($constantName);
     }

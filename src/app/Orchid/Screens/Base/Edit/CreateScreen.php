@@ -2,19 +2,39 @@
 
 namespace App\Orchid\Screens\Base\Edit;
 
+use App\Contract\Entity\Base\InfoMessageProviderInterface;
+use App\Contract\Entity\Base\NamesProviderInterface;
+use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
+use App\Contract\Entity\Base\UseVariantProvider\CrudInterface as CrudUseVariantProviderInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Screen\Item\CommandBar\CreateInterface as SaveCommandInterface;
+use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
 use App\Orchid\Screens\Base\EditScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
+use Illuminate\Contracts\Container\Container as ContainerInterface;
 
 abstract class CreateScreen extends EditScreen
 {
     use CanCreateTrait;
+
+//    public function __construct(
+//        RouteNameProviderInterface
+//        $routeRouteNameProviderInterface,
+//        CrudUseVariantProviderInterface $useVariant,
+//        InfoMessageProviderInterface $infoMessageProvider,
+//        BreadcrumbsHelper $breadcrumbsHelper,
+//        NamesProviderInterface $namesProvider,
+//        ContainerInterface $container,
+//        ?Request $request = null
+//    ) {
+//        $this->container = $container;
+//        parent::__construct($routeRouteNameProviderInterface, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $namesProvider, $request);
+//    }
 
     /**
      * Button commands.
@@ -58,13 +78,28 @@ abstract class CreateScreen extends EditScreen
      *
      * @return RedirectResponse
      */
-    protected function create($model, Request $request)
+    protected function create(Request $request)
     {
         $this->checkCreatePermission();
         $message = $this->getCreateMessage();
+        $model = $this->createModel();
 
         return $this->save($model, $request, $message);
     }
+
+    private function createModel()
+    {
+        $modelClassName = $this->getModelClassName();
+
+        return $this->createInstance($modelClassName);
+    }
+
+    private function createInstance(string $className)
+    {
+        return $this->container->make($className);
+    }
+
+    abstract protected function getModelClassName(): string;
 
     private function checkCreatePermission()
     {

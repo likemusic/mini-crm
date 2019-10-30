@@ -31,8 +31,10 @@ use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
 use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterface;
-use App\Entity\Base\MainMenuRegistrar;
+//use App\Entity\Base\MainMenuRegistrar;
 use App\Common\GetCurrentUserTrait;
+
+use App\MainMenu\Registrar\Root\ProductCatalog as ProductAndCatalogMainMenuRegistrar;
 
 class MainMenuComposer
 {
@@ -123,6 +125,11 @@ class MainMenuComposer
     private $roleMenuRegistrar;
 
     /**
+     * @var ProductCategoryMenuRegistrar
+     */
+    private $productAndCatalogMainMenuRegistrar;
+
+    /**
      * MenuComposer constructor.
      *
      * @param Dashboard $dashboard
@@ -144,8 +151,8 @@ class MainMenuComposer
     public function __construct(
         Dashboard $dashboard,
 //        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
-        ProductMenuRegistrar $productMenuRegistrar,
-        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
+//        ProductMenuRegistrar $productMenuRegistrar,
+//        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
 //        WarehouseMenuRegistrar $warehouseMenuRegistrar,
 //        StockItemMenuRegistrar $stockItemMenuRegistrar,
 //        UnaccountedProductMenuRegistrar $unaccountedProductMenuRegistrar,
@@ -157,14 +164,15 @@ class MainMenuComposer
 //        CurrencyMenuRegistrar $currencyMenuRegistrar,
 //        WalletMenuRegistrar $walletMenuRegistrar,
 //        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar,
-        UserMenuRegistrar $userMenuRegistrar,
-        RoleMenuRegistrar $roleMenuRegistrar
+//        UserMenuRegistrar $userMenuRegistrar,
+//        RoleMenuRegistrar $roleMenuRegistrar,
+        ProductAndCatalogMainMenuRegistrar $productAndCatalogMainMenuRegistrar
     )
     {
         $this->dashboard = $dashboard;
 //        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
-        $this->productMenuRegistrar = $productMenuRegistrar;
-        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
+//        $this->productMenuRegistrar = $productMenuRegistrar;
+//        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
 //        $this->warehouseMenuRegistrar = $warehouseMenuRegistrar;
 //        $this->stockItemMenuRegistrar = $stockItemMenuRegistrar;
 //        $this->unaccountedProductMenuRegistrar = $unaccountedProductMenuRegistrar;
@@ -177,8 +185,9 @@ class MainMenuComposer
 //        $this->currencyMenuRegistrar = $currencyMenuRegistrar;
 //        $this->walletMenuRegistrar = $walletMenuRegistrar;
 //        $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
-        $this->userMenuRegistrar = $userMenuRegistrar;
-        $this->roleMenuRegistrar = $roleMenuRegistrar;
+//        $this->userMenuRegistrar = $userMenuRegistrar;
+//        $this->roleMenuRegistrar = $roleMenuRegistrar;
+        $this->productAndCatalogMainMenuRegistrar = $productAndCatalogMainMenuRegistrar;
     }
 
     /**
@@ -227,7 +236,7 @@ class MainMenuComposer
 //            );
 
         $this->addProductCatalogMenuIfCanAccess($dashboardMenu);
-        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
+//        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
 
         //Entities
 //            $this->productMenuRegistrar->register($dashboardMenu);
@@ -249,9 +258,11 @@ class MainMenuComposer
 
     private function addProductCatalogMenuIfCanAccess(Menu $menu)
     {
-        if ($this->canAccessMenu(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
-            $this->addProductCatalogMenu($menu);
-        }
+        $this->productAndCatalogMainMenuRegistrar->registerIfHasAccess($menu);
+
+//        if ($this->canAccessMenu(MainMenuPermissionNameInterface::PRODUCT_CATALOG)) {
+//            $this->addProductCatalogMenu($menu);
+//        }
     }
 
     private function addUsersAndRolesMenuIfCanAccess(Menu $menu)

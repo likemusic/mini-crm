@@ -8,9 +8,12 @@ use App\Entity\ProductCategory\NamesProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
 use Orchid\Screen\TD;
+use App\Orchid\Screens\ProductCategory\PermissionsClassNameTrait;
 
 class ListLayout extends BaseListLayout
 {
+    use PermissionsClassNameTrait;
+
     public function __construct(
         RouteNameProvider $routeNameProvider,
         NamesProvider $namesProvider

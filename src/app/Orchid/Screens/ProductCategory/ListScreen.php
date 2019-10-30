@@ -32,11 +32,6 @@ class ListScreen extends BaseListScreen
         return ListLayout::class;
     }
 
-    protected function hasFilters(): bool
-    {
-        return false;
-    }
-
     protected function getDefaultSort()
     {
         return null;

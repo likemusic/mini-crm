@@ -6,10 +6,22 @@ use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 use App\Model\ProductCategory;
+use Orchid\Filters\Filterable;
 
 class Product extends Model
 {
-    use AsSource;
+    use AsSource, Filterable;
+
+    protected $allowedSorts = [
+        'id',
+//        'user_id',
+//        'type',
+//        'status',
+//        'slug',
+//        'publish_at',
+//        'created_at',
+//        'deleted_at',
+    ];
 
     protected $with = [FieldNameInterface::CATEGORY];
 

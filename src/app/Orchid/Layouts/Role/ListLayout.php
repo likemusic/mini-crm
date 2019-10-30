@@ -37,18 +37,32 @@ class ListLayout extends BaseListLayout
     protected function getNotStandardColumns(): array
     {
         $routeIdFieldName = $this->getRouteIdFieldName();
+        $editRouteName = $this->getRouteNameEdit();
 
         return [
-            TD::set(FieldNameInterface::NAME, __(LabelInterface::NAME))
+            $this->createField(
+                FieldNameInterface::NAME,
+                __(LabelInterface::NAME),
+                $editRouteName,
+                $routeIdFieldName)
                 ->sort()
-                ->filter(TD::FILTER_TEXT)
-                ->link($this->getRouteNameEdit(), $routeIdFieldName, FieldNameInterface::NAME),
+                ->filter(TD::FILTER_TEXT),
 
-            TD::set(FieldNameInterface::SLUG, __(LabelInterface::SLUG))
-                ->filter(TD::FILTER_TEXT)
-                ->sort(),
+            $this->createField(
+                FieldNameInterface::SLUG,
+                __(LabelInterface::SLUG),
+                $editRouteName,
+                $routeIdFieldName
+            )
+                ->sort()
+                ->filter(TD::FILTER_TEXT),
 
-            TD::set(FieldNameInterface::CREATED_AT, __(LabelInterface::CREATED_AT))
+            $this->createField(
+                FieldNameInterface::CREATED_AT,
+                __(LabelInterface::CREATED_AT),
+                $editRouteName,
+                $routeIdFieldName
+            )
                 ->sort(),
         ];
     }

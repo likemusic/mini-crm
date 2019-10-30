@@ -54,11 +54,12 @@ abstract class ListLayout extends Table
     {
         $columns = [];
 
+        $idFieldName = $this->getIdFieldName();
         $routeIdFieldName = $this->getRouteIdFieldName();
 
         if ($this->showIdField()) {
             $idFieldLabel = $this->getIdFieldLabel();
-            $columns[] = $this->createIdField($routeIdFieldName, $idFieldLabel);
+            $columns[] = $this->createIdField($idFieldName, $idFieldLabel, $routeIdFieldName);
         }
 
         $editRouteName = $this->getRouteNameEdit();
@@ -96,7 +97,7 @@ abstract class ListLayout extends Table
         $updateRouteName = $this->getUpdateRouteName();
 
         $field = $this->createField($idFieldName, $idFieldLabel, $updateRouteName, $routeIdFieldName);
-        $field->align(TD::ALIGN_CENTER)->sort();
+        $field->align(TD::ALIGN_CENTER);
 
         return $field;
     }
@@ -108,9 +109,13 @@ abstract class ListLayout extends Table
 
     protected function createField($valueFieldName, $label, $routeName, $routeIdFieldName)
     {
-        return $this->showFieldsAsLink()
+        $field = $this->showFieldsAsLink()
             ? $this->createLinkField($valueFieldName, $label, $routeName, $routeIdFieldName)
             : $this->createTextField($valueFieldName, $label);
+
+//        $this->applyFieldSortIfRequired($field, $valueFieldName);
+
+        return $field;
     }
 
     protected function createNoteField(string $valueFieldName, string $label, string $routeName, string $routeIdFieldName)

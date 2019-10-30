@@ -19,7 +19,7 @@ abstract class ModelBased extends ListScreen
     /**
      * @var Model
      */
-    private $model;
+    protected $model;
 
     public function __construct(
         Model $model,
@@ -33,7 +33,12 @@ abstract class ModelBased extends ListScreen
         parent::__construct($useVariant, $routeNameProvider, $namesProvider, $request);
     }
 
-    abstract protected function hasFilters(): bool;
+    protected function isFilterable(): bool
+    {
+        $model = $this->model;
+
+        return method_exists($model, 'scopeFilters');
+    }
 
     abstract protected function getDefaultSort();
 
@@ -43,17 +48,19 @@ abstract class ModelBased extends ListScreen
     protected function getData()
     {
         $model = $this->model;
+        $builder = $model->newQuery();
 
-        if ($this->hasFilters()) {
-            $model->filters();
+        if ($this->isFilterable()) {
+            $builder->filters();
+
+            if ($defaultSort = $this->getDefaultSort()) {
+                [$fieldName, $order] = $defaultSort;
+                $builder->defaultSort($fieldName, $order);
+            }
         }
 
-        if ($defaultSort = $this->getDefaultSort()) {
-            [$fieldName, $order] = $defaultSort;
-            $model->defaultSort($fieldName, $order);
-        }
 
-        return $model->paginate();
+        return $builder->paginate();
     }
 
     protected function getDataKey(): string

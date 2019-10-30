@@ -174,7 +174,7 @@ abstract class EditScreen extends BaseScreen
      * @param string $successMessage
      * @return RedirectResponse
      */
-    protected function save($model, Request $request, string $successMessage)
+    protected function save(Model $model, Request $request, string $successMessage)
     {
         try {
             $requestData = $this->getRequestData($request);

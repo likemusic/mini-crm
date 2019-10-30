@@ -18,10 +18,14 @@ use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Field;
+use Illuminate\Contracts\Container\Container as ContainerInterface;
 
 trait EditTrait
 {
     use PermissionsClassNameTrait;
+
+    /** @var ContainerInterface */
+    protected $container;
 
     public function __construct(
         RouteNameProvider $routeNameProvider,
@@ -29,9 +33,12 @@ trait EditTrait
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
         NamesProvider $namesProvider,
+        ContainerInterface $container,
         ?Request $request = null
     )
     {
+        $this->container = $container;
+
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $namesProvider, $request);
     }
 
