@@ -63,6 +63,11 @@ $productCategoryRouteRegistrar->registerRoutes($this->router);
 $productRouteRegistrar = App::make(ProductRouteRegistrar::class);
 $productRouteRegistrar->registerRoutes($this->router);
 
+// Currency
+/** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
+$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
+$currencyRouteRegistrar->registerRoutes($this->router);
+
 /** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
 //$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);
 //$pharmacyRouteRegistrar->registerRoutes($this->router);
@@ -99,10 +104,6 @@ $productRouteRegistrar->registerRoutes($this->router);
 /** @var CounteragentRouteRegistrar $counteragentRouteRegistrar */
 //$counteragentRouteRegistrar = App::make(CounteragentRouteRegistrar::class);
 //$counteragentRouteRegistrar->registerRoutes($this->router);
-
-/** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
-//$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
-//$currencyRouteRegistrar->registerRoutes($this->router);
 
 /** @var WalletRouteRegistrar $walletRouteRegistrar */
 //$walletRouteRegistrar = App::make(WalletRouteRegistrar::class);

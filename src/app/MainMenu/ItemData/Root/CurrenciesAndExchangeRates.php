@@ -2,9 +2,9 @@
 
 namespace App\MainMenu\ItemData\Root;
 
-use App\Contract\MainMenu\ItemData\Root\UsersAndRolesInterface as ItemDataInterface;
+use App\Contract\MainMenu\ItemData\Root\CurrenciesAndExchangeRatesInterface as ItemDataInterface;
 
-class UsersAndRoles extends Base
+class CurrenciesAndExchangeRates extends Base
 {
     public function __construct()
     {

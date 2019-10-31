@@ -37,6 +37,7 @@ use App\Common\GetCurrentUserTrait;
 use App\Contract\MainMenu\RegistrarInterface;
 use App\MainMenu\Registrar\Root\ProductCatalog as ProductAndCatalogMainMenuRegistrar;
 use App\MainMenu\Registrar\Root\UsersAndRoles as UsersAndPermissionsMainMenuRegistrar;
+use App\MainMenu\Registrar\Root\CurrenciesAndExchangeRates as CurrenciesAndExchangeRatesMainMenuRegistrar;
 use App\Contract\Common\IconNameInterface;
 
 class MainMenuComposer
@@ -131,7 +132,12 @@ class MainMenuComposer
      * @var ProductCategoryMenuRegistrar
      */
     private $productAndCatalogMainMenuRegistrar;
+
+    /** @var UsersAndPermissionsMainMenuRegistrar  */
     private $usersAndPermissionsMainMenuRegistrar;
+
+    /** @var CurrenciesAndExchangeRatesMainMenuRegistrar */
+    private $currenciesAndExchangeRatesMainMenuRegistrar;
 
     /**
      * MenuComposer constructor.
@@ -155,7 +161,8 @@ class MainMenuComposer
     public function __construct(
         Dashboard $dashboard,
         ProductAndCatalogMainMenuRegistrar $productAndCatalogMainMenuRegistrar,
-        UsersAndPermissionsMainMenuRegistrar $usersAndPermissionsMainMenuRegistrar
+        UsersAndPermissionsMainMenuRegistrar $usersAndPermissionsMainMenuRegistrar,
+        CurrenciesAndExchangeRatesMainMenuRegistrar $currenciesAndExchangeRatesMainMenuRegistrar
 //        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
 //        ProductMenuRegistrar $productMenuRegistrar,
 //        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
@@ -177,6 +184,7 @@ class MainMenuComposer
         $this->dashboard = $dashboard;
         $this->productAndCatalogMainMenuRegistrar = $productAndCatalogMainMenuRegistrar;
         $this->usersAndPermissionsMainMenuRegistrar = $usersAndPermissionsMainMenuRegistrar;
+        $this->currenciesAndExchangeRatesMainMenuRegistrar = $currenciesAndExchangeRatesMainMenuRegistrar;
 //        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
 //        $this->productMenuRegistrar = $productMenuRegistrar;
 //        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
@@ -284,6 +292,7 @@ class MainMenuComposer
         return [
             $this->productAndCatalogMainMenuRegistrar,
             $this->usersAndPermissionsMainMenuRegistrar,
+            $this->currenciesAndExchangeRatesMainMenuRegistrar
         ];
     }
 

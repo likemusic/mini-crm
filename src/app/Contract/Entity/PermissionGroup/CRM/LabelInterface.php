@@ -10,4 +10,5 @@ interface LabelInterface
     const PRODUCT_CATEGORY = PermissionGroupLabelInterface::CRM . ' > Категория товара';
     const USER = PermissionGroupLabelInterface::CRM . ' > Пользователь';
     const ROLE = PermissionGroupLabelInterface::CRM . ' > Роль пользователя';
+    const CURRENCY = PermissionGroupLabelInterface::CRM . ' > Валюта';
 }

@@ -6,6 +6,7 @@ use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInter
 use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
 use App\Contract\Entity\Permission\Crm\Role\NameInterface as RoleNameInterface;
 use App\Contract\Entity\Permission\Crm\User\NameInterface as UserNameInterface;
+use App\Contract\Entity\Permission\Crm\Currency\NameInterface as CurrencyNameInterface;
 
 interface ListNameInterface
 {
@@ -13,4 +14,5 @@ interface ListNameInterface
     const PRODUCT_CATEGORY = ProductCategoryNameInterface::LIST;
     const ROLE = RoleNameInterface::LIST;
     const USER = UserNameInterface::LIST;
+    const CURRENCY = CurrencyNameInterface::LIST;
 }

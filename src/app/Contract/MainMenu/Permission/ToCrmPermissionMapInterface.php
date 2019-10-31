@@ -15,6 +15,9 @@ interface ToCrmPermissionMapInterface
         MainMenuPermissionNameInterface::USERS_AND_ROLES => [
             CrmListPermissionInterface::USER,
             CrmListPermissionInterface::ROLE,
-        ]
+        ],
+        MainMenuPermissionNameInterface::CURRENCIES_AND_EXCHANGE_RATES => [
+            CrmListPermissionInterface::CURRENCY,
+        ],
     ];
 }

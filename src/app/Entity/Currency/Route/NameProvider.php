@@ -3,11 +3,12 @@
 namespace App\Entity\Currency\Route;
 
 use App\Entity\Base\Route\NameProvider as BaseNameProvider;
+use App\Entity\Currency\NamesProvider;
 
 class NameProvider extends BaseNameProvider
 {
-    protected function getEntityRouteName(): string
+    public function __construct(NamesProvider $namesProvider)
     {
-        return 'currency';
+        parent::__construct($namesProvider);
     }
 }

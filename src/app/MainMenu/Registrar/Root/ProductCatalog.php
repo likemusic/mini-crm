@@ -21,12 +21,12 @@ class ProductCatalog extends Base
     public function __construct(
         MainMenuPermissionToCrmPermissionsConverter $mainMenuPermissionToCrmPermissionsConverter,
         MenuItemData $itemData,
-        ProductMenuRegistrar $productMenuRegistrar,
-        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar
+        ProductMenuRegistrar $currencyMenuRegistrar,
+        ProductCategoryMenuRegistrar $exchangeRateMenuRegistrar
     )
     {
-        $this->productMenuRegistrar = $productMenuRegistrar;
-        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
+        $this->productMenuRegistrar = $currencyMenuRegistrar;
+        $this->productCategoryMenuRegistrar = $exchangeRateMenuRegistrar;
 
         parent::__construct($mainMenuPermissionToCrmPermissionsConverter, $itemData);
     }

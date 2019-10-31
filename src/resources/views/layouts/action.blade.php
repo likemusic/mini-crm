@@ -1,6 +1,6 @@
 @php
     $class = 'btn btn-' . $style;
-    $text = '<i class="icon-'. $icon .'"></i>';
+    $text = '<i class="'. $icon .'"></i>';
 @endphp
 
 @include('html-element.a', [

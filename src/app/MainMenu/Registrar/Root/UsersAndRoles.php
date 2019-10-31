@@ -5,28 +5,36 @@ namespace App\MainMenu\Registrar\Root;
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
 use App\MainMenu\ItemData\Root\UsersAndRoles as MenuItemData;
-//use App\MainMenu\Registrar\Child\User as UserMenuRegistrar;
-//use App\MainMenu\Registrar\Child\Permission as PermissionMenuRegistrar;
+use App\MainMenu\Registrar\Child\User as UserMenuRegistrar;
+use App\MainMenu\Registrar\Child\Role as RoleMenuRegistrar;
 
 class UsersAndRoles extends Base
 {
     /**
      * @var UserMenuRegistrar
      */
-    private $productMenuRegistrar;
+    private $userMenuRegistrar;
 
-    /** @var PermissionMenuRegistrar */
-//    private $productCategoryMenuRegistrar;
+    /**
+     * @var RoleMenuRegistrar
+     */
+    private $roleMenuRegistrar;
 
+    /**
+     * @param MainMenuPermissionToCrmPermissionsConverter $mainMenuPermissionToCrmPermissionsConverter
+     * @param MenuItemData $itemData
+     * @param UserMenuRegistrar $userMenuRegistrar
+     * @param RoleMenuRegistrar $exchangeRateMenuRegistrar
+     */
     public function __construct(
         MainMenuPermissionToCrmPermissionsConverter $mainMenuPermissionToCrmPermissionsConverter,
-        MenuItemData $itemData
-//        UserMenuRegistrar $productMenuRegistrar,
-//        PermissionMenuRegistrar $productCategoryMenuRegistrar
+        MenuItemData $itemData,
+        UserMenuRegistrar $userMenuRegistrar,
+        RoleMenuRegistrar $exchangeRateMenuRegistrar
     )
     {
-//        $this->productMenuRegistrar = $productMenuRegistrar;
-//        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
+        $this->userMenuRegistrar = $userMenuRegistrar;
+        $this->roleMenuRegistrar = $exchangeRateMenuRegistrar;
 
         parent::__construct($mainMenuPermissionToCrmPermissionsConverter, $itemData);
     }
@@ -34,13 +42,13 @@ class UsersAndRoles extends Base
     protected function getChildMenuRegistrars(): array
     {
         return [
-//            $this->productMenuRegistrar,
-//            $this->productCategoryMenuRegistrar,
+            $this->userMenuRegistrar,
+            $this->roleMenuRegistrar,
         ];
     }
 
     protected function getMenuPermission(): string
     {
-        return MainMenuPermissionNameInterface::PRODUCT_CATALOG;
+        return MainMenuPermissionNameInterface::USERS_AND_ROLES;
     }
 }

@@ -5,7 +5,7 @@ namespace App\Contract\MainMenu\ItemData\Root;
 use App\Contract\Common\IconNameInterface;
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 
-interface UsersAndRoles
+interface UsersAndRolesInterface
 {
     const PERMISSION = MainMenuPermissionNameInterface::USERS_AND_ROLES;
     const ICON = IconNameInterface::LOCK;

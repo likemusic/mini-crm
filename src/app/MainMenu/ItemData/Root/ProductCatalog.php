@@ -2,7 +2,7 @@
 
 namespace App\MainMenu\ItemData\Root;
 
-use App\Contract\MainMenu\ItemData\Root\ProductCatalog as ItemDataInterface;
+use App\Contract\MainMenu\ItemData\Root\ProductCatalogInterface as ItemDataInterface;
 
 class ProductCatalog extends Base
 {
