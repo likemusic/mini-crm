@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\DiscountedProduct;
 use App\Entity\DiscountedProduct\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\DiscountedProduct\CrudUseVariantProvider as ProductUseVariant;
 use App\Model\DiscountedProduct;
-use App\Orchid\Layouts\DiscountedProduct\DiscountedProductListLayout;
+use App\Entity\DiscountedProduct\Layouts\DiscountedProductListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

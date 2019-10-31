@@ -9,9 +9,9 @@ use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Platform\Models\User;
 use Orchid\Support\Facades\Alert;
-use App\Orchid\Layouts\User\UserEditLayout;
-use App\Orchid\Layouts\User\UserListLayout;
-use App\Orchid\Layouts\User\UserFiltersLayout;
+use App\Entity\User\Layouts\UserEditLayout;
+use App\Entity\User\Layouts\UserListLayout;
+use App\Entity\User\Layouts\UserFiltersLayout;
 
 class UserListScreen extends Screen
 {

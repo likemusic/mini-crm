@@ -6,8 +6,8 @@ namespace App\Orchid\Screens\Role;
 
 use App\Contract\Entity\Permission\Platform\NameInterface as PermissionNameInterface;
 use App\Contract\Entity\Permission\Platform\Systems\NameInterface as SystemsNameInterface;
-use App\Orchid\Layouts\Role\RoleEditLayout;
-use App\Orchid\Layouts\Role\RolePermissionLayout;
+use App\Entity\Role\Layouts\RoleEditLayout;
+use App\Entity\Role\Layouts\RolePermissionLayout;
 use Illuminate\Http\Request;
 use Orchid\Platform\Models\Role;
 use Orchid\Screen\Actions\Button;

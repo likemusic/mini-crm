@@ -8,7 +8,7 @@ use App\Entity\Currency\CrudUseVariantProvider;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Model\Currency;
-use App\Orchid\Layouts\Currency\ListLayout;
+use App\Entity\Currency\Layouts\ListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 use App\Contract\Entity\Currency\Field\NameInterface as FieldNameInterface;

@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\ExchangeRate;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Entity\ExchangeRate\CrudUseVariantProvider;
 use App\Model\ExchangeRate;
-use App\Orchid\Layouts\ExchangeRate\ExchangeRateListLayout;
+use App\Entity\ExchangeRate\Layouts\ExchangeRateListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

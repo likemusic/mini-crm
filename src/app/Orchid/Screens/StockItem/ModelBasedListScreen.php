@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\StockItem;
 use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\StockItem\CrudUseVariantProvider;
 use App\Model\StockItem;
-use App\Orchid\Layouts\StockItem\StockItemListLayout;
+use App\Entity\StockItem\Layouts\StockItemListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

@@ -8,7 +8,7 @@ use App\Entity\ProductCategory\CrudUseVariantProvider;
 use App\Entity\ProductCategory\NamesProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Model\ProductCategory;
-use App\Orchid\Layouts\ProductCategory\ListLayout;
+use App\Entity\ProductCategory\Layouts\ListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

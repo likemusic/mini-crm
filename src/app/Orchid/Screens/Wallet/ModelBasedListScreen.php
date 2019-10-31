@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\Wallet;
 use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Entity\Wallet\CrudUseVariantProvider;
 use App\Model\Wallet;
-use App\Orchid\Layouts\Wallet\WalletListLayout;
+use App\Entity\Wallet\Layouts\WalletListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

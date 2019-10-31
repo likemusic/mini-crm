@@ -6,7 +6,7 @@ use App\DataProviders\PharmacyDataProvider;
 use App\Entity\Pharmacy\ListUseVariantProvider;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Model\Pharmacy;
-use App\Orchid\Layouts\Pharmacy\PharmacyListLayout;
+use App\Entity\Pharmacy\Layouts\PharmacyListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

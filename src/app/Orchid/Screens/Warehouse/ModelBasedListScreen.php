@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\Warehouse;
 use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
 use App\Entity\Warehouse\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Model\Warehouse;
-use App\Orchid\Layouts\Warehouse\WarehouseListLayout;
+use App\Entity\Warehouse\Layouts\WarehouseListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

@@ -5,7 +5,7 @@ namespace App\Orchid\Screens\Order;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
 use App\Entity\Order\CrudUseVariantProvider;
 use App\Model\Order;
-use App\Orchid\Layouts\Order\OrderListLayout;
+use App\Entity\Order\Layouts\OrderListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 

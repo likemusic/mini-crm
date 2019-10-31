@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
-use App\Orchid\Layouts\User\UserEditLayout;
-use App\Orchid\Layouts\User\UserRoleLayout;
+use App\Entity\User\Layouts\UserEditLayout;
+use App\Entity\User\Layouts\UserRoleLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Orchid\Access\UserSwitch;

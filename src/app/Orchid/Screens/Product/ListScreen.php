@@ -8,7 +8,7 @@ use App\Entity\Product\CrudUseVariantProvider;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Model\Product;
-use App\Orchid\Layouts\Product\ListLayout;
+use App\Entity\Product\Layouts\ListLayout;
 use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
