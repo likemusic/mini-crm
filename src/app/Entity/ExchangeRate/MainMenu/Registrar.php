@@ -1,10 +1,11 @@
 <?php
 
-namespace App\MainMenu\Registrar\Child;
+namespace App\Entity\ExchangeRate\MainMenu;
 
+use App\Entity\Base\MainMenu\Registrar as BaseRegistrar;
 use App\Entity\ExchangeRate\MainMenu\ItemData as MenuItemData;
 
-class ExchangeRate extends Registrar
+class Registrar extends BaseRegistrar
 {
     public function __construct(MenuItemData $itemData)
     {

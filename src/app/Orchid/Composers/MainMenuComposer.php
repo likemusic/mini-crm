@@ -35,9 +35,9 @@ use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterf
 use App\Common\GetCurrentUserTrait;
 
 use App\Contract\MainMenu\RegistrarInterface;
-use App\MainMenu\Registrar\Root\ProductCatalog as ProductAndCatalogMainMenuRegistrar;
-use App\MainMenu\Registrar\Root\UsersAndRoles as UsersAndPermissionsMainMenuRegistrar;
-use App\MainMenu\Registrar\Root\CurrenciesAndExchangeRates as CurrenciesAndExchangeRatesMainMenuRegistrar;
+use App\MainMenu\Root\ProductCatalog\Registrar as ProductAndCatalogMainMenuRegistrar;
+use App\MainMenu\Root\UsersAndRoles\Registrar as UsersAndPermissionsMainMenuRegistrar;
+use App\MainMenu\Root\CurrenciesAndExchangeRates\Registrar as CurrenciesAndExchangeRatesMainMenuRegistrar;
 use App\Contract\Common\IconNameInterface;
 
 class MainMenuComposer

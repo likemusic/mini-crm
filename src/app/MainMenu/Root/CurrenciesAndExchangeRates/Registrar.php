@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\Registrar\Root;
+namespace App\MainMenu\Root\CurrenciesAndExchangeRates;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
+use App\MainMenu\Root\Base\Registrar as BaseRegistrar;
 use App\MainMenu\Root\CurrenciesAndExchangeRates\ItemData as MenuItemData;
-use App\MainMenu\Registrar\Child\Currency as CurrencyMenuRegistrar;
-use App\MainMenu\Registrar\Child\ExchangeRate as ExchangeRateMenuRegistrar;
+use App\Entity\Currency\MainMenu\Registrar as CurrencyMenuRegistrar;
+use App\Entity\ExchangeRate\MainMenu\Registrar as ExchangeRateMenuRegistrar;
 
-class CurrenciesAndExchangeRates extends Registrar
+class Registrar extends BaseRegistrar
 {
     /**
      * @var CurrencyMenuRegistrar

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MainMenu\Registrar\Child;
+namespace App\Entity\Base\MainMenu;
 
 use App\Contract\MainMenu\ItemData\ChildInterface as ChildItemDataInterface;
 use App\Contract\MainMenu\Registrar\ChildInterface;

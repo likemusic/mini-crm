@@ -1,13 +1,13 @@
 <?php
 
-namespace App\MainMenu\Registrar\Root;
+namespace App\MainMenu\Root\Base;
 
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
-use App\MainMenu\Base\Registrar as ParentClass;
+use App\MainMenu\Base\Registrar as BaseRegistrar;
 use Orchid\Platform\Menu;
 use App\Contract\MainMenu\ItemData\RootInterface as RootMenuItemDataInterface;
 
-abstract class Registrar extends ParentClass
+abstract class Registrar extends BaseRegistrar
 {
     /** @var MainMenuPermissionToCrmPermissionsConverter */
     private $mainMenuPermissionToCrmPermissionsConverter;

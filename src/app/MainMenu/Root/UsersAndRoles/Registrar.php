@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\Registrar\Root;
+namespace App\MainMenu\Root\UsersAndRoles;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
+use App\MainMenu\Root\Base\Registrar as BaseRegistrar;
 use App\MainMenu\Root\UsersAndRoles\ItemData as MenuItemData;
-use App\MainMenu\Registrar\Child\User as UserMenuRegistrar;
-use App\MainMenu\Registrar\Child\Role as RoleMenuRegistrar;
+use App\Entity\User\MainMenu\Registrar as UserMenuRegistrar;
+use App\Entity\Role\MainMenu\Registrar as RoleMenuRegistrar;
 
-class UsersAndRoles extends Registrar
+class Registrar extends BaseRegistrar
 {
     /**
      * @var UserMenuRegistrar

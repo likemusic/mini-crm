@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\Registrar\Root;
+namespace App\MainMenu\Root\ProductCatalog;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
+use App\MainMenu\Root\Base\Registrar as BaseRegistrar;
 use App\MainMenu\Root\ProductCatalog\ItemData as MenuItemData;
-use App\MainMenu\Registrar\Child\Product as ProductMenuRegistrar;
-use App\MainMenu\Registrar\Child\ProductCategory as ProductCategoryMenuRegistrar;
+use App\Entity\Product\MainMenu\Registrar as ProductMenuRegistrar;
+use App\Entity\ProductCategory\MainMenu\Registrar as ProductCategoryMenuRegistrar;
 
-class ProductCatalog extends Registrar
+class Registrar extends BaseRegistrar
 {
     /**
      * @var ProductMenuRegistrar

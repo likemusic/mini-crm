@@ -1,10 +1,11 @@
 <?php
 
-namespace App\MainMenu\Registrar\Child;
+namespace App\Entity\Role\MainMenu;
 
+use App\Entity\Base\MainMenu\Registrar as BaseRegistrar;
 use App\Entity\Role\MainMenu\ItemData as MenuItemData;
 
-class Role extends Registrar
+class Registrar extends BaseRegistrar
 {
     public function __construct(MenuItemData $itemData)
     {
