@@ -14,6 +14,7 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Dashboard;
+use App\Contract\Common\IconNameInterface;
 use App\Contract\Entity\Role\Route\NameInterface as RoleRouteNameInterface;
 use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
 
@@ -93,11 +94,11 @@ class RoleEditScreen extends Screen
     {
         return [
             Button::make(__('Save'))
-                ->icon('icon-check')
+                ->icon(IconNameInterface::CHECK)
                 ->method('save'),
 
             Button::make(__('Remove'))
-                ->icon('icon-trash')
+                ->icon(IconNameInterface::TRASH)
                 ->method('remove')
                 ->canSee($this->exist),
         ];

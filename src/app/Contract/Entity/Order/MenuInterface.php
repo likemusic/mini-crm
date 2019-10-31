@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\Order;
 
+use App\Contract\Common\IconNameInterface;
+
 interface MenuInterface
 {
-    const ICON = 'icon-basket-loaded';
+    const ICON = IconNameInterface::BASKET_LOADED;
 }

@@ -18,6 +18,7 @@ use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use App\Entity\User\Route\NameProvider as UserRouteNameProvider;
+use App\Contract\Common\IconNameInterface;
 
 class UserEditScreen extends Screen
 {
@@ -78,14 +79,14 @@ class UserEditScreen extends Screen
         return [
 
             DropDown::make(__('Settings'))
-                ->icon('icon-open')
+                ->icon(IconNameInterface::OPEN)
                 ->list([
                     Button::make(__('Login as user'))
                         ->method('loginAs')
-                        ->icon('icon-login'),
+                        ->icon(IconNameInterface::LOGIN),
 
                     ModalToggle::make(__('Change Password'))
-                        ->icon('icon-lock-open')
+                        ->icon(IconNameInterface::LOCK_OPEN)
                         ->title(__('Change Password'))
                         ->method('changePassword')
                         ->modal('password'),
@@ -93,11 +94,11 @@ class UserEditScreen extends Screen
 
             Button::make(__('Save'))
                 ->method('save')
-                ->icon('icon-check'),
+                ->icon(IconNameInterface::CHECK),
 
             Button::make(__('Remove'))
                 ->method('remove')
-                ->icon('icon-trash'),
+                ->icon(IconNameInterface::TRASH),
         ];
     }
 

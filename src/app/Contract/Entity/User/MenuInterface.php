@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\User;
 
+use App\Contract\Common\IconNameInterface;
+
 interface MenuInterface
 {
-    const ICON = 'icon-user';
+    const ICON = IconNameInterface::USER;
 }

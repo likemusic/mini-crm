@@ -13,6 +13,7 @@ use App\Contract\Entity\User\Route\NameInterface as UserRouteNameInterface;
 use App\Contract\Entity\Role\Route\NameInterface as RoleRouteNameInterface;
 use App\Entity\User\Route\NameProvider as UserRouteNameProvider;
 use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
+use App\Contract\Common\IconNameInterface;
 
 class SystemMenuComposer
 {
@@ -56,7 +57,7 @@ class SystemMenuComposer
         $this->dashboard->menu
             ->add(Menu::SYSTEMS,
                 ItemMenu::label(__('Access rights'))
-                    ->icon('icon-lock')
+                    ->icon(IconNameInterface::LOCK)
                     ->slug('Auth')
                     ->active('platform.systems.*')
                     ->permission(PermissionNameInterface::SYSTEMS)
@@ -64,7 +65,7 @@ class SystemMenuComposer
             )
             ->add('Auth',
                 ItemMenu::label(__('Users'))
-                    ->icon('icon-user')
+                    ->icon(IconNameInterface::USER)
                     ->route($this->getUserListRouteName())
                     ->permission(SystemsNameInterface::USERS)
                     ->sort(1000)
@@ -72,7 +73,7 @@ class SystemMenuComposer
             )
             ->add('Auth',
                 ItemMenu::label(__('Roles'))
-                    ->icon('icon-lock')
+                    ->icon(IconNameInterface::LOCK)
                     ->route($this->getRoleListRouteName())
                     ->permission(SystemsNameInterface::ROLES)
                     ->sort(1000)

@@ -2,7 +2,9 @@
 
 namespace App\Contract\Entity\MoneyChange;
 
+use App\Contract\Common\IconNameInterface;
+
 interface MenuInterface
 {
-    const ICON = 'icon-money';
+    const ICON = IconNameInterface::MONEY;
 }

@@ -34,7 +34,10 @@ use App\Contract\Entity\Permission\Menu\Main\SlugInterface as MainMenuSlugInterf
 //use App\Entity\Base\MainMenuRegistrar;
 use App\Common\GetCurrentUserTrait;
 
+use App\Contract\MainMenu\RegistrarInterface;
 use App\MainMenu\Registrar\Root\ProductCatalog as ProductAndCatalogMainMenuRegistrar;
+use App\MainMenu\Registrar\Root\UsersAndRoles as UsersAndPermissionsMainMenuRegistrar;
+use App\Contract\Common\IconNameInterface;
 
 class MainMenuComposer
 {
@@ -128,6 +131,7 @@ class MainMenuComposer
      * @var ProductCategoryMenuRegistrar
      */
     private $productAndCatalogMainMenuRegistrar;
+    private $usersAndPermissionsMainMenuRegistrar;
 
     /**
      * MenuComposer constructor.
@@ -150,6 +154,8 @@ class MainMenuComposer
      */
     public function __construct(
         Dashboard $dashboard,
+        ProductAndCatalogMainMenuRegistrar $productAndCatalogMainMenuRegistrar,
+        UsersAndPermissionsMainMenuRegistrar $usersAndPermissionsMainMenuRegistrar
 //        PharmacyMenuRegistrar $pharmacyMenuRegistrar,
 //        ProductMenuRegistrar $productMenuRegistrar,
 //        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar,
@@ -166,10 +172,11 @@ class MainMenuComposer
 //        ExchangeRateMenuRegistrar $exchangeRateMenuRegistrar,
 //        UserMenuRegistrar $userMenuRegistrar,
 //        RoleMenuRegistrar $roleMenuRegistrar,
-        ProductAndCatalogMainMenuRegistrar $productAndCatalogMainMenuRegistrar
     )
     {
         $this->dashboard = $dashboard;
+        $this->productAndCatalogMainMenuRegistrar = $productAndCatalogMainMenuRegistrar;
+        $this->usersAndPermissionsMainMenuRegistrar = $usersAndPermissionsMainMenuRegistrar;
 //        $this->pharmacyMenuRegistrar = $pharmacyMenuRegistrar;
 //        $this->productMenuRegistrar = $productMenuRegistrar;
 //        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
@@ -187,7 +194,6 @@ class MainMenuComposer
 //        $this->exchangeRateMenuRegistrar = $exchangeRateMenuRegistrar;
 //        $this->userMenuRegistrar = $userMenuRegistrar;
 //        $this->roleMenuRegistrar = $roleMenuRegistrar;
-        $this->productAndCatalogMainMenuRegistrar = $productAndCatalogMainMenuRegistrar;
     }
 
     /**
@@ -195,47 +201,50 @@ class MainMenuComposer
      */
     public function compose()
     {
+        // Main
+        $dashboardMenu = $this->dashboard->menu;
+        $menuRegistrars = $this->getMenuRegistrars();
+        $this->runMenuRegistrars($dashboardMenu, $menuRegistrars);
+
         // Profile
 //        $this->dashboard->menu
 //            ->add(Menu::PROFILE,
 //                ItemMenu::label('Empty 1')
-//                    ->icon('icon-compass')
+//                    ->icon(IconNameInterface::COMPASS)
 //            )
 //            ->add(Menu::PROFILE,
 //                ItemMenu::label('Empty 2')
-//                    ->icon('icon-heart')
+//                    ->icon(IconNameInterface::HEART)
 //                    ->badge(function () {
 //                        return 6;
 //                    })
 //            );
 
-        // Main
-        $dashboardMenu = $this->dashboard->menu;
 
 //            ->add(Menu::MAIN,
 //                ItemMenu::label('Empty menu')
 //                    ->slug('example-menu')
-//                    ->icon('icon-code')
+//                    ->icon(IconNameInterface::CODE)
 //                    ->childs()
 //            )
 //            ->add('example-menu',
 //                ItemMenu::label('Empty sub item 1')
-//                    ->icon('icon-bag')
+//                    ->icon(IconNameInterface::BAG)
 //            )
 //            ->add('example-menu',
 //                ItemMenu::label('Empty sub item 2')
-//                    ->icon('icon-heart')
+//                    ->icon(IconNameInterface::HEART)
 //                    ->title('Separate')
 //            )
 //            // Email sender
 //            ->add(Menu::MAIN,
 //                ItemMenu::label('Email sender')
-//                    ->icon('icon-envelope-letter')
+//                    ->icon(IconNameInterface::ENVELOPE_LETTER)
 //                    ->route(PlatformRouteNameInterface::EMAIL)
 //                    ->title('Tools')
 //            );
 
-        $this->addProductCatalogMenuIfCanAccess($dashboardMenu);
+        //$this->addProductCatalogMenuIfCanAccess($dashboardMenu);
 //        $this->addUsersAndRolesMenuIfCanAccess($dashboardMenu);
 
         //Entities
@@ -254,6 +263,28 @@ class MainMenuComposer
 
         // Calculated
 //        $this->pharmacyMenuRegistrar->register($dashboardMenu);
+    }
+
+    /**
+     * @param RegistrarInterface[] $menuRegistrars
+     */
+    private function runMenuRegistrars(Menu $menu , array $menuRegistrars)
+    {
+        foreach ($menuRegistrars as $menuRegistrar) {
+            $menuRegistrar->registerIfHasAccess($menu);
+        }
+    }
+
+
+    /**
+     * @return RegistrarInterface[]
+     */
+    private function getMenuRegistrars(): array
+    {
+        return [
+            $this->productAndCatalogMainMenuRegistrar,
+            $this->usersAndPermissionsMainMenuRegistrar,
+        ];
     }
 
     private function addProductCatalogMenuIfCanAccess(Menu $menu)
@@ -320,7 +351,7 @@ class MainMenuComposer
             ->add(Menu::MAIN,
                 ItemMenu::label('Каталог товаров')
                     ->slug($slug)
-                    ->icon('icon-book-open')
+                    ->icon(IconNameInterface::BOOK_OPEN)
                     ->childs()
             );
 
@@ -364,7 +395,7 @@ class MainMenuComposer
             ->add(Menu::MAIN,
                 ItemMenu::label('Пользователи и роли')
                     ->slug($slug)
-                    ->icon('icon-shield')
+                    ->icon(IconNameInterface::SHIELD)
                     ->childs()
             );
 

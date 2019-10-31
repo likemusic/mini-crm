@@ -4,29 +4,29 @@ namespace App\MainMenu\Registrar\Root;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
-use App\MainMenu\ItemData\Root\ProductCatalog as MenuItemData;
-use App\MainMenu\Registrar\Child\Product as ProductMenuRegistrar;
-use App\MainMenu\Registrar\Child\ProductCategory as ProductCategoryMenuRegistrar;
+use App\MainMenu\ItemData\Root\UsersAndRoles as MenuItemData;
+//use App\MainMenu\Registrar\Child\User as UserMenuRegistrar;
+//use App\MainMenu\Registrar\Child\Permission as PermissionMenuRegistrar;
 
-class ProductCatalog extends Base
+class UsersAndRoles extends Base
 {
     /**
-     * @var ProductMenuRegistrar
+     * @var UserMenuRegistrar
      */
     private $productMenuRegistrar;
 
-    /** @var ProductCategoryMenuRegistrar */
-    private $productCategoryMenuRegistrar;
+    /** @var PermissionMenuRegistrar */
+//    private $productCategoryMenuRegistrar;
 
     public function __construct(
         MainMenuPermissionToCrmPermissionsConverter $mainMenuPermissionToCrmPermissionsConverter,
-        MenuItemData $itemData,
-        ProductMenuRegistrar $productMenuRegistrar,
-        ProductCategoryMenuRegistrar $productCategoryMenuRegistrar
+        MenuItemData $itemData
+//        UserMenuRegistrar $productMenuRegistrar,
+//        PermissionMenuRegistrar $productCategoryMenuRegistrar
     )
     {
-        $this->productMenuRegistrar = $productMenuRegistrar;
-        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
+//        $this->productMenuRegistrar = $productMenuRegistrar;
+//        $this->productCategoryMenuRegistrar = $productCategoryMenuRegistrar;
 
         parent::__construct($mainMenuPermissionToCrmPermissionsConverter, $itemData);
     }
@@ -34,8 +34,8 @@ class ProductCatalog extends Base
     protected function getChildMenuRegistrars(): array
     {
         return [
-            $this->productMenuRegistrar,
-            $this->productCategoryMenuRegistrar,
+//            $this->productMenuRegistrar,
+//            $this->productCategoryMenuRegistrar,
         ];
     }
 

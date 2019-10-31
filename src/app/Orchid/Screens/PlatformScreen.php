@@ -8,6 +8,7 @@ use Orchid\Platform\Dashboard;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
+use App\Contract\Common\IconNameInterface;
 
 class PlatformScreen extends Screen
 {
@@ -48,11 +49,11 @@ class PlatformScreen extends Screen
         return [
             Link::make('Website')
                 ->href('http://orchid.software')
-                ->icon('icon-globe-alt'),
+                ->icon(IconNameInterface::GLOBE_ALT),
 
             Link::make('GitHub')
                 ->href('https://github.com/orchidsoftware/platform')
-                ->icon('icon-social-github'),
+                ->icon(IconNameInterface::SOCIAL_GITHUB),
         ];
     }
 
