@@ -4,13 +4,13 @@ namespace App\MainMenu\Registrar\Child;
 
 use App\Contract\MainMenu\ItemData\ChildInterface as ChildItemDataInterface;
 use App\Contract\MainMenu\Registrar\ChildInterface;
-use App\MainMenu\Registrar\Base as ParentClass;
+use App\MainMenu\Base\Registrar as ParentClass;
 
 /**
  * Class Base
  * @property ChildItemDataInterface $itemData;
 */
-abstract class Base extends ParentClass implements ChildInterface
+abstract class Registrar extends ParentClass implements ChildInterface
 {
     public function __construct(
         ChildItemDataInterface $itemData

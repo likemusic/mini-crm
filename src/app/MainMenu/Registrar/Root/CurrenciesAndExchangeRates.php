@@ -4,11 +4,11 @@ namespace App\MainMenu\Registrar\Root;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
-use App\MainMenu\ItemData\Root\CurrenciesAndExchangeRates as MenuItemData;
+use App\MainMenu\Root\CurrenciesAndExchangeRates\ItemData as MenuItemData;
 use App\MainMenu\Registrar\Child\Currency as CurrencyMenuRegistrar;
 use App\MainMenu\Registrar\Child\ExchangeRate as ExchangeRateMenuRegistrar;
 
-class CurrenciesAndExchangeRates extends Base
+class CurrenciesAndExchangeRates extends Registrar
 {
     /**
      * @var CurrencyMenuRegistrar

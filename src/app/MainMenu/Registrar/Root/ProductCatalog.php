@@ -4,11 +4,11 @@ namespace App\MainMenu\Registrar\Root;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
-use App\MainMenu\ItemData\Root\ProductCatalog as MenuItemData;
+use App\MainMenu\Root\ProductCatalog\ItemData as MenuItemData;
 use App\MainMenu\Registrar\Child\Product as ProductMenuRegistrar;
 use App\MainMenu\Registrar\Child\ProductCategory as ProductCategoryMenuRegistrar;
 
-class ProductCatalog extends Base
+class ProductCatalog extends Registrar
 {
     /**
      * @var ProductMenuRegistrar

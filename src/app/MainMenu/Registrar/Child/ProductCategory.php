@@ -4,7 +4,7 @@ namespace App\MainMenu\Registrar\Child;
 
 use App\MainMenu\ItemData\EntityBased\ProductCategory as MenuItemData;
 
-class ProductCategory extends Base
+class ProductCategory extends Registrar
 {
     public function __construct(MenuItemData $itemData)
     {

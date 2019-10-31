@@ -1,10 +1,11 @@
 <?php
 
-namespace App\MainMenu\ItemData\Root;
+namespace App\MainMenu\Root\CurrenciesAndExchangeRates;
 
 use App\Contract\MainMenu\ItemData\Root\CurrenciesAndExchangeRatesInterface as ItemDataInterface;
+use App\MainMenu\Root\Base\ItemData as BaseItemData;
 
-class CurrenciesAndExchangeRates extends Base
+class ItemData extends BaseItemData
 {
     public function __construct()
     {

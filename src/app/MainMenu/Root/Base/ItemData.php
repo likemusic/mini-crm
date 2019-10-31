@@ -1,10 +1,10 @@
 <?php
 
-namespace App\MainMenu\ItemData\Root;
+namespace App\MainMenu\Root\Base;
 
 use App\Contract\MainMenu\ItemData\RootInterface as RootMenuItemDataInterface;
 
-class Base implements RootMenuItemDataInterface
+class ItemData implements RootMenuItemDataInterface
 {
     /** @var string */
     protected $permission;

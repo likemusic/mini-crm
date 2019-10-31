@@ -4,11 +4,11 @@ namespace App\MainMenu\Registrar\Root;
 
 use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
 use App\Helper\MainMenu\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
-use App\MainMenu\ItemData\Root\UsersAndRoles as MenuItemData;
+use App\MainMenu\Root\UsersAndRoles\ItemData as MenuItemData;
 use App\MainMenu\Registrar\Child\User as UserMenuRegistrar;
 use App\MainMenu\Registrar\Child\Role as RoleMenuRegistrar;
 
-class UsersAndRoles extends Base
+class UsersAndRoles extends Registrar
 {
     /**
      * @var UserMenuRegistrar

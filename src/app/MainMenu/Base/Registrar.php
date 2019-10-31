@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MainMenu\Registrar;
+namespace App\MainMenu\Base;
 
 use App\Common\GetCurrentUserTrait;
 use App\Contract\MainMenu\ItemData\BaseInterface as MenuItemDataInterface;
@@ -8,7 +8,7 @@ use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
 use App\Contract\MainMenu\RegistrarInterface;
 
-abstract class Base implements RegistrarInterface
+abstract class Registrar implements RegistrarInterface
 {
     use GetCurrentUserTrait;
 
