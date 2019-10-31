@@ -2,14 +2,14 @@
 
 namespace App\Helper\Entity;
 
-use App\Contract\EntityInterface;
+use App\Contract\Entity\NameInterface as EntityNameInterface;
 use App\Contract\Entity\ClassNameInterface;
 
 class ModelClassNameProvider
 {
     private $entityToModelClassName = [
-        EntityInterface::PRODUCT => ClassNameInterface::PRODUCT,
-        EntityInterface::ROLE => ClassNameInterface::ROLE,
+        EntityNameInterface::PRODUCT => ClassNameInterface::PRODUCT,
+        EntityNameInterface::ROLE => ClassNameInterface::ROLE,
     ];
 
     public function getClassNameByEntityCode(string $entityCode)

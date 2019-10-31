@@ -3,12 +3,13 @@
 namespace App\Contract\Entity\PermissionGroup\CRM;
 
 use App\Contract\Entity\PermissionGroup\LabelInterface as PermissionGroupLabelInterface;
+use App\Contract\Entity\LabelInterface as EntityLabelInterface;
 
 interface LabelInterface
 {
-    const PRODUCT = PermissionGroupLabelInterface::CRM . ' > Товар';
-    const PRODUCT_CATEGORY = PermissionGroupLabelInterface::CRM . ' > Категория товара';
-    const USER = PermissionGroupLabelInterface::CRM . ' > Пользователь';
-    const ROLE = PermissionGroupLabelInterface::CRM . ' > Роль пользователя';
-    const CURRENCY = PermissionGroupLabelInterface::CRM . ' > Валюта';
+    const PRODUCT = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::PRODUCT;
+    const PRODUCT_CATEGORY = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::PRODUCT_CATEGORY;
+    const USER = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::USER;
+    const ROLE = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::ROLE;
+    const CURRENCY = PermissionGroupLabelInterface::CRM .' > ' . EntityLabelInterface::CURRENCY;
 }

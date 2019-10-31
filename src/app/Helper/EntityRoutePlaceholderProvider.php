@@ -2,7 +2,7 @@
 
 namespace App\Helper;
 
-use App\Contract\EntityInterface;
+use App\Contract\Entity\NameInterface as EntityNameInterface;
 use \App\Entity\Product\NamesProvider as ProductNamesProvider;
 use \App\Entity\Role\NamesProvider as RoleNamesProvider;
 use App\Contract\Entity\Base\NamesProviderInterface;
@@ -21,8 +21,8 @@ class EntityRoutePlaceholderProvider
     }
 
     private $entitiesCodesToNameProvidersMap = [
-        EntityInterface::PRODUCT => ProductNamesProvider::class,
-        EntityInterface::ROLE => RoleNamesProvider::class,
+        EntityNameInterface::PRODUCT => ProductNamesProvider::class,
+        EntityNameInterface::ROLE => RoleNamesProvider::class,
     ];
 
     public function getRoutePlaceholderByEntityCode(string $entityCode): string

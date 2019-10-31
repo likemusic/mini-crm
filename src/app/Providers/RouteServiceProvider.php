@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Helper\EntityRoutePlaceholderProvider;
 use App\Helper\Entity\ModelClassNameProvider;
-use App\Contract\EntityInterface;
+use App\Contract\Entity\NameInterface as EntityNameInterface;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -52,8 +52,8 @@ class RouteServiceProvider extends ServiceProvider
     private function setModelsBinding()
     {
         $entityCodes = [
-            EntityInterface::PRODUCT,
-            EntityInterface::ROLE,
+            EntityNameInterface::PRODUCT,
+            EntityNameInterface::ROLE,
         ];
 
         $this->setModelBindingByEntityCodes($entityCodes);

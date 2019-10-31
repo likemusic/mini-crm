@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contract;
+namespace App\Contract\Entity;
 
-interface EntityInterface
+interface NameInterface
 {
     const PRODUCT = 'product';
     const ROLE = 'role';
