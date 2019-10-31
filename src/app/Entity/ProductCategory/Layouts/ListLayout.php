@@ -8,7 +8,7 @@ use App\Entity\ProductCategory\NamesProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
 use Orchid\Screen\TD;
-use App\Orchid\Screens\ProductCategory\PermissionsClassNameTrait;
+use App\Entity\ProductCategory\Screens\PermissionsClassNameTrait;
 
 class ListLayout extends BaseListLayout
 {

@@ -8,11 +8,11 @@ use App\Entity\User\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
 use App\Http\Controllers\Entity\User\Delete as DeleteController;
 //use App\Orchid\Screens\User\Edit\Create as CreateScreen;
-use App\Orchid\Screens\User\UserEditScreen as CreateScreen;
+use App\Entity\User\Screens\UserEditScreen as CreateScreen;
 //use App\Orchid\Screens\User\EditScreen as EditScreen;
-use App\Orchid\Screens\User\UserEditScreen as UpdateScreen;
+use App\Entity\User\Screens\UserEditScreen as UpdateScreen;
 //use App\Orchid\Screens\User\ListScreen;
-use App\Orchid\Screens\User\UserListScreen as ListScreen;
+use App\Entity\User\Screens\UserListScreen as ListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {

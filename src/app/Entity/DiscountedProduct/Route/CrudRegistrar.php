@@ -6,8 +6,8 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\DiscountedProduct\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\DiscountedProduct\EditScreen as EditScreen;
-use App\Orchid\Screens\DiscountedProduct\ModelBasedListScreen;
+use App\Entity\DiscountedProduct\Screens\EditScreen as EditScreen;
+use App\Entity\DiscountedProduct\Screens\ModelBasedListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {

@@ -7,9 +7,9 @@ use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
 use App\Http\Controllers\Entity\Product\Delete as DeleteController;
-use App\Orchid\Screens\Product\Edit\Create as CreateScreen;
-use App\Orchid\Screens\Product\Edit\Update as UpdateScreen;
-use App\Orchid\Screens\Product\ListScreen;
+use App\Entity\Product\Screens\Edit\Create as CreateScreen;
+use App\Entity\Product\Screens\Edit\Update as UpdateScreen;
+use App\Entity\Product\Screens\ListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {

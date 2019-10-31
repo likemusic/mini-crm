@@ -9,9 +9,9 @@ use App\Helper\RouteRegisterHelper;
 use App\Http\Controllers\Entity\Role\Delete as DeleteController;
 //use App\Orchid\Screens\Role\Edit\Create as CreateScreen;
 //use App\Orchid\Screens\Role\Edit\Update as UpdateScreen;
-use App\Orchid\Screens\Role\RoleEditScreen as CreateScreen;
-use App\Orchid\Screens\Role\RoleEditScreen as UpdateScreen;
-use App\Orchid\Screens\Role\ListScreen;
+use App\Entity\Role\Screens\RoleEditScreen as CreateScreen;
+use App\Entity\Role\Screens\RoleEditScreen as UpdateScreen;
+use App\Entity\Role\Screens\ListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {

@@ -9,7 +9,7 @@ use App\Contract\Entity\Role\Field\NameInterface as FieldNameInterface;
 use App\Entity\Role\NamesProvider;
 use App\Entity\Role\Route\NameProvider as RouteNameProvider;
 use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
-use App\Orchid\Screens\Role\PermissionsClassNameTrait;
+use App\Entity\Role\Screens\PermissionsClassNameTrait;
 use Orchid\Screen\TD;
 
 class ListLayout extends BaseListLayout

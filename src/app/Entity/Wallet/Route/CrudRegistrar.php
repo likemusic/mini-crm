@@ -6,8 +6,8 @@ use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Entity\Wallet\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
-use App\Orchid\Screens\Wallet\EditScreen as EditScreen;
-use App\Orchid\Screens\Wallet\ModelBasedListScreen;
+use App\Entity\Wallet\Screens\EditScreen as EditScreen;
+use App\Entity\Wallet\Screens\ModelBasedListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {
