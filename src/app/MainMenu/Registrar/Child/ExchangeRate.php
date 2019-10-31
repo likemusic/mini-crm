@@ -2,7 +2,7 @@
 
 namespace App\MainMenu\Registrar\Child;
 
-use App\MainMenu\ItemData\EntityBased\ExchangeRate as MenuItemData;
+use App\Entity\ExchangeRate\MainMenu\ItemData as MenuItemData;
 
 class ExchangeRate extends Registrar
 {

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\ItemData\EntityBased;
+namespace App\Entity\Currency\MainMenu;
 
 use App\Contract\Entity\Currency\MenuInterface;
 use App\Entity\Currency\CrudUseVariantProvider;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\PermissionsProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
+use App\Entity\Base\MainMenu\ItemData as BaseItemData;
 
-class Currency extends Base
+class ItemData extends BaseItemData
 {
     public function __construct(
         PermissionsProvider $permissionsProvider,

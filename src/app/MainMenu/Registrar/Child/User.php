@@ -2,7 +2,7 @@
 
 namespace App\MainMenu\Registrar\Child;
 
-use App\MainMenu\ItemData\EntityBased\User as MenuItemData;
+use App\Entity\User\MainMenu\User as MenuItemData;
 
 class User extends Registrar
 {

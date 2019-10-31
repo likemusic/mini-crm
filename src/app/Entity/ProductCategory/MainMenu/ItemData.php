@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\ItemData\EntityBased;
+namespace App\Entity\ProductCategory\MainMenu;
 
-use App\Contract\Entity\Role\MenuInterface;
-use App\Entity\Role\CrudUseVariantProvider;
-use App\Entity\Role\NamesProvider;
-use App\Entity\Role\PermissionsProvider;
-use App\Entity\Role\Route\NameProvider as RouteNameProvider;
+use App\Contract\Entity\ProductCategory\MenuInterface;
+use App\Entity\ProductCategory\CrudUseVariantProvider;
+use App\Entity\ProductCategory\NamesProvider;
+use App\Entity\ProductCategory\PermissionsProvider;
+use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
+use App\Entity\Base\MainMenu\ItemData as BaseItemData;
 
-class Role extends Base
+class ItemData extends BaseItemData
 {
     public function __construct(
         PermissionsProvider $permissionsProvider,

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\MainMenu\ItemData\EntityBased;
+namespace App\Entity\ExchangeRate\MainMenu;
 
-use App\Contract\Entity\User\MenuInterface;
-use App\Entity\User\CrudUseVariantProvider;
-use App\Entity\User\NamesProvider;
-use App\Entity\User\PermissionsProvider;
-use App\Entity\User\Route\NameProvider as RouteNameProvider;
+use App\Contract\Entity\ExchangeRate\MenuInterface;
+use App\Entity\ExchangeRate\CrudUseVariantProvider;
+use App\Entity\ExchangeRate\NamesProvider;
+use App\Entity\ExchangeRate\PermissionsProvider;
+use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
+use App\Entity\Base\MainMenu\ItemData as BaseItemData;
 
-class User extends Base
+class ItemData extends BaseItemData
 {
     public function __construct(
         PermissionsProvider $permissionsProvider,

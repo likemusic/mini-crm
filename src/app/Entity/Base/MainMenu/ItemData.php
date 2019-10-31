@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MainMenu\ItemData\EntityBased;
+namespace App\Entity\Base\MainMenu;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\MainMenu\ItemData\ChildInterface as ChildItemDataInterface;
@@ -8,7 +8,7 @@ use App\Contract\Entity\Base\PermissionsProviderInterface;
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Base\NamesProviderInterface;
 
-abstract class Base implements ChildItemDataInterface
+abstract class ItemData implements ChildItemDataInterface
 {
     /**
      * @var PermissionsProviderInterface

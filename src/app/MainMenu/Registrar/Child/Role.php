@@ -2,7 +2,7 @@
 
 namespace App\MainMenu\Registrar\Child;
 
-use App\MainMenu\ItemData\EntityBased\Role as MenuItemData;
+use App\Entity\Role\MainMenu\ItemData as MenuItemData;
 
 class Role extends Registrar
 {

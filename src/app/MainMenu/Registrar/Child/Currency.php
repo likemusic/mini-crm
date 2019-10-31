@@ -2,7 +2,7 @@
 
 namespace App\MainMenu\Registrar\Child;
 
-use App\MainMenu\ItemData\EntityBased\Currency as MenuItemData;
+use App\Entity\Currency\MainMenu\ItemData as MenuItemData;
 
 class Currency extends Registrar
 {
