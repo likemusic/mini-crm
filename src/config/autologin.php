@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'model_class_name' => \App\Model\User::class, // \App\User::class
+    'model_class_name' => \App\Entity\User\User::class, // \App\User::class
     'key' => 'email', // Аny field that is unique for user (e.g. `emial`or `id`)
     'values' => [
         'likemusic@yandex.ru', // admin

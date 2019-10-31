@@ -3,7 +3,7 @@
 namespace App\Entity\User\Layouts;
 
 use Orchid\Filters\Filter;
-use App\Orchid\Filters\RoleFilter;
+use App\Entity\User\Layouts\Filters\RoleFilter;
 use Orchid\Screen\Layouts\Selection;
 
 class UserFiltersLayout extends Selection

@@ -7,7 +7,7 @@ namespace App\Entity\Product\Screens;
 use App\Entity\Product\CrudUseVariantProvider;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Model\Product;
+use App\Entity\Product\Product;
 use App\Entity\Product\Layouts\ListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use App\Entity\Product\Screens\PermissionsClassNameTrait;

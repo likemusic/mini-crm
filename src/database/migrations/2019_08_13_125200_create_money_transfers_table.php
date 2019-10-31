@@ -4,7 +4,7 @@ use App\Contract\Entity\MoneyTransfer\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\MoneyTransfer\TableInterface;
 use App\Contract\Entity\MoneyChange\Field\NameInterface as MoneyChangeFieldNameInterface;
 use App\Contract\Entity\MoneyChange\TableInterface as MoneyChangeTableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 

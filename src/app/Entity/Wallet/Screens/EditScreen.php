@@ -7,11 +7,11 @@ use App\Contract\Entity\Wallet\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Entity\Wallet\CrudUseVariantProvider as EditableUseVariantProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Wallet as InfoMessageProvider;
-use App\Model\Counteragent;
-use App\Model\User;
-use App\Model\Wallet;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Wallet\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Counteragent\Counteragent;
+use App\Entity\User\User;
+use App\Entity\Wallet\Wallet;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Orchid\Screens\Wallet\CrudUseVariantProvider;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
-use App\Helper\CurrenciesListProvider;
+use App\Entity\Currency\CurrenciesListProvider;
 
 class EditScreen extends BaseEditScreen
 {

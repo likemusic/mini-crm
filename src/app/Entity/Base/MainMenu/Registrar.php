@@ -4,7 +4,7 @@ namespace App\Entity\Base\MainMenu;
 
 use App\Contract\MainMenu\ItemData\ChildInterface as ChildItemDataInterface;
 use App\Contract\MainMenu\Registrar\ChildInterface;
-use App\MainMenu\Base\Registrar as ParentClass;
+use App\Menu\Main\Base\Registrar as ParentClass;
 
 /**
  * Class Base

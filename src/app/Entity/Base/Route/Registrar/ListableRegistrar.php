@@ -5,7 +5,7 @@ namespace App\Entity\Base\Route\Registrar;
 use App\Contract\Entity\Base\Route\NameProviderInterface;
 use App\Contract\Entity\Base\Route\PathProviderInterface;
 use App\Contract\Entity\Base\Route\RegistrarInterface;
-use App\Helper\RouteRegisterHelper;
+use App\Common\RouteRegistrarHelper;
 use Illuminate\Contracts\Routing\Registrar as RoutingRegistrarInterface;
 
 class ListableRegistrar implements RegistrarInterface
@@ -32,13 +32,13 @@ class ListableRegistrar implements RegistrarInterface
 
     /**
      * Registrar constructor.
-     * @param RouteRegisterHelper $routeRegisterHelper
+     * @param RouteRegistrarHelper $routeRegisterHelper
      * @param NameProviderInterface $nameProvider
      * @param PathProviderInterface $pathProvider
      * @param string $listScreenClassName
      */
     public function __construct(
-        RouteRegisterHelper $routeRegisterHelper,
+        RouteRegistrarHelper $routeRegisterHelper,
         NameProviderInterface $nameProvider,
         PathProviderInterface $pathProvider,
         string $listScreenClassName

@@ -1,8 +1,8 @@
 <?php
 
-use App\Model\Warehouse;
+use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
-use App\Model\Counteragent;
+use App\Entity\Counteragent\Counteragent;
 use App\Contract\Entity\Counteragent\Field\NameInterface;
 
 class CounteragentsTableSeeder extends Seeder

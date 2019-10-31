@@ -4,7 +4,7 @@ namespace App\Entity\OrderItem\Screens;
 
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\CrudUseVariantProvider;
-use App\Model\OrderItem;
+use App\Entity\OrderItem\OrderItem;
 use App\Entity\OrderItem\Layouts\OrderItemListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;

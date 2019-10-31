@@ -5,8 +5,8 @@ namespace App\Entity\Currency\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Entity\Currency\Route\PathProvider as RoutePathProvider;
-use App\Helper\RouteRegisterHelper;
-use App\Http\Controllers\Entity\Currency\Delete as DeleteController;
+use App\Common\RouteRegistrarHelper;
+use App\Entity\Currency\HttpControllers\Delete as DeleteController;
 use App\Entity\Currency\Screens\Edit\Create as CreateScreen;
 use App\Entity\Currency\Screens\Edit\Update as UpdateScreen;
 use App\Entity\Currency\Screens\ListScreen;
@@ -14,7 +14,7 @@ use App\Entity\Currency\Screens\ListScreen;
 class CrudRegistrar extends BaseRegistrar
 {
     public function __construct(
-        RouteRegisterHelper $routeRegisterHelper,
+        RouteRegistrarHelper $routeRegisterHelper,
         RouteNameProvider $nameProvider,
         RoutePathProvider $pathProvider
     ) {

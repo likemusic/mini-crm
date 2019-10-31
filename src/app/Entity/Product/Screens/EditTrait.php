@@ -8,10 +8,10 @@ use App\Contract\Entity\ProductCategory\Field\NameInterface as ProductCategoryFi
 use App\Entity\Product\CrudUseVariantProvider;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
-use App\Model\Product;
-use App\Model\ProductCategory;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Product\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Product\Product;
+use App\Entity\ProductCategory\ProductCategory;
 use App\Entity\Product\Screens\PermissionsClassNameTrait;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;

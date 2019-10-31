@@ -5,7 +5,7 @@ namespace App\Entity\UnaccountedProduct;
 use App\Entity\Base\BreadcrumbsRegistrar\Editable as BaseBreadcrumbsRegistrar;
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\UnaccountedProduct\CrudUseVariantProvider as UseVariantProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
 
 class BreadcrumbsRegistrar extends BaseBreadcrumbsRegistrar

@@ -5,7 +5,7 @@ namespace App\Entity\Base\Screens;
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Screen\Table\CommandBar\AddInterface as AddCommandInterface;
-use App\Orchid\Screens\Base;
+use App\Base\Screen;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Orchid\Screen\Actions\Button;
@@ -14,9 +14,9 @@ use Orchid\Screen\Layout;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Entity\Base\NamesProviderInterface;
 use App\Entity\Base\Screens\Can\CreateTrait as CanCreateTrait;
-use App\Common\GetCurrentUserTrait;
+use App\Common\User\GetCurrentUserTrait;
 
-abstract class ListScreen extends Base
+abstract class ListScreen extends Screen
 {
     use GetCurrentUserTrait;
     use CanCreateTrait;

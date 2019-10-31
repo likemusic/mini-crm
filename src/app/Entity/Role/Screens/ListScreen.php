@@ -8,7 +8,7 @@ use App\Entity\Role\CrudUseVariantProvider;
 use App\Entity\Role\NamesProvider;
 use App\Entity\Role\Route\NameProvider as RoleRouteNameProvider;
 use App\Entity\Role\Route\NameProvider as RouteNameProvider;
-use App\Model\Role;
+use App\Entity\Role\Role;
 use App\Entity\Role\Layouts\ListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use App\Entity\Role\Screens\PermissionsClassNameTrait;

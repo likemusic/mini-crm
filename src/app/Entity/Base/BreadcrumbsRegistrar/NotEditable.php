@@ -6,7 +6,7 @@ use App\Contract\Entity\Base\EditableInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Platform\Route\NameInterface as PlatformRouteNameInterface;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
 use DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException;

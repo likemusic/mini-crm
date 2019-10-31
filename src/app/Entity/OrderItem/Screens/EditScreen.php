@@ -8,11 +8,11 @@ use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNam
 use App\Contract\Entity\Order\Field\NameInterface as OrderFieldNameInterface;
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\CrudUseVariantProvider as EditableUseVariantProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\OrderItem as InfoMessageProvider;
-use App\Model\Order;
-use App\Model\OrderItem;
-use App\Model\ProductQuote;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\OrderItem\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Order\Order;
+use App\Entity\OrderItem\OrderItem;
+use App\Entity\ProductQuote\ProductQuote;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Orchid\Screens\OrderItem\CrudUseVariantProvider;
 use Illuminate\Http\Request;

@@ -169,13 +169,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
+        \App\Framework\ServiceProviders\AppServiceProvider::class,
+        \App\Framework\ServiceProviders\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\Providers\PermissionServiceProvider::class,
-        App\Providers\RelationWithDataServiceProvider::class
+        \App\Framework\ServiceProviders\EventServiceProvider::class,
+        \App\Framework\ServiceProviders\RouteServiceProvider::class,
+        \App\Framework\ServiceProviders\PermissionServiceProvider::class,
+        \App\Common\Page\Element\Screen\Form\Field\RelationWithData\ServiceProvider::class
     ],
 
     /*

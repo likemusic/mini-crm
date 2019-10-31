@@ -4,7 +4,7 @@ use App\Contract\Entity\StockItem\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\StockItem\TableInterface;
 use App\Contract\Entity\Product\TableInterface as ProductTableInterface;
 use App\Contract\Entity\Warehouse\TableInterface as WarehouseTableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;

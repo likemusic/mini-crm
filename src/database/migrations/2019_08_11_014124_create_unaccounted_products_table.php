@@ -2,7 +2,7 @@
 
 use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\UnaccountedProduct\TableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 

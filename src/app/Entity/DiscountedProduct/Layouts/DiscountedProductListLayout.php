@@ -6,7 +6,7 @@ use App\Contract\Entity\DiscountedProduct\Field\LabelInterface as FieldLabelInte
 use App\Contract\Entity\DiscountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\LabelInterface as ProductLabelInterface;
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
-use App\Model\DiscountedProduct;
+use App\Entity\DiscountedProduct\DiscountedProduct;
 use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 

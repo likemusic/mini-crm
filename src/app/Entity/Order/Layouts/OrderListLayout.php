@@ -6,8 +6,8 @@ use App\Contract\Entity\Order\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\Route\NameProvider as OrderItemRouteNameProvider;
-use App\Model\Order;
-use App\Model\OrderItem;
+use App\Entity\Order\Order;
+use App\Entity\OrderItem\OrderItem;
 use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 

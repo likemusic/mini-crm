@@ -11,17 +11,17 @@ use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\Entity\Order\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\Order\Route\NameProvider as RouteNameProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Order as InfoMessageProvider;
-use App\Model\Counteragent;
-use App\Model\Currency;
-use App\Model\Order;
-use App\Model\Pharmacy;
-use App\Model\Product;
-use App\Model\User;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Order\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Counteragent\Counteragent;
+use App\Entity\Currency\Currency;
+use App\Entity\Order\Order;
+use App\Entity\Pharmacy\Pharmacy;
+use App\Entity\Product\Product;
+use App\Entity\User\User;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Orchid\Screens\Order\CrudUseVariantProvider;
-use App\Repositories\CurrencyRepository;
+use App\Entity\Currency\CurrencyRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Orchid\Platform\Dashboard;
@@ -31,8 +31,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
-use App\Orchid\Screen\Fields\RelationWithData;
-
+use App\Common\Page\Element\Screen\Form\Field\RelationWithData\Field as RelationWithDataField;
 
 class EditScreen extends BaseEditScreen
 {
@@ -93,7 +92,7 @@ class EditScreen extends BaseEditScreen
 //                ->fromModel(Product::class, ProductFieldNameInterface::NAME),
 //                ->empty('Выберите товар'),
 
-            RelationWithData::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
+            RelationWithDataField::make($this->getDataPath(FieldNameInterface::PRODUCT_ID))
                 ->title(FieldLabelInterface::PRODUCT)
                 ->fromModel(Pharmacy::class, PharmacyFieldNameInterface::NAME, null, $productDataFieldName)
 //                ->empty('Выберите товар')

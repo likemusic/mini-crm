@@ -8,10 +8,10 @@ use App\Contract\Entity\ProductCategory\Field\NameInterface as ProductCategoryFi
 use App\Entity\Currency\CrudUseVariantProvider;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
-use App\Model\Currency;
-use App\Model\ProductCategory;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Product\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Currency\Currency;
+use App\Entity\ProductCategory\ProductCategory;
 use App\Entity\Currency\Screens\PermissionsClassNameTrait;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;

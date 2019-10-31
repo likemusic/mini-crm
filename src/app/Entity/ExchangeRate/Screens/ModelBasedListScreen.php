@@ -4,7 +4,7 @@ namespace App\Entity\ExchangeRate\Screens;
 
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Entity\ExchangeRate\CrudUseVariantProvider;
-use App\Model\ExchangeRate;
+use App\Entity\ExchangeRate\ExchangeRate;
 use App\Entity\ExchangeRate\Layouts\ExchangeRateListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;

@@ -7,7 +7,7 @@ namespace App\Entity\Currency\Screens;
 use App\Entity\Currency\CrudUseVariantProvider;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
-use App\Model\Currency;
+use App\Entity\Currency\Currency;
 use App\Entity\Currency\Layouts\ListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use App\Entity\Currency\Screens\PermissionsClassNameTrait;

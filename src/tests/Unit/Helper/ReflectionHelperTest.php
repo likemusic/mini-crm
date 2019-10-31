@@ -3,7 +3,7 @@
 namespace Tests\Unit\Helper;
 
 use App\Contract\Entity\Permission\NameInterface as PermissionNameInterface;
-use App\Helper\ReflectionHelper;
+use App\Common\ReflectionHelper;
 use Tests\SubjectTestCase;
 
 class ReflectionHelperTest extends SubjectTestCase

@@ -17,7 +17,7 @@ use App\Entity\Order\BreadcrumbsRegistrar as OrderBreadcrumbsRegistrar;
 use App\Entity\Counteragent\BreadcrumbsRegistrar as CounteragentBreadcrumbsRegistrar;
 use App\Entity\Wallet\BreadcrumbsRegistrar as WalletBreadcrumbsRegistrar;
 use App\Entity\ExchangeRate\BreadcrumbsRegistrar as ExchangeRateBreadcrumbsRegistrar;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 

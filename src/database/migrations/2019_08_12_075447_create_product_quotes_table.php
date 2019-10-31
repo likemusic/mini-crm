@@ -4,7 +4,7 @@ use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface
 use App\Contract\Entity\Product\TableInterface as ProductTableInterface;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\ProductQuote\TableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 

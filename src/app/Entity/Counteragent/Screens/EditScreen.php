@@ -6,9 +6,9 @@ use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface
 use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 use App\Entity\Counteragent\CrudUseVariantProvider as EditableUseVariantProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\Counteragent as InfoMessageProvider;
-use App\Model\Counteragent;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Counteragent\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Counteragent\Counteragent;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Orchid\Screens\Counteragent\CrudUseVariantProvider;
 use Illuminate\Http\Request;

@@ -19,8 +19,8 @@ use App\Entity\UnaccountedProduct\Route\CrudRegistrar as UnaccountedProductRoute
 use App\Entity\User\Route\CrudRegistrar as UserRouteRegistrar;
 use App\Entity\Wallet\Route\CrudRegistrar as WalletRouteRegistrar;
 use App\Entity\Warehouse\Route\CrudRegistrar as WarehouseRouteRegistrar;
-use App\Http\Controllers\Orchid\Patform\RelationWithDataController;
-use App\Orchid\Screens\PlatformScreen;
+use App\Common\Page\Element\Screen\Form\Field\RelationWithData\Controller as RelationWithDataController;
+use App\Section\MainPage\PlatformScreen;
 use Illuminate\Routing\RouteFileRegistrar;
 
 /*

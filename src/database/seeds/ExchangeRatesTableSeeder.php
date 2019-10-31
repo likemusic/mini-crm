@@ -2,8 +2,8 @@
 
 use App\Contract\Domain\CurrencyCodeInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface;
-use App\Model\ExchangeRate;
-use App\Repositories\CurrencyRepository;
+use App\Entity\ExchangeRate\ExchangeRate;
+use App\Entity\Currency\CurrencyRepository;
 use Illuminate\Database\Seeder;
 
 class ExchangeRatesTableSeeder extends Seeder

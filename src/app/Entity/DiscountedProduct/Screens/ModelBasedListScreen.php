@@ -4,7 +4,7 @@ namespace App\Entity\DiscountedProduct\Screens;
 
 use App\Entity\DiscountedProduct\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\DiscountedProduct\CrudUseVariantProvider as ProductUseVariant;
-use App\Model\DiscountedProduct;
+use App\Entity\DiscountedProduct\DiscountedProduct;
 use App\Entity\DiscountedProduct\Layouts\DiscountedProductListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;

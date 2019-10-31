@@ -8,9 +8,9 @@ use App\Contract\Entity\Pharmacy\Field\NameInterface;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
-use App\Repositories\WarehouseRepository;
+use App\Entity\Warehouse\WarehouseRepository;
 use Illuminate\Support\Collection;
-use App\Helper\Entity\PharmacyHelper;
+use App\Entity\Pharmacy\PharmacyHelper;
 
 class PharmacyListLayout extends ListLayout
 {

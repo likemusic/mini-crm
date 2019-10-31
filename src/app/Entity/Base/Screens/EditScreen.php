@@ -8,8 +8,8 @@ use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInt
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\CancelInterface as CancelCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Orchid\Screens\Base as BaseScreen;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Base\Screen as BaseScreen;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;

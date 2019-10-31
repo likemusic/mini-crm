@@ -1,8 +1,8 @@
 <?php
 
-use App\Model\Warehouse;
+use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
-use App\Model\Product;
+use App\Entity\Product\Product;
 use App\Contract\Entity\Warehouse\Field\NameInterface;
 
 class WarehousesTableSeeder extends Seeder

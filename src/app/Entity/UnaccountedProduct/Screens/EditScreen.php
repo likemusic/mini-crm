@@ -6,9 +6,9 @@ use App\Contract\Entity\UnaccountedProduct\Field\LabelInterface as FieldLabelInt
 use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\UnaccountedProduct\CrudUseVariantProvider as UseVariant;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\UnaccountedProduct as InfoMessageProvider;
-use App\Model\UnaccountedProduct;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\UnaccountedProduct\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\UnaccountedProduct\UnaccountedProduct;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;

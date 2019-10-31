@@ -4,7 +4,7 @@ namespace App\Entity\Warehouse\Screens;
 
 use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
 use App\Entity\Warehouse\CrudUseVariantProvider as EditableUseVariantProvider;
-use App\Model\Warehouse;
+use App\Entity\Warehouse\Warehouse;
 use App\Entity\Warehouse\Layouts\WarehouseListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use App\Orchid\Screens\Warehouse\CrudUseVariantProvider;

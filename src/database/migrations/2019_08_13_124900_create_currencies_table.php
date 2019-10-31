@@ -2,7 +2,7 @@
 
 use App\Contract\Entity\Currency\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Currency\TableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;

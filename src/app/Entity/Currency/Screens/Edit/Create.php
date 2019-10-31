@@ -4,7 +4,7 @@ namespace App\Entity\Currency\Screens\Edit;
 
 use App\Entity\Base\Screens\Edit\CreateScreen as BaseCreateScreen;
 use App\Entity\Currency\Screens\EditTrait;
-use App\Model\Currency as Model;
+use App\Entity\Currency\Currency as Model;
 
 class Create extends BaseCreateScreen
 {

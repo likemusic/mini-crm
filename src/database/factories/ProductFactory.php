@@ -3,8 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Contract\Entity\Product\Field\NameInterface as EntityFieldNameInterface;
-use App\Model\ProductCategory;
-use App\Model\Product;
+use App\Entity\ProductCategory\ProductCategory;
+use App\Entity\Product\Product;
 use Faker\Generator as Faker;
 
 

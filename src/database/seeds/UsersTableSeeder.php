@@ -2,9 +2,9 @@
 
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
-use App\Helper\PermissionsProvider;
-use App\Model\User;
-use App\Repositories\RoleRepository;
+use App\DataProvider\PermissionsProvider;
+use App\Entity\User\User;
+use App\Entity\Role\RoleRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Platform\Models\Role;

@@ -7,10 +7,10 @@ use App\Contract\Entity\DiscountedProduct\Field\NameInterface as FieldNameInterf
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\DiscountedProduct\CrudUseVariantProvider as UseVariant;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\DiscountedProduct as InfoMessageProvider;
-use App\Model\DiscountedProduct;
-use App\Model\Product;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\DiscountedProduct\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\DiscountedProduct\DiscountedProduct;
+use App\Entity\Product\Product;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Relation;

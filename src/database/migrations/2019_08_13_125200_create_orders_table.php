@@ -5,7 +5,7 @@ use App\Contract\Entity\Counteragent\TableInterface as CounteragentTableInterfac
 use App\Contract\Entity\Order\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\Contract\Entity\Order\TableInterface;
-use App\Database\Migrations\Migration;
+use App\Base\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNameInterface;

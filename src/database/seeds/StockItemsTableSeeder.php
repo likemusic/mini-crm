@@ -1,9 +1,9 @@
 <?php
 
 use App\Contract\Entity\StockItem\Field\NameInterface;
-use App\Model\Product;
-use App\Model\StockItem;
-use App\Model\Warehouse;
+use App\Entity\Product\Product;
+use App\Entity\StockItem\StockItem;
+use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
 
 class StockItemsTableSeeder extends Seeder

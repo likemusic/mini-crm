@@ -9,7 +9,7 @@ use App\Contract\Entity\Base\UseVariantProvider\CrudInterface as CrudUseVariantP
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Screen\Item\CommandBar\CreateInterface as SaveCommandInterface;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
 use App\Entity\Base\Screens\Can\CreateTrait as CanCreateTrait;
 use App\Entity\Base\Screens\EditScreen;
 use Illuminate\Database\Eloquent\Model;

@@ -7,11 +7,11 @@ use App\Contract\Entity\ExchangeRate\Field\LabelInterface as FieldLabelInterface
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
 use App\Entity\ExchangeRate\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\CurrenciesListProvider;
-use App\Helper\InfoMessageProvider\ExchangeRate as InfoMessageProvider;
-use App\Model\Currency;
-use App\Model\ExchangeRate;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\Currency\CurrenciesListProvider;
+use App\Entity\ExchangeRate\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\Currency\Currency;
+use App\Entity\ExchangeRate\ExchangeRate;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Orchid\Screens\ExchangeRate\CrudUseVariantProvider;
 use Illuminate\Http\Request;

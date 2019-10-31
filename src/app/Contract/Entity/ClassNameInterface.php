@@ -2,8 +2,8 @@
 
 namespace App\Contract\Entity;
 
-use App\Model\Product;
-use App\Model\Role;
+use App\Entity\Product\Product;
+use App\Entity\Role\Role;
 
 interface ClassNameInterface
 {

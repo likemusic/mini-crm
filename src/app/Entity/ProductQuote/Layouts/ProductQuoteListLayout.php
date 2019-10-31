@@ -10,7 +10,7 @@ use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
-use App\Model\ProductQuote;
+use App\Entity\ProductQuote\ProductQuote;
 
 class ProductQuoteListLayout extends ListLayout
 {

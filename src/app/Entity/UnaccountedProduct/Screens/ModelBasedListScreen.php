@@ -4,7 +4,7 @@ namespace App\Entity\UnaccountedProduct\Screens;
 
 use App\Entity\UnaccountedProduct\Route\NameProvider as ProductRouteNameProvider;
 use App\Entity\UnaccountedProduct\CrudUseVariantProvider as ProductUseVariant;
-use App\Model\UnaccountedProduct;
+use App\Entity\UnaccountedProduct\UnaccountedProduct;
 use App\Entity\UnaccountedProduct\Layouts\UnaccountedProductListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;

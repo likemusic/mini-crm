@@ -8,15 +8,15 @@ use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInt
 use App\Contract\Screen\Table\Td\Action\NameInterface as ActionNameInterface;
 use App\Contract\Screen\Table\Td\CurrencyInterface;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\NotDbModel\ActionButton\DeleteButton;
-use App\NotDbModel\ActionButton\EditButton;
+use App\Common\Page\Element\Screen\Table\Column\Actions\ActionButton\DeleteButton;
+use App\Common\Page\Element\Screen\Table\Column\Actions\ActionButton\EditButton;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use App\Entity\Base\Screens\Can\CreateTrait as CanCreateTrait;
 use App\Entity\Base\Screens\Can\DeleteTrait as CanDeleteTrait;
 use App\Entity\Base\Screens\Can\UpdateTrait as CanUpdateTrait;
-use App\Common\GetCurrentUserTrait;
-use App\Common\GetPermissionClassConstantTrait;
+use App\Common\User\GetCurrentUserTrait;
+use App\Common\Permission\GetPermissionClassConstantTrait;
 
 abstract class ListLayout extends Table
 {

@@ -1,7 +1,7 @@
 <?php
 
 use App\Contract\Entity\Currency\Field\NameInterface;
-use App\Model\Currency;
+use App\Entity\Currency\Currency;
 use Illuminate\Database\Seeder;
 
 class CurrenciesTableSeeder extends Seeder

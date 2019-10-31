@@ -4,7 +4,7 @@ namespace App\Entity\ProductQuote\Screens;
 
 use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductQuote\CrudUseVariantProvider as UseVariant;
-use App\Model\ProductQuote;
+use App\Entity\ProductQuote\ProductQuote;
 use App\Entity\ProductQuote\Layouts\ProductQuoteListLayout;
 use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;

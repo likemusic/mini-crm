@@ -6,9 +6,9 @@ use App\Contract\Entity\ProductCategory\Field\LabelInterface as FieldLabelInterf
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
 use App\Entity\ProductCategory\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
-use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Helper\InfoMessageProvider\ProductCategory as InfoMessageProvider;
-use App\Model\ProductCategory;
+use App\Common\Page\Element\BreadcrumbsHelper as BreadcrumbsHelper;
+use App\Entity\ProductCategory\InfoMessageProvider as InfoMessageProvider;
+use App\Entity\ProductCategory\ProductCategory;
 use App\Orchid\Screens\ProductCategory\CrudUseVariantProvider;
 use App\Entity\ProductCategory\Screens\PermissionsClassNameTrait;
 use Illuminate\Http\Request;
