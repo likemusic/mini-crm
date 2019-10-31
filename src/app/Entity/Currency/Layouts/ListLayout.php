@@ -7,7 +7,7 @@ use App\Contract\Entity\Currency\Field\NameInterface as FieldNameInterface;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
-use App\Orchid\Screens\Currency\PermissionsClassNameTrait;
+use App\Entity\Currency\Screens\PermissionsClassNameTrait;
 use Orchid\Screen\TD;
 
 class ListLayout extends BaseListLayout

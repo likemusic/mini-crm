@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Currency;
+namespace App\Entity\Currency\Screens;
 
 use App\Contract\Entity\Permission\Crm\Currency\NameInterface as PermissionNameInterface;
 

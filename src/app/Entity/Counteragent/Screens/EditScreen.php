@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Counteragent;
+namespace App\Entity\Counteragent\Screens;
 
 use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
@@ -10,6 +10,7 @@ use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Counteragent as InfoMessageProvider;
 use App\Model\Counteragent;
 use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
+use App\Orchid\Screens\Counteragent\CrudUseVariantProvider;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;

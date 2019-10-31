@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Orchid\Screens\Currency\Edit;
+namespace App\Entity\Currency\Screens\Edit;
 
 use App\Entity\Base\Screens\Edit\CreateScreen as BaseCreateScreen;
-use App\Orchid\Screens\Currency\EditTrait;
+use App\Entity\Currency\Screens\EditTrait;
 use App\Model\Currency as Model;
 
 class Create extends BaseCreateScreen

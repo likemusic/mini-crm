@@ -7,9 +7,9 @@ use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Entity\Currency\Route\PathProvider as RoutePathProvider;
 use App\Helper\RouteRegisterHelper;
 use App\Http\Controllers\Entity\Currency\Delete as DeleteController;
-use App\Orchid\Screens\Currency\Edit\Create as CreateScreen;
-use App\Orchid\Screens\Currency\Edit\Update as UpdateScreen;
-use App\Orchid\Screens\Currency\ListScreen;
+use App\Entity\Currency\Screens\Edit\Create as CreateScreen;
+use App\Entity\Currency\Screens\Edit\Update as UpdateScreen;
+use App\Entity\Currency\Screens\ListScreen;
 
 class CrudRegistrar extends BaseRegistrar
 {
