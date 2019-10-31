@@ -5,7 +5,7 @@ namespace App\Orchid\Layouts\UnaccountedProduct;
 use App\Contract\Entity\UnaccountedProduct\Field\LabelInterface;
 use App\Contract\Entity\UnaccountedProduct\Field\NameInterface as FieldNameInterface;
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class UnaccountedProductListLayout extends ListLayout

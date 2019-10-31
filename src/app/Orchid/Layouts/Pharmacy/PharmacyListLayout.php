@@ -6,7 +6,7 @@ use App\Contract\Entity\Pharmacy\Field\LabelInterface;
 use App\Contract\Entity\Pharmacy\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Pharmacy\Field\NameInterface;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 use App\Repositories\WarehouseRepository;
 use Illuminate\Support\Collection;

@@ -9,7 +9,7 @@ use App\Contract\Entity\ProductQuote\Field\NameInterface as ProductQuoteFieldNam
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\ProductQuote\Route\NameProvider as ProductQuoteRouteNameProvider;
 use App\Entity\Order\Route\NameProvider as OrderRouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class OrderItemListLayout extends ListLayout

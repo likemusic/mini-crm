@@ -8,7 +8,7 @@ use App\Contract\Entity\ProductQuote\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Entity\ProductQuote\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\Route\NameProvider as ProductRouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 use App\Model\ProductQuote;
 

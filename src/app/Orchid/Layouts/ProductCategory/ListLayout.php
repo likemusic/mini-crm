@@ -6,7 +6,7 @@ use App\Contract\Entity\ProductCategory\Field\LabelInterface;
 use App\Contract\Entity\ProductCategory\Field\NameInterface as FieldNameInterface;
 use App\Entity\ProductCategory\NamesProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
+use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
 use Orchid\Screen\TD;
 use App\Orchid\Screens\ProductCategory\PermissionsClassNameTrait;
 

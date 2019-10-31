@@ -6,7 +6,7 @@ use App\Contract\Entity\Currency\Field\LabelInterface;
 use App\Contract\Entity\Currency\Field\NameInterface as FieldNameInterface;
 use App\Entity\Currency\NamesProvider;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
+use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
 use App\Orchid\Screens\Currency\PermissionsClassNameTrait;
 use Orchid\Screen\TD;
 

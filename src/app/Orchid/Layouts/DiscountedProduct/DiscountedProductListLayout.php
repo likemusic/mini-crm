@@ -7,7 +7,7 @@ use App\Contract\Entity\DiscountedProduct\Field\NameInterface as FieldNameInterf
 use App\Contract\Entity\Product\Field\LabelInterface as ProductLabelInterface;
 use App\Entity\DiscountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Model\DiscountedProduct;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class DiscountedProductListLayout extends ListLayout

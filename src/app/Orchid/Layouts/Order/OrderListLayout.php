@@ -8,7 +8,7 @@ use App\Entity\Order\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\Route\NameProvider as OrderItemRouteNameProvider;
 use App\Model\Order;
 use App\Model\OrderItem;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class OrderListLayout extends ListLayout

@@ -5,7 +5,7 @@ namespace App\Orchid\Layouts\Currency;
 use App\Contract\Entity\Currency\Field\LabelInterface;
 use App\Contract\Entity\Currency\Field\NameInterface as FieldNameInterface;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class CurrencyListLayout extends ListLayout

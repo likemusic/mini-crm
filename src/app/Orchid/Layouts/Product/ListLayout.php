@@ -6,7 +6,7 @@ use App\Contract\Entity\Product\Field\LabelInterface;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout as BaseListLayout;
+use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
 use App\Orchid\Screens\Product\PermissionsClassNameTrait;
 
 class ListLayout extends BaseListLayout

@@ -6,7 +6,7 @@ use App\Contract\Entity\ExchangeRate\Field\LabelInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Currency\Field\NameInterface as CurrencyFieldNameInterface;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class ExchangeRateListLayout extends ListLayout

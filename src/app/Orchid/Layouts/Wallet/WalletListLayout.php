@@ -7,7 +7,7 @@ use App\Contract\Entity\Wallet\Field\NameInterface as FieldNameInterface;
 use App\Entity\Wallet\Route\NameProvider as RouteNameProvider;
 use App\Model\User;
 use App\Model\Wallet;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class WalletListLayout extends ListLayout

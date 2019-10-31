@@ -5,7 +5,7 @@ namespace App\Orchid\Layouts\Warehouse;
 use App\Contract\Entity\Warehouse\Field\LabelInterface;
 use App\Contract\Entity\Warehouse\Field\NameInterface as FieldNameInterface;
 use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class WarehouseListLayout extends ListLayout

@@ -5,7 +5,7 @@ namespace App\Orchid\Layouts\Counteragent;
 use App\Contract\Entity\Counteragent\Field\LabelInterface as FieldLabelInterface;
 use App\Contract\Entity\Counteragent\Field\NameInterface as FieldNameInterface;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout;
 use Orchid\Screen\TD;
 
 class CounteragentListLayout extends ListLayout

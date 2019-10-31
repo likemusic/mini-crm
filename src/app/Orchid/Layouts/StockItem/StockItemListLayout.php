@@ -7,7 +7,7 @@ use App\Contract\Entity\StockItem\Field\NameInterface as FieldNameInterface;
 use App\Contract\Entity\Product\Field\NameInterface as ProductFieldNameInterface;
 use App\Contract\Entity\Warehouse\Field\NameInterface as WarehouseFieldNameInterface;
 use App\Entity\StockItem\Route\NameProvider as RouteNameProvider;
-use App\Orchid\Layouts\Base\ListLayout;
+use App\Entity\Base\Layouts\ListLayout as BaseListLayout;
 use Orchid\Screen\TD;
 
 class StockItemListLayout extends ListLayout
