@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Base;
+namespace App\Entity\Base\Screens;
 
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as  ListUseVariantProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
@@ -13,7 +13,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Entity\Base\NamesProviderInterface;
-use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
+use App\Entity\Base\Screens\Can\CreateTrait as CanCreateTrait;
 use App\Common\GetCurrentUserTrait;
 
 abstract class ListScreen extends Base

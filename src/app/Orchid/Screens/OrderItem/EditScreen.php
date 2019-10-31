@@ -13,7 +13,7 @@ use App\Helper\InfoMessageProvider\OrderItem as InfoMessageProvider;
 use App\Model\Order;
 use App\Model\OrderItem;
 use App\Model\ProductQuote;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;

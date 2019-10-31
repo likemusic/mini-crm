@@ -9,7 +9,7 @@ use App\Entity\Currency\CrudUseVariantProvider as EditableUseVariantProvider;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
 use App\Model\Currency;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;

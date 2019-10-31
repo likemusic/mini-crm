@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Orchid\Screens\Base\Can;
+namespace App\Entity\Base\Screens\Can;
 
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 
-trait UpdateTrait
+trait DeleteTrait
 {
-    protected function canUpdate(): bool
+    protected function canDelete(): bool
     {
         $currentUser = $this->getCurrentUser();
-        $permission = $this->getUpdatePermission();
+        $permission = $this->getDeletePermission();
 
         return $currentUser->hasAccess($permission);
     }
 
-    protected function getUpdatePermission(): string
+    protected function getDeletePermission(): string
     {
-        $constantName = PermissionConstantNameInterface::UPDATE;
+        $constantName = PermissionConstantNameInterface::DELETE;
 
         return $this->getPermissionClassConstant($constantName);
     }

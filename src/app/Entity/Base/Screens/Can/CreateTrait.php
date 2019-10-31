@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Base\Can;
+namespace App\Entity\Base\Screens\Can;
 
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 

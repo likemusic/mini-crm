@@ -9,7 +9,7 @@ use App\Entity\UnaccountedProduct\CrudUseVariantProvider as UseVariant;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
 use App\Helper\InfoMessageProvider\UnaccountedProduct as InfoMessageProvider;
 use App\Model\UnaccountedProduct;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;

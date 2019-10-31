@@ -12,7 +12,7 @@ use App\Helper\InfoMessageProvider\Wallet as InfoMessageProvider;
 use App\Model\Counteragent;
 use App\Model\User;
 use App\Model\Wallet;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;

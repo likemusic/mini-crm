@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Currency\Edit;
 
-use App\Orchid\Screens\Base\Edit\CreateScreen as BaseCreateScreen;
+use App\Entity\Base\Screens\Edit\CreateScreen as BaseCreateScreen;
 use App\Orchid\Screens\Currency\EditTrait;
 use App\Model\Currency as Model;
 

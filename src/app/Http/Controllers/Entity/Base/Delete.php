@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Support\Facades\Alert;
-use App\Orchid\Screens\Base\Can\DeleteTrait as CanDeleteTrait;
+use App\Entity\Base\Screens\Can\DeleteTrait as CanDeleteTrait;
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 
 class Delete extends Controller

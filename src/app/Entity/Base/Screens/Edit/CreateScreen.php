@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Base\Edit;
+namespace App\Entity\Base\Screens\Edit;
 
 use App\Contract\Entity\Base\InfoMessageProviderInterface;
 use App\Contract\Entity\Base\NamesProviderInterface;
@@ -10,8 +10,8 @@ use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNa
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Screen\Item\CommandBar\CreateInterface as SaveCommandInterface;
 use App\Helper\Breadcrumbs as BreadcrumbsHelper;
-use App\Orchid\Screens\Base\Can\CreateTrait as CanCreateTrait;
-use App\Orchid\Screens\Base\EditScreen;
+use App\Entity\Base\Screens\Can\CreateTrait as CanCreateTrait;
+use App\Entity\Base\Screens\EditScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

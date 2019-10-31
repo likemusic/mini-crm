@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Base;
+namespace App\Entity\Base\Screens;
 
 use App\Contract\Entity\Base\UseVariantProvider\CrudInterface as CrudUseVariantProviderInterface;
 use App\Contract\Entity\Base\InfoMessageProviderInterface;

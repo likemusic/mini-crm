@@ -13,7 +13,7 @@ use App\Helper\InfoMessageProvider\Product as InfoMessageProvider;
 use App\Model\Product;
 use App\Model\StockItem;
 use App\Model\Warehouse;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;

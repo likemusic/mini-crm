@@ -9,7 +9,7 @@ use App\Entity\Product\NamesProvider;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Model\Product;
 use App\Entity\Product\Layouts\ListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
+use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 use App\Contract\Entity\Product\Field\NameInterface as FieldNameInterface;
 

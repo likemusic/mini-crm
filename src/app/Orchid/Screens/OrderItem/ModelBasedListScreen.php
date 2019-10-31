@@ -6,7 +6,7 @@ use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\CrudUseVariantProvider;
 use App\Model\OrderItem;
 use App\Entity\OrderItem\Layouts\OrderItemListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
+use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

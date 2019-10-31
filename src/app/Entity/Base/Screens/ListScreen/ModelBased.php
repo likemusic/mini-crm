@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Orchid\Screens\Base\ListScreen;
+namespace App\Entity\Base\Screens\ListScreen;
 
 use App\Contract\Entity\Base\NamesProviderInterface;
 use App\Contract\Entity\Base\Route\NameProviderInterface as RouteNameProviderInterface;
 use App\Contract\Entity\Base\UseVariantProvider\ListingInterface as ListUseVariantProviderInterface;
-use App\Orchid\Screens\Base\ListScreen;
+use App\Entity\Base\Screens\ListScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;

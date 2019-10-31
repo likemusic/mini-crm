@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Orchid\Screens\Base\Edit;
+namespace App\Entity\Base\Screens\Edit;
 
 use App\Contract\Http\CodeInterface as HttpCodeInterface;
 use App\Contract\Entity\Permission\ConstantNameInterface as PermissionConstantNameInterface;
 use App\Contract\Screen\Item\CommandBar\UpdateInterface as UpdateCommandInterface;
 use App\Contract\Screen\Item\CommandBar\DeleteInterface as DeleteCommandInterface;
-use App\Orchid\Screens\Base\EditScreen;
+use App\Entity\Base\Screens\EditScreen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

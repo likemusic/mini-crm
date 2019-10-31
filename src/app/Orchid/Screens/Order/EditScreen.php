@@ -19,7 +19,7 @@ use App\Model\Order;
 use App\Model\Pharmacy;
 use App\Model\Product;
 use App\Model\User;
-use App\Orchid\Screens\Base\EditScreen as BaseEditScreen;
+use App\Entity\Base\Screens\EditScreen as BaseEditScreen;
 use App\Repositories\CurrencyRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;

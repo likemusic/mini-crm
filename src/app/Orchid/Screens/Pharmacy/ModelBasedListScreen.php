@@ -7,7 +7,7 @@ use App\Entity\Pharmacy\ListUseVariantProvider;
 use App\Entity\Pharmacy\Route\NameProvider as RouteNameProvider;
 use App\Model\Pharmacy;
 use App\Entity\Pharmacy\Layouts\PharmacyListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
+use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ModelBasedListScreen extends BaseListScreen

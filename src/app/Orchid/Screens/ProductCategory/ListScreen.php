@@ -9,7 +9,7 @@ use App\Entity\ProductCategory\NamesProvider;
 use App\Entity\ProductCategory\Route\NameProvider as RouteNameProvider;
 use App\Model\ProductCategory;
 use App\Entity\ProductCategory\Layouts\ListLayout;
-use App\Orchid\Screens\Base\ListScreen\ModelBased as BaseListScreen;
+use App\Entity\Base\Screens\ListScreen\ModelBased as BaseListScreen;
 use Illuminate\Http\Request;
 
 class ListScreen extends BaseListScreen

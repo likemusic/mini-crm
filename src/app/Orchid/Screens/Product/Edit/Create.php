@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Product\Edit;
 
-use App\Orchid\Screens\Base\Edit\CreateScreen as BaseCreateScreen;
+use App\Entity\Base\Screens\Edit\CreateScreen as BaseCreateScreen;
 use App\Orchid\Screens\Product\EditTrait;
 use App\Model\Product as Model;
 
