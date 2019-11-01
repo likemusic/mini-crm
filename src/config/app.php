@@ -169,6 +169,7 @@ return [
         /*
          * Application Service Providers...
          */
+        \App\Framework\ServiceProviders\OrchidPlatformProvider::class,
         \App\Framework\ServiceProviders\AppServiceProvider::class,
         \App\Framework\ServiceProviders\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
