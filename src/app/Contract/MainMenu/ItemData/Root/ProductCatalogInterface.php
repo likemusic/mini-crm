@@ -3,7 +3,7 @@
 namespace App\Contract\MainMenu\ItemData\Root;
 
 use App\Contract\Common\IconNameInterface;
-use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
+use App\Contract\MainMenu\Root\PermissionNameInterface as MainMenuPermissionNameInterface;
 
 interface ProductCatalogInterface
 {

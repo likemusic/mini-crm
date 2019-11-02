@@ -3,7 +3,7 @@
 namespace App\Contract\MainMenu\Permission;
 
 use App\Contract\Entity\Permission\ListNameInterface as CrmListPermissionInterface;
-use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
+use App\Contract\MainMenu\Root\PermissionNameInterface as MainMenuPermissionNameInterface;
 
 interface ToCrmPermissionMapInterface
 {

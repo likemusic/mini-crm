@@ -2,7 +2,7 @@
 
 namespace App\Menu\Main\Root\ProductCatalog;
 
-use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
+use App\Contract\MainMenu\Root\PermissionNameInterface as MainMenuPermissionNameInterface;
 use App\Menu\Main\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
 use App\Menu\Main\Root\Base\Registrar as BaseRegistrar;
 use App\Menu\Main\Root\ProductCatalog\ItemData as MenuItemData;

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Menu\Main;
 
-use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
-use App\Contract\Entity\Permission\Crm\User\NameInterface as UserNameInterface;
-use App\Contract\Entity\Permission\Crm\Role\NameInterface as RoleNameInterface;
-use App\Contract\Entity\Permission\Menu\Main\NameInterface as MainMenuPermissionNameInterface;
+use App\Contract\Entity\Product\Permission\NameInterface as ProductNameInterface;
+use App\Contract\Entity\ProductCategory\Permission\NameInterface as ProductCategoryNameInterface;
+use App\Contract\Entity\User\Permission\NameInterface as UserNameInterface;
+use App\Contract\Entity\Role\Permission\NameInterface as RoleNameInterface;
+use App\Contract\MainMenu\Root\PermissionNameInterface as MainMenuPermissionNameInterface;
 use App\Entity\Counteragent\MenuRegistrar as CounteragentMenuRegistrar;
 use App\Entity\Currency\MenuRegistrar as CurrencyMenuRegistrar;
 use App\Entity\DiscountedProduct\MenuRegistrar as DiscountedProductMenuRegistrar;

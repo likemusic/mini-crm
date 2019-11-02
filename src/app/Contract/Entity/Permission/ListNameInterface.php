@@ -2,11 +2,11 @@
 
 namespace App\Contract\Entity\Permission;
 
-use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
-use App\Contract\Entity\Permission\Crm\Role\NameInterface as RoleNameInterface;
-use App\Contract\Entity\Permission\Crm\User\NameInterface as UserNameInterface;
-use App\Contract\Entity\Permission\Crm\Currency\NameInterface as CurrencyNameInterface;
+use App\Contract\Entity\Product\Permission\NameInterface as ProductNameInterface;
+use App\Contract\Entity\ProductCategory\Permission\NameInterface as ProductCategoryNameInterface;
+use App\Contract\Entity\Role\Permission\NameInterface as RoleNameInterface;
+use App\Contract\Entity\User\Permission\NameInterface as UserNameInterface;
+use App\Contract\Entity\Currency\Permission\NameInterface as CurrencyNameInterface;
 
 interface ListNameInterface
 {

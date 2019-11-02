@@ -2,7 +2,7 @@
 
 namespace App\Entity\User;
 
-use App\Contract\Entity\Permission\Crm\User\NameInterface as PermissionNameInterface;
+use App\Contract\Entity\User\Permission\NameInterface as PermissionNameInterface;
 use App\Entity\Base\PermissionProvider as BasePermissionProvider;
 
 class PermissionsProvider extends BasePermissionProvider

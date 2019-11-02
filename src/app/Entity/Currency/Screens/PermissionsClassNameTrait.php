@@ -2,7 +2,7 @@
 
 namespace App\Entity\Currency\Screens;
 
-use App\Contract\Entity\Permission\Crm\Currency\NameInterface as PermissionNameInterface;
+use App\Contract\Entity\Currency\Permission\NameInterface as PermissionNameInterface;
 
 trait PermissionsClassNameTrait
 {

@@ -2,18 +2,18 @@
 
 namespace App\Framework\ServiceProviders;
 
-use App\Contract\Entity\Permission\Crm\ProductCategory\LabelInterface as ProductCategoryPermissionLabelInterface;
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\Product\LabelInterface as ProductPermissionLabelInterface;
-use App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\Currency\LabelInterface as CurrencyPermissionLabelInterface;
-use App\Contract\Entity\Permission\Crm\Currency\NameInterface as CurrencyPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\User\LabelInterface as UserPermissionLabelInterface;
-use App\Contract\Entity\Permission\Crm\User\NameInterface as UserPermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\Role\LabelInterface as RolePermissionLabelInterface;
-use App\Contract\Entity\Permission\Crm\Role\NameInterface as RolePermissionNameInterface;
-use App\Contract\Entity\Permission\Crm\Role\Type\LabelInterface;
-use App\Contract\Entity\Permission\Crm\Role\Type\NameInterface;
+use App\Contract\Entity\ProductCategory\Permission\LabelInterface as ProductCategoryPermissionLabelInterface;
+use App\Contract\Entity\ProductCategory\Permission\NameInterface as ProductCategoryPermissionNameInterface;
+use App\Contract\Entity\Product\Permission\LabelInterface as ProductPermissionLabelInterface;
+use App\Contract\Entity\Product\Permission\NameInterface as ProductPermissionNameInterface;
+use App\Contract\Entity\Currency\Permission\LabelInterface as CurrencyPermissionLabelInterface;
+use App\Contract\Entity\Currency\Permission\NameInterface as CurrencyPermissionNameInterface;
+use App\Contract\Entity\User\Permission\LabelInterface as UserPermissionLabelInterface;
+use App\Contract\Entity\User\Permission\NameInterface as UserPermissionNameInterface;
+use App\Contract\Entity\Role\Permission\LabelInterface as RolePermissionLabelInterface;
+use App\Contract\Entity\Role\Permission\NameInterface as RolePermissionNameInterface;
+use App\Contract\Entity\Role\Permission\Type\LabelInterface;
+use App\Contract\Entity\Role\Permission\Type\NameInterface;
 use App\Contract\Entity\PermissionGroup\CRM\LabelInterface as CrmPermissionGroupLabelInterface;
 use App\Contract\Entity\PermissionGroup\LabelInterface as PermissionGroupLabelInterface;
 use Illuminate\Support\ServiceProvider;

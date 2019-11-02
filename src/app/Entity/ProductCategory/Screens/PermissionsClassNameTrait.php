@@ -2,7 +2,7 @@
 
 namespace App\Entity\ProductCategory\Screens;
 
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as PermissionNameInterface;
+use App\Contract\Entity\ProductCategory\Permission\NameInterface as PermissionNameInterface;
 
 trait PermissionsClassNameTrait
 {

@@ -2,8 +2,8 @@
 
 namespace App\Contract\Entity\Permission\Menu\Main;
 
-use App\Contract\Entity\Permission\Crm\ProductCategory\NameInterface as ProductCategoryNameInterface;
-use \App\Contract\Entity\Permission\Crm\Product\NameInterface as ProductNameInterface;
+use App\Contract\Entity\ProductCategory\Permission\NameInterface as ProductCategoryNameInterface;
+use App\Contract\Entity\Product\Permission\NameInterface as ProductNameInterface;
 
 interface NestedPermissionInterface
 {

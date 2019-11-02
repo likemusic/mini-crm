@@ -173,6 +173,7 @@ return [
         \App\Framework\ServiceProviders\AppServiceProvider::class,
         \App\Framework\ServiceProviders\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+        \App\Framework\ServiceProviders\ViewComposersServiceProvider::class,
         \App\Framework\ServiceProviders\EventServiceProvider::class,
         \App\Framework\ServiceProviders\RouteServiceProvider::class,
         \App\Framework\ServiceProviders\PermissionServiceProvider::class,
