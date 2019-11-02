@@ -2,6 +2,10 @@
   color: rgba(28, 43, 54, 0.8);
 }
 
+.aside {
+  min-width: 16em;
+}
+
 .autologin a {
   color: #1c2b36;
 }
@@ -12,6 +16,20 @@
 
 .table tbody tr td {
   word-break: initial;
+}
+
+.admin-wrapper .admin-element h3 {
+  margin-bottom: 1em;
+}
+
+.admin-wrapper .admin-element ul {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.admin-wrapper .admin-element ul li {
+  margin: 1em 0;
+  list-style: none;
 }
 
 @media (min-width: 1200px) {

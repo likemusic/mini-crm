@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Section\MainPage;
 
+use Illuminate\Http\Request;
 use Orchid\Platform\Dashboard;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 use App\Contract\Common\IconNameInterface;
+
+use App\Menu\Main\Provider as MainMenuProvider;
 
 class PlatformScreen extends Screen
 {
@@ -17,7 +20,7 @@ class PlatformScreen extends Screen
      *
      * @var string
      */
-    public $name = 'Dashboard';
+    public $name = 'Главная';
 
     /**
      * Display header description.
@@ -25,6 +28,18 @@ class PlatformScreen extends Screen
      * @var string
      */
     public $description = 'Welcome';
+
+    /** @var MainMenuProvider */
+    private $mainMenuProvider;
+
+
+    public function __construct(
+        MainMenuProvider $mainMenuProvider,
+        ?Request $request = null)
+    {
+        $this->mainMenuProvider = $mainMenuProvider;
+        parent::__construct($request);
+    }
 
     /**
      * Query data.
@@ -36,7 +51,13 @@ class PlatformScreen extends Screen
     {
         return [
             'status' => Dashboard::checkUpdate(),
+            'menu' => $this->getMenu(),
         ];
+    }
+
+    private function getMenu()
+    {
+        return $this->mainMenuProvider->getMenuRenderedItems();
     }
 
     /**
@@ -47,13 +68,6 @@ class PlatformScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Link::make('Website')
-                ->href('http://orchid.software')
-                ->icon(IconNameInterface::GLOBE_ALT),
-
-            Link::make('GitHub')
-                ->href('https://github.com/orchidsoftware/platform')
-                ->icon(IconNameInterface::SOCIAL_GITHUB),
         ];
     }
 
@@ -65,8 +79,7 @@ class PlatformScreen extends Screen
     public function layout(): array
     {
         return [
-            Layout::view('platform::partials.update'),
-            Layout::view('platform::partials.welcome'),
+            Layout::view('sections.main'),
         ];
     }
 }
