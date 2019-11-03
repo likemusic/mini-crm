@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common;
+namespace App\Common\Route;
 
 use App\Contract\Entity\Base\Route\NameProviderInterface;
 use App\Contract\Entity\Base\Route\PathProviderInterface;

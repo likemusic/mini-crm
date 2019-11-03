@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Section\MainPage;
+namespace App\Entity\MainPage;
 
+use App\Menu\Main\Provider as MainMenuProvider;
 use Illuminate\Http\Request;
 use Orchid\Platform\Dashboard;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
-use App\Contract\Common\IconNameInterface;
-
-use App\Menu\Main\Provider as MainMenuProvider;
 
 class PlatformScreen extends Screen
 {

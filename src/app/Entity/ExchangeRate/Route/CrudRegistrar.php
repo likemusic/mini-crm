@@ -5,7 +5,7 @@ namespace App\Entity\ExchangeRate\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\ExchangeRate\Route\NameProvider as RouteNameProvider;
 use App\Entity\ExchangeRate\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\ExchangeRate\Screens\EditScreen as EditScreen;
 use App\Entity\ExchangeRate\Screens\ModelBasedListScreen;
 

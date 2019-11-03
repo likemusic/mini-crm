@@ -8,6 +8,10 @@ trait DeleteTrait
 {
     protected function canDelete(): bool
     {
+        if (!$this->deletePermissionExists()) {
+            return false;
+        }
+
         $currentUser = $this->getCurrentUser();
         $permission = $this->getDeletePermission();
 
@@ -19,5 +23,12 @@ trait DeleteTrait
         $constantName = PermissionConstantNameInterface::DELETE;
 
         return $this->getPermissionClassConstant($constantName);
+    }
+
+    private function deletePermissionExists()
+    {
+        $constantName = PermissionConstantNameInterface::DELETE;
+
+        return $this->getPermissionClassConstantExists($constantName);
     }
 }

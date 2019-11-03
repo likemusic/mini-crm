@@ -13,6 +13,7 @@ class EntityNameByMenuItemNameProvider
         MenuItemNameInterface::USERS => EntityNameInterface::USER,
         MenuItemNameInterface::ROLES => EntityNameInterface::ROLE,
         MenuItemNameInterface::CURRENCIES => EntityNameInterface::CURRENCY,
+        MenuItemNameInterface::SETTINGS => EntityNameInterface::SETTINGS,
     ];
 
     public function getEntityNameByMenuItemName(string $menuItemName): string

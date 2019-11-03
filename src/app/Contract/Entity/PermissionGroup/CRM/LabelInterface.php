@@ -12,4 +12,6 @@ interface LabelInterface
     const USER = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::USER;
     const ROLE = PermissionGroupLabelInterface::CRM . ' > ' . EntityLabelInterface::ROLE;
     const CURRENCY = PermissionGroupLabelInterface::CRM .' > ' . EntityLabelInterface::CURRENCY;
+
+    const SETTINGS = PermissionGroupLabelInterface::CRM .' > ' . EntityLabelInterface::SETTINGS;
 }

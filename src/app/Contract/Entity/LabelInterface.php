@@ -19,4 +19,6 @@ interface LabelInterface
     const USER = 'Пользователь';
     const WAREHOUSE = 'Склад';
     const WALLET = 'Кошелек';
+
+    const SETTINGS = 'Настройки';
 }

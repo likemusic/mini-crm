@@ -5,7 +5,7 @@ namespace App\Entity\Currency\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Currency\Route\NameProvider as RouteNameProvider;
 use App\Entity\Currency\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\Currency\HttpControllers\Delete as DeleteController;
 use App\Entity\Currency\Screens\Edit\Create as CreateScreen;
 use App\Entity\Currency\Screens\Edit\Update as UpdateScreen;

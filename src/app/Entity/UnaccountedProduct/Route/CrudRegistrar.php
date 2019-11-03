@@ -5,7 +5,7 @@ namespace App\Entity\UnaccountedProduct\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\UnaccountedProduct\Route\NameProvider as RouteNameProvider;
 use App\Entity\UnaccountedProduct\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\UnaccountedProduct\Screens\EditScreen as EditScreen;
 use App\Entity\UnaccountedProduct\Screens\ModelBasedListScreen;
 

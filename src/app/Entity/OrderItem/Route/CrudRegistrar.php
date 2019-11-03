@@ -5,7 +5,7 @@ namespace App\Entity\OrderItem\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\OrderItem\Route\NameProvider as RouteNameProvider;
 use App\Entity\OrderItem\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\OrderItem\Screens\EditScreen as EditScreen;
 use App\Entity\OrderItem\Screens\ModelBasedListScreen;
 

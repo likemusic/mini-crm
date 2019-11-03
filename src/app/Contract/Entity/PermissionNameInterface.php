@@ -21,4 +21,6 @@ interface PermissionNameInterface
     const USER = BasePermissionNameInterface::CRM . '.' . EntityNameInterface::USER;
     const WAREHOUSE = BasePermissionNameInterface::CRM . '.' . EntityNameInterface::WAREHOUSE;
     const WALLET = BasePermissionNameInterface::CRM . '.' . EntityNameInterface::WALLET;
+
+    const SETTINGS = BasePermissionNameInterface::CRM . '.' . EntityNameInterface::SETTINGS;
 }

@@ -31,6 +31,7 @@ class PermissionsProviderProvider
         EntityNameInterface::ROLE => PermissionProviderClassNameInterface::ROLE,
         EntityNameInterface::WAREHOUSE => PermissionProviderClassNameInterface::WAREHOUSE,
         EntityNameInterface::USER => PermissionProviderClassNameInterface::USER,
+        EntityNameInterface::SETTINGS => PermissionProviderClassNameInterface::SETTINGS,
     ];
 
     public function getPermissionProviderByName(string $entityName): PermissionsProviderInterface

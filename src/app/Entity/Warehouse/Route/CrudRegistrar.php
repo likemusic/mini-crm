@@ -5,7 +5,7 @@ namespace App\Entity\Warehouse\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Warehouse\Route\NameProvider as RouteNameProvider;
 use App\Entity\Warehouse\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\Warehouse\Screens\EditScreen as EditScreen;
 use App\Entity\Warehouse\Screens\ModelBasedListScreen;
 

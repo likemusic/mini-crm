@@ -28,7 +28,10 @@ interface IconNameInterface
     const SAVE = 'icon-save';
     const OPEN = 'icon-open';
     const LOGIN = 'icon-login';
-    const LOCK_OPEN = 'lock-open';
+    const LOCK_OPEN = 'icon-lock-open';
+    const MODULES = 'icon-modules';
+    const SETTINGS = 'icon-settings';
+    const CONFIG = 'icon-config';
 
     const COMPASS = 'icon-compass';
     const HEART = 'icon-heart';

@@ -2,10 +2,11 @@
 
 namespace App\Contract\Entity\Permission\Base\Entity;
 
-interface LabelInterface
+use App\Contract\Entity\Permission\Base\Entity\Label\ListInterface;
+use App\Contract\Entity\Permission\Base\Entity\Label\CreateInterface;
+use App\Contract\Entity\Permission\Base\Entity\Label\UpdateInterface;
+use App\Contract\Entity\Permission\Base\Entity\Label\DeleteInterface;
+
+interface LabelInterface extends ListInterface, CreateInterface, UpdateInterface, DeleteInterface
 {
-    const LIST = 'Список';
-    const CREATE = 'Создание';
-    const UPDATE = 'Изменение';
-    const DELETE = 'Удаление';
 }

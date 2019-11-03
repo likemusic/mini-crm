@@ -19,4 +19,6 @@ interface NameInterface
     const USER = 'user';
     const WAREHOUSE = 'warehouse';
     const WALLET = 'wallet';
+
+    const SETTINGS = 'settings';
 }

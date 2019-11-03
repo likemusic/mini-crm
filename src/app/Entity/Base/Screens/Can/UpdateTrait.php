@@ -8,6 +8,10 @@ trait UpdateTrait
 {
     protected function canUpdate(): bool
     {
+        if (!$this->updatePermissionExists()) {
+            return false;
+        }
+
         $currentUser = $this->getCurrentUser();
         $permission = $this->getUpdatePermission();
 
@@ -19,5 +23,12 @@ trait UpdateTrait
         $constantName = PermissionConstantNameInterface::UPDATE;
 
         return $this->getPermissionClassConstant($constantName);
+    }
+
+    private function updatePermissionExists()
+    {
+        $constantName = PermissionConstantNameInterface::UPDATE;
+
+        return $this->getPermissionClassConstantExists($constantName);
     }
 }

@@ -11,5 +11,6 @@ interface ItemNameToPermissionNameMapInterface
         RootMenuItemNameInterface::PRODUCT_CATALOG => PermissionNameInterface::PRODUCT_CATALOG,
         RootMenuItemNameInterface::USERS_AND_ROLES => PermissionNameInterface::USERS_AND_ROLES,
         RootMenuItemNameInterface::CURRENCIES_AND_EXCHANGE_RATES => PermissionNameInterface::CURRENCIES_AND_EXCHANGE_RATES,
+        RootMenuItemNameInterface::OTHER => PermissionNameInterface::OTHER,
     ];
 }

@@ -24,6 +24,10 @@ class StructureProvider implements StructureProviderInterface
 
             RootNameInterface::CURRENCIES_AND_EXCHANGE_RATES => [
                 NotRootNameInterface::CURRENCIES,
+            ],
+
+            RootNameInterface::OTHER => [
+                NotRootNameInterface::SETTINGS,
             ]
         ];
     }

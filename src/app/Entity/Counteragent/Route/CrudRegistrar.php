@@ -5,7 +5,7 @@ namespace App\Entity\Counteragent\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Counteragent\Route\NameProvider as RouteNameProvider;
 use App\Entity\Counteragent\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\Counteragent\Screens\EditScreen as EditScreen;
 use App\Entity\Counteragent\Screens\ModelBasedListScreen;
 

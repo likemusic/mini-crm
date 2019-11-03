@@ -5,7 +5,7 @@ namespace App\Entity\Product\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Product\Route\NameProvider as RouteNameProvider;
 use App\Entity\Product\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\Product\HttpControllers\Delete as DeleteController;
 use App\Entity\Product\Screens\Edit\Create as CreateScreen;
 use App\Entity\Product\Screens\Edit\Update as UpdateScreen;

@@ -20,8 +20,9 @@ use App\Entity\User\Route\CrudRegistrar as UserRouteRegistrar;
 use App\Entity\Wallet\Route\CrudRegistrar as WalletRouteRegistrar;
 use App\Entity\Warehouse\Route\CrudRegistrar as WarehouseRouteRegistrar;
 use App\Common\Page\Element\Screen\Form\Field\RelationWithData\Controller as RelationWithDataController;
-use App\Section\MainPage\PlatformScreen;
+use App\Entity\MainPage\PlatformScreen;
 use Illuminate\Routing\RouteFileRegistrar;
+use App\Common\Route\CrmRoutesRegistrar;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,36 +38,43 @@ use Illuminate\Routing\RouteFileRegistrar;
 /** @var RouteFileRegistrar $this */
 
 // RelationWithData
-$this->router->post('relation-with-data', [RelationWithDataController::class, 'view'])
+$router = $this->router;
+
+$router->post('relation-with-data', [RelationWithDataController::class, 'view'])
     ->name(PlatformSystemRouteNameInterface::RELATION_WITH_DATA);
 
 // Main
-$this->router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
+$router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
+
+// Crm Entities Routes
+/** @var CrmRoutesRegistrar $crmRoutesRegistrar */
+$crmRoutesRegistrar = app(CrmRoutesRegistrar::class);
+$crmRoutesRegistrar->registerRoutes($this->router);
 
 // Roles
 /** @var RoleRouteRegistrar $userRouteRegistrar */
-$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
-$roleRouteRegistrar->registerRoutes($this->router);
+//$roleRouteRegistrar = App::make(RoleRouteRegistrar::class);
+//$roleRouteRegistrar->registerRoutes($this->router);
 
 // Users
 /** @var UserRouteRegistrar $userRouteRegistrar */
-$userRouteRegistrar = App::make(UserRouteRegistrar::class);
-$userRouteRegistrar->registerRoutes($this->router);
+//$userRouteRegistrar = App::make(UserRouteRegistrar::class);
+//$userRouteRegistrar->registerRoutes($this->router);
 
 // Product Category
 /** @var ProductCategoryRouteRegistrar $productCategoryRouteRegistrar */
-$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
-$productCategoryRouteRegistrar->registerRoutes($this->router);
+//$productCategoryRouteRegistrar = App::make(ProductCategoryRouteRegistrar::class);
+//$productCategoryRouteRegistrar->registerRoutes($this->router);
 
 // Product
 /** @var ProductRouteRegistrar $productRouteRegistrar */
-$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
-$productRouteRegistrar->registerRoutes($this->router);
+//$productRouteRegistrar = App::make(ProductRouteRegistrar::class);
+//$productRouteRegistrar->registerRoutes($this->router);
 
 // Currency
 /** @var CurrencyRouteRegistrar $currencyRouteRegistrar */
-$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
-$currencyRouteRegistrar->registerRoutes($this->router);
+//$currencyRouteRegistrar = App::make(CurrencyRouteRegistrar::class);
+//$currencyRouteRegistrar->registerRoutes($this->router);
 
 /** @var PharmacyRouteRegistrar $pharmacyRouteRegistrar */
 //$pharmacyRouteRegistrar = App::make(PharmacyRouteRegistrar::class);

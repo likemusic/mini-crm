@@ -5,7 +5,7 @@ namespace App\Entity\Role\Route;
 use App\Entity\Base\Route\Registrar\CrudRegistrar as BaseRegistrar;
 use App\Entity\Role\Route\NameProvider as RouteNameProvider;
 use App\Entity\Role\Route\PathProvider as RoutePathProvider;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use App\Entity\Role\HttpControllers\Delete as DeleteController;
 //use App\Orchid\Screens\Role\Edit\Create as CreateScreen;
 //use App\Orchid\Screens\Role\Edit\Update as UpdateScreen;

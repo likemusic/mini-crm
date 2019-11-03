@@ -8,6 +8,7 @@ use App\Entity\ProductCategory\MainMenu\Registrar as ProductCategoryMainMenuRegi
 use App\Entity\User\MainMenu\Registrar as UserMainMenuRegistrar;
 use App\Entity\Role\MainMenu\Registrar as RoleMainMenuRegistrar;
 use App\Entity\Currency\MainMenu\Registrar as CurrencyMainMenuRegistrar;
+use App\Entity\Settings\MainMenu\Registrar as SettingsMainMenuRegistrar;
 
 interface RegistrarClassNameInterface
 {
@@ -16,4 +17,5 @@ interface RegistrarClassNameInterface
     const USERS = UserMainMenuRegistrar::class;
     const ROLES = RoleMainMenuRegistrar::class;
     const CURRENCIES = CurrencyMainMenuRegistrar::class;
+    const SETTINGS = SettingsMainMenuRegistrar::class;
 }

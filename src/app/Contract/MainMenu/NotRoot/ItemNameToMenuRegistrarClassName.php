@@ -12,5 +12,6 @@ interface ItemNameToMenuRegistrarClassName
         NotRootMenuItemNameInterface::USERS => RegistrarClassNameInterface::USERS,
         NotRootMenuItemNameInterface::ROLES => RegistrarClassNameInterface::ROLES,
         NotRootMenuItemNameInterface::CURRENCIES => RegistrarClassNameInterface::CURRENCIES,
+        NotRootMenuItemNameInterface::SETTINGS => RegistrarClassNameInterface::SETTINGS,
     ];
 }

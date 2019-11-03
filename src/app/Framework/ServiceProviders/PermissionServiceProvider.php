@@ -8,6 +8,8 @@ use App\Contract\Entity\Product\Permission\LabelInterface as ProductPermissionLa
 use App\Contract\Entity\Product\Permission\NameInterface as ProductPermissionNameInterface;
 use App\Contract\Entity\Currency\Permission\LabelInterface as CurrencyPermissionLabelInterface;
 use App\Contract\Entity\Currency\Permission\NameInterface as CurrencyPermissionNameInterface;
+use App\Contract\Entity\Settings\Permission\LabelInterface as SettingsPermissionLabelInterface;
+use App\Contract\Entity\Settings\Permission\NameInterface as SettingsPermissionNameInterface;
 use App\Contract\Entity\User\Permission\LabelInterface as UserPermissionLabelInterface;
 use App\Contract\Entity\User\Permission\NameInterface as UserPermissionNameInterface;
 use App\Contract\Entity\Role\Permission\LabelInterface as RolePermissionLabelInterface;
@@ -34,6 +36,7 @@ class PermissionServiceProvider extends ServiceProvider
         $this->registerUserPermissions($dashboard);
         $this->registerRolePermissions($dashboard);
         $this->registerCurrencyPermissions($dashboard);
+        $this->registerOtherPermissions($dashboard);
     }
 
     private function registerCrmPermissions(Dashboard $dashboard)
@@ -119,6 +122,16 @@ class PermissionServiceProvider extends ServiceProvider
             CrmPermissionGroupLabelInterface::CURRENCY,
             CurrencyPermissionNameInterface::class,
             CurrencyPermissionLabelInterface::class
+        );
+    }
+
+    private function registerOtherPermissions(Dashboard $dashboard)
+    {
+        $this->registerPermissionGroup(
+            $dashboard,
+            CrmPermissionGroupLabelInterface::SETTINGS,
+            SettingsPermissionNameInterface::class,
+            SettingsPermissionLabelInterface::class
         );
     }
 }

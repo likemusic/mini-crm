@@ -5,7 +5,7 @@ namespace App\Entity\Base\Route\Registrar;
 use App\Contract\Entity\Base\Route\NameProviderInterface;
 use App\Contract\Entity\Base\Route\PathProviderInterface;
 use App\Contract\Entity\Base\Route\RegistrarInterface;
-use App\Common\RouteRegistrarHelper;
+use App\Common\Route\RouteRegistrarHelper;
 use Illuminate\Contracts\Routing\Registrar as RoutingRegistrarInterface;
 
 class ListableRegistrar implements RegistrarInterface

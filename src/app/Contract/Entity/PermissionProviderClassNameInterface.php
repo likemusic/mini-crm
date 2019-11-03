@@ -14,6 +14,7 @@ use App\Entity\ProductCategory\PermissionsProvider as ProductCategoryPermissions
 use App\Entity\Role\PermissionsProvider as RolePermissionsProvider;
 use App\Entity\Warehouse\PermissionsProvider as WarehousePermissionsProvider;
 use App\Entity\User\PermissionsProvider as UserPermissionsProvider;
+use App\Entity\Settings\PermissionsProvider as SettingsPermissionsProvider;
 
 interface PermissionProviderClassNameInterface
 {
@@ -32,4 +33,5 @@ interface PermissionProviderClassNameInterface
     const ROLE = RolePermissionsProvider::class;
     const WAREHOUSE = WarehousePermissionsProvider::class;
     const USER = UserPermissionsProvider::class;
+    const SETTINGS = SettingsPermissionsProvider::class;
 }

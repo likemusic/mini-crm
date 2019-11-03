@@ -9,4 +9,5 @@ interface NameInterface
     const USERS = 'users';
     const ROLES = 'roles';
     const CURRENCIES = 'currencies';
+    const SETTINGS = 'settings';
 }
