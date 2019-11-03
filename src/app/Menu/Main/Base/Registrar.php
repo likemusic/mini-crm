@@ -4,9 +4,9 @@ namespace App\Menu\Main\Base;
 
 use App\Common\User\GetCurrentUserTrait;
 use App\Contract\MainMenu\ItemData\BaseInterface as MenuItemDataInterface;
+use App\Contract\MainMenu\RegistrarInterface;
 use Orchid\Platform\ItemMenu;
 use Orchid\Platform\Menu;
-use App\Contract\MainMenu\RegistrarInterface;
 
 abstract class Registrar implements RegistrarInterface
 {
@@ -22,21 +22,7 @@ abstract class Registrar implements RegistrarInterface
         $this->itemData = $itemData;
     }
 
-    protected function getMenuPermission(): string
-    {
-        return $this->itemData->getPermission();
-    }
-
-    abstract protected function canAccessMenu(string $menuPermission): bool;
-
-    protected function isCurrentUserHasAccess(string $permisssion)
-    {
-        $currentUser = $this->getCurrentUser();
-
-        return $currentUser->hasAccess($permisssion);
-    }
-
-    protected function addMenu(Menu $menu, string $place = Menu::MAIN)
+    public function addMenu(Menu $menu, string $place = Menu::MAIN)
     {
         $menuItem = $this->getMenuItem();
 
@@ -75,15 +61,6 @@ abstract class Registrar implements RegistrarInterface
         return $this->itemData->getSlug();
     }
 
-    public function registerIfHasAccess(Menu $menu, string $parentSlug = Menu::MAIN)
-    {
-        $permission = $this->getMenuPermission();
-
-        if ($this->canAccessMenu($permission)) {
-            $this->addMenu($menu, $parentSlug);
-        }
-    }
-
     protected function createMenuItem(
         string $label,
         string $slug,
@@ -114,7 +91,10 @@ abstract class Registrar implements RegistrarInterface
         $menu->add($place, $menuItem);
     }
 
-    protected function createAndAddMenuItem(Menu $menu, string $slug)
+    protected function isCurrentUserHasAccess(string $permisssion)
     {
+        $currentUser = $this->getCurrentUser();
+
+        return $currentUser->hasAccess($permisssion);
     }
 }

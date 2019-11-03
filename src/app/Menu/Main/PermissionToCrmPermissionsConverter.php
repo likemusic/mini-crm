@@ -2,10 +2,9 @@
 
 namespace App\Menu\Main;
 
-use App\Contract\Entity\Base\PermissionsProviderInterface;
-use App\DataProvider\Entity\PermissionsProviderProvider;
-use App\Menu\Main\Root\ItemNameByPermissionNameProvider;
 use App\Menu\Main\NotRoot\EntityNameByMenuItemNameProvider;
+use App\Menu\Main\NotRoot\MenuEntityPermissionByMenuItemNameProvider;
+use App\Menu\Main\Root\ItemNameByPermissionNameProvider;
 
 class PermissionToCrmPermissionsConverter
 {
@@ -15,22 +14,22 @@ class PermissionToCrmPermissionsConverter
     /** @var ChildrenItemNamesProvider */
     private $childrenItemNamesProvider;
 
-    /** @var PermissionsProviderProvider */
-    private $permissionsProviderProvider;
-
     /** @var EntityNameByMenuItemNameProvider */
     private $entityNameByMenuItemNameProvider;
 
+    /** @var MenuEntityPermissionByMenuItemNameProvider */
+    private $entityPermissionByMenuItemNameProvider;
+
     public function __construct(
         ItemNameByPermissionNameProvider $itemNameByPermissionNameProvider,
+        MenuEntityPermissionByMenuItemNameProvider $userPermissionByMenuItemNameProvider,
         ChildrenItemNamesProvider $childrenItemNamesProvider,
-        PermissionsProviderProvider $permissionsProviderProvider,
         EntityNameByMenuItemNameProvider $entityNameByMenuItemNameProvider
     )
     {
         $this->itemNameByPermissionNameProvider = $itemNameByPermissionNameProvider;
+        $this->entityPermissionByMenuItemNameProvider = $userPermissionByMenuItemNameProvider;
         $this->childrenItemNamesProvider = $childrenItemNamesProvider;
-        $this->permissionsProviderProvider = $permissionsProviderProvider;
         $this->entityNameByMenuItemNameProvider = $entityNameByMenuItemNameProvider;
     }
 
@@ -43,29 +42,6 @@ class PermissionToCrmPermissionsConverter
         return $childPermissions;
     }
 
-    private function getPermissionsByMenuChildItemsNames(array $childMenuItemNames): array
-    {
-        $entityNames = $this->getEntityNamesByMenuChildItemNames($childMenuItemNames);
-
-        return $this->getMenuPermissionsByEntityNames($entityNames);
-    }
-
-    private function getEntityNamesByMenuChildItemNames(array $childMenuItemNames): array
-    {
-        $ret = [];
-
-        foreach ($childMenuItemNames as $childMenuItemName) {
-            $ret[] = $this->getEntityNameByMenuChildItemName($childMenuItemName);
-        }
-
-        return $ret;
-    }
-
-    private function getEntityNameByMenuChildItemName(string $childMenuItemName): string
-    {
-        return $this->entityNameByMenuItemNameProvider->getEntityNameByMenuItemName($childMenuItemName);
-    }
-
     private function getRootMenuNameByPermission(string $mainMenuPermission): string
     {
         return $this->itemNameByPermissionNameProvider->getItemNameByPermissionName($mainMenuPermission);
@@ -76,35 +52,19 @@ class PermissionToCrmPermissionsConverter
         return $this->childrenItemNamesProvider->getChildrenItemNamesByName($menuItemName);
     }
 
-    /**
-     * @param array $entityNames
-     * @return string[]
-     */
-    private function getMenuPermissionsByEntityNames(array $entityNames): array
+    private function getPermissionsByMenuChildItemsNames(array $childMenuItemNames): array
     {
-        $ret = [];
+        $permissions = [];
 
-        foreach ($entityNames as $entityName) {
-            $ret[] = $this->getMenuPermissionByEntityName($entityName);
+        foreach ($childMenuItemNames as $childMenuItemName) {
+            $permissions[] = $this->getEntityPermissionByMenuItemName($childMenuItemName);
         }
 
-        return $ret;
+        return $permissions;
     }
 
-    private function getMenuPermissionByEntityName(string $entityName): string
+    private function getEntityPermissionByMenuItemName(string $childMenuItemName)
     {
-        return $this->getEntityListPermissionByEntityName($entityName);
-    }
-
-    private function getEntityListPermissionByEntityName(string $entityName)
-    {
-        $entityPermissionProvider = $this->getEntityPermissionProvider($entityName);
-
-        return $entityPermissionProvider->getList();
-    }
-
-    private function getEntityPermissionProvider(string $entityName): PermissionsProviderInterface
-    {
-        return $this->permissionsProviderProvider->getPermissionProviderByName($entityName);
+        return $this->entityPermissionByMenuItemNameProvider->getEntityPermissionByMenuItemName($childMenuItemName);
     }
 }

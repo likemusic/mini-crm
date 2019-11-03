@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Menu\Main\Root;
+namespace App\Menu\Main\Root\AccessResolver;
 
-use App\Common\User\GetCurrentUserTrait;
+use App\Menu\Main\Base\AccessResolver\ByMenuItemPermission as BaseByMenuItemPermission;
 use App\Menu\Main\PermissionToCrmPermissionsConverter;
 
-class AccessResolver
+class ByMenuItemPermission extends BaseByMenuItemPermission
 {
-    use GetCurrentUserTrait;
-
     /** @var PermissionToCrmPermissionsConverter */
     private $toCrmPermissionsConverter;
 
@@ -17,9 +15,9 @@ class AccessResolver
         $this->toCrmPermissionsConverter = $toCrmPermissionsConverter;
     }
 
-    public function canAccess(string $rootMenuItemPermission): bool
+    public function canAccess(string $menuItemPermission): bool
     {
-        $userPermissions = $this->getUserPermissionsByRootMenuItemPermission($rootMenuItemPermission);
+        $userPermissions = $this->getUserPermissionsByRootMenuItemPermission($menuItemPermission);
 
         foreach ($userPermissions as $permission) {
             if ($this->isCurrentUserHasAccess($permission)) {
@@ -29,14 +27,6 @@ class AccessResolver
 
         return false;
     }
-
-    protected function isCurrentUserHasAccess(string $permission)
-    {
-        $currentUser = $this->getCurrentUser();
-
-        return $currentUser->hasAccess($permission);
-    }
-
 
     private function getUserPermissionsByRootMenuItemPermission(string $rootMenuItemPermission): array
     {

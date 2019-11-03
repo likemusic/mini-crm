@@ -2,46 +2,29 @@
 
 namespace App\Menu\Main\Root\ProductCatalog;
 
-use App\Contract\MainMenu\Root\PermissionNameInterface as MainMenuPermissionNameInterface;
-use App\Menu\Main\PermissionToCrmPermissionsConverter as MainMenuPermissionToCrmPermissionsConverter;
+use App\Menu\Main\ChildrenItemNamesProvider;
+use App\Menu\Main\NotRoot\AccessResolver\ByMenuItemName as ByMenuItemNameAccessResolver;
+use App\Menu\Main\NotRoot\MenuRegistrarProvider as NotRootMenuRegistrarProvider;
 use App\Menu\Main\Root\Base\Registrar as BaseRegistrar;
+use App\Menu\Main\Root\ItemNameByMenuRegistrarProvider;
 use App\Menu\Main\Root\ProductCatalog\ItemData as MenuItemData;
-use App\Entity\Product\MainMenu\Registrar as ProductMenuRegistrar;
-use App\Entity\ProductCategory\MainMenu\Registrar as ProductCategoryMenuRegistrar;
 
 class Registrar extends BaseRegistrar
 {
-    /**
-     * @var ProductMenuRegistrar
-     */
-    private $productMenuRegistrar;
-
-    /** @var ProductCategoryMenuRegistrar */
-    private $productCategoryMenuRegistrar;
-
     public function __construct(
-        MainMenuPermissionToCrmPermissionsConverter $mainMenuPermissionToCrmPermissionsConverter,
         MenuItemData $itemData,
-        ProductMenuRegistrar $currencyMenuRegistrar,
-        ProductCategoryMenuRegistrar $exchangeRateMenuRegistrar
+        ItemNameByMenuRegistrarProvider $itemNameByMenuRegistrarProvider,
+        ChildrenItemNamesProvider $childrenItemNamesProvider,
+        NotRootMenuRegistrarProvider $notRootMenuRegistrarProvider,
+        ByMenuItemNameAccessResolver $byMenuItemNameAccessResolver
     )
     {
-        $this->productMenuRegistrar = $currencyMenuRegistrar;
-        $this->productCategoryMenuRegistrar = $exchangeRateMenuRegistrar;
-
-        parent::__construct($mainMenuPermissionToCrmPermissionsConverter, $itemData);
-    }
-
-    protected function getChildMenuRegistrars(): array
-    {
-        return [
-            $this->productMenuRegistrar,
-            $this->productCategoryMenuRegistrar,
-        ];
-    }
-
-    protected function getMenuPermission(): string
-    {
-        return MainMenuPermissionNameInterface::PRODUCT_CATALOG;
+        parent::__construct(
+            $itemData,
+            $itemNameByMenuRegistrarProvider,
+            $childrenItemNamesProvider,
+            $notRootMenuRegistrarProvider,
+            $byMenuItemNameAccessResolver
+        );
     }
 }

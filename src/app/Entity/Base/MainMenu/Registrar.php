@@ -19,11 +19,6 @@ abstract class Registrar extends ParentClass implements ChildInterface
         parent::__construct($itemData);
     }
 
-    protected function canAccessMenu(string $crmPermission): bool
-    {
-        return $this->isCurrentUserHasAccess($crmPermission);
-    }
-
     protected function getMenuItem()
     {
         $menuLabel = $this->getMenuLabel();

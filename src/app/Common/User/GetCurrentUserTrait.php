@@ -2,12 +2,12 @@
 
 namespace App\Common\User;
 
-use App\Entity\User\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 
 trait GetCurrentUserTrait
 {
-    protected function getCurrentUser(): User
+    protected function getCurrentUser(): Authenticatable
     {
         return Auth::user();
     }
