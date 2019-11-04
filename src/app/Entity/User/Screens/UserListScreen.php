@@ -8,7 +8,7 @@ use App\Orchid\Screens\User\Link;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
-use Orchid\Platform\Models\User;
+use App\Entity\User\User;
 use Orchid\Support\Facades\Alert;
 use App\Entity\User\Layouts\UserEditLayout;
 use App\Entity\User\Layouts\UserListLayout;

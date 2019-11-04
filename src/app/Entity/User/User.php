@@ -32,6 +32,13 @@ class User extends Authenticatable
         parent::__construct($attributes);
     }
 
+    public function getSubTitle(): string
+    {
+        $roles = $this->roles()->pluck('name')->toArray();
+
+        return implode(',', $roles);
+    }
+
     public function wallets()
     {
         return $this->morphMany(Wallet::class, WalletFieldNameInterface::OWNER);
