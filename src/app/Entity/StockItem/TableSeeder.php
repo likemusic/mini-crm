@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Entity\StockItem;
+
 use App\Contract\Entity\StockItem\Field\NameInterface;
 use App\Entity\Product\Product;
 use App\Entity\StockItem\StockItem;
 use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
 
-class StockItemsTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     const MAX_QUANTITY = 1000;
 

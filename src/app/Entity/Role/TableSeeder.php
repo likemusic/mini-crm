@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity\Role;
+
 use App\Contract\Entity\Role\Permission\Type\NameInterface as CrmPermissionNameInterface;
 use App\Contract\Entity\Role\Field\NameInterface;
 use App\Contract\Entity\Role\NameInterface as RoleNameInterface;
@@ -9,7 +11,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Orchid\Platform\Models\Role;
 
-class RolesTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     /**
      * @var PermissionsProvider

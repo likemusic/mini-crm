@@ -1,11 +1,13 @@
 <?php
 
+namespace App\Entity\Counteragent;
+
 use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
 use App\Entity\Counteragent\Counteragent;
 use App\Contract\Entity\Counteragent\Field\NameInterface;
 
-class CounteragentsTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

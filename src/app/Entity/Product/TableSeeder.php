@@ -1,9 +1,12 @@
 <?php
 
+namespace App\Entity\Product;
+
 use Illuminate\Database\Seeder;
 use App\Entity\Product\Product;
+use App\Contract\Entity\SeedCountInterface;
 
-class ProductsTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

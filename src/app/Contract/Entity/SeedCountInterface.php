@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Contract\Entity;
 
 interface SeedCountInterface
 {

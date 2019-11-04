@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity\User;
+
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
 use App\DataProvider\PermissionsProvider;
@@ -8,8 +10,9 @@ use App\Entity\Role\RoleRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Platform\Models\Role;
+use App\Contract\Entity\SeedCountInterface;
 
-class UsersTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     const DEFAULT_PASSWORD = 'qazxsw';
 
@@ -65,7 +68,7 @@ class UsersTableSeeder extends Seeder
         $courierRole = $this->getCourierRole();
         $maxCouriersCount = SeedCountInterface::USERS_COURIERS;
 
-        for($i = 0; $i < $maxCouriersCount; $i++) {
+        for ($i = 0; $i < $maxCouriersCount; $i++) {
             $this->addCourier($i, $courierRole);
         }
     }

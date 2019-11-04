@@ -1,11 +1,13 @@
 <?php
 
+namespace App\Entity\Warehouse;
+
 use App\Entity\Warehouse\Warehouse;
 use Illuminate\Database\Seeder;
 use App\Entity\Product\Product;
 use App\Contract\Entity\Warehouse\Field\NameInterface;
 
-class WarehousesTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

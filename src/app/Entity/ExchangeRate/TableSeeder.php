@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Entity\ExchangeRate;
+
 use App\Contract\Domain\CurrencyCodeInterface;
 use App\Contract\Entity\ExchangeRate\Field\NameInterface;
 use App\Entity\ExchangeRate\ExchangeRate;
 use App\Entity\Currency\CurrencyRepository;
 use Illuminate\Database\Seeder;
 
-class ExchangeRatesTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     private $currencyRepository;
 

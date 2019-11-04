@@ -1,10 +1,12 @@
 <?php
 
+namespace App\Entity\Currency;
+
 use App\Contract\Entity\Currency\Field\NameInterface;
 use App\Entity\Currency\Currency;
 use Illuminate\Database\Seeder;
 
-class CurrenciesTableSeeder extends Seeder
+class TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
