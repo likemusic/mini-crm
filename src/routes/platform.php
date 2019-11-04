@@ -44,7 +44,7 @@ $router->post('relation-with-data', [RelationWithDataController::class, 'view'])
     ->name(PlatformSystemRouteNameInterface::RELATION_WITH_DATA);
 
 // Main
-$router->screen('/main', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
+$router->screen('home', PlatformScreen::class)->name(PlatformRouteNameInterface::MAIN);
 
 // Crm Entities Routes
 /** @var CrmRoutesRegistrar $crmRoutesRegistrar */
