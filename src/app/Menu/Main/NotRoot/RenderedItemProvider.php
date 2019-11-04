@@ -17,6 +17,7 @@ class RenderedItemProvider extends BaseRenderedItemProvider
             NotRootNameInterface::USERS => ItemDataClassNameInterface::USERS,
             NotRootNameInterface::ROLES => ItemDataClassNameInterface::ROLES,
             NotRootNameInterface::CURRENCIES => ItemDataClassNameInterface::CURRENCIES,
+            NotRootNameInterface::SETTINGS => ItemDataClassNameInterface::SETTINGS,
         ];
     }
 }

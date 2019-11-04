@@ -24,9 +24,9 @@ abstract class RenderedItemProvider
         $this->container = $container;
     }
 
-    public function getRenderedItemByName($notRootItemName)
+    public function getRenderedItemByName($menuItemName)
     {
-        $className = $this->getClassNameByName($notRootItemName);
+        $className = $this->getClassNameByName($menuItemName);
 
         return $this->getInstanceByClassName($className);
     }
