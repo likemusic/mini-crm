@@ -2,12 +2,12 @@
 
 namespace App\Contract\Entity\Role;
 
-
 interface SlugInterface
 {
     const SUPER_ADMIN = 'superadmin';
     const ADMIN = 'admin';
+    const DIRECTOR = 'director';
     const COURIER = 'courier';
-    const ORDER_OPERATOR = 'order_operator';
+    const OPERATOR = 'operator';
     const WAREHOUSEMAN = 'warehouseman';
 }

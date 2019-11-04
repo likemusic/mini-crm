@@ -39,38 +39,71 @@ class TableSeeder extends Seeder
      */
     public function run()
     {
-        $this->addAdmin();
-        $this->addCouriers();
-        $this->addOperator();
-        $this->addWarehouseman();
+        $userSeeders = $this->getPerRolesUsersSeeders();
+        $this->runSeeders($userSeeders);
+//        $this->addAdmins();
+//        $this->addCouriers();
+//        $this->addOperator();
+//        $this->addWarehouseman();
     }
 
-    private function addAdmin()
+    private function getPerRolesUsersSeeders()
     {
-        $name = 'admin';
-        $email = env('SEED_ADMIN_EMAIL', 'admin@test.loc');
-        $password = env('SEED_ADMIN_PASSWORD', 'password');
+        $roleSlugs = $this->getRolesSlugs();
 
-        $this->addAdminUserByCommand($name, $email, $password);
+        return $this->getUsersSeederByRoleSlugs($roleSlugs);
     }
 
-    private function addAdminUserByCommand($name, $email, $password)
+
+
+    private function getRolesSlugs()
     {
-        Artisan::call('orchid:admin', [
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
-        ]);
+        return $this->roleRepository->getSlugs();
     }
+
+//    private function addAdmins()
+//    {
+//        $courierRole = $this->getAdminRole();
+//        $maxCouriersCount = SeedCountInterface::USERS_PER_ROLE;
+//
+//        for ($i = 0; $i < $maxCouriersCount; $i++) {
+//            $this->addAdmin($i+1, $courierRole);
+//        }
+//    }
+
+//    private function addAdmin()
+//    {
+//        $name = 'admin';
+//        $email = env('SEED_ADMIN_EMAIL', 'admin@test.loc');
+//        $password = env('SEED_ADMIN_PASSWORD', 'password');
+//
+//        $this->addAdminUserByCommand($name, $email, $password);
+//    }
+
+//    private function addAdminUserByCommand($name, $email, $password)
+//    {
+//        Artisan::call('orchid:admin', [
+//            'name' => $name,
+//            'email' => $email,
+//            'password' => $password,
+//        ]);
+//    }
 
     private function addCouriers()
     {
         $courierRole = $this->getCourierRole();
-        $maxCouriersCount = SeedCountInterface::USERS_COURIERS;
+        $maxCouriersCount = SeedCountInterface::USERS_PER_ROLE;
 
         for ($i = 0; $i < $maxCouriersCount; $i++) {
-            $this->addCourier($i, $courierRole);
+            $this->addCourier($i+1, $courierRole);
         }
+    }
+
+    private function getAdminRole(): Role
+    {
+        $courierRoleSlug = RoleSlugInterface::ADMIN;
+
+        return $this->getRoleBySlug($courierRoleSlug);
     }
 
     private function getCourierRole(): Role
@@ -83,6 +116,15 @@ class TableSeeder extends Seeder
     private function getRoleBySlug(string $roleSlug): Role
     {
         return $this->roleRepository->getRoleBySlug($roleSlug);
+    }
+
+    private function addAdmin($i, $adminRole)
+    {
+        $name = "Admin {$i}";
+        $email = "admin{$i}@test.loc";
+        $password = self::DEFAULT_PASSWORD;
+
+        $this->addUser($name, $email, $password, $adminRole);
     }
 
     private function addCourier($i, $courierRole)
@@ -119,7 +161,7 @@ class TableSeeder extends Seeder
 
     private function getOperatorRole(): Role
     {
-        $courierRoleSlug = RoleSlugInterface::ORDER_OPERATOR;
+        $courierRoleSlug = RoleSlugInterface::OPERATOR;
 
         return $this->getRoleBySlug($courierRoleSlug);
     }

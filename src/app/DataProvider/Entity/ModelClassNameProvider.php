@@ -2,24 +2,22 @@
 
 namespace App\DataProvider\Entity;
 
-use App\Contract\Entity\NameInterface as EntityNameInterface;
+use App\Base\DataProvider\DataProvider;
 use App\Contract\Entity\ClassNameInterface;
+use App\Contract\Entity\NameInterface as EntityNameInterface;
 
-class ModelClassNameProvider
+class ModelClassNameProvider extends DataProvider
 {
-    private $entityToModelClassName = [
-        EntityNameInterface::PRODUCT => ClassNameInterface::PRODUCT,
-        EntityNameInterface::ROLE => ClassNameInterface::ROLE,
-    ];
-
     public function getClassNameByEntityCode(string $entityCode)
     {
-        $map = $this->entityToModelClassName;
+        return $this->getValueByKey($entityCode);
+    }
 
-        if (!array_key_exists($entityCode, $map)) {
-            throw new \Exception('Invalid entity code: '. $entityCode);
-        }
-
-        return $map[$entityCode];
+    protected function getMap(): array
+    {
+        return [
+            EntityNameInterface::PRODUCT => ClassNameInterface::PRODUCT,
+            EntityNameInterface::ROLE => ClassNameInterface::ROLE,
+        ];
     }
 }

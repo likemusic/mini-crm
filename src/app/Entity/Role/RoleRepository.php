@@ -20,6 +20,11 @@ class RoleRepository
         $this->model = $role;
     }
 
+    public function getSlugs(): string
+    {
+        $this->model->newQuery()->pluck(NameInterface::NAME)->toArray();
+    }
+
     public function getRoleIdBySlug($slug): int
     {
         $idFieldName = NameInterface::ID;

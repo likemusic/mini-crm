@@ -4,7 +4,7 @@ namespace App\Common\Route;
 
 use App\Contract\Entity\Base\Route\RegistrarInterface as RouteRegistrarInterface;
 use App\DataProvider\Entity\Names\EnabledNamesProvider as EnabledEntityNamesProvider;
-use App\DataProvider\Entity\RouteRegistrarProvider;
+use App\EntityMeta\DataProvider\ByName\RouteRegistrar\InstanceProvider as  RouteRegistrarProvider;
 use Illuminate\Routing\Router;
 
 class CrmRoutesRegistrar
@@ -59,7 +59,7 @@ class CrmRoutesRegistrar
 
     private function getRouteRegistrarByEntityName(string $entityName): RouteRegistrarInterface
     {
-        return $this->routeRegistrarProvider->getRouteRegistrarByEntityName($entityName);
+        return $this->routeRegistrarProvider->getTypedValueByKey($entityName);
     }
 
     private function applyRouteRegistrars(Router $router, $routeRegistrars)

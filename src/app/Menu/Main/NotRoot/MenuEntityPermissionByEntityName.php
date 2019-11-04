@@ -2,7 +2,7 @@
 
 namespace App\Menu\Main\NotRoot;
 
-use App\DataProvider\Entity\PermissionsProviderProvider;
+use App\EntityMeta\DataProvider\ByName\PermissionProvider\InstanceProvider as PermissionsProviderProvider;
 use App\Contract\Entity\Base\PermissionsProviderInterface;
 
 class MenuEntityPermissionByEntityName
@@ -28,6 +28,6 @@ class MenuEntityPermissionByEntityName
 
     private function getEntityPermissionProvider(string $entityName): PermissionsProviderInterface
     {
-        return $this->permissionsProviderProvider->getPermissionProviderByName($entityName);
+        return $this->permissionsProviderProvider->getValueByKey($entityName);
     }
 }

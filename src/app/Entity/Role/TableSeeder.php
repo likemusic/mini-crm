@@ -56,7 +56,7 @@ class TableSeeder extends Seeder
             ],
             [
                 NameInterface::NAME => RoleNameInterface::ORDER_OPERATOR,
-                NameInterface::SLUG => RoleSlugInterface::ORDER_OPERATOR,
+                NameInterface::SLUG => RoleSlugInterface::OPERATOR,
                 NameInterface::PERMISSIONS => [CrmPermissionNameInterface::ORDER_OPERATOR => true],
             ],
         ];
