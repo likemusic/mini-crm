@@ -10,6 +10,7 @@ use App\Contract\Entity\User\Field\NameInterface;
 use App\Contract\Entity\Wallet\Field\NameInterface as WalletFieldNameInterface;
 use App\Entity\User\UserRepository;
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
+use App\Contract\Entity\Role\Field\NameInterface as RoleFieldNameInterface;
 
 class User extends Authenticatable
 {
@@ -34,9 +35,9 @@ class User extends Authenticatable
 
     public function getSubTitle(): string
     {
-        $roles = $this->roles()->pluck('name')->toArray();
+        $roles = $this->roles()->pluck(RoleFieldNameInterface::NAME)->toArray();
 
-        return implode(',', $roles);
+        return implode(', ', $roles);
     }
 
     public function wallets()
