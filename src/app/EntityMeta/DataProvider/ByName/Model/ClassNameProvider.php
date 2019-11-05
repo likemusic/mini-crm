@@ -1,14 +1,19 @@
 <?php
 
-namespace App\DataProvider\Entity;
+namespace App\EntityMeta\DataProvider\ByName\Model;
 
 use App\Base\DataProvider\DataProvider;
 use App\Contract\Entity\ClassNameInterface;
 use App\Contract\Entity\NameInterface as EntityNameInterface;
 
-class ModelClassNameProvider extends DataProvider
+class ClassNameProvider extends DataProvider
 {
     public function getClassNameByEntityCode(string $entityCode)
+    {
+        return $this->getValueByKey($entityCode);
+    }
+
+    public function getTypedValueByKey($entityCode): string
     {
         return $this->getValueByKey($entityCode);
     }
