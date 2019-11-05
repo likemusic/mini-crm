@@ -6,7 +6,6 @@ use App\Base\DataProvider\ByClassNameProviderInstanceProvider;
 use App\Contract\Entity\Base\Route\RegistrarInterface;
 use Illuminate\Contracts\Container\Container;
 
-
 class InstanceProvider extends ByClassNameProviderInstanceProvider
 {
     public function __construct(ClassNameProvider $classNameProvider, Container $container)

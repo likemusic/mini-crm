@@ -1,11 +1,10 @@
 <?php
 
-
-namespace App\DataProvider\Entity\Names;
+namespace App\EntityMeta\DataProvider\Names;
 
 use App\Contract\Entity\DisabledNamesInterface;
 
-class DisabledEntitiesNamesProvider
+class DisabledNamesProvider
 {
     public function getDisabledEntitiesNames()
     {

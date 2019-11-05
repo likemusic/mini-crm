@@ -1,11 +1,11 @@
 <?php
 
-namespace App\DataProvider\Entity;
+namespace App\EntityMeta\DataProvider\Names;
 
 use App\Contract\Entity\NameInterface as EntityNameInterface;
 use App\Common\ReflectionHelper;
 
-class NamesProvider
+class AllNamesProvider
 {
     private $reflectionHelper;
 
