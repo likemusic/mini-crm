@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataProvider;
+namespace App\EntityMeta\DataProvider;
 
 use Illuminate\Support\Collection;
 use Orchid\Platform\Dashboard;

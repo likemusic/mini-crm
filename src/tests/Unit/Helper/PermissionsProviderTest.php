@@ -5,7 +5,7 @@ namespace Tests\Unit\Helper;
 use Tests\TestCase;
 use Tests\SubjectTestCase;
 
-use App\DataProvider\PermissionsProvider;
+use App\EntityMeta\DataProvider\PermissionsProvider;
 
 class PermissionsProviderTest extends SubjectTestCase
 {

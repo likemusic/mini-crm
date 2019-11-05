@@ -4,7 +4,7 @@ namespace App\Entity\User\TableSeeder;
 
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
 use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
-use App\DataProvider\PermissionsProvider;
+use App\EntityMeta\DataProvider\PermissionsProvider;
 use App\Entity\User\User;
 use App\Entity\Role\RoleRepository;
 use Illuminate\Database\Seeder;

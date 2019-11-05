@@ -6,7 +6,7 @@ use App\Contract\Entity\Role\Permission\Type\NameInterface as CrmPermissionNameI
 use App\Contract\Entity\Role\Field\NameInterface;
 use App\Contract\Entity\Role\NameInterface as RoleNameInterface;
 use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
-use App\DataProvider\PermissionsProvider;
+use App\EntityMeta\DataProvider\PermissionsProvider;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Orchid\Platform\Models\Role;
