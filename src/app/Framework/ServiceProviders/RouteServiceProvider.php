@@ -5,7 +5,8 @@ namespace App\Framework\ServiceProviders;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as BaseRouteServiceProvider;
-use App\DataProvider\Entity\RoutePlaceholderProvider;
+//use App\DataProvider\Entity\RoutePlaceholderProvider;
+use App\EntityMeta\DataProvider\ByName\Route\PlaceholderProvider as RoutePlaceholderProvider;
 use App\DataProvider\Entity\ModelClassNameProvider;
 use App\Contract\Entity\NameInterface as EntityNameInterface;
 
@@ -81,7 +82,7 @@ class RouteServiceProvider extends BaseRouteServiceProvider
 
     private function getRoutePlaceholderByEntityCode(string $entityCode)
     {
-        return $this->entityRoutePlaceholderProvider->getRoutePlaceholderByEntityCode($entityCode);
+        return $this->entityRoutePlaceholderProvider->getTypedValueByKey($entityCode);
     }
 
     private function bindRoutePlaceholder(string $routePlaceholder, string $modelClassName)

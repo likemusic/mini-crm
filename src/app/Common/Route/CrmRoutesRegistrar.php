@@ -4,7 +4,7 @@ namespace App\Common\Route;
 
 use App\Contract\Entity\Base\Route\RegistrarInterface as RouteRegistrarInterface;
 use App\DataProvider\Entity\Names\EnabledNamesProvider as EnabledEntityNamesProvider;
-use App\EntityMeta\DataProvider\ByName\RouteRegistrar\InstanceProvider as  RouteRegistrarProvider;
+use App\EntityMeta\DataProvider\ByName\Route\Registrar\InstanceProvider as  RouteRegistrarProvider;
 use Illuminate\Routing\Router;
 
 class CrmRoutesRegistrar

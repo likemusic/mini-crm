@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EntityMeta\DataProvider\ByName\RouteRegistrar;
+namespace App\EntityMeta\DataProvider\ByName\Route\Registrar;
 
 use App\Base\DataProvider\ClassNameProvider as BaseClassNameProvider;
 use App\Contract\Entity\NameInterface as EntityNameInterface;

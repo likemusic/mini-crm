@@ -1,11 +1,10 @@
 <?php
 
-namespace App\EntityMeta\DataProvider\ByName\RouteRegistrar;
+namespace App\EntityMeta\DataProvider\ByName\NameProvider;
 
 use App\Base\DataProvider\ByClassNameProviderInstanceProvider;
-use App\Contract\Entity\Base\Route\RegistrarInterface;
+use App\Contract\Entity\Base\NamesProviderInterface;
 use Illuminate\Contracts\Container\Container;
-
 
 class InstanceProvider extends ByClassNameProviderInstanceProvider
 {
@@ -14,7 +13,7 @@ class InstanceProvider extends ByClassNameProviderInstanceProvider
         parent::__construct($classNameProvider, $container);
     }
 
-    public function getTypedValueByKey(string $entityName): RegistrarInterface
+    public function getTypedValueByKey(string $entityName): NamesProviderInterface
     {
         return $this->getValueByKey($entityName);
     }
