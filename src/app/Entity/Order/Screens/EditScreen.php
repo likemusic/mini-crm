@@ -32,13 +32,15 @@ use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layout;
 use App\Common\Page\Element\Screen\Form\Field\RelationWithData\Field as RelationWithDataField;
+use App\Entity\Currency\DataProvider\AvailableCurrenciesProvider;
+
 
 class EditScreen extends BaseEditScreen
 {
     /**
-     * @var CurrencyRepository
+     * @var AvailableCurrenciesProvider
      */
-    private $currencyRepository;
+    private $availableCurrenciesProvider;
 
     /**
      * @var Dashboard
@@ -50,16 +52,16 @@ class EditScreen extends BaseEditScreen
         CrudUseVariantProvider $useVariant,
         InfoMessageProvider $infoMessageProvider,
         BreadcrumbsHelper $breadcrumbsHelper,
-        CurrencyRepository $currencyRepository,
+        AvailableCurrenciesProvider $availableCurrenciesProvider,
         Dashboard $dashboard,
         ?Request $request = null
     )
     {
         $this->dashboard = $dashboard;
+        $this->availableCurrenciesProvider = $availableCurrenciesProvider;
 
         $dashboard->registerResource('scripts', 'https://cdn.jsdelivr.net/npm/vue@2.6.0');
         $dashboard->registerResource('scripts', '/js/order.js');
-        $this->currencyRepository = $currencyRepository;
         parent::__construct($routeNameProvider, $useVariant, $infoMessageProvider, $breadcrumbsHelper, $request);
     }
 
@@ -198,7 +200,7 @@ class EditScreen extends BaseEditScreen
 
     private function getAvailableCurrencies(): Collection
     {
-        return $this->currencyRepository->getAvailableCurrencies();
+        return $this->availableCurrenciesProvider->getAvailableCurrencies();
     }
 
     private function createIncomeRowByCurrency(Currency $currency)

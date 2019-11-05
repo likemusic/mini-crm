@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Contract\Entity\Role\Field\NameInterface;
 use App\Contract\Entity\Role\TableInterface;
 use Orchid\Platform\Models\Role;
+use App\Entity\User\User;
 
 class RoleRepository
 {
@@ -20,9 +21,9 @@ class RoleRepository
         $this->model = $role;
     }
 
-    public function getSlugs(): string
+    public function getSlugs(): array
     {
-        $this->model->newQuery()->pluck(NameInterface::NAME)->toArray();
+        return $this->model->newQuery()->pluck(NameInterface::NAME)->toArray();
     }
 
     public function getRoleIdBySlug($slug): int
@@ -39,5 +40,10 @@ class RoleRepository
     public function getRoleBySlug($roleSlug):Role
     {
         return $this->model->where(NameInterface::SLUG, $roleSlug)->first();
+    }
+
+    public function getUserRolesSlugs(User $user)
+    {
+        return $user->roles()->pluck(NameInterface::SLUG)->toArray();
     }
 }

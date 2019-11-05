@@ -2,20 +2,13 @@
 
 namespace App\Entity\User;
 
-use App\Contract\Entity\Role\SlugInterface as RoleSlugInterface;
-use App\Contract\Entity\User\Field\NameInterface as UserFieldNameInterface;
-use App\EntityMeta\DataProvider\PermissionsProvider;
-use App\Entity\User\User;
+use App\Entity\Role\DataProviders\BySlug\UsersTableSeeder\ClassNameProvider as UsersTableSeederClassNameProvider;
 use App\Entity\Role\RoleRepository;
+use App\EntityMeta\DataProvider\PermissionsProvider;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Artisan;
-use Orchid\Platform\Models\Role;
-use App\Contract\Entity\SeedCountInterface;
 
 class TableSeeder extends Seeder
 {
-    const DEFAULT_PASSWORD = 'qazxsw';
-
     /**
      * @var PermissionsProvider
      */
@@ -26,10 +19,18 @@ class TableSeeder extends Seeder
      */
     private $roleRepository;
 
-    public function __construct(PermissionsProvider $permissionsProvider, RoleRepository $roleRepository)
+    /** @var UsersTableSeederClassNameProvider */
+    private $usersTableSeederClassNameProvider;
+
+    public function __construct(
+        PermissionsProvider $permissionsProvider,
+        RoleRepository $roleRepository,
+        UsersTableSeederClassNameProvider $usersTableSeederClassNameProvider
+    )
     {
         $this->permissionsProvider = $permissionsProvider;
         $this->roleRepository = $roleRepository;
+        $this->usersTableSeederClassNameProvider = $usersTableSeederClassNameProvider;
     }
 
     /**
@@ -39,8 +40,8 @@ class TableSeeder extends Seeder
      */
     public function run()
     {
-        $userSeeders = $this->getPerRolesUsersSeeders();
-        $this->runSeeders($userSeeders);
+        $userSeederClassNames = $this->getPerRolesUsersSeeders();
+        $this->runSeedersByClassNames($userSeederClassNames);
 //        $this->addAdmins();
 //        $this->addCouriers();
 //        $this->addOperator();
@@ -51,135 +52,42 @@ class TableSeeder extends Seeder
     {
         $roleSlugs = $this->getRolesSlugs();
 
-        return $this->getUsersSeederByRoleSlugs($roleSlugs);
+        return $this->getUserSeederClassNamesByRoleSlugs($roleSlugs);
     }
 
-
-
-    private function getRolesSlugs()
+    /**
+     * @return string[]
+     */
+    private function getRolesSlugs(): array
     {
         return $this->roleRepository->getSlugs();
     }
 
-//    private function addAdmins()
-//    {
-//        $courierRole = $this->getAdminRole();
-//        $maxCouriersCount = SeedCountInterface::USERS_PER_ROLE;
-//
-//        for ($i = 0; $i < $maxCouriersCount; $i++) {
-//            $this->addAdmin($i+1, $courierRole);
-//        }
-//    }
-
-//    private function addAdmin()
-//    {
-//        $name = 'admin';
-//        $email = env('SEED_ADMIN_EMAIL', 'admin@test.loc');
-//        $password = env('SEED_ADMIN_PASSWORD', 'password');
-//
-//        $this->addAdminUserByCommand($name, $email, $password);
-//    }
-
-//    private function addAdminUserByCommand($name, $email, $password)
-//    {
-//        Artisan::call('orchid:admin', [
-//            'name' => $name,
-//            'email' => $email,
-//            'password' => $password,
-//        ]);
-//    }
-
-    private function addCouriers()
+    private function getUserSeederClassNamesByRoleSlugs(array $roleSlugs): array
     {
-        $courierRole = $this->getCourierRole();
-        $maxCouriersCount = SeedCountInterface::USERS_PER_ROLE;
+        $userSeederClassNames = [];
 
-        for ($i = 0; $i < $maxCouriersCount; $i++) {
-            $this->addCourier($i+1, $courierRole);
+        foreach ($roleSlugs as $roleSlug) {
+            $userSeederClassNames[] = $this->getUserSeederClassNameByRoleSlug($roleSlug);
+        }
+
+        return $userSeederClassNames;
+    }
+
+    private function getUserSeederClassNameByRoleSlug(string $roleSlug)
+    {
+        return $this->usersTableSeederClassNameProvider->getValueByKey($roleSlug);
+    }
+
+    private function runSeedersByClassNames(array $userSeederClassNames)
+    {
+        foreach ($userSeederClassNames as $userSeederClassName) {
+            $this->runSeederByClassName($userSeederClassName);
         }
     }
 
-    private function getAdminRole(): Role
+    private function runSeederByClassName(string $userSeederClassName)
     {
-        $courierRoleSlug = RoleSlugInterface::ADMIN;
-
-        return $this->getRoleBySlug($courierRoleSlug);
-    }
-
-    private function getCourierRole(): Role
-    {
-        $courierRoleSlug = RoleSlugInterface::COURIER;
-
-        return $this->getRoleBySlug($courierRoleSlug);
-    }
-
-    private function getRoleBySlug(string $roleSlug): Role
-    {
-        return $this->roleRepository->getRoleBySlug($roleSlug);
-    }
-
-    private function addAdmin($i, $adminRole)
-    {
-        $name = "Admin {$i}";
-        $email = "admin{$i}@test.loc";
-        $password = self::DEFAULT_PASSWORD;
-
-        $this->addUser($name, $email, $password, $adminRole);
-    }
-
-    private function addCourier($i, $courierRole)
-    {
-        $name = "Courier {$i}";
-        $email = "courier{$i}@test.loc";
-        $password = self::DEFAULT_PASSWORD;
-
-        $this->addUser($name, $email, $password, $courierRole);
-    }
-
-    private function addUser(string $name, string $email, $password, Role $role)
-    {
-        $attributes = [
-            UserFieldNameInterface::NAME => $name,
-            UserFieldNameInterface::EMAIL => $email,
-            UserFieldNameInterface::PASSWORD => $password,
-        ];
-
-        $entity = new User($attributes);
-        $entity->save();
-        $entity->addRole($role);
-    }
-
-    private function addOperator()
-    {
-        $name = 'Operator';
-        $email = 'operator@test.loc';
-        $password = self::DEFAULT_PASSWORD;
-        $operatorRole = $this->getOperatorRole();
-
-        $this->addUser($name, $email, $password, $operatorRole);
-    }
-
-    private function getOperatorRole(): Role
-    {
-        $courierRoleSlug = RoleSlugInterface::OPERATOR;
-
-        return $this->getRoleBySlug($courierRoleSlug);
-    }
-
-    private function addWarehouseman()
-    {
-        $name = 'Warehouseman';
-        $email = 'warehouseman@test.loc';
-        $password = self::DEFAULT_PASSWORD;
-        $role = $this->getWarehousemanRole();
-
-        $this->addUser($name, $email, $password, $role);
-    }
-
-    private function getWarehousemanRole(): Role
-    {
-        $courierRoleSlug = RoleSlugInterface::WAREHOUSEMAN;
-
-        return $this->getRoleBySlug($courierRoleSlug);
+        $this->call($userSeederClassName);
     }
 }

@@ -2,18 +2,23 @@
 
 namespace App\Entity\Currency;
 
-use App\Entity\Currency\Currency;
-use Illuminate\Support\Facades\DB;
-use App\Contract\Entity\Currency\TableInterface;
 use App\Contract\Entity\Currency\Field\NameInterface;
+use App\Contract\Entity\Currency\TableInterface;
+use Illuminate\Support\Facades\DB;
 
 class CurrencyRepository
 {
-    private $currencyModel;
+    /** @var Currency */
+    private $model;
 
     public function __construct(Currency $currencyModel)
     {
-        $this->currencyModel = $currencyModel;
+        $this->model = $currencyModel;
+    }
+
+    public function getById(int $id): Currency
+    {
+        return $this->model->get($id);
     }
 
     public function getCurrencyIdByCode(string $currencyCode): int
@@ -24,8 +29,8 @@ class CurrencyRepository
             ->id;
     }
 
-    public function getAvailableCurrencies()
+    public function getAllCurrencies()
     {
-        return $this->currencyModel->all();
+        return $this->model->all();
     }
 }

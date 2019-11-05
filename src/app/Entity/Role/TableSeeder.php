@@ -34,11 +34,11 @@ class TableSeeder extends Seeder
         $allPermissions = array_fill_keys($allPermissionsSlugs, true);
 
         $data = [
-            [
-                NameInterface::NAME => RoleNameInterface::SUPER_ADMIN,
-                NameInterface::SLUG => RoleSlugInterface::SUPER_ADMIN,
-                NameInterface::PERMISSIONS => $allPermissions,
-            ],
+//            [
+//                NameInterface::NAME => RoleNameInterface::SUPER_ADMIN,
+//                NameInterface::SLUG => RoleSlugInterface::SUPER_ADMIN,
+//                NameInterface::PERMISSIONS => $allPermissions,
+//            ],
             [
                 NameInterface::NAME => RoleNameInterface::ADMIN,
                 NameInterface::SLUG => RoleSlugInterface::ADMIN,
